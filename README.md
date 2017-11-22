@@ -1,4 +1,5 @@
-# ncent labs: incentivize a better internet, and it will come
+# ncent labs
+### incentivize a better internet, and it will come
 
 ## projects
 PoPcoin: the world's first self propagating utility coin network
