@@ -1,6 +1,12 @@
+# ncent labs
+incentivize better internet and it will come
 
-The n¢ project is currently under development. Our whitepaper can be found at http://ncent.io/whitepaper.pdf
+## projects
+PoPcoin: the world's first self propagating utility coin network
 
-For project updates please join our private telegram at: https://t.me/joinchat/AAAAAEJiSClSy5qhgCqvWA or contact updates@ncent.io
+## careers
+to inquire about joining ncent labs email jobs@ncent.io
 
-For Investor Relations inquiries please contact kk@ncent.io
+## contact
+email web@ncent.io
+
