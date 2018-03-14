@@ -15,8 +15,8 @@
 #### * https://web.media.mit.edu/~cebrian/p78-tang.pdf
 ## ~
 ##### Our contact info is:
-####### nCent Labs, Inc.
-####### 380B Cambridge Avenue
-####### Palo Alto, CA 94306
-####### (650) 752-6739
-####### email kk@ncnt.io for more information
+###### nCent Labs, Inc.
+###### 380B Cambridge Avenue
+###### Palo Alto, CA 94306
+###### (650) 752-6739
+###### email kk@ncnt.io for more information
