@@ -3,7 +3,7 @@
   background-color:#fff;
 }
 
-.brands a {
+.brandsBox {
   display:block;
   text-align:center;
   padding:40px 0;
@@ -15,9 +15,8 @@
   }
 }
 
-.brands a img {
+.brands img {
   display:inline-block;
   margin:10px 20px;
   vertical-align:middle;
 }
-
