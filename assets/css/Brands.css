@@ -3,20 +3,24 @@
   background-color:#fff;
 }
 
-.brandsBox {
-  display:block;
-  text-align:center;
-  padding:40px 0;
-}
-
 @media (max-width:767px) {
   .brands a {
     padding:30px 0;
   }
 }
 
-.brands img {
+.brands a img {
   display:inline-block;
   margin:10px 20px;
   vertical-align:middle;
 }
+
+.img-fluid {
+}
+
+.brandsBox {
+  display:block;
+  text-align:center;
+  padding:40px 0;
+}
+
