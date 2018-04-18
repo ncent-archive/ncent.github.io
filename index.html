@@ -11,10 +11,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,700">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
-    <link rel="stylesheet" href="assets/css/Brands.css">
-    <link rel="stylesheet" href="assets/css/Header-Blue.css">
-    <link rel="stylesheet" href="assets/css/Header-Dark.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/styles.min.css">
+<title>nCent Labs, Inc.</title>
 </head>
 
 <body style="background-color:#414141;">
@@ -54,19 +52,39 @@
             </div>
         </div>
     </div>
-    <div class="brands"><a href="#">
-    <div class="brandsBox">
-        <a href="https://www.sequoiacap.com/"><img class="img-fluid" src="assets/img/Sequoia2.png" width="162px"></a>
-        <a href="https://svangel.com/"><img src="assets/img/sv_angel.png" width="130px"></a>
-        <a href="https://angel.co/naval"><img src="assets/img/celeb-naval.png" width="120px" style="border-radius:50%;">
-        </a><a href="http://metastablecapital.com/"><img src="assets/img/Logo.png" width="165px"></a>
-    </div>
+    <div class="brands"><a href="#"><div class="brandsBox"><a href="https://www.sequoiacap.com/"><img class="img-fluid" src="assets/img/Sequoia2.png" width="162px"></a><a href="https://svangel.com/"><img src="assets/img/sv_angel.png" width="130px"></a><a href="https://angel.co/naval"><img src="assets/img/celeb-naval.png" width="120px" style="border-radius:50%;"></a><a href="http://metastablecapital.com/"><img src="assets/img/Logo.png" width="165px"></a></div>
 </a>
 </div>
+    <div class="newsletter-subscribe" style="background-color:rgb(198,170,221);">
+        <div class="container">
+            <div class="intro">
+                <h2 class="text-center" style="color:rgb(255,255,255);font-family:Anaheim, sans-serif;">Be the first to hear about nCent's updates.</h2>
+                <p class="text-center"></p>
+            </div><form name="google" method="post" class="form-inline">
+    <div class="form-group"><input type="email" name="email" id="email_name" placeholder="Your Email" class="form-control" style="font-family:Roboto, sans-serif;" /></div>
+    <div class="form-group"><button class="btn btn-secondary btn-block" type="submit" style="font-family:Roboto, sans-serif;background-color:rgb(255,255,255);color:rgb(137,137,137);">Subscribe</button></div>
+<script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbzCWER-YAtylQt3Va0RESchX4o0u0H4qITlbybixxv672w4ywU/exec'
+  const form = document.forms['google']
+  const input = document.getElementById("email_name")
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => console.log('Success!', response))
+      .catch(error => console.error('Error!', error.message))
+    form.reset()
+    input.placeholder = "Subscribed!"
+  })
+</script>
+</form>
+
+</div>
+    </div>
     <div class="container" style="background-color:#000000;max-width:100%;width:100vw;">
         <div class="row" style="height:auto;">
             <div class="col" style="background-color:#414141;padding-right:15px;padding-bottom:0px;"><div class="bottom">
-    <p class="text-center justify-content-center align-items-center align-content-center mb-auto" style="color:rgb(255,255,255);width:100%;font-size:16px;font-family:Roboto, sans-serif;">nCent Labs, Inc. 380B · Cambridge Avenue · Palo Alto, CA 94306 · <a href="#" style="color: #FFFFFF; text-decoration: none; pointer-events: none;">650.752.6739</a> · email inquiries to kk@ncnt.io<br /></p>
+    <p class="text-center justify-content-center align-items-center align-content-center mb-auto" style="color:rgb(255,255,255);width:100%;font-size:15px;font-family:Roboto, sans-serif;">nCent Labs, Inc. 380B · Cambridge Avenue · Palo Alto, CA 94306 · <a href="#" style="color: #FFFFFF; text-decoration: none; pointer-events: none;">650.752.6739</a> · email inquiries to kk@ncnt.io<br /></p>
 </div></div>
         </div>
     </div>
