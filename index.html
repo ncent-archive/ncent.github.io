@@ -21,14 +21,33 @@
             <nav class="navbar navbar-dark navbar-expand-md navigation-clean-search">
                 <div class="container"><a class="navbar-brand" href="#" style="font-size:23px;color:rgb(179,92,249);font-family:Anaheim, sans-serif;">N</a><button class="navbar-toggler d-none" data-toggle="collapse" data-target="#navcol-1"></button>
                     <div class="collapse navbar-collapse"
-                        id="navcol-1"></div>
+                        id="navcol-1"><span class="navbar-text"></span></div>
                 </div>
             </nav>
             <div class="container">
                 <div class="row">
                     <div class="col-md-12" style="text-align:center;">
                         <p style="background-color:white;opacity:.8;">A fairer internet for people to own the networks they use.</p>
-                    </div>
+                        <h2 class="text-center" style="color:rgb(103,103,103);font-family:Anaheim, sans-serif;font-size:18px;width:240px;opacity:.8;background-color:white;">Hear about nCent's updates:</h2><form name="google" method="post" class="form-inline">
+    <div class="form-group"><input type="email" name="email" id="email_name" placeholder="Your Email" class="form-control" style="font-family:Roboto, sans-serif;" /></div>
+    <div class="form-group"><button class="btn btn-secondary btn-block" type="submit" style="font-family:Roboto, sans-serif;background-color:rgb(255,255,255);color:rgb(137,137,137);">Subscribe</button></div>
+<script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbzCWER-YAtylQt3Va0RESchX4o0u0H4qITlbybixxv672w4ywU/exec'
+  const form = document.forms['google']
+  const input = document.getElementById("email_name")
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => console.log('Success!', response))
+      .catch(error => console.error('Error!', error.message))
+    form.reset()
+    input.placeholder = "Subscribed!"
+  })
+</script>
+</form>
+
+</div>
                 </div>
             </div>
         </div>
@@ -55,32 +74,6 @@
     <div class="brands"><a href="#"><div class="brandsBox"><a href="https://www.sequoiacap.com/"><img class="img-fluid" src="assets/img/Sequoia2.png" width="162px"></a><a href="https://svangel.com/"><img src="assets/img/sv_angel.png" width="130px"></a><a href="https://angel.co/naval"><img src="assets/img/celeb-naval.png" width="120px" style="border-radius:50%;"></a><a href="http://metastablecapital.com/"><img src="assets/img/Logo.png" width="165px"></a></div>
 </a>
 </div>
-    <div class="newsletter-subscribe" style="background-color:rgb(198,170,221);">
-        <div class="container">
-            <div class="intro">
-                <h2 class="text-center" style="color:rgb(255,255,255);font-family:Anaheim, sans-serif;">Be the first to hear about nCent's updates.</h2>
-                <p class="text-center"></p>
-            </div><form name="google" method="post" class="form-inline">
-    <div class="form-group"><input type="email" name="email" id="email_name" placeholder="Your Email" class="form-control" style="font-family:Roboto, sans-serif;" /></div>
-    <div class="form-group"><button class="btn btn-secondary btn-block" type="submit" style="font-family:Roboto, sans-serif;background-color:rgb(255,255,255);color:rgb(137,137,137);">Subscribe</button></div>
-<script>
-  const scriptURL = 'https://script.google.com/macros/s/AKfycbzCWER-YAtylQt3Va0RESchX4o0u0H4qITlbybixxv672w4ywU/exec'
-  const form = document.forms['google']
-  const input = document.getElementById("email_name")
-
-  form.addEventListener('submit', e => {
-    e.preventDefault()
-    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-      .then(response => console.log('Success!', response))
-      .catch(error => console.error('Error!', error.message))
-    form.reset()
-    input.placeholder = "Subscribed!"
-  })
-</script>
-</form>
-
-</div>
-    </div>
     <div class="container" style="background-color:#000000;max-width:100%;width:100vw;">
         <div class="row" style="height:auto;">
             <div class="col" style="background-color:#414141;padding-right:15px;padding-bottom:0px;"><div class="bottom">
@@ -89,7 +82,7 @@
         </div>
     </div>
     <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js">b</script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 </body>
 
 </html>
