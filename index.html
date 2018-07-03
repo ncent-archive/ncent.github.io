@@ -1,85 +1,627 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
-<head>
+  <head>
+
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>nCent Labs, Inc.</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alef">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Anaheim">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,700">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
-    <link rel="stylesheet" href="assets/css/styles.min.css">
-<title>nCent Labs, Inc.</title>
-</head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-<body style="background-color:#414141;">
-    <div>
-        <div class="header-dark" style="background-image:url(&quot;assets/img/adjusted2.png&quot;);background-color:rgb(255,255,255);font-family:'Source Sans Pro', sans-serif;color:rgb(255,255,255);background-repeat:no-repeat;background-size:cover;height:70vh;">
-            <nav class="navbar navbar-dark navbar-expand-md navigation-clean-search">
-                <div class="container"><a class="navbar-brand" href="#" style="font-size:23px;color:rgb(179,92,249);font-family:Anaheim, sans-serif;">N</a><button class="navbar-toggler d-none" data-toggle="collapse" data-target="#navcol-1"></button>
-                    <div class="collapse navbar-collapse"
-                        id="navcol-1"><span class="navbar-text"></span></div>
+    <title>Landing Page</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="landingpage-assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="landingpage-assets/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="landingpage-assets/vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <link href='https://fonts.googleapis.com/css?family=Rajdhani' rel='stylesheet'>
+
+    <!-- Custom styles for this template -->
+    <link href="landingpage-assets/css/landing-page.min.css" rel="stylesheet">
+
+    <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+    <link href="landingpage-assets/dist/css/timeline.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Open Sans:300' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+
+    <script>!function(m,a,i,t,r,e){if(m.Maitre)return;r=m.Maitre={},r.uuid=t,r.loaded=0,r.base_url=i,r.queue=[],m.mtr=function(){r.queue.push(arguments)};e=a.getElementsByTagName('script')[0],c=a.createElement('script');c.async=!0,c.src=i+'/widget/'+t+'.js',e.parentNode.insertBefore(c,e)}(window,document,'https://maitreapp.co','MFfa1aa24de7');
+    </script>
+    <link href='https://fonts.googleapis.com/css?family=Noto Sans' rel='stylesheet'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+    window.onclick = function(e) {
+      console.log(e);
+    };
+    $(document).on('click', 'a[href^="#"]', function (event) {
+    event.preventDefault();
+      $('html, body').animate({
+          scrollTop: $($.attr(this, 'href')).offset().top
+      -80}, 700);
+      });
+
+    $(function () {
+      $(document).scroll(function () {
+        var $nav = $(".fixed-top");
+        $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
+        var $nava = $("nav a");
+        $nava.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
+        var $button = $(".whitelist-button");
+        $button.toggleClass('scrolled', $(this).scrollTop() > $nav.height())
+      });
+    });
+
+
+    $(document).ready(function() {
+    
+    /* Every time the window is scrolled ... */
+      $(window).scroll( function(){
+      
+          /* Check the location of each desired element */
+          $('.hideme').each( function(i){
+              
+              var bottom_of_object = $(this).offset().top;
+              var bottom_of_window = $(window).scrollTop() + $(window).height();
+              
+              /* If the object is completely visible in the window, fade it it */
+              if( bottom_of_window > bottom_of_object + 150){
+                  $(this).animate({'opacity':'1'}, 1000);   
+                  $(this).css('visibility', 'visible').fadeIn("slow");                  
+              }
+              
+              }); 
+          
+          });
+        
+    });
+    </script>
+  </head>
+
+  <body id="bootstrap-overrides">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-dark bg-transparent fixed-top">
+      <div class="container-fluid headnavbar mx-3">
+        <div class="col-xs-2-mx-0" style="max-width: 300px">
+            <div style="display: inline-block;">
+              <img src = "landingpage-assets/img/ncent_logo.png" class="img-fluid headimage" width="60">
+            </div>
+            <div style="display: inline-block; margin-left: 20px"> 
+              <a class=" mx-0 text-center headtext" href="#bootstrap-overrides">nCent.io</a>
+              <div class="uhuline"></div>
+            </div>
+        </div>
+
+
+          <!-- If you want them in separate blocks -->
+        <!-- <div class="col-xs-2"> </div>
+          <div class ="huline col-xs-1 mx-0">
+            <a class="headtext" href="#About"> About </a>
+            <div class="uhuline"></div>
+         </div>
+         <div class ="huline col-xs-1 mx-0">
+            <a class="headtext" href="#Jobs"> Careers </a>
+            <div class="uhuline"></div>
+         </div>
+         <div class ="huline col-xs-1 mx-0">
+            <a class="headtext" href="#signupwidget"> Sign Up </a>
+            <div class="uhuline"></div>
+         </div> -->
+
+         <div class="col-xs-2-mx-0"  id="navbar-middle">
+            <div style="" class="huline middle-header"> 
+              <a class=" mx-0 text-center headtext" href="#big-whitebox">About</a>
+              <div class="uhuline"></div>
+            </div>
+            <div style="" class="huline middle-header"> 
+              <a class=" mx-0 text-center headtext" href="#Jobs">Careers</a>
+              <div class="uhuline"></div>
+            </div>
+            <div style="" class="huline middle-header"> 
+              <a class=" mx-0 text-center headtext" href="#signupwidget">Early Access</a>
+              <div class="uhuline"></div>
+            </div>
+            <div style="" class="huline middle-header"> 
+              <a class=" mx-0 text-center headtext" href="#contact">Contact</a>
+              <div class="uhuline"></div>
+            </div>
+        </div>
+
+
+         <!-- <div class ="huline col-xs-1 mx-0">
+            <a class="headtext " href="#Timeline"> Timeline </a>
+            <div class="uhuline"></div>
+          </div>
+          <div class ="huline col-xs-1 mx-0">
+            <a class="headtext" href="#Team"> Team </a>
+            <div class="uhuline"></div>
+          </div>
+          <div class ="huline col-xs-1 mx-0">
+            <a class="headtext" href="#Investors"> Investors </a>
+            <div class="uhuline"></div>
+          </div> -->
+          <div class ="huline col-xs-3 mx-0">
+            <a class="col-xs-3"> </a>
+            <div class="uhuline"></div>
+          </div>
+          <div class ="huline col-xs-1 download-button-spacing">
+            <!-- <a class="headtext" href="#signupwidget"> Sign Up </a>
+            <div class="uhuline"></div> -->
+            <a href="landingpage-assets/img/litepaper.pdf" class="text-dark" download>
+              <div class="col-sm h5 whitelist-button text-center">
+                Download Litepaper              
+              </div>
+            </a>
+         </div>
+          
+      </div>
+    </nav>
+    <div id="includedContent"></div>
+
+
+
+    <!-- Masthead -->
+    <header class="masthead text-white text-center pt-0">
+      <div class="overlay"></div>
+        <div class = "almost-half-window">
+        </div>
+        <div>
+          <div class="quarter-window">
+              <div class="row">
+                  <div class="col-sm-2 mx-auto text-center">
+                  </div>
+                  <div class="col-sm-2 mx-auto text-center">
+                    <p class="mr-1 n-font h1 fade-in one" id="#n-font">nCent</p>
+                  </div>
+                  <div class="col-sm-1 mx-auto text-center" id="pulsebar">
+                    <h1 class="ml-1 n-font h1 fade-in one"> |</h1>
+                  </div>
+                  <div class="col-sm-6 mx-auto ">
+                    <h1 class="fade-in two pt-2" id="network-value"> realize the value of your networks </h1>
                 </div>
-            </nav>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 , front" style="text-align:center;"><p style="width:40vh;background-color:white;opacity:.8;">A fairer internet for people to own the networks they use.</p>
-                        <h2 class="text-center" style="color:rgb(103,103,103);font-family:Anaheim, sans-serif;font-size:18px;width:240px;opacity:.8;background-color:white;">Hear about nCent's updates:</h2><form name="google" method="post" class="form-inline">
-    <div class="form-group"><input type="email" name="email" id="email_name" placeholder="Your Email" class="form-control" style="font-family:Roboto, sans-serif;" /></div>
-    <div class="form-group"><button class="btn btn-secondary btn-block" type="submit" style="font-family:Roboto, sans-serif;background-color:rgb(255,255,255);color:rgb(137,137,137);">Subscribe</button></div>
-<script>
-  const scriptURL = 'https://script.google.com/macros/s/AKfycbzCWER-YAtylQt3Va0RESchX4o0u0H4qITlbybixxv672w4ywU/exec'
-  const form = document.forms['google']
-  const input = document.getElementById("email_name")
+                <div class="col-sm-1 mx-auto text-center">
+                  </div>
+              </div>
+              
+          </div>
+          <div class = "">
+            <div class = "row pb-0">
+                    <div class="mx-auto pt-5 pb-0">
+                          <!-- <a href="#signupwidget">
+                            <div class="col-sm-3 mx-auto text-right button2 text-center fade-in three">
+                              Early Access Signup -->
+                          <a class="pb-0 navbar-brand text-white fade-in three" href="#signupwidget">
+                            <div class="pb-0 early-access">
+                               <h3 class="pb-0"> Early Access Signup </h3>
+                            </div>
+                          </a>
+                            <!-- </div>
+                          </a> -->
+                    </div>
 
-  form.addEventListener('submit', e => {
-    e.preventDefault()
-    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-      .then(response => console.log('Success!', response))
-      .catch(error => console.error('Error!', error.message))
-    form.reset()
-    input.placeholder = "Subscribed!"
-  })
-</script>
-</form>
-
-</div>
+              </div>
+              <a href="#signupwidget">
+                <div class="fade-in three pt-0">
+                  <div class="fa fa-angle-double-down early-access pt-0" id="down-arrows"></div>
                 </div>
+              </a>
+          </div>
+        </div>
+
+           <div class="smaller-window"></div>
+
+          
+<!--         <div class=" mt-5"> </div>
+        <div class=" mt-5"> </div> -->
+<!--         <div id="whitebox">
+          <div class="col-md-12 bg-light text-dark"> -->
+            <!-- <div class="help-block" id="About"></div>
+              <div id="whiteboxtext">
+                  <h2 class="pt-5 mt-5 hideme text-left colorful h1" style="font-family: 'Roboto';"> About nCent </h2>
+                  <h3 class="pt-5 hideme text-left" style="font-family: 'Open Sans';"> Unlocking the power of crowdwork and the gig economy remains a dream deferred </h3>
+                  <p class=" pt-4 hideme text-left" style="font-family: 'Open Sans';"> 
+                  Our personal and professional networks contain a treasure trove
+              of information about our capabilities, skills, interests and relationships. The Internet of
+              today has no mechanism to properly attribute this value back to users, and therefore
+              does not provide correct incentives. The result of this is inefficient and broken
+              markets. 
+                  </p>
+
+                  <h3 class="pt-5 hideme text-left" style="font-family: 'Open Sans';"> We introduce nCent, a decentralized protocol for incentive networks </h3>
+                  <p class=" pt-4 hideme text-left" style="font-family: 'Open Sans';"> 
+                  Users of nCent
+                  are incentivized to form specialized networks to perform valuable work as a group.
+                  This work can take the form of solving problems characteristic of search/matching,
+                  crowdwork/funding, and social networking. nCent creates incentive networks through
+                  a novel blockchain protocol that offers a decentralized design, and unique
+                  transparency and auditability properties to establish integrity of the protocol.
+                  </p>
+            </div> -->
+            <!-- <br><div class="hideme" style="font-size: 60px"> About </div> <br> <br>
+            <div class="big-about hideme">
+            nCent Labs is a Stanford University spinout blockchain research and development company. We are focused on building novel, protocol-level technologies that help people connect more efficiently. Our core belief is that you have the right to own the value of the networks you create. We invite you to connect with us and support our mission to build a fairer and freer decentralized internet!
+            </div> -->
+<!--       </div> -->
+    <div id="big-whitebox" class="fade-in">
+      <div class="hideme big-about-header fade-in" style="font-family: Open Sans"> <b> About </b> </div> <br> <br> 
+      <div class="big-about hideme fade-in" style="font-family: Open Sans">
+            <b>
+            The Internet has <i>connected us</i>, but has yet to unlock our <i>common potential</i>. We all know valuable information about each other: <i> our capabilities, skills, interests and dreams</i>. If we can only harness our collective talents, <i>we can achieve anything together</i>. We are building a novel decentralized protocol for <i> incentive markets</i>, to enable us to collaborate more efficiently and allow us to <i>own the value of our networks</i>.
+            </b>
+      </div>
+    </div>
+    </header>
+
+
+
+    <!-- <main class="pt-5 pb-5 purple-background" id="Timeline">
+    <section class="page-section">
+      <div class="container pt-1">
+        <h1 class="text-white hideme text-left pb-3 pl-5"> Corporate Timeline </h1>
+        <div class="hideme" style="visibility:hidden">
+        <div class="timeline pt-4 mx-5" >
+          <div class="timeline__wrap">
+            <div class="timeline__items">
+              <div class="timeline__item">
+                <div class="timeline__content text-white text-center">
+                  <h2>9/17</h2>
+                  <p>nCent Labs Founded</p>
+                </div>
+              </div>
+              <div class="timeline__item">
+                <div class="timeline__content text-white  text-center">
+                  <h2>1/18</h2>
+                  <p>Seed Round SS1</p>
+                </div>
+              </div>
+              <div class="timeline__item">
+                <div class="timeline__content text-white  text-center">
+                  <h2>5/18</h2>
+                  <p>Seed Round SS2. Internal testnet live</p>
+                </div>
+              </div>
+              <div class="timeline__item">
+                <div class="timeline__content text-white  text-center">
+                  <h2>9/18</h2>
+                  <p>Price RegD Offer</p>
+                </div>
+              </div>
+              <div class="timeline__item">
+                <div class="timeline__content text-white  text-center">
+                  <h2>12/18</h2>
+                  <p>External Testnet Live</p>
+                </div>
+              </div>
+              <div class="timeline__item">
+                <div class="timeline__content text-white  text-center">
+                  <h2>3/19</h2>
+                  <p>Launch patterns announced</p>
+                </div>
+              </div>
+              <div class="timeline__item">
+                <div class="timeline__content text-white  text-center">
+                  <h2>6/19</h2>
+                  <p>Pre-launch marketing</p>
+                </div>
+              </div>
+              <div class="timeline__item">
+                <div class="timeline__content text-white  text-center">
+                  <h2>9/19</h2>
+                  <p>Launch: Mainnet Live</p>
+                </div>
+              </div>
+
+              </div>
+              
+              </div>
+              </div>
+          </div>
+        </div>
             </div>
-        </div>
-    </div>
-    <div class="container" style="background-color:#161616;width:100vw;max-width:100%;">
-        <div class="row" style="height:auto;">
-            <div class="col" style="background-color:#c6aadd;padding-bottom:15px;width:100vw;">
-                <h1 style="font-size:22px;font-family:Anaheim, sans-serif;padding-top:6px;color:rgb(255,255,255);"><strong>about</strong></h1>
-                <p class="justify-content-center align-items-center align-content-center mb-auto" style="color:rgb(255,255,255);width:100%;font-size:15px;font-family:Roboto, sans-serif;">nCent Labs is a Stanford University spinout blockchain research and development company. We are focused on building novel, protocol-level technologies that help people connect more efficiently. Our core belief is that you have the right
-                    to own the value of the networks you create. We invite you to connect with us and support our mission to build a fairer and freer decentralized internet!<br></p>
+          </section>
+        </main> -->
+
+   
+
+    <!-- Team -->
+    <!-- <section class="testimonials text-center bg-light pt-5" id="Team">
+      <div class="container pb-5 px-5">
+        <div class="row pb-4">
+          <div class="col-sm text-left h1 pl-4 hideme">
+            Our Team
+          </div>
+          <a href="#" style="text-decoration: none" class="text-dark pr-5">
+            <div class="col-sm text-right h5 button text-center hideme">
+              Join Us Today!           
+   
             </div>
+          </a>
         </div>
-    </div>
-    <div class="container" style="background-color:#000000;max-width:100%;width:100vw;">
-        <div class="row" style="height:auto;">
-            <div class="col" style="background-color:#898989;padding-right:15px;padding-bottom:15px;">
-                <h1 style="font-size:22px;font-family:Anaheim, sans-serif;padding-top:6px;color:rgb(255,255,255);"><strong>recruitment</strong></h1>
-                <p class="justify-content-center align-items-center align-content-center mb-auto" style="color:rgb(255,255,255);width:100%;font-size:15px;font-family:Roboto, sans-serif;">Interested in career opportunities at nCent Labs? Please see <a href="https://angel.co/ncent-labs-2/jobs">jobs.ncnt.io</a> for more information.</p>
-                <p class="justify-content-center align-items-center align-content-center mb-auto"
-                    style="color:rgb(255,255,255);width:100%;font-size:15px;font-family:Roboto, sans-serif;"></p>
+      </div>
+      <div class="container">
+        <div class="container-fluid">
+
+        </div>
+        <div class="row">
+          <div class="col-lg-2 mx-auto hideme" style="visibility:hidden; margin:auto;">
+            <a href="#" style="text-decoration: none">
+              <div class="testimonial-item mx-auto mb-5 mb-lg-0 text-dark">
+                <img class="img-fluid rounded-circle mb-3" src="img/kk.jpg" alt="">
+                <h5>Kapil K. Jain</h5>
+                <p class="font-weight-light mb-0">President and Lead Developer</p>
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-2 mx-auto hideme" style="visibility:hidden">
+            <a href="#" style="text-decoration: none">
+              <div class="testimonial-item mx-auto  mb-5 mb-lg-0 text-dark">
+                <img class="img-fluid rounded-circle mb-3" src="img/mitchell.png" alt="">
+                <h5>Prof. John C. Mitchell</h5>
+                <p class="font-weight-light mb-0">Cryptography and Security</p>
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-2 mx-auto hideme" style="visibility:hidden">
+            <a href="#" style="text-decoration: none">
+              <div class="testimonial-item mx-auto mb-5 mb-lg-0 text-dark">
+                <img class="img-fluid rounded-circle mb-3" src="img/dill.png" alt="">
+                <h5>Prof. David L. Dill</h5>
+                <p class="font-weight-light mb-0">Protocol Research and Development</p>
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-2 mx-auto hideme" style="visibility:hidden">
+            <a href="#" style="text-decoration: none">
+              <div class="testimonial-item mx-auto mb-5 mb-lg-0 text-dark">
+                <img class="img-fluid rounded-circle mb-3" src="img/rajeev.jpeg" alt="">
+                <h5>Dr. Rajeev Surati</h5>
+                <p class="font-weight-light mb-0">Core and Backend Development</p>
+              </div>
+              </a>
+          </div>
+          <div class="col-lg-2 mx-auto hideme" style="visibility:hidden">
+            <a href="#" style="text-decoration: none">
+              <div class="testimonial-item mx-auto mb-5 mb-lg-0 text-dark">
+                <img class="img-fluid rounded-circle mb-3" src="img/mike.png" alt="">
+                <h5>Michael Barile</h5>
+                <p class="font-weight-light mb-0">Partnerships and Application Development</p>
+              </div>
+              </a>
+          </div>
+        </div>
+      </div>
+    </section> -->
+
+    <!-- Investors -->
+    <!-- <section class="testimonials text-center bg-white pt-5" id="Investors">
+      <div class="container pb-5 px-5">
+        <div class="row pb-4">
+          <div class="col-sm text-center h1 hideme">
+            Investors
+          </div>
+
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3">
+            <a href="#" style="text-decoration: none">
+              <div class="testimonial-item mx-auto mb-5 mb-lg-0 hideme" style="visibility:hidden">
+                <img class="img-fluid mb-3 " src="img/winklevoss.jpg" alt="">
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-3">
+            <a href="#" style="text-decoration: none">
+              <div class="testimonial-item mx-auto mb-5 mb-lg-0 hideme" style="visibility:hidden">
+                <img class="img-fluid mb-3" src="img/sequoia.jpg" alt="">
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-3">
+            <a href="#" style="text-decoration: none">
+              <div class="testimonial-item mx-auto mb-5 mb-lg-0 hideme" style="visibility:hidden">
+                <img class="img-fluid mb-3 my-auto" src="img/svangel.png" alt="">
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-3">
+            <a href="#" style="text-decoration: none">
+              <div class="testimonial-item mx-auto mb-5 mb-lg-0 hideme" style="visibility:hidden">
+                <img class="img-fluid mb-3" src="img/metastable.jpg" alt="">
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section> -->
+
+    <!-- Carrers -->
+    <section class="purple-background text-center pt-4" id="Jobs">
+      <div class="container pb-5 pr-4 pl-5">
+        <div class="row pb-4">
+          <div class="col-sm text-left h1 hideme text-white" style="font-family: Roboto;">
+            Careers
+          </div>
+        </div>
+        <div class="row pb-4 px-0 pt-3">
+          <div class="col-lg-6 text-left h4 hideme text-white mb-4" id="careers-text" style="font-family: 'Open Sans';">
+            Join our rapidly growing team! Visit our <a href="https://angel.co/ncent/jobs" id="careers-link"> careers page</a> to see all our job postings. <br><br> If you dont see a job that fits your exact skillset but think you can contribute, email kk@ncnt.io and attach your CV / LinkedIn profile and let us know what you bring to the table.
+          </div>
+          <div class="col-lg-2 "> </div>
+          <div class="col-lg-4 text-center h4 hideme text-white">
+            <div id="positions-header" class="text-left h4" style="font-family: 'Roboto';"> Who we're hiring </div>
+            <div id = "positions" class = "pt-3 pl-4 text-left">
+              <a href ="https://angel.co/ncent/jobs" style="text-decoration:none" class="job">
+                <div class="pt-1">
+                  UX Design Lead
+                </div>
+              </a>
+              <a href ="https://angel.co/ncent/jobs" style="text-decoration:none" class="job">
+                <div class="pt-1 job">
+                  Software Developer
+                </div>
+              </a>
+              <a href ="https://angel.co/ncent/jobs" style="text-decoration:none" class="job">
+                <div class="pt-1 job">
+                  Marketing Manager
+                </div>
+              </a>
+              <a href ="https://angel.co/ncent/jobs" style="text-decoration:none" class="job">
+                <div class="pt-1 job">
+                  Operations Manager
+                </div>
+              </a>
+              <a href ="https://angel.co/ncent/jobs" style="text-decoration:none" class="job">
+                <div class="pt-1 job">
+                  and other roles
+                </div>
+              </a>
             </div>
+          </div>
         </div>
-    </div>
-    <div class="brands"></div>
-    <div class="container" style="background-color:#000000;max-width:100%;width:100vw;">
-        <div class="row" style="height:auto;">
-            <div class="col" style="background-color:#414141;padding-right:15px;padding-bottom:0px;"><div class="bottom">
-    <p class="text-center justify-content-center align-items-center align-content-center mb-auto" style="color:rgb(255,255,255);width:100%;font-size:15px;font-family:Roboto, sans-serif;">nCent Labs, Inc. 380B · Cambridge Avenue · Palo Alto, CA 94306 · <a href="#" style="color: #FFFFFF; text-decoration: none; pointer-events: none;">650.752.6739</a> · email inquiries to kk@ncnt.io<br /></p>
-</div></div>
+      </div>
+    </section> 
+    
+
+    <!-- Call to Action -->
+    <section class="call-to-action text-white text-center" id="signupwidget">
+      <div class="overlay" pointer-events="none"></div>
+      <div class="container hideme" style="visibility:hidden;">
+        <div class="row">
+          <div class="col-xl-9 mx-auto">
+            <h2 class="mb-4"></h2>
+          </div>
+          <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+            <div id="maitre-widget"></div>
+          </div>
         </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer bg-light" id="contact">
+      <div class="container">
+
+        <div class="row">
+          <div class="col-lg-8 h-50 text-center mx-auto">
+          
+            <p class="text-muted bottom-text">nCent Labs Inc</p>
+<!--             <p class="text-muted bottom-text-2">935 Brewster Ave, Redwood City, CA</p>
+            <p class="text-muted bottom-text-2">650-503-8785</p>
+            <p class="text-muted bottom-text-2">Email our founder at kk@ncnt.io</p> -->
+<!--             <p class="text-muted bottom-text-3"> <b>Address:</b> 935 Brewster Ave <br> Redwood City, CA </p>
+            <p class="text-muted bottom-text-3"> <b>Phone:</b> 650-503-8785 </p>
+            <p class="text-muted bottom-text-3"> <b>Email our founder:</b> kk@ncnt.io </p> -->
+            <p class="text-muted bottom-text-2"> Follow us: <p>
+            <ul class="list-inline mb-0">
+              <li class="list-inline-item mr-3">
+                <a href="https://twitter.com/ncent">
+                  <i class="fa fa-twitter fa-2x fa-fw"></i>
+                </a>
+              </li>
+              <li class="list-inline-item mr-3">
+                <a href="https://t.me/ncent">
+                  <i class="fa fa-telegram fa-2x fa-fw"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="https://medium.com/@kk_ncnt">
+                  <i class="fa fa-medium fa-2x fa-fw"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="https://www.linkedin.com/company/ncent">
+                  <i class="fa fa-linkedin fa-2x fa-fw"></i>
+                </a>
+              </li>
+            </ul>
+
+            <p class="pt-4 text-muted bottom-text-3"> <b>Phone:</b> 650-503-8785 &nbsp&nbsp | &nbsp&nbsp  <b> Email Our Founder: </b> kk@ncnt.io &nbsp&nbsp | &nbsp&nbsp <b> Address: </b> 935 Brewster Ave, Redwood City, CA<p>
+
+          </div>
+        </div>
+
+        <div class="row pt-1">
+          <div class="col-lg-12 h-50 text-center my-auto">
+            <p class="text-muted small mb-0">&copy; nCent.io 2018. All Rights Reserved.</p>
+            <p class="text-muted small mb-0">Background art designed by <a href="http://www.freepik.com" style="text-decoration:none; color: #6D747C;"> starline / Freepik</a></p>
+          </div>
+        </div>
+
+
+<!--         <div class="row">
+          <div class="col-lg-6 h-50 text-center text-lg-left my-auto">
+            <p class="text-muted small mb-4 mb-lg-0">&copy; nCent.io 2018. All Rights Reserved.</p>
+            <p class="text-muted small mb-4 mb-lg-0">Background art designed by <a href="http://www.freepik.com"> starline / Freepik</a></p>
+
+          </div>
+          <div class="col-lg-6 h-100 text-center text-lg-right my-auto">
+            <ul class="list-inline mb-0">
+              <li class="list-inline-item mr-3">
+                <a href="https://twitter.com/ncent">
+                  <i class="fa fa-twitter fa-2x fa-fw"></i>
+                </a>
+              </li>
+              <li class="list-inline-item mr-3">
+                <a href="https://t.me/ncent">
+                  <i class="fa fa-telegram fa-2x fa-fw"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="https://medium.com/@kk_ncnt">
+                  <i class="fa fa-medium fa-2x fa-fw"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="https://www.linkedin.com/company/ncent">
+                  <i class="fa fa-linkedin fa-2x fa-fw"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div> -->
+      </div>
+    </footer>
+
     </div>
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  
+  <script type="text/javascript" src="landingpage-assets/dist/js/timeline.min.js"></script>
+  <script>
+    timeline(document.querySelectorAll('.timeline'), {
+      forceVerticalMode: 900,
+      mode: 'horizontal',
+      verticalStartPosition: 'left',
+      visibleItems: 4
+    });
+  </script>
 </body>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36251023-1']);
+  _gaq.push(['_setDomainName', 'jqueryscript.net']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="landingpage-assets/vendor/jquery/jquery.min.js"></script>
+    <script src="landingpage-assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  </body>
 
 </html>
