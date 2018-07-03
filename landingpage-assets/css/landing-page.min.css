@@ -1,0 +1,571 @@
+html,body
+{
+/*    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;*/
+    overflow-x: hidden; 
+}
+
+
+body{font-family:Lato,'Helvetica Neue',Helvetica,Arial,sans-serif}h1,h2,h3,h4,h5,h6{font-family:Lato,'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:700}header.masthead{position:relative;background-color:#343a40;background:url(../img/bg-masthead.jpg) no-repeat center center;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;padding-top:8rem;padding-bottom:8rem}header.masthead .overlay{pointer-events:none;position:absolute;background-color:#212529;height:100%;width:100%;top:0;left:0;opacity:.3}header.masthead h1{font-size:2rem}@media (min-width:768px){header.masthead{padding-top:12rem;padding-bottom:12rem}header.masthead h1{font-size:3rem}}.showcase .showcase-text{padding:3rem}.showcase .showcase-img{min-height:30rem;background-size:cover}@media (min-width:768px){.showcase .showcase-text{padding:7rem}}.features-icons{padding-top:7rem;padding-bottom:7rem}.features-icons .features-icons-item{max-width:20rem}.features-icons .features-icons-item .features-icons-icon{height:7rem}.features-icons .features-icons-item .features-icons-icon i{font-size:4.5rem}.features-icons .features-icons-item:hover .features-icons-icon i{font-size:5rem}.testimonials{padding-top:7rem;padding-bottom:7rem}.testimonials .testimonial-item{max-width:18rem}.testimonials .testimonial-item img{max-width:10rem;box-shadow:0 5px 5px 0 #adb5bd}.call-to-action{position:relative;background-color:#343a40;background:url(../img/bg-masthead.jpg) no-repeat center center;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;padding-top:7rem;padding-bottom:7rem}.call-to-action .overlay{position:absolute;background-color:#212529;height:100%;width:100%;top:0;left:0;opacity:.3}footer.footer{padding-top:4rem;padding-bottom:4rem} #network-value{font-family: 'Open Sans'; font-size: 44px; font-weight: 900;} #bootstrap-overrides .n-font{font-family: 'Noto Sans'; font-size: 60px;} .fixed-top.scrolled {background-color: #fff !important; transition: background-color 100ms linear; color: black;} 
+	nav a{ 	
+	text-decoration: none;
+	color:white;
+	font-size: 1.1rem;}
+	nav a:hover{
+		text-decoration: none;
+		color: white;
+	}
+	nav a.scrolled{ 	
+	text-decoration: none;
+	color:black;}
+
+	.hideme
+	{
+	    opacity:0;
+	}
+
+/* make keyframes that tell the start state and the end state of our object */
+ 
+@-webkit-keyframes fadeIn { from { opacity:0; position: -100} to { opacity:1; } }
+@-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+
+@-webkit-keyframes dontfadeIn { from { opacity:0} to { opacity:0; } }
+@-moz-keyframes dontfadeIn { from { opacity:0; } to { opacity:0; } }
+@keyframes dontfadeIn { from { opacity:0; } to { opacity:0; } }
+
+.fade-in {
+ opacity:0;  /* make things invisible upon start */
+ -webkit-animation:fadeIn ease-in 1;  /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
+ -moz-animation:fadeIn ease-in 1;
+ animation:fadeIn ease-in 1;
+ 
+ -webkit-animation-fill-mode:forwards;  /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
+ -moz-animation-fill-mode:forwards;
+ animation-fill-mode:forwards;
+ 
+ -webkit-animation-duration:1s;
+ -moz-animation-duration:1s;
+ animation-duration:1s;
+}
+ 
+.fade-in.one {
+-webkit-animation-delay: 0.7s;
+-moz-animation-delay: 0.7s;
+animation-delay: 0.7s;
+}
+ 
+.fade-in.two {
+-webkit-animation-delay: 1.2s;
+-moz-animation-delay:1.2s;
+animation-delay: 1.2s;
+}
+ 
+.fade-in.three {
+-webkit-animation-delay: 1.6s;
+-moz-animation-delay: 1.6s;
+animation-delay: 1.6s;
+}
+
+.fade-in.fix {
+  visibility: hidden;
+  opacity: 0;
+}
+ 
+/*---make a basic box ---*/
+.box{
+width: 200px;
+height: 200px;
+position: relative;
+margin: 10px;
+float: left;
+border: 1px solid #333;
+background: #999;
+}
+
+#whitebox{
+   width: 90%;
+   height: 100vh;
+   margin: auto;
+}
+
+@media only screen and (max-width: 720px) {
+      #whitebox {
+        width: 95%;
+    }
+}
+
+#whiteboxtext{
+   width: 80%;
+   margin: auto;
+}
+
+@media only screen and (max-width: 720px) {
+      #whiteboxtext {
+        width: 100%;
+    }
+}
+
+
+.job {
+    text-decoration: none;
+    color: white;
+}
+
+.job:hover {
+    color: orange;
+}
+
+#careers-text {
+    font-size: 25px;
+}
+
+@media only screen and (max-width: 480px) {
+      #careers-text {
+        font-size: 20px;
+    }
+}
+
+#careers-link {
+    text-decoration: underline;
+    color: orange;
+}
+
+#careers-link:hover {
+    color: blue;
+}
+
+.button {
+    background-color: none;
+    border: #0C1133;
+    color: black;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border-radius: 50px 50px 50px 50px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #0C1133;
+}
+
+.button:hover {
+	transition: background-color .2s linear;
+    background-color: #F29E39;
+    border: none;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border-radius: 50px 50px 50px 50px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: transparent;
+}
+
+/*.huline:hover {
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    border-bottom-color: #a4be39;
+    -webkit-transform-origin: border-bottom  left;
+    transform-origin: border-bottom left;
+    -webkit-transform: border-bottom scaleX(0);
+    transform: border-bottom scaleX(0);
+    -webkit-transition: -webkit-transform .3s ease;
+    transition: -webkit-transform .3s ease;
+    transition: transform .3s ease;
+    transition: transform .3s ease, -webkit-transform .3s ease
+}*/
+
+/*.huline.uhuline {
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    border-bottom-color: #a4be39;
+    width: 0%;
+}*/
+
+
+.huline:hover .uhuline {
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    border-bottom-color: #F29E39;
+    width: 10%;
+
+    -webkit-transform-origin:   left;
+    transform-origin: left;
+    -webkit-transform:scaleX(10);
+    transform: scaleX(10);
+    -webkit-transition: -webkit-transform .2s ease;
+    transition: -webkit-transform .2s ease;
+    transition: transform .2s ease;
+    transition: transform .2s ease, -webkit-transform .2s ease
+
+
+}
+
+.huline:after .uhuline {
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    border-bottom-color: #a4be39;
+    width: 100%;
+
+    -webkit-transform-origin:   left;
+    transform-origin: left;
+    -webkit-transform:scaleX(0);
+    transform: scaleX(0);
+    -webkit-transition: -webkit-transform .2s ease;
+    transition: -webkit-transform .2s ease;
+    transition: transform .2s ease;
+    transition: transform .2s ease, -webkit-transform .2s ease
+
+
+}
+
+#bootstrap-overrides. whitepanel {
+    margin: 1000px;
+}
+
+.huline:hover:after .uhuline {
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    border-bottom-color: #a4be39;
+    width: 100%;
+}
+
+
+.entire-window {
+    height: 100vh;
+}
+
+.almost-half-window {
+    height: 45vh;
+}
+
+@media only screen and (max-width: 700px) {
+      .almost-half-window {
+        height: 30vh;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+      .almost-half-window {
+        height: 20vh;
+    }
+}
+
+.quarter-window {
+    height: 27vh;
+}
+
+@media only screen and (max-width: 700px) {
+      .quarter-window {
+        height: 40vh;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+      .quarter-window {
+        height: 50vh;
+    }
+}
+@media only screen and (max-width: 480px) {
+      .quarter-window {
+        height: 50vh;
+    }
+}
+
+.smaller-window {
+    height: 20vh;
+}
+.half-window {
+    height: 60vh;
+}
+
+#big-whitebox{
+  background-color: #0A0E31;
+  color: white;
+  width: 90%;
+  height: 100vh;
+  margin: auto;
+}
+
+/* button for early access */
+/*.early-access {
+    background-color: #2B2646;
+    border: #2B2646;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 30px;
+    margin: 4px 2px;
+    border-radius: 50px 50px 50px 50px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #0C1133;
+}
+
+
+.early-access:hover {
+    background-color: #232145;
+    border: #0C1133;
+    color: orange;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 30px;
+    margin: 4px 2px;
+    border-radius: 50px 50px 50px 50px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #0C1133;
+}*/
+
+.early-access {
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 50px;
+    animation-name: bw;
+    animation-delay: .2s;
+  animation-duration: 1s; 
+  animation-timing-function: linear; 
+  animation-delay: 0;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  animation-fill-mode: none;
+  animation-play-state: running;
+}
+
+
+@keyframes bw {
+  0% {
+    color: gray;
+  } 
+  100% {
+    color: white;
+  }
+}
+
+
+#down-arrows {
+    font-size: 60px;
+}
+
+
+#pulsebar {
+  color: #B15951;
+/*  animation-name: stretch;
+  animation-duration: 10s; 
+  animation-timing-function: ease-out; 
+  animation-delay: 0;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  animation-fill-mode: none;
+  animation-play-state: running;*/
+}
+
+@media only screen and (max-width: 1080px) {
+      #pulsebar {
+        height: 6vh;
+        visibility: hidden;
+    }
+}
+
+@keyframes stretch {
+  0% {
+    color: orange;
+  } 
+  50% {
+    color: blue;
+  }
+  100% {
+    color: white;
+  }
+}
+
+
+
+@media only screen and (max-width: 768px) {
+  .headtext {
+    font-size: 15px;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .headtext {
+    font-size: 10px;
+  }
+}
+
+
+@media only screen and (max-width: 700px) {
+	  .headimage {
+	    width: 30px;
+	}
+}
+
+.headnavbar {
+    margin-right: 0;
+    margin-left: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+@media only screen and (max-width: 480px) {
+	  .headnavbar {
+	    margin-right: 0;
+	    margin-left: 0;
+	    padding-left: 0;
+	    padding-right: 0;
+	}
+}
+
+#followus {
+    font-size: 20px;
+}
+
+.big-about {
+  text-align: justify;
+/*  -moz-text-align-last: center;
+  text-align-last: center;*/
+  padding: 0px 13vw;
+  font-size: 2.5vw;
+}
+
+@media only screen and (max-width: 1080px) {
+    .big-about {
+      font-size: 30px;
+      padding: 0px 30px;
+  }
+}
+
+
+@media only screen and (max-width: 480px) {
+    .big-about {
+      font-size: 20px;
+      padding: 0px 3px;
+  }
+}
+
+.big-about-header {
+  text-align: justify;
+  font-size: 3.2vw;
+  font-weight: 500;
+  padding-top: 40px; 
+  padding-left: 13vw;
+}
+
+@media only screen and (max-width: 1080px) {
+    .big-about-header {
+      font-size: 50px;
+      padding-top: 30px;
+      padding-left: 30px;
+  }
+}
+
+
+@media only screen and (max-width: 480px) {
+    .big-about-header {
+      font-size: 30px;
+      padding-top: 20px;
+      padding-left: 3px;
+  }
+}
+
+.bottom-text {
+  font-size: 37px;
+}
+
+.bottom-text-2 {
+  font-size: 20px;
+}
+
+.bottom-text-3 {
+  padding: 0px;
+  font-size: 14px;
+}
+
+#navbar-middle {
+      margin-left: 13vw;
+}
+
+.middle-header {
+  display: inline-block; margin-left: 33px;
+}
+
+@media only screen and (max-width: 1000px) {
+    #navbar-middle {
+      margin-left: 0px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+    .middle-header {
+      margin-left: 7px;
+  }
+}
+
+.whitelist-button {
+    background-color: none;
+    border: #0C1133;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    margin: 4px 2px;
+    border-radius: 50px 50px 50px 50px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: white;
+}
+
+.whitelist-button.scrolled {
+    color: black;
+    border-color: #F29E39;
+}
+
+.whitelist-button:hover {
+  transition: background-color .2s linear;
+    background-color: #F29E39;
+    color: white;
+    border-color: transparent;
+}
+
+@media only screen and (max-width: 420px) {
+  .whitelist-button {
+    font-size: 10px;
+    border-width: 1px;
+    padding: 2px 2px;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .whitelist-button {
+    font-size: 10px;
+    border-width: 1px;
+    margin: 2px 1px;
+    padding: 2px 2px;
+  }
+}
+
+.download-button-spacing {
+    margin: 0px;
+}
+
+@media only screen and (max-width: 380px) {
+  .download-button-spacing {
+    margin: 0px auto;
+  }
+}
+
+
