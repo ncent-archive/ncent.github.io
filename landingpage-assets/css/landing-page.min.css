@@ -8,8 +8,28 @@ html,body
 }
 
 
-body{font-family:Lato,'Helvetica Neue',Helvetica,Arial,sans-serif}h1,h2,h3,h4,h5,h6{font-family:Lato,'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:700}header.masthead{position:relative;background-color:#343a40;background:url(../img/bg-masthead.jpg) no-repeat center center;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;padding-top:8rem;padding-bottom:8rem}header.masthead .overlay{pointer-events:none;position:absolute;background-color:#212529;height:100%;width:100%;top:0;left:0;opacity:.3}header.masthead h1{font-size:2rem}@media (min-width:768px){header.masthead{padding-top:12rem;padding-bottom:12rem}header.masthead h1{font-size:3rem}}.showcase .showcase-text{padding:3rem}.showcase .showcase-img{min-height:30rem;background-size:cover}@media (min-width:768px){.showcase .showcase-text{padding:7rem}}.features-icons{padding-top:7rem;padding-bottom:7rem}.features-icons .features-icons-item{max-width:20rem}.features-icons .features-icons-item .features-icons-icon{height:7rem}.features-icons .features-icons-item .features-icons-icon i{font-size:4.5rem}.features-icons .features-icons-item:hover .features-icons-icon i{font-size:5rem}.testimonials{padding-top:7rem;padding-bottom:7rem}.testimonials .testimonial-item{max-width:18rem}.testimonials .testimonial-item img{max-width:10rem;box-shadow:0 5px 5px 0 #adb5bd}.call-to-action{position:relative;background-color:#343a40;background:url(../img/bg-masthead.jpg) no-repeat center center;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;padding-top:7rem;padding-bottom:7rem}.call-to-action .overlay{position:absolute;background-color:#212529;height:100%;width:100%;top:0;left:0;opacity:.3}footer.footer{padding-top:4rem;padding-bottom:4rem} #network-value{font-family: 'Open Sans'; font-size: 44px; font-weight: 900;} #bootstrap-overrides .n-font{font-family: 'Noto Sans'; font-size: 60px;} .fixed-top.scrolled {background-color: #fff !important; transition: background-color 100ms linear; color: black;} 
-	nav a{ 	
+body{font-family:Lato,'Helvetica Neue',Helvetica,Arial,sans-serif}h1,h2,h3,h4,h5,h6{font-family:Lato,'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:700}header.masthead{position:relative;background-color:#343a40;background:url(../img/bg-masthead.jpg) no-repeat center center;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;padding-top:8rem;padding-bottom:8rem}header.masthead .overlay{pointer-events:none;position:absolute;background-color:#212529;height:100%;width:100%;top:0;left:0;opacity:.3}header.masthead h1{font-size:2rem}@media (min-width:768px){header.masthead{padding-top:12rem;padding-bottom:12rem}header.masthead h1{font-size:3rem}}.showcase .showcase-text{padding:3rem}.showcase .showcase-img{min-height:30rem;background-size:cover}@media (min-width:768px){.showcase .showcase-text{padding:7rem}}.features-icons{padding-top:7rem;padding-bottom:7rem}.features-icons .features-icons-item{max-width:20rem}.features-icons .features-icons-item .features-icons-icon{height:7rem}.features-icons .features-icons-item .features-icons-icon i{font-size:4.5rem}.features-icons .features-icons-item:hover .features-icons-icon i{font-size:5rem}
+.testimonials{padding-top:7rem;padding-bottom:7rem}.testimonials .testimonial-item{position: relative;max-width:18rem}.testimonials .testimonial-item img{display: block;max-width:10rem;box-shadow:0 5px 5px 0 #adb5bd}.call-to-action{position:relative;background-color:#343a40;background:url(../img/bg-masthead.jpg) no-repeat center center;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;padding-top:7rem;padding-bottom:7rem}.call-to-action .overlay{position:absolute;background-color:#212529;height:100%;width:100%;top:0;left:0;opacity:.3}footer.footer{padding-top:4rem;padding-bottom:4rem} #network-value{font-family: 'Open Sans'; font-size: 44px; font-weight: 900;} #bootstrap-overrides .n-font{font-family: 'Noto Sans'; font-size: 60px;} .fixed-top.scrolled {background-color: #fff !important; transition: background-color 100ms linear; color: black;} 
+	
+
+.testimonial-item img:hover{max-width:10rem;box-shadow:0px 10px 10px 0px #adb5bd}
+
+.linkedInOverlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  opacity: .0;
+  transition: .5s ease;
+  background-color: #008CBA;
+}
+
+.linkedInOverlay:hover {
+  opacity: .6;
+}
+
+  nav a{ 	
 	text-decoration: none;
 	color:white;
 	font-size: 1.1rem;}
@@ -110,12 +130,14 @@ background: #999;
 
 
 .job {
-    text-decoration: none;
-    color: white;
+    font-family: "Open Sans";
+    text-decoration: underline;
+    color: orange;
 }
 
 .job:hover {
     color: orange;
+    text-decoration: underline;
 }
 
 #careers-text {
@@ -150,7 +172,7 @@ background: #999;
     border-radius: 50px 50px 50px 50px;
     border-style: solid;
     border-width: 2px;
-    border-color: #0C1133;
+    border-color: #242242;
 }
 
 .button:hover {
@@ -184,12 +206,12 @@ background: #999;
     transition: transform .3s ease, -webkit-transform .3s ease
 }*/
 
-/*.huline.uhuline {
+.uhuline {
     border-bottom-style: solid;
     border-bottom-width: 2px;
     border-bottom-color: #a4be39;
     width: 0%;
-}*/
+}
 
 
 .huline:hover .uhuline {
@@ -413,8 +435,8 @@ background: #999;
 }
 
 .headnavbar {
-    margin-right: 0;
-    margin-left: 0;
+    margin-right: 4px;
+    margin-left: 4px;
     padding-left: 0;
     padding-right: 0;
 }
@@ -494,7 +516,7 @@ background: #999;
 }
 
 #navbar-middle {
-      margin-left: 13vw;
+      margin-left: 9vw;
 }
 
 .middle-header {
@@ -531,7 +553,7 @@ background: #999;
 
 .whitelist-button.scrolled {
     color: black;
-    border-color: #F29E39;
+    border-color: #242242;
 }
 
 .whitelist-button:hover {
@@ -540,6 +562,13 @@ background: #999;
     color: white;
     border-color: transparent;
 }
+
+
+.testimonials .investor-item{max-width:25rem}
+.testimonials .investor-item img{max-width:14rem;box-shadow:0 5px 5px 0 #adb5bd}
+.testimonials .investor-item img:hover{max-width:14rem;box-shadow:0 20px 20px 0 #adb5bd}
+
+
 
 @media only screen and (max-width: 420px) {
   .whitelist-button {
@@ -568,4 +597,13 @@ background: #999;
   }
 }
 
+#kkemail {
+  color: black;
+  text-decoration:none; 
+  font-weight: bold;
+}
+
+#kkemail:hover {
+  color: orange;
+}
 

@@ -8,8 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>nCent Labs</title>
-    <link rel="icon" href="landingpage-assets/img/ncent_logo.png">
+    <title>Landing Page</title>
 
     <!-- Bootstrap core CSS -->
     <link href="landingpage-assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -45,7 +44,7 @@
     event.preventDefault();
       $('html, body').animate({
           scrollTop: $($.attr(this, 'href')).offset().top
-      -80}, 700);
+      -73}, 700);
       });
 
     $(function () {
@@ -60,26 +59,44 @@
     });
 
 
-    $(document).ready(function() {
 
+    
+
+
+    $(document).ready(function() {
+    
     /* Every time the window is scrolled ... */
       $(window).scroll( function(){
+      
+          /* Check the location of each desired element */
+          $('.hideme').each( function(i){
+              
+              var bottom_of_object = $(this).offset().top;
+              var bottom_of_window = $(window).scrollTop() + $(window).height();
+              
+              /* If the object is completely visible in the window, fade it it */
+              if( bottom_of_window > bottom_of_object + 150){
+                  $(this).animate({'opacity':'1'}, 1000);   
+                  $(this).css('visibility', 'visible').fadeIn("slow");                  
+              }
+              
+              }); 
+          
+      });
 
           /* Check the location of each desired element */
           $('.hideme').each( function(i){
-
+              
               var bottom_of_object = $(this).offset().top;
               var bottom_of_window = $(window).scrollTop() + $(window).height();
-
+              
               /* If the object is completely visible in the window, fade it it */
               if( bottom_of_window > bottom_of_object + 150){
-                  $(this).animate({'opacity':'1'}, 1000);
-                  $(this).css('visibility', 'visible').fadeIn("slow");
+                  $(this).animate({'opacity':'1'}, 100);   
+                  $(this).css('visibility', 'visible').fadeIn("fast");                  
               }
-
-              });
-
-          });
+              
+              }); 
 
     });
     </script>
@@ -87,81 +104,67 @@
 
   <body id="bootstrap-overrides">
 
-    <!-- Navigation -->
     <nav class="navbar navbar-dark bg-transparent fixed-top">
-      <div class="container-fluid headnavbar mx-3">
-        <div class="col-xs-2-mx-0" style="max-width: 300px">
+      <div class="container-fluid headnavbar">
+        <div class="col-xs-2-mx-0" style="max-width: 600px">
             <div style="display: inline-block;">
               <img src = "landingpage-assets/img/ncent_logo.png" class="img-fluid headimage" width="60">
             </div>
-            <div style="display: inline-block; margin-left: 20px">
+            <div style="display: inline-block; margin-left: 20px"> 
               <a class=" mx-0 text-center headtext" href="#bootstrap-overrides">nCent.io</a>
               <div class="uhuline"></div>
             </div>
+            
         </div>
 
-
-          <!-- If you want them in separate blocks -->
-        <!-- <div class="col-xs-2"> </div>
-          <div class ="huline col-xs-1 mx-0">
-            <a class="headtext" href="#About"> About </a>
-            <div class="uhuline"></div>
-         </div>
-         <div class ="huline col-xs-1 mx-0">
-            <a class="headtext" href="#Jobs"> Careers </a>
-            <div class="uhuline"></div>
-         </div>
-         <div class ="huline col-xs-1 mx-0">
-            <a class="headtext" href="#signupwidget"> Sign Up </a>
-            <div class="uhuline"></div>
-         </div> -->
-
          <div class="col-xs-2-mx-0"  id="navbar-middle">
-            <div style="" class="huline middle-header">
+            <div style="" class="huline middle-header"> 
               <a class=" mx-0 text-center headtext" href="#big-whitebox">About</a>
               <div class="uhuline"></div>
             </div>
-            <div style="" class="huline middle-header">
+            <div style="" class="huline middle-header"> 
+              <a class=" mx-0 text-center headtext" href="#Team">Team</a>
+              <div class="uhuline"></div>
+            </div>
+            <div style="" class="huline middle-header"> 
+              <a class=" mx-0 text-center headtext" href="#Investors">Investors</a>
+              <div class="uhuline"></div>
+            </div>
+            <div style="" class="huline middle-header"> 
               <a class=" mx-0 text-center headtext" href="#Jobs">Careers</a>
               <div class="uhuline"></div>
             </div>
-            <div style="" class="huline middle-header">
+            <div style="" class="huline middle-header"> 
               <a class=" mx-0 text-center headtext" href="#signupwidget">Early Access</a>
               <div class="uhuline"></div>
             </div>
-            <div style="" class="huline middle-header">
+            <div style="" class="huline middle-header"> 
               <a class=" mx-0 text-center headtext" href="#contact">Contact</a>
               <div class="uhuline"></div>
             </div>
         </div>
 
-
-         <!-- <div class ="huline col-xs-1 mx-0">
-            <a class="headtext " href="#Timeline"> Timeline </a>
-            <div class="uhuline"></div>
-          </div>
-          <div class ="huline col-xs-1 mx-0">
-            <a class="headtext" href="#Team"> Team </a>
-            <div class="uhuline"></div>
-          </div>
-          <div class ="huline col-xs-1 mx-0">
-            <a class="headtext" href="#Investors"> Investors </a>
-            <div class="uhuline"></div>
-          </div> -->
-          <div class ="huline col-xs-3 mx-0">
+          <div class ="huline col-xs-2 mx-0">
             <a class="col-xs-3"> </a>
             <div class="uhuline"></div>
           </div>
           <div class ="huline col-xs-1 download-button-spacing">
-            <!-- <a class="headtext" href="#signupwidget"> Sign Up </a>
-            <div class="uhuline"></div> -->
-            <a href="landingpage-assets/img/litepaper.pdf" class="text-dark" download>
-              <div class="col-sm h5 whitelist-button text-center">
-                Download Litepaper
-              </div>
-            </a>
+            <div style="display: inline-block; margin-left: 0px" class ="download-button-spacing">
+                <a href="https://ncent.io/founders" class="text-dark">
+                  <div class="h5 whitelist-button">
+                    Campus              
+                  </div>
+                </a>
+            </div>
+            <div style="display: inline-block; margin-left: 2px">
+              <a href="landingpage-assets/img/litepaper.pdf" class="text-dark" download>
+                <div class="col-sm h5 whitelist-button text-center">
+                  Download Litepaper              
+                </div>
+              </a>
+            </div>
          </div>
-
+          
       </div>
     </nav>
     <div id="includedContent"></div>
@@ -190,7 +193,7 @@
                 <div class="col-sm-1 mx-auto text-center">
                   </div>
               </div>
-
+              
           </div>
           <div class = "">
             <div class = "row pb-0">
@@ -218,7 +221,7 @@
 
            <div class="smaller-window"></div>
 
-
+          
 <!--         <div class=" mt-5"> </div>
         <div class=" mt-5"> </div> -->
 <!--         <div id="whitebox">
@@ -227,16 +230,16 @@
               <div id="whiteboxtext">
                   <h2 class="pt-5 mt-5 hideme text-left colorful h1" style="font-family: 'Roboto';"> About nCent </h2>
                   <h3 class="pt-5 hideme text-left" style="font-family: 'Open Sans';"> Unlocking the power of crowdwork and the gig economy remains a dream deferred </h3>
-                  <p class=" pt-4 hideme text-left" style="font-family: 'Open Sans';">
+                  <p class=" pt-4 hideme text-left" style="font-family: 'Open Sans';"> 
                   Our personal and professional networks contain a treasure trove
               of information about our capabilities, skills, interests and relationships. The Internet of
               today has no mechanism to properly attribute this value back to users, and therefore
               does not provide correct incentives. The result of this is inefficient and broken
-              markets.
+              markets. 
                   </p>
 
                   <h3 class="pt-5 hideme text-left" style="font-family: 'Open Sans';"> We introduce nCent, a decentralized protocol for incentive networks </h3>
-                  <p class=" pt-4 hideme text-left" style="font-family: 'Open Sans';">
+                  <p class=" pt-4 hideme text-left" style="font-family: 'Open Sans';"> 
                   Users of nCent
                   are incentivized to form specialized networks to perform valuable work as a group.
                   This work can take the form of solving problems characteristic of search/matching,
@@ -251,7 +254,7 @@
             </div> -->
 <!--       </div> -->
     <div id="big-whitebox" class="fade-in">
-      <div class="hideme big-about-header fade-in" style="font-family: Open Sans"> <b> About </b> </div> <br> <br>
+      <div class="hideme big-about-header fade-in" style="font-family: Open Sans"> <b> About </b> </div> <br> <br> 
       <div class="big-about hideme fade-in" style="font-family: Open Sans">
             <b>
             The Internet has <i>connected us</i>, but has yet to unlock our <i>common potential</i>. We all know valuable information about each other: <i> our capabilities, skills, interests and dreams</i>. If we can only harness our collective talents, <i>we can achieve anything together</i>. We are building a novel decentralized protocol for <i> incentive markets</i>, to enable us to collaborate more efficiently and allow us to <i>own the value of our networks</i>.
@@ -262,86 +265,21 @@
 
 
 
-    <!-- <main class="pt-5 pb-5 purple-background" id="Timeline">
-    <section class="page-section">
-      <div class="container pt-1">
-        <h1 class="text-white hideme text-left pb-3 pl-5"> Corporate Timeline </h1>
-        <div class="hideme" style="visibility:hidden">
-        <div class="timeline pt-4 mx-5" >
-          <div class="timeline__wrap">
-            <div class="timeline__items">
-              <div class="timeline__item">
-                <div class="timeline__content text-white text-center">
-                  <h2>9/17</h2>
-                  <p>nCent Labs Founded</p>
-                </div>
-              </div>
-              <div class="timeline__item">
-                <div class="timeline__content text-white  text-center">
-                  <h2>1/18</h2>
-                  <p>Seed Round SS1</p>
-                </div>
-              </div>
-              <div class="timeline__item">
-                <div class="timeline__content text-white  text-center">
-                  <h2>5/18</h2>
-                  <p>Seed Round SS2. Internal testnet live</p>
-                </div>
-              </div>
-              <div class="timeline__item">
-                <div class="timeline__content text-white  text-center">
-                  <h2>9/18</h2>
-                  <p>Price RegD Offer</p>
-                </div>
-              </div>
-              <div class="timeline__item">
-                <div class="timeline__content text-white  text-center">
-                  <h2>12/18</h2>
-                  <p>External Testnet Live</p>
-                </div>
-              </div>
-              <div class="timeline__item">
-                <div class="timeline__content text-white  text-center">
-                  <h2>3/19</h2>
-                  <p>Launch patterns announced</p>
-                </div>
-              </div>
-              <div class="timeline__item">
-                <div class="timeline__content text-white  text-center">
-                  <h2>6/19</h2>
-                  <p>Pre-launch marketing</p>
-                </div>
-              </div>
-              <div class="timeline__item">
-                <div class="timeline__content text-white  text-center">
-                  <h2>9/19</h2>
-                  <p>Launch: Mainnet Live</p>
-                </div>
-              </div>
+    
 
-              </div>
-
-              </div>
-              </div>
-          </div>
-        </div>
-            </div>
-          </section>
-        </main> -->
-
-
+   
 
     <!-- Team -->
-    <!-- <section class="testimonials text-center bg-light pt-5" id="Team">
-      <div class="container pb-5 px-5">
+    <section class="testimonials text-center bg-white pt-5" id="Team">
+      <div class="container pt-5 pb-5 px-5">
         <div class="row pb-4">
           <div class="col-sm text-left h1 pl-4 hideme">
             Our Team
           </div>
-          <a href="#" style="text-decoration: none" class="text-dark pr-5">
+          <a href="https://angel.co/ncent/jobs" style="text-decoration: none" class="text-dark pr-5">
             <div class="col-sm text-right h5 button text-center hideme">
-              Join Us Today!
-
+              Join Us Today!           
+   
             </div>
           </a>
         </div>
@@ -351,46 +289,51 @@
 
         </div>
         <div class="row">
-          <div class="col-lg-2 mx-auto hideme" style="visibility:hidden; margin:auto;">
-            <a href="#" style="text-decoration: none">
-              <div class="testimonial-item mx-auto mb-5 mb-lg-0 text-dark">
-                <img class="img-fluid rounded-circle mb-3" src="img/kk.jpg" alt="">
+          <div class="col-lg-2 mx-auto hideme" style="visibility:hidden;">
+            <a href="https://www.linkedin.com/in/kkjain1/" style="text-decoration: none">
+              <div class="testimonial-item mx-auto mb-5 mb-lg-0 text-dark text-center">
+                <img class="img-fluid rounded-circle mb-3 mx-auto" src="landingpage-assets/img/kk.png" alt="">
+                <img class="img-fluid rounded-circle mb-3 linkedInOverlay mx-auto" src="landingpage-assets/img/linkedin.png" alt="">
                 <h5>Kapil K. Jain</h5>
                 <p class="font-weight-light mb-0">President and Lead Developer</p>
               </div>
             </a>
           </div>
           <div class="col-lg-2 mx-auto hideme" style="visibility:hidden">
-            <a href="#" style="text-decoration: none">
+            <a href="https://www.linkedin.com/in/john-mitchell-36338a8/" style="text-decoration: none">
               <div class="testimonial-item mx-auto  mb-5 mb-lg-0 text-dark">
-                <img class="img-fluid rounded-circle mb-3" src="img/mitchell.png" alt="">
+                <img class="img-fluid rounded-circle mb-3 mx-auto" src="landingpage-assets/img/mitchell.png" alt="">
+                <img class="img-fluid rounded-circle mb-3 linkedInOverlay mx-auto" src="landingpage-assets/img/linkedin.png" alt="">
                 <h5>Prof. John C. Mitchell</h5>
                 <p class="font-weight-light mb-0">Cryptography and Security</p>
               </div>
             </a>
           </div>
           <div class="col-lg-2 mx-auto hideme" style="visibility:hidden">
-            <a href="#" style="text-decoration: none">
+            <a href="https://www.linkedin.com/in/david-dill-06b1524/" style="text-decoration: none">
               <div class="testimonial-item mx-auto mb-5 mb-lg-0 text-dark">
-                <img class="img-fluid rounded-circle mb-3" src="img/dill.png" alt="">
+                <img class="img-fluid rounded-circle mb-3 mx-auto" src="landingpage-assets/img/dill.png" alt="">
+                <img class="img-fluid rounded-circle mb-3 linkedInOverlay mx-auto" src="landingpage-assets/img/linkedin.png" alt="">
                 <h5>Prof. David L. Dill</h5>
                 <p class="font-weight-light mb-0">Protocol Research and Development</p>
               </div>
             </a>
           </div>
           <div class="col-lg-2 mx-auto hideme" style="visibility:hidden">
-            <a href="#" style="text-decoration: none">
+            <a href="https://www.linkedin.com/in/rajeevsurati/" style="text-decoration: none">
               <div class="testimonial-item mx-auto mb-5 mb-lg-0 text-dark">
-                <img class="img-fluid rounded-circle mb-3" src="img/rajeev.jpeg" alt="">
+                <img class="img-fluid rounded-circle mb-3 mx-auto" src="landingpage-assets/img/rajeev.jpeg" alt="">
+                <img class="img-fluid rounded-circle mb-3 linkedInOverlay mx-auto" src="landingpage-assets/img/linkedin.png" alt="">
                 <h5>Dr. Rajeev Surati</h5>
                 <p class="font-weight-light mb-0">Core and Backend Development</p>
               </div>
               </a>
           </div>
           <div class="col-lg-2 mx-auto hideme" style="visibility:hidden">
-            <a href="#" style="text-decoration: none">
+            <a href="https://www.linkedin.com/in/mikebarile/" style="text-decoration: none">
               <div class="testimonial-item mx-auto mb-5 mb-lg-0 text-dark">
-                <img class="img-fluid rounded-circle mb-3" src="img/mike.png" alt="">
+                <img class="img-fluid rounded-circle mb-3 mx-auto" src="landingpage-assets/img/mike.png" alt="">
+                <img class="img-fluid rounded-circle mb-3 linkedInOverlay mx-auto" src="landingpage-assets/img/linkedin.png" alt="">
                 <h5>Michael Barile</h5>
                 <p class="font-weight-light mb-0">Partnerships and Application Development</p>
               </div>
@@ -398,99 +341,236 @@
           </div>
         </div>
       </div>
-    </section> -->
+    </section>
 
     <!-- Investors -->
-    <!-- <section class="testimonials text-center bg-white pt-5" id="Investors">
-      <div class="container pb-5 px-5">
+    <section class="testimonials text-center bg-light pt-3 pb-5" id="Investors">
+      <div class="container pt-5 pb-5 px-5">
         <div class="row pb-4">
-          <div class="col-sm text-center h1 hideme">
+          <div class="col-sm text-left h1 hideme">
             Investors
           </div>
 
         </div>
       </div>
-      <div class="container">
-        <div class="row">
+      <div class="container pb-5">
+        <div id="inv-row1">
+        <div class="row pb-5">
           <div class="col-lg-3">
-            <a href="#" style="text-decoration: none">
-              <div class="testimonial-item mx-auto mb-5 mb-lg-0 hideme" style="visibility:hidden">
-                <img class="img-fluid mb-3 " src="img/winklevoss.jpg" alt="">
+            <a href="https://winklevosscapital.com/" style="text-decoration: none">
+              <div class="investor-item mx-auto mb-5 mb-lg-0 hideme" style="visibility:hidden">
+                <img class="img-fluid mb-3 " src="landingpage-assets/img/winklevoss.jpg" alt="">
               </div>
             </a>
           </div>
           <div class="col-lg-3">
-            <a href="#" style="text-decoration: none">
-              <div class="testimonial-item mx-auto mb-5 mb-lg-0 hideme" style="visibility:hidden">
-                <img class="img-fluid mb-3" src="img/sequoia.jpg" alt="">
+            <a href="https://www.sequoiacap.com/" style="text-decoration: none">
+              <div class="investor-item mx-auto mb-5 mb-lg-0 hideme" style="visibility:hidden">
+                <img class="img-fluid mb-3" src="landingpage-assets/img/sequoia.jpg" alt="">
               </div>
             </a>
           </div>
           <div class="col-lg-3">
-            <a href="#" style="text-decoration: none">
-              <div class="testimonial-item mx-auto mb-5 mb-lg-0 hideme" style="visibility:hidden">
-                <img class="img-fluid mb-3 my-auto" src="img/svangel.png" alt="">
+            <a href="https://svangel.com" style="text-decoration: none">
+              <div class="investor-item mx-auto mb-5 mb-lg-0 hideme" style="visibility:hidden">
+                <img class="img-fluid mb-3 my-auto" src="landingpage-assets/img/svangel.png" alt="">
               </div>
             </a>
           </div>
           <div class="col-lg-3">
-            <a href="#" style="text-decoration: none">
-              <div class="testimonial-item mx-auto mb-5 mb-lg-0 hideme" style="visibility:hidden">
-                <img class="img-fluid mb-3" src="img/metastable.jpg" alt="">
+            <a href="https://www.metastablecapital.com/index.html" style="text-decoration: none">
+              <div class="investor-item mx-auto mb-5 mb-lg-0 hideme" style="visibility:hidden">
+                <img class="img-fluid mb-3" src="landingpage-assets/img/metastable.jpg" alt="">
               </div>
             </a>
-          </div>
+          </div>          
         </div>
-      </div>
-    </section> -->
+
+        <div class="row pb-5">
+          <div class="col-lg-3">
+            <a href="https://www.amecloudventures.com/" style="text-decoration: none">
+              <div class="investor-item mx-auto mb-5 mb-lg-0 hideme" style="visibility:hidden">
+                <img class="img-fluid mb-3 " src="landingpage-assets/img/ame.png" alt="">
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-3">
+            <a href="https://floodgate.com/" style="text-decoration: none">
+              <div class="investor-item mx-auto mb-5 mb-lg-0 hideme" style="visibility:hidden">
+                <img class="img-fluid mb-3" src="landingpage-assets/img/floodgate.png" alt="">
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-3">
+            <a href="https://signiaventurepartners.com/" style="text-decoration: none">
+              <div class="investor-item mx-auto mb-5 mb-lg-0 hideme" style="visibility:hidden">
+                <img class="img-fluid mb-3 my-auto" src="landingpage-assets/img/signia.png" alt="">
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-3">
+            <a href="http://www.zhenfund.com/" style="text-decoration: none">
+              <div class="investor-item mx-auto mb-5 mb-lg-0 hideme" style="visibility:hidden">
+                <img class="img-fluid mb-3" src="landingpage-assets/img/zhen.png" alt="">
+              </div>
+            </a>
+          </div>          
+        </div>
+        </div>
+
+        <div id="inv-row2">
+        <div class="row pb-5">
+          <div class="col-lg-3">
+            <a href="https://qcp.capital/" style="text-decoration: none">
+              <div class="investor-item mx-auto mb-5 mb-lg-0 hideme" style="visibility:hidden">
+                <img class="img-fluid mb-3 " src="landingpage-assets/img/qcp.png" alt="">
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-3">
+            <a href="https://angel.co/naval" style="text-decoration: none">
+              <div class="investor-item mx-auto mb-5 mb-lg-0 hideme" style="visibility:hidden">
+                <img class="img-fluid mb-3" src="landingpage-assets/img/naval.png" alt="">
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-3">
+            <a href="https://www.linkedin.com/in/stevejurvetson" style="text-decoration: none">
+              <div class="investor-item mx-auto mb-5 mb-lg-0 hideme" style="visibility:hidden">
+                <img class="img-fluid mb-3 my-auto" src="landingpage-assets/img/steve.png" alt="">
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-3">
+            <a href="https://jumpinvestors.com/" style="text-decoration: none">
+              <div class="investor-item mx-auto mb-5 mb-lg-0 hideme" style="visibility:hidden">
+                <img class="img-fluid mb-3" src="landingpage-assets/img/jump.png" alt="">
+              </div>
+            </a>
+          </div>          
+        </div>
+
+        </div>
+        </div>
+        
+        
+        </div>
+    </section>
 
     <!-- Carrers -->
-    <section class="purple-background text-center pt-4" id="Jobs">
-      <div class="container pb-5 pr-4 pl-5">
+    <section class="bg-white text-center pt-5" id="Jobs">
+      <div class="container pt-3 pb-5 pr-4 pl-5">
         <div class="row pb-4">
-          <div class="col-sm text-left h1 hideme text-white" style="font-family: Roboto;">
+          <div class="col-sm text-left h1 hideme text-black" style="font-family: Roboto;">
             Careers
           </div>
         </div>
         <div class="row pb-4 px-0 pt-3">
-          <div class="col-lg-6 text-left h4 hideme text-white mb-4" id="careers-text" style="font-family: 'Open Sans';">
-            Join our rapidly growing team! Visit our <a href="https://angel.co/ncent/jobs" id="careers-link"> careers page</a> to see all our job postings. <br><br> If you dont see a job that fits your exact skillset, email <a href="mailto:kk@ncnt.io" id="careers-link"> kk@ncnt.io</a> and attach your resume / LinkedIn profile.
+          <div class="col-lg-10 text-left h4 hideme text-black mb-4" id="careers-text" style="font-family: 'Open Sans'; font-weight: 500">
+            Join our rapidly growing team! Visit our <a href="https://angel.co/ncent/jobs" id="careers-link"> careers page</a> to see all our job postings. <br><br> If you dont see a job that fits your exact skillset but think you can contribute, email <a href="mailto:kk@ncnt.io" id="careers-link"> <b> kk@ncnt.io </b> </a> and attach your CV / LinkedIn profile and let us know what you bring to the table.
           </div>
-          <div class="col-lg-2 "> </div>
-          <div class="col-lg-4 text-center h4 hideme text-white">
+          <!-- <div class="col-lg-2 "> </div> -->
+          <!-- <div class="col-lg-4 text-center h4 hideme text-black">
             <div id="positions-header" class="text-left h4" style="font-family: 'Roboto';"> Who we're hiring </div>
             <div id = "positions" class = "pt-3 pl-4 text-left">
               <a href ="https://angel.co/ncent/jobs" style="text-decoration:none" class="job">
-                <div class="pt-1">
+                <div class="pt-1 job" style="font-weight: bold">
                   UX Design Lead
                 </div>
               </a>
               <a href ="https://angel.co/ncent/jobs" style="text-decoration:none" class="job">
-                <div class="pt-1 job">
+                <div class="pt-1 job" style="font-weight: bold">
                   Software Developer
                 </div>
               </a>
               <a href ="https://angel.co/ncent/jobs" style="text-decoration:none" class="job">
-                <div class="pt-1 job">
+                <div class="pt-1 job" style="font-weight: bold">
                   Marketing Manager
                 </div>
               </a>
               <a href ="https://angel.co/ncent/jobs" style="text-decoration:none" class="job">
-                <div class="pt-1 job">
+                <div class="pt-1 job" style="font-weight: bold">
                   Operations Manager
                 </div>
               </a>
               <a href ="https://angel.co/ncent/jobs" style="text-decoration:none" class="job">
-                <div class="pt-1 job">
+                <div class="pt-1 job" style="font-weight: bold">
                   and other roles
                 </div>
               </a>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </section>
 
+    <!-- <main class="pt-5 pb-5 bg-light" id="Timeline">
+    <section class="page-section">
+      <div class="container pt-1">
+        <h1 class="text-black hideme text-left pb-3 pl-5"> Anticipated Timeline </h1>
+        <div class="hideme" style="visibility:hidden">
+        <div class="timeline pt-4 mx-5" >
+          <div class="timeline__wrap">
+            <div class="timeline__items">
+              <div class="timeline__item">
+                <div class="timeline__content text-black text-center">
+                  <h2>9/17</h2>
+                  <p>nCent Labs Founded</p>
+                </div>
+              </div>
+              <div class="timeline__item">
+                <div class="timeline__content text-black  text-center">
+                  <h2>1/18</h2>
+                  <p>Seed Round SS1</p>
+                </div>
+              </div>
+              <div class="timeline__item">
+                <div class="timeline__content text-black  text-center">
+                  <h2>5/18</h2>
+                  <p>Seed Round SS2. Internal testnet live</p>
+                </div>
+              </div>
+              <div class="timeline__item">
+                <div class="timeline__content text-black  text-center">
+                  <h2>9/18</h2>
+                  <p>Price RegD Offer</p>
+                </div>
+              </div>
+              <div class="timeline__item">
+                <div class="timeline__content text-black  text-center">
+                  <h2>12/18</h2>
+                  <p>External Testnet Live</p>
+                </div>
+              </div>
+              <div class="timeline__item">
+                <div class="timeline__content text-black  text-center">
+                  <h2>3/19</h2>
+                  <p>Launch patterns announced</p>
+                </div>
+              </div>
+              <div class="timeline__item">
+                <div class="timeline__content text-black  text-center">
+                  <h2>6/19</h2>
+                  <p>Pre-launch marketing</p>
+                </div>
+              </div>
+              <div class="timeline__item">
+                <div class="timeline__content text-black  text-center">
+                  <h2>9/19</h2>
+                  <p>Launch: Mainnet Live</p>
+                </div>
+              </div>
+
+              </div>
+              
+              </div>
+              </div>
+          </div>
+        </div>
+            </div>
+          </section>
+        </main>  -->
+    
 
     <!-- Call to Action -->
     <section class="call-to-action text-white text-center" id="signupwidget">
@@ -513,18 +593,18 @@
 
         <div class="row">
           <div class="col-lg-8 h-50 text-center mx-auto">
-
-            <p class="text-muted bottom-text">nCent Labs, Inc.</p>
+          
+            <p class="text-muted bottom-text">nCent Labs Inc</p>
 <!--             <p class="text-muted bottom-text-2">935 Brewster Ave, Redwood City, CA</p>
             <p class="text-muted bottom-text-2">650-503-8785</p>
             <p class="text-muted bottom-text-2">Email our founder at kk@ncnt.io</p> -->
-<!--             <p class="text-muted bottom-text-3"> <b>Address:</b> 935 Brewster Ave <br> Redwood City, CA </p>
+<!--             
             <p class="text-muted bottom-text-3"> <b>Phone:</b> 650-503-8785 </p>
             <p class="text-muted bottom-text-3"> <b>Email our founder:</b> kk@ncnt.io </p> -->
             <p class="text-muted bottom-text-2"> Follow us: <p>
             <ul class="list-inline mb-0">
               <li class="list-inline-item mr-3">
-                <a href="https://twitter.com/kk_ncnt">
+                <a href="https://twitter.com/ncent">
                   <i class="fa fa-twitter fa-2x fa-fw"></i>
                 </a>
               </li>
@@ -545,15 +625,15 @@
               </li>
             </ul>
 
-            <p class="pt-4 text-muted bottom-text-3"> <b>Phone:</b> 650-503-8785 &nbsp&nbsp <br/> &nbsp&nbsp  <b> Email Our Founder: </b> kk@ncnt.io &nbsp&nbsp<p>
+            <p class="pt-4 text-muted bottom-text-3"> <b>Phone:</b> 650-503-8785 &nbsp&nbsp </br> &nbsp&nbsp  <b> Email Our Founder: </b> kk@ncnt.io &nbsp&nbsp<p>
 
           </div>
         </div>
 
         <div class="row pt-1">
           <div class="col-lg-12 h-50 text-center my-auto">
-            <p class="text-muted small mb-0">&copy; nCent Labs, inc. 2018. All Rights Reserved.</p>
-            <p class="text-muted small mb-0">Background art designed by <a href="http://www.freepik.com" style="text-decoration:none; color: #6D747C;"> starline / Freepik</a></p>
+            <p class="text-muted small mb-0">&copy; nCent.io 2018. All Rights Reserved.</p>
+            <p class="text-muted small mb-0">Background art designed by <a href="https://www.freepik.com" style="text-decoration:none; color: #6D747C;"> starline / Freepik</a></p>
           </div>
         </div>
 
@@ -593,7 +673,7 @@
     </footer>
 
     </div>
-
+  
   <script type="text/javascript" src="landingpage-assets/dist/js/timeline.min.js"></script>
   <script>
     timeline(document.querySelectorAll('.timeline'), {
@@ -606,16 +686,16 @@
 </body>
 <script type="text/javascript">
 
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-36251023-1']);
-  _gaq.push(['_setDomainName', 'jqueryscript.net']);
-  _gaq.push(['_trackPageview']);
+  // var _gaq = _gaq || [];
+  // _gaq.push(['_setAccount', 'UA-36251023-1']);
+  // _gaq.push(['_setDomainName', 'jqueryscript.net']);
+  // _gaq.push(['_trackPageview']);
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
+  // (function() {
+  //   var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  //   ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  //   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  // })();
 
 </script>
 
