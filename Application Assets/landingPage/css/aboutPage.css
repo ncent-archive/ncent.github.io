@@ -1,0 +1,48 @@
+#AboutSection .aboutContent {
+  font-family: Open Sans;
+  padding: 2%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+#AboutSection .aboutContent .aboutImageContainer {
+  width: 50%;
+}
+#AboutSection .aboutContent .aboutImageContainer .aboutImage {
+  height: 90%;
+  width: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5%;
+}
+#AboutSection .aboutContent .aboutText {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  justify-content: center;
+}
+
+@media only screen and (max-width: 1440px) and (orientation: portrait)  {
+  #AboutSection .aboutContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  #AboutSection .aboutContent .aboutImageContainer {
+    height: 50%;
+  }
+  #AboutSection .aboutContent .aboutImageContainer .aboutImage {
+      width: 90%;
+      height: auto;
+      margin-bottom: auto;
+      margin-top: auto;
+  }
+  #AboutSection .aboutContent .aboutText {
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+  }
+}
