@@ -127,23 +127,19 @@ footer.footer {
   padding-bottom: 4rem;
 }
 
-@media (max-width:1440px) {
-    #AboutSection {
-        .aboutContent {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-
-            .aboutImageContainer .aboutImage {
-                height: 50%;
-            }
-
-            .aboutText {
-                height: 50%;
-                display: flex;
-                flex-direction: column;
-                text-align: center;
-            }
-        }
-    }
+@media only screen and (max-width: 1440px) {
+  #AboutSection .aboutContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  #AboutSection .aboutContent .aboutImageContainer .aboutImage {
+    height: 50%;
+  }
+  #AboutSection .aboutContent .aboutText {
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
 }
