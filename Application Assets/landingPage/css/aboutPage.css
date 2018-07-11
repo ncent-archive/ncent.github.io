@@ -22,27 +22,98 @@
   text-align: left;
   justify-content: center;
 }
+.navbar {
+    visibility: visible;
+}
+.mobileheadimage {
+    visibility: hidden;
+    width: 0;
+    height: 0;
+}
+.almost-half-window .headerButton {
+    visibility: hidden;
+}
+.ncentTitle {
+    visibility: visible;
+}
+.mobileTitle {
+    visibility: hidden;
+}
 
 @media only screen and (max-width: 1440px) and (orientation: portrait)  {
   #AboutSection .aboutContent {
+    font-weight: bolder;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-items: center;
   }
   #AboutSection .aboutContent .aboutImageContainer {
     height: 50%;
   }
   #AboutSection .aboutContent .aboutImageContainer .aboutImage {
-      width: 90%;
-      height: auto;
-      margin-bottom: auto;
-      margin-top: auto;
+    width: 90%;
+    height: auto;
+    margin-bottom: auto;
+    margin-top: 10%;
   }
   #AboutSection .aboutContent .aboutText {
     height: 50%;
+    width: 80%;
     display: flex;
     flex-direction: column;
     text-align: center;
     justify-content: center;
+    margin-top: 8%;
+  }
+  .text-left.h1 {
+      text-align: center !important;
+  }
+  .navbar {
+      visibility: hidden;
+      height: 0;
+      width: 0;
+  }
+  .mobileheadimage {
+      visibility: visible;
+      width: 50%;
+      height: auto;
+  }
+  .almost-half-window {
+      padding-top: 10%;
+      height: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+  }
+  .almost-half-window .headerButton {
+      visibility: visible;
+      width: 50%;
+      padding-top: 5%;
+      padding-bottom: 2%;
+  }
+  .almost-half-window .headerButton .whitelist-button {
+      font-size: 3vw;
+  }
+  .earlySignUp {
+      margin-top: -25%;
+  }
+  .ncentTitle {
+      visibility: hidden;
+      height: 0;
+  }
+  .mobileTitle {
+      visibility: visible;
+      font-family: Open Sans;
+      font-size: 8vw;
+      color: #f8f9fa;
+      font-weight: bolder;
+      margin-top: 2%;
+  }
+  #network-value {
+      font-size: 5vw;
+  }
+  .mastheadQuarter {
+      height: 30vh;
   }
 }
