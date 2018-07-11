@@ -126,3 +126,7 @@ footer.footer {
   padding-top: 4rem;
   padding-bottom: 4rem;
 }
+
+#mtr-optin-form {
+    background: rgba(0, 0, 0, 0);
+}
