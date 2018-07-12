@@ -1,0 +1,35 @@
+{
+  "name": "ncent-sdk",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thejnaut1/ncnt.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "jquery": "^3.3.1",
+    "morgan": "^1.9.0",
+    "pg": "^7.4.3",
+    "pg-hstore": "^2.3.2",
+    "request": "^2.81.0",
+    "sequelize": "^4.37.10",
+    "webpack": "^4.15.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.5",
+    "sequelize-cli": "^4.0.0"
+  },
+  "homepage": "https://github.com/thejnaut1/ncnt"
+}

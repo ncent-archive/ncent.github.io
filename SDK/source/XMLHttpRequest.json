@@ -1,0 +1,47 @@
+"source": "source",
+if (window.XMLHttpRequest) { // Mozilla, Safari, IE7+ ...
+  // let "httpRequest" = new "XMLHttpRequest()"
+} else if (window.ActiveXObject) { // IE 6 and older
+  // let httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
+}
+
+<html>
+<body>
+
+<script type="text/javascript">
+function ajaxFunction()
+{
+// var xmlhttp;
+// if (window.XMLHttpRequest)
+  //{
+  // code for IE7+, Firefox, Chrome, Opera, Safari
+  // xmlhttp=new XMLHttpRequest();
+  }
+else if (window.ActiveXObject)
+  {
+  // code for IE6, IE5
+  //xmlhttp=new ActiveXObject(å);
+  }
+else
+  {
+  //alert("Your browser does not support XMLHTTP!");
+  }
+xmlhttp.onreadystatechange=function()
+{
+//if(xmlhttp.readyState==4)
+  //{
+  //document.myForm.time.value=xmlhttp.responseText;
+  }
+}
+xmlhttp.open("GET","time.asp",true);
+xmlhttp.send(null);
+}
+</script>
+
+<form name="myForm">
+Name: <input type="text" name="username" onkeyup="ajaxFunction();" />
+Time: <input type="text" name="time" />
+</form>
+
+</body>
+</html>
