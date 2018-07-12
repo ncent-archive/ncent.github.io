@@ -1,15 +1,15 @@
-DETAILS in Version 1.0.0
+#DETAILS in Version 1.0.0
 
-STRUCTURAL ASSUMPTIONS
+##STRUCTURAL ASSUMPTIONS
 1. Fungible tokens for all stamped token types
 2. Database includes wallet (which has balances for each coin type) and token type (with transaction history under them)
 3. Same Expiration Date for all tokens of one stamped token type
 
-IMPLEMENTATION
+##IMPLEMENTATION
 1. NodeJS and PostgreSQL with Sequelize
 2. NCNT is an entry under TokenType but is dealt with carefully
 
-Resources
+##Resources
 1. TokenType:
 	- Name
 	- UUID
