@@ -1,0 +1,26 @@
+.brands {
+  color:#313437;
+  background-color:#fff;
+}
+
+@media (max-width:767px) {
+  .brands a {
+    padding:30px 0;
+  }
+}
+
+.brands a img {
+  display:inline-block;
+  margin:10px 20px;
+  vertical-align:middle;
+}
+
+.img-fluid {
+}
+
+.brandsBox {
+  display:block;
+  text-align:center;
+  padding:40px 0;
+}
+
