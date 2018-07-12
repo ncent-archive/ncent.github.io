@@ -47,12 +47,12 @@ const processTransaction = async (to, from) => {
 	let to_addr = ncentSdkInstance.getWalletAddress(to, "", "success", "error");
 
 	if (ncentSdkInstance.getTokenBalance(from_addr, jobCent, "", "sucess", "error") === 0) {
-		sendEmail(from, './nojobCent.html', "Error: You do not have any jobcents to send");
+		sendEmail(from, './webpages/nojobCent.html', "Error: You do not have any jobcents to send");
 		return;
 	}
 
 	ncentSdkInstance.transferTokens(from_addr, to_addr, "ana", jobCent, 1, "", "success", "error");
-	sendEmail(to, './receivedjobCent.html', "Congrats, you've received a jobCent!");
+	sendEmail(to, './webpages/receivedjobCent.html', "Congrats, you've received a jobCent!");
 }
 
 const messageHandler = async message => {
@@ -117,7 +117,7 @@ const messageHandler = async message => {
           return;
         }
 	  		if(multiTo) {
-	  			sendEmail(fromEmail, './manyAddresses.html', "Error: You've entered too many addresses in the To line");
+	  			sendEmail(fromEmail, './webpages/manyAddresses.html', "Error: You've entered too many addresses in the To line");
 	  			return;
 	  		}
 	  		if(!wallets_Created(toEmail.toString())){
