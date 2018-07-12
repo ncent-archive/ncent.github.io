@@ -29,7 +29,7 @@ const oauth2Client = new google.auth.OAuth2(
 );
 const oauthUrl = oauth2Client.generateAuthUrl({access_type: 'offline', scope: scopes});
 
-const ncentSDK = require('../ncentSDK/source/ncentSDK.js');
+const ncentSDK = require('../../SDK/source/ncentSDK.js');
 const ncentSdkInstance = new ncentSDK();
 // const masterWalletAddress = ncentSdkInstance.createWallet('an@ncnt.io');
 const walletsCreated = {
