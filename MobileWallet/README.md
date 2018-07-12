@@ -2,13 +2,14 @@
 
 Mobile application for management of nCent Account. 
 From the wallet you can
-	- View all your tokens
-	- Send tokens
-	- Redeem tokens
-	- Cash out your tokens
-	- Create an account
-	- Link your account to social media
+- View all your tokens	
+- Send tokens
+- Redeem tokens
+- Cash out your tokens
+- Create an account
+- Link your account to social media
 
+## Expo Information For Trouble-shooting
 
 This project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app).
 
