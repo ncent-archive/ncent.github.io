@@ -1,24 +1,24 @@
-## Application Assets
+# Application Assets
 
 This folder contains applications for the various use cases of nCent, as well as temporary or early stage implementatiosn of the applications.
 
-# buildCent
+## buildCent
 Application for outsourcing tasks for a larger project to a network.
 
-# dateCent
+## dateCent
 Fun application of nCent. Use network to encounter romantic partner.
 
-# deprecated
+## deprecated
 Files no longer in use
 
-# fanCent
+## fanCent
 Application for acquiring customers, particularly for a brand or promotion.
 
-# jobCent
+## jobCent
 Application for recruitment. Use netowrk to incentivize talent discovery.
 
-# landingPage
+## landingPage
 Early website for basic information about nCent and important links.
 
-# sportCent
+## sportCent
 Application for promotion of sporting events and fan engagement. Early stage application, implementation under construction
