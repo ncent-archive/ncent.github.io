@@ -172,7 +172,7 @@ class ncentSDK {
         // }))
         // .catch(function(error) {
         //     console.log(error.response.data);
-        // });
+        // });d 
     }
     
     /*
