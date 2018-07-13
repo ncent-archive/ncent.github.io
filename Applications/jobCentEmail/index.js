@@ -68,6 +68,7 @@ function getEmailString(headerVal){
 
 const processTransaction = async (to, from) => {
 	//TODO: change second param to be balance id
+	createWalletIfNeeded(wallets_Created[from]);
 	if (ncentSdkInstance.getTokenBalance(from, 'jobCent') === 0) {
 		sendEmail(from, './nojobCent.html', "Error: You do not have any jobcents to send");
 		return;
@@ -79,6 +80,11 @@ const processTransaction = async (to, from) => {
 	sendEmail(to, './receivedjobCent.html', "Congrats, you've received a jobCent!");
 }
 
+function printMessage(message){
+	console.log(`Received message ${message.id}:`);
+  	console.log(`\tData: ${message.data}`);
+  	console.log(`\tAttributes: ${message.attributes}`);
+}
 
 const messageHandler = async message => {
   	let messageJSON = JSON.parse(message.data);
@@ -88,10 +94,7 @@ const messageHandler = async message => {
   		return;
  	 }
  	
- 	console.log(`Received message ${message.id}:`);
-  	console.log(`\tData: ${message.data}`);
-  	console.log(`\tAttributes: ${message.attributes}`);
-
+ 	printMessage(message);
   	startHistoryId = currHistoryId;
   	currHistoryId = messageJSON.historyId;
   	const options = {	userId: messageJSON.emailAddress, 
@@ -107,12 +110,9 @@ const messageHandler = async message => {
 
   	// Result is basically the messages that we got notified for
   	let result = await gmail.users.history.list(options);
-	result.data.history.forEach(entry => {
-	  	// console.log(entry.messages); //Prints the new messages info
+	result.data.history.forEach(entry => { 			// console.log(entry.messages); //Prints the new messages info
 	  entry.messages.forEach(async (message) => {
-	  	if ((message.id in alreadyProcessed)) {
-	  		return;
-	  	}
+	  	if ((message.id in alreadyProcessed)) return;
 	  	alreadyProcessed[message.id] = 1;
 
 	  	const msgOptions = {userId: messageJSON.emailAddress, auth: oauth2Client, id: message.id};
@@ -137,10 +137,7 @@ const messageHandler = async message => {
 	  		}
 	  		if (toEmail !== '' && fromEmail !== '' && ccFound) break;
 	  	}
-
-        if(!ccFound) {
-          	return;
-        }
+        if(!ccFound) return;
 
 	  	if(multiTo) {
 	  		sendEmail(fromEmail, './manyAddresses.html', "Error: You've entered too many addresses in the To line");
@@ -149,7 +146,6 @@ const messageHandler = async message => {
 
 	  	console.log('\nSending one jobCent from ' + fromEmail + ' to ' + toEmail);
 	  	//TODO: uncomment next two lines once SDK works
-	  	//createWalletIfNeeded(wallets_Created[toEmail.toString()]);
 	  	//processTransaction(toEmail, fromEmail);
 	  	
 	  });
