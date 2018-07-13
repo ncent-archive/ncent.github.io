@@ -122,9 +122,11 @@ class ncentSDK {
         })
         .then(function(response) {
             console.log(response.data);
+            return response.data.uuid;
         })
         .catch(function(error) {
             console.log(error.response.data);
+            return -1;
         });
     }
     /*
@@ -138,35 +140,29 @@ class ncentSDK {
     */
 
     transferTokens(senderBalance_id, receiverBalance_id, walletSender_id, walletReceiver_id, tokentype_id, tokenAmount) {
-        new Promise (function(resolve, reject) {
-            const sendertokenAmount = this.getTokenBalance(walletSender_id, senderBalance_id);
-            const receivertokenAmount = this.getTokenBalance(walletReceiver_id, receiverBalance_id);
-            resolve(sendertokenAmount, receivertokenAmount);
-            //console.log(sendertokenAmount, receivertokenAmount);
-        }.bind(this))
-        .then(function(sendertokenAmount, receivertokenAmount) {
-            axios.all([
-                axios.post(this._net + '/tokentypes/' + tokentype_id + '/items', {
-                    amount: tokenAmount,
-                    fromAddress: walletSender_id,
-                    toAddress: walletReceiver_id,
-                }),
-                axios.put(this._net + '/wallets/' + walletSender_id + '/' + senderBalance_id, {
-                    amount: sendertokenAmount - tokenAmount
-                }),
-                axios.put(this._net + '/wallets/' + walletReceiver_id + '/' + receiverBalance_id, {
-                    amount: receivertokenAmount + tokenAmount
-                })
-            ])
-            .then(axios.spread(function(txn, sdrbal, rvrbal) {
-                console.log(txn.data);
-                console.log(sdrbal.data);
-                console.log(rvrbal.data);
-            }))
-            .catch(function(error) {
-                console.log(error.response.data);
-            });
-        }.bind(this));
+        const sendertokenAmount = this.getTokenBalance(walletSender_id, senderBalance_id)
+        const receivertokenAmount = this.getTokenBalance(walletReceiver_id, receiverBalance_id);
+        axios.all([
+            axios.post(this._net + '/tokentypes/' + tokentype_id + '/items', {
+                amount: tokenAmount,
+                fromAddress: walletSender_id,
+                toAddress: walletReceiver_id,
+            }),
+            axios.put(this._net + '/wallets/' + walletSender_id + '/' + senderBalance_id, {
+                amount: sendertokenAmount - tokenAmount
+            }),
+            axios.put(this._net + '/wallets/' + walletReceiver_id + '/' + receiverBalance_id, {
+                amount: receivertokenAmount + tokenAmount
+            })
+        ])
+        .then(axios.spread(function(txn, sdrbal, rvrbal) {
+            console.log(txn.data);
+            console.log(sdrbal.data);
+            console.log(rvrbal.data);
+        }))
+        .catch(function(error) {
+            console.log(error.response.data);
+        });
     }
     
     /*
@@ -177,10 +173,9 @@ class ncentSDK {
         error: callback;
     */
     getTokenBalance(walletAddress, balance_id) {
-        axios.get(this._net + '/wallets/' + walletAddress + '/' + balance_id, {
-        })
+        axios.get(this._net + '/wallets/' + walletAddress + '/' + balance_id)
         .then(function(response) {
-            console.log(response.data);
+            //console.log(response.data);
             return response.data.amount;
         })
         .catch(function(error) {
