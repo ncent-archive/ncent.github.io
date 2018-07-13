@@ -29,12 +29,14 @@ const oauth2Client = new google.auth.OAuth2(
 );
 const oauthUrl = oauth2Client.generateAuthUrl({access_type: 'offline', scope: scopes});
 
-// const ncentSDK = require('../ncentSDK/source/ncentSDK.js');
-// const ncentSdkInstance = new ncentSDK();
-// const masterWalletAddress = ncentSdkInstance.createWallet('devcent@ncnt.io');
+const ncentSDK = require('../../SDK/source/ncentSDK.js');
+const ncentSdkInstance = new ncentSDK();
+const masterWalletAddress = ncentSdkInstance.createWallet('jobcent@ncnt.io');
 const walletsCreated = {
     "jobcent@ncnt.io": true
 };
+
+//TODO: call stamp tokens 
 
 const alreadyProcessed = {};
 let gmail;
@@ -43,15 +45,15 @@ let currHistoryId;
 
 const processTransaction = async (to, from) => {
 
-	let from_addr = ncentSdkInstance.getWalletAddress(from, "", "success", "error");
-	let to_addr = ncentSdkInstance.getWalletAddress(to, "", "success", "error");
+	// let from_addr = ncentSdkInstance.getWalletAddress(from, "", "success", "error");
+	// let to_addr = ncentSdkInstance.getWalletAddress(to, "", "success", "error");
 
-	if (ncentSdkInstance.getTokenBalance(from_addr, jobCent, "", "sucess", "error") === 0) {
+	if (ncentSdkInstance.getTokenBalance(from, 'jobCent') === 0) {
 		sendEmail(from, './nojobCent.html', "Error: You do not have any jobcents to send");
 		return;
 	}
 
-	ncentSdkInstance.transferTokens(from_addr, to_addr, "ana", jobCent, 1, "", "success", "error");
+	ncentSdkInstance.transferTokens(from, to, "ana", jobCent, 1, "", "success", "error");
 	sendEmail(to, './receivedjobCent.html', "Congrats, you've received a jobCent!");
 }
 
@@ -205,7 +207,7 @@ function getHomePageCallback (request, response) {
 			initEmailWatcher();
 			console.log("here");
 			subscription.on(`message`, messageHandler);
-			response.send("Forget about me");
+			response.send("Done with authentication.");
 		}, function(reason){console.log("get auth tokens failed" + reason)});
 	}
 
