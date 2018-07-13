@@ -29,9 +29,9 @@ const oauth2Client = new google.auth.OAuth2(
 );
 const oauthUrl = oauth2Client.generateAuthUrl({access_type: 'offline', scope: scopes});
 
-const ncentSDK = require('../../SDK/source/ncentSDK.js');
-const ncentSdkInstance = new ncentSDK();
-const masterWalletAddress = ncentSdkInstance.createWallet('jobcent@ncnt.io');
+// const ncentSDK = require('../../SDK/source/ncentSDK.js');
+// const ncentSdkInstance = new ncentSDK();
+// const masterWalletAddress = ncentSdkInstance.createWallet('jobcent@ncnt.io');
 const walletsCreated = {
     "jobcent@ncnt.io": true
 };
