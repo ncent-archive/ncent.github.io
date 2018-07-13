@@ -117,9 +117,10 @@ class ncentSDK {
     //     });     
     // }
     createBalance(wallet_id, tokentype_id) {
-        axios.post(this._net + '/wallets/' + wallet_id + '/items', {
+        const request = axios.post(this._net + '/wallets/' + wallet_id + '/items', {
             tokentype_uuid: tokentype_id,
         })
+        return request
         .then(function(response) {
             console.log(response.data);
         })
@@ -136,17 +137,8 @@ class ncentSDK {
         success: callback;
         error: callback;
     */
-    transferTokens(senderBalance_id, receiverBalance_id, walletSender_id, walletReceiver_id, tokentype_id, tokenAmount) {
-        axios.then(
-            if (!senderBalance_id) {
-                senderBalance_id = this.createBalance(walletSender_id, tokentype_id).then(function () {
-                    if (!receiverBalance_id) {
-                        receiverBalance_id = this.createBalance(walletReceiver_id, tokentype_id); 
-                    }
-                })
-            }
-        )
 
+    transferTokens(senderBalance_id, receiverBalance_id, walletSender_id, walletReceiver_id, tokentype_id, tokenAmount) {
         var sendertokenAmount = this.getTokenBalance(walletSender_id, senderBalance_id);
         var receivertokenAmount = this.getTokenBalance(walletReceiver_id, receiverBalance_id);
         // axios.all([
@@ -303,13 +295,13 @@ class ncentSDK {
 var that = new ncentSDK();
 //that.inIt("kd@gmail.com", 090, 'success', 'error');
 //that.destroyTokens('hi@hi.com', 'password', 001, success, error);
-//var tokentype_id = that.stampToken('an@ncnt.io', "jobCent", 100, '2018-09-09');
-//that.createWallet("kyle@ncnt.io");
-//that.createWallet("jd@ncnt.io");   
+var tokentype_id = that.stampToken('an@ncnt.io', "jobCent", 100, '2018-09-09');
+that.createWallet("kyle@ncnt.io");
+that.createWallet("jd@ncnt.io");   
 //that.destroyTokens(tokentype_id);
 
 //var balance_id = that.createBalance('jd@ncnt.io', '587e0c4b-97b8-4202-9a8f-9ad30e63fdb5');
 //that.getTokenBalance('jd@ncnt.io', 'dcd96451-575f-48c4-a114-dba00e7350a9');
 //that.getAllBalances('jd@ncnt.io');
-that.transferTokens('dcd96451-575f-48c4-a114-dba00e7350a9', null, "jd@ncnt.io", "kyle@ncnt.io", '587e0c4b-97b8-4202-9a8f-9ad30e63fdb5', 100);
+//that.transferTokens('dcd96451-575f-48c4-a114-dba00e7350a9', null, "jd@ncnt.io", "kyle@ncnt.io", '587e0c4b-97b8-4202-9a8f-9ad30e63fdb5', 100);
     
