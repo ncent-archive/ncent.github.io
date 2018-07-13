@@ -1,6 +1,8 @@
 # Details
 
 ## Introduction
-This is the API to the Core implementation of NCNT. This API will minimally enable the purchase/sale of NCNT, stamping of tokens and the transferring of tokens/NCNT.
+Coming soon!
 
-More details and specifications will be released soon!
+This directory is where the APIs will be located for developers to make use of the Core implementation of our blockchain protocol. This API will enable the purchase, sale and stamping of tokens, with more functionality to be announced in the future.
+
+Stay tuned for further details and specifications!
