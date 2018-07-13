@@ -1,17 +1,19 @@
+///////////////Things to npm install\\\\\\\\\\\\\
 const express = require('express');
-const app = express();
 const fetch = require("isomorphic-fetch");
 const fs = require("fs");
 const opn = require('opn');
+const PubSub = require(`@google-cloud/pubsub`); //must use gcloud init / install, read google cloud SDK for more info
 
-const jobCentHostUrl = "http://localhost:3000/";
-const PubSub = require(`@google-cloud/pubsub`);
 const pubsub = new PubSub({
 	keyFilename: './JobCent-850fe0fe5e43.json'
 });
 const subscriptionName = 'projects/jobcent-210021/subscriptions/emailWatcher';
 const subscription = pubsub.subscription(subscriptionName);
+
+const jobCentHostUrl = "http://localhost:3000/";
 const gmailPort = 3001;
+const app = express();
 
 const scopes = [
                     'https://mail.google.com/',
@@ -19,7 +21,6 @@ const scopes = [
                     'https://www.googleapis.com/auth/gmail.readonly',
                     'https://www.googleapis.com/auth/gmail.send'
                 ];
-
 const {google} = require('googleapis');
 const gmailClass = google.gmail('v1');
 const oauth2Client = new google.auth.OAuth2(
@@ -29,40 +30,57 @@ const oauth2Client = new google.auth.OAuth2(
 );
 const oauthUrl = oauth2Client.generateAuthUrl({access_type: 'offline', scope: scopes});
 
-const ncentSDK = require('../../SDK/source/ncentSDK.js');
-const ncentSdkInstance = new ncentSDK();
+// const ncentSDK = require('../../SDK/source/ncentSDK.js');
+// const ncentSdkInstance = new ncentSDK();
+// const walletsCreated = {
+//     "jobcent@ncnt.io": true
+// };
 
-function initJobCent(){
-
-	ncentSdkInstance.createWallet('jobcent@ncnt.io');
-	ncentSdkInstance.stampTokens('jobcent@ncnt.io', 'jobCent', 100, '2021');
-
-}
-
-const walletsCreated = {
-    "jobcent@ncnt.io": true
-};
 
 const alreadyProcessed = {};
 let gmail;
 let startHistoryId;
 let currHistoryId;
 
-const processTransaction = async (to, from) => {
+////////////////////////////FUNCTIONS\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
+function initJobCent(){
+	ncentSDKInstance.init();
+	ncentSdkInstance.createWallet('jobcent@ncnt.io');
+	ncentSdkInstance.createBalance('jobcent@ncnt.io', 'jobCent');
+	ncentSdkInstance.stampTokens('jobcent@ncnt.io', 'jobCent', 100, '2021');
+}
+
+function createWalletIfNeeded(walletExists){
+	if(!walletExists){
+	  	ncentSdkInstance.createWallet(toEmail);
+	  	ncentSdkInstance.createBalance(toEmail, 'jobCent');
+	  	wallets_Created[toEmail.toString()] = true;
+	 }
+}
+
+function getEmailString(headerVal){
+	let startIdx = headerVal.value.indexOf('<');
+	let endIdx = headerVal.value.indexOf('>');
+	let emailString = headerVal.value.indexOf('<') === -1 ? headerVal.value : headerVal.value.substring(startIdx+1, endIdx);
+	return emailString;
+}
+
+const processTransaction = async (to, from) => {
+	//TODO: change second param to be balance id
 	if (ncentSdkInstance.getTokenBalance(from, 'jobCent') === 0) {
 		sendEmail(from, './nojobCent.html', "Error: You do not have any jobcents to send");
 		return;
 	}
-
-	ncentSdkInstance.transferTokens(from, to, "ana", jobCent, 1, "", "success", "error");
+	//TODO: change to update params (need balance id)
+	let senderBalanceiD = getBalanceId(from)[0];
+	let receiverBalanceiD = getBalanceId(to)[0];
+	ncentSdkInstance.transferTokens(senderBalanceiD, receiverBalanceiD, from, to, 'jobCent', 1);
 	sendEmail(to, './receivedjobCent.html', "Congrats, you've received a jobCent!");
 }
 
-const messageHandler = async message => {
-	console.log("inside message handler");
-	//console.log(message);
 
+const messageHandler = async message => {
   	let messageJSON = JSON.parse(message.data);
   	
   	if(messageJSON.emailAddress !== 'jobcent@ncnt.io') {
@@ -74,10 +92,8 @@ const messageHandler = async message => {
   	console.log(`\tData: ${message.data}`);
   	console.log(`\tAttributes: ${message.attributes}`);
 
-
   	startHistoryId = currHistoryId;
   	currHistoryId = messageJSON.historyId;
-
   	const options = {	userId: messageJSON.emailAddress, 
   						auth: oauth2Client, 
   						startHistoryId: startHistoryId, 
@@ -88,7 +104,6 @@ const messageHandler = async message => {
   		message.ack();
   		return; //The first time we get a message we don't get notified. The first message kind of sets things up
   	}
-  	// console.log(options);
 
   	// Result is basically the messages that we got notified for
   	let result = await gmail.users.history.list(options);
@@ -99,62 +114,50 @@ const messageHandler = async message => {
 	  		return;
 	  	}
 	  	alreadyProcessed[message.id] = 1;
+
 	  	const msgOptions = {userId: messageJSON.emailAddress, auth: oauth2Client, id: message.id};
 	  	let messageInfo = await gmail.users.messages.get(msgOptions);
 	  	let headers = messageInfo.data.payload.headers;
-	  	// console.log(messageInfo.data.payload.headers);
 	  	let toEmail = '';
 	  	let fromEmail = '';
         let ccFound = false;
-	  	let multiTo = false;
+        let multiTo = false;
+	
 	  	for(idx in headers) {
-	  		// console.log(headers);
 	  		if (headers[idx].name === 'To') {
-	  			console.log(headers[idx].value);
             	if ((headers[idx].value.match(/@/g) || []).length !== 1) multiTo = true;
-	  			let startIdx = headers[idx].value.indexOf('<');
-	  			let endIdx = headers[idx].value.indexOf('>');
-	  			toEmail = headers[idx].value.indexOf('<') === -1 ? headers[idx].value : headers[idx].value.substring(startIdx+1, endIdx);
+	  			toEmail = getEmailString(headers[idx]);
 	  		}
-
-	  		if (headers[idx].name === "From") {
-	  			let startIdx = headers[idx].value.indexOf('<');
-	  			let endIdx = headers[idx].value.indexOf('>');
-	  			fromEmail = headers[idx].value.indexOf('<') === -1 ? headers[idx].value : headers[idx].value.substring(startIdx+1, endIdx);
-	  		}
+	  		
+	  		if (headers[idx].name === "From") fromEmail = getEmailString(headers[idx]);
 
           	if (headers[idx].name === "Cc") {
 	  			let startIdx = headers[idx].value.indexOf('jobcent@ncnt.io');
 	  			if (startIdx !== -1) ccFound = true;
 	  		}
-
 	  		if (toEmail !== '' && fromEmail !== '' && ccFound) break;
 	  	}
 
         if(!ccFound) {
-          return;
+          	return;
         }
 
 	  	if(multiTo) {
 	  		sendEmail(fromEmail, './manyAddresses.html', "Error: You've entered too many addresses in the To line");
 	  		return;
 	  	}
-	  	if(!wallets_Created(toEmail.toString())){
-	  		ncentSdkInstance.createWallet(toEmail);
-	  		wallets_Created.add(toEmail.toString());
-	  	}
-	  	processTransaction(toEmail, fromEmail);
-	  	console.log(toEmail);
-	  	console.log(fromEmail);
 
+	  	console.log('\nSending one jobCent from ' + fromEmail + ' to ' + toEmail);
+	  	//TODO: uncomment next two lines once SDK works
+	  	//createWalletIfNeeded(wallets_Created[toEmail.toString()]);
+	  	//processTransaction(toEmail, fromEmail);
+	  	
 	  });
-
 	});
   // "Ack" (acknowledge receipt of) the message
   message.ack();
 };
 
-///////////////////////////////// Purely email stuff \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 const sendEmail = async (receiver, file, subject) => {
 	fs.readFile(file, (err,data) => {
 	  let email_lines = [];
@@ -228,7 +231,7 @@ function getHomePageCallback (request, response) {
 	}
 
 function main() {
-	initJobCent();
+	//initJobCent();
 	console.log("in main");
     opn(oauthUrl);
     console.log("opened auth url");
@@ -243,5 +246,5 @@ function main() {
 
     app.get('/', getHomePageCallback);
 }
-
+////////////////////////CODE\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 main();
