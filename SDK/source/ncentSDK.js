@@ -121,10 +121,7 @@ class ncentSDK {
             tokentype_uuid: tokentype_id,
         })
         .then(function(response) {
-            return new Promise (resolve, reject) {
-                console.log(response.data);
-                resolve(response.data.uuid);
-            };
+            console.log(response.data);
         })
         .catch(function(error) {
             console.log(error.response.data);
