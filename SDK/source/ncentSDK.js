@@ -141,9 +141,9 @@ class ncentSDK {
         new Promise (function(resolve, reject) {
             const sendertokenAmount = this.getTokenBalance(walletSender_id, senderBalance_id)
             const receivertokenAmount = this.getTokenBalance(walletReceiver_id, receiverBalance_id);
-            resolve(sendertokenAmount, receivertokenAmount);
+            resolve(sendertokenAmount, receivertokenAmount)
         })
-        .then(function(response) {
+        .then(function(sendertokenAmount, receivertokenAmount) {
             axios.all([
                 axios.post(this._net + '/tokentypes/' + tokentype_id + '/items', {
                     amount: tokenAmount,
@@ -296,6 +296,7 @@ class ncentSDK {
     //         });
     // }        
 }
+module.exports = ncentSDK;
 var that = new ncentSDK();
 //that.inIt("kd@gmail.com", 090, 'success', 'error');
 //that.destroyTokens('hi@hi.com', 'password', 001, success, error);
