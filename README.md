@@ -2,7 +2,7 @@
 ## Who are we?
 ##### We are a Stanford spinout blockchain startup pursuing an uncommonly bold mission to create a fairer internet for people to own the networks they use
 ## Investors
-![alt text](http://res.cloudinary.com/dfufqfnjx/image/upload/c_scale,w_971/v1531442674/Screen_Shot_2018-07-12_at_5.42.35_PM_f8vnmz.png)
+![alt text](http://res.cloudinary.com/dfufqfnjx/image/upload/c_scale,w_971/v1531442674/Screen_Shot_2018-07-12_at_5.42.35_PM_f8vnmz.png | width=500)
 ## Contact
 ###### [Join Our Telegram Community](https://t.me/ncent)
 ###### [Follow us on Twitter @KK_ncnt](https://twitter.com/kk_ncnt)
