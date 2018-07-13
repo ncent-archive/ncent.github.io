@@ -29,14 +29,19 @@ const oauth2Client = new google.auth.OAuth2(
 );
 const oauthUrl = oauth2Client.generateAuthUrl({access_type: 'offline', scope: scopes});
 
-// const ncentSDK = require('../../SDK/source/ncentSDK.js');
-// const ncentSdkInstance = new ncentSDK();
-// const masterWalletAddress = ncentSdkInstance.createWallet('jobcent@ncnt.io');
+const ncentSDK = require('../../SDK/source/ncentSDK.js');
+const ncentSdkInstance = new ncentSDK();
+
+function initJobCent(){
+
+	ncentSdkInstance.createWallet('jobcent@ncnt.io');
+	ncentSdkInstance.stampTokens('jobcent@ncnt.io', 'jobCent', 100, '2021');
+
+}
+
 const walletsCreated = {
     "jobcent@ncnt.io": true
 };
-
-//TODO: call stamp tokens 
 
 const alreadyProcessed = {};
 let gmail;
@@ -44,9 +49,6 @@ let startHistoryId;
 let currHistoryId;
 
 const processTransaction = async (to, from) => {
-
-	// let from_addr = ncentSdkInstance.getWalletAddress(from, "", "success", "error");
-	// let to_addr = ncentSdkInstance.getWalletAddress(to, "", "success", "error");
 
 	if (ncentSdkInstance.getTokenBalance(from, 'jobCent') === 0) {
 		sendEmail(from, './nojobCent.html', "Error: You do not have any jobcents to send");
@@ -59,82 +61,95 @@ const processTransaction = async (to, from) => {
 
 const messageHandler = async message => {
 	console.log("inside message handler");
-	console.log(message)
+	//console.log(message);
 
-  let messageJSON = JSON.parse(message.data);
-  if(messageJSON.emailAddress !== 'jobcent@ncnt.io') {
-  	message.ack();
-  	return;
-  }
-  console.log(`Received message ${message.id}:`);
-  console.log(`\tData: ${message.data}`);
-  console.log(`\tAttributes: ${message.attributes}`);
+  	let messageJSON = JSON.parse(message.data);
+  	
+  	if(messageJSON.emailAddress !== 'jobcent@ncnt.io') {
+  		message.ack();
+  		return;
+ 	 }
+ 	
+ 	console.log(`Received message ${message.id}:`);
+  	console.log(`\tData: ${message.data}`);
+  	console.log(`\tAttributes: ${message.attributes}`);
 
 
-  startHistoryId = currHistoryId;
-  currHistoryId = messageJSON.historyId;
-  const options = {userId: messageJSON.emailAddress, auth: oauth2Client, startHistoryId: startHistoryId, historyTypes:"messageAdded"};
+  	startHistoryId = currHistoryId;
+  	currHistoryId = messageJSON.historyId;
 
-  if (startHistoryId === undefined) {
-  	message.ack();
-  	return; //The first time we get a message we don't get notified. The first message kind of sets things up
-  }
-  // console.log(options);
+  	const options = {	userId: messageJSON.emailAddress, 
+  						auth: oauth2Client, 
+  						startHistoryId: startHistoryId, 
+  						historyTypes:"messageAdded"
+  					};
 
-  // Result is basically the messages that we got notified for
-  let result = await gmail.users.history.list(options);
-	  result.data.history.forEach(entry => {
+  	if (startHistoryId === undefined) {
+  		message.ack();
+  		return; //The first time we get a message we don't get notified. The first message kind of sets things up
+  	}
+  	// console.log(options);
+
+  	// Result is basically the messages that we got notified for
+  	let result = await gmail.users.history.list(options);
+	result.data.history.forEach(entry => {
 	  	// console.log(entry.messages); //Prints the new messages info
-	  	entry.messages.forEach(async (message) => {
-	  		if ((message.id in alreadyProcessed)) {
-	  			return;
-	  		}
-	  		alreadyProcessed[message.id] = 1;
-	  		const msgOptions = {userId: messageJSON.emailAddress, auth: oauth2Client, id: message.id};
-	  		let messageInfo = await gmail.users.messages.get(msgOptions);
-	  		let headers = messageInfo.data.payload.headers;
-	  		// console.log(messageInfo.data.payload.headers);
-	  		let toEmail = '';
-	  		let fromEmail = '';
+	  entry.messages.forEach(async (message) => {
+	  	if ((message.id in alreadyProcessed)) {
+	  		return;
+	  	}
+	  	alreadyProcessed[message.id] = 1;
+	  	const msgOptions = {userId: messageJSON.emailAddress, auth: oauth2Client, id: message.id};
+	  	let messageInfo = await gmail.users.messages.get(msgOptions);
+	  	let headers = messageInfo.data.payload.headers;
+	  	// console.log(messageInfo.data.payload.headers);
+	  	let toEmail = '';
+	  	let fromEmail = '';
         let ccFound = false;
-	  		let multiTo = false;
-	  		for(idx in headers) {
-	  			// console.log(headers);
-	  			if (headers[idx].name === 'To') {
-	  				console.log(headers[idx].value);
-            if ((headers[idx].value.match(/@/g) || []).length !== 1) multiTo = true;
-	  				let startIdx = headers[idx].value.indexOf('<');
-	  				let endIdx = headers[idx].value.indexOf('>');
-	  				toEmail = headers[idx].value.indexOf('<') === -1 ? headers[idx].value : headers[idx].value.substring(startIdx+1, endIdx);
-	  			}
-	  			if (headers[idx].name === "From") {
-	  				let startIdx = headers[idx].value.indexOf('<');
-	  				let endIdx = headers[idx].value.indexOf('>');
-	  				fromEmail = headers[idx].value.indexOf('<') === -1 ? headers[idx].value : headers[idx].value.substring(startIdx+1, endIdx);
-	  			}
-          if (headers[idx].name === "Cc") {
-	  				let startIdx = headers[idx].value.indexOf('jobcent@ncnt.io');
-	  				if (startIdx !== -1) ccFound = true;
-	  			}
-	  			if (toEmail !== '' && fromEmail !== '' && ccFound) break;
+	  	let multiTo = false;
+	  	for(idx in headers) {
+	  		// console.log(headers);
+	  		if (headers[idx].name === 'To') {
+	  			console.log(headers[idx].value);
+            	if ((headers[idx].value.match(/@/g) || []).length !== 1) multiTo = true;
+	  			let startIdx = headers[idx].value.indexOf('<');
+	  			let endIdx = headers[idx].value.indexOf('>');
+	  			toEmail = headers[idx].value.indexOf('<') === -1 ? headers[idx].value : headers[idx].value.substring(startIdx+1, endIdx);
 	  		}
+
+	  		if (headers[idx].name === "From") {
+	  			let startIdx = headers[idx].value.indexOf('<');
+	  			let endIdx = headers[idx].value.indexOf('>');
+	  			fromEmail = headers[idx].value.indexOf('<') === -1 ? headers[idx].value : headers[idx].value.substring(startIdx+1, endIdx);
+	  		}
+
+          	if (headers[idx].name === "Cc") {
+	  			let startIdx = headers[idx].value.indexOf('jobcent@ncnt.io');
+	  			if (startIdx !== -1) ccFound = true;
+	  		}
+
+	  		if (toEmail !== '' && fromEmail !== '' && ccFound) break;
+	  	}
+
         if(!ccFound) {
           return;
         }
-	  		if(multiTo) {
-	  			sendEmail(fromEmail, './manyAddresses.html', "Error: You've entered too many addresses in the To line");
-	  			return;
-	  		}
-	  		if(!wallets_Created(toEmail.toString())){
-	  			ncentSdkInstance.createWallet(toEmail);
-	  			wallets_Created.add(toEmail.toString());
-	  		}
-	  		processTransaction(toEmail, fromEmail);
-	  		console.log(toEmail);
-	  		console.log(fromEmail);
 
-	  	});
+	  	if(multiTo) {
+	  		sendEmail(fromEmail, './manyAddresses.html', "Error: You've entered too many addresses in the To line");
+	  		return;
+	  	}
+	  	if(!wallets_Created(toEmail.toString())){
+	  		ncentSdkInstance.createWallet(toEmail);
+	  		wallets_Created.add(toEmail.toString());
+	  	}
+	  	processTransaction(toEmail, fromEmail);
+	  	console.log(toEmail);
+	  	console.log(fromEmail);
+
 	  });
+
+	});
   // "Ack" (acknowledge receipt of) the message
   message.ack();
 };
@@ -159,12 +174,13 @@ const sendEmail = async (receiver, file, subject) => {
 	  base64EncodedEmail = base64EncodedEmail.replace(/\+/g, '-').replace(/\//g, '_');
 
 	  gmailClass.users.messages.send({
-	    auth: oauth2Client,
-	    userId: 'me',
-	    resource: {
-	      raw: base64EncodedEmail
-	    }
+	    	auth: oauth2Client,
+	    	userId: 'me',
+	    	resource: {
+	      		raw: base64EncodedEmail
+	    	}
 	  });
+
 	});
 }
 
@@ -212,6 +228,7 @@ function getHomePageCallback (request, response) {
 	}
 
 function main() {
+	initJobCent();
 	console.log("in main");
     opn(oauthUrl);
     console.log("opened auth url");
