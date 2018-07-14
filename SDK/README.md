@@ -1,4 +1,4 @@
-# ncentSDK
+<!-- # ncentSDK
 ## Coming Soon!
 
 ncentSDK is a Javascript library for communicating with the nCent API. It is used for building nCent applications either on Node.js or in the browser, as well as for accessing base-level features on the API.
@@ -87,4 +87,4 @@ For information on how to contribute, please email kk@ncnt.io, mb@ncnt.io, kd@nc
 ## License
 SDK is licensed under ...
 
-------------
+------------ -->
