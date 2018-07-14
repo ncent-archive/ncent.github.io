@@ -1,4 +1,4 @@
-# Details in Version 1.0.0
+<!-- # Details in Version 1.0.0
 
 ## Introduction
 The Sandbox API allows you to run a server that mimics the API to the Core but stores the information on the tokentypes, transactions and wallets on a (PostgreSQL) database. It can receive any request detailed in Sandbox API/server/route/index.js. The handling of the requests are detailed in the files under Sandbox API/server/controllers. The database schema and migrations are handled in Sandbox API/server/models and Sandbox API/server/migrations respectively. Sandbox API/server/config/config.json handles the location and details of the database. Check Sandbox API/package.json for the detailed dependencies.
@@ -31,4 +31,4 @@ The Sandbox API allows you to run a server that mimics the API to the Core but s
 	- ID
 	- Token Types (Table of Token Types)
 	  - UUID
-	  - Amount
+	  - Amount -->
