@@ -23,8 +23,28 @@
     ================================================== -->
     <script src="js/modernizr.js"></script>
     <script src="js/pace.min.js"></script>
+<script>
+    $(document).on('click', 'a[href^="#"]', function (event) {
+    event.preventDefault();
+      $('html, body').animate({
+          scrollTop: $($.attr(this, 'href')).offset().top
+      -73}, 700);
+      });
 
-    
+    $(function () {
+      $(document).scroll(function () {
+        var $nav = $(".fixed-top");
+        $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
+        var $nava = $("nav a");
+        $nava.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
+        var $button = $(".whitelist-button");
+        $button.toggleClass('scrolled', $(this).scrollTop() > $nav.height())
+      });
+    });
+
+</script>
+
+
 
 </head>
 
@@ -39,7 +59,8 @@
 
                 <div class="header__logo">
                     
-                        <h1><font color = "#fff">nCent Labs</font></h1>
+                        <h1><font color = "#fff">nCent Labs             </font></h1>
+
                     </a>
                 </div> <!-- end header__logo -->
 
@@ -62,6 +83,8 @@
                         <li><a href="#medium" title="">Medium</a></li>
                         <li><a href="#twitter" title="">Twitter</a></li>
                         <li><a href="#footer" title="">Contact</a></li>
+                        <li><a href="https://t.me/ncent" title="">Join our Telegram</a></li>
+                  
                     </ul> <!-- end header__nav -->
 
                     <a href="#0" title="Close Menu" class="header__overlay-close close-mobile-menu">Close</a>

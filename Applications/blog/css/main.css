@@ -72,6 +72,51 @@
 html {
    font-size: 10px;
 }
+.whitelist-button {
+    background-color: none;
+    border: #0C1133;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    margin: 4px 2px;
+    border-radius: 50px 50px 50px 50px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: white;
+}
+
+.whitelist-button.scrolled {
+    color: black;
+    border-color: #242242;
+}
+
+.whitelist-button:hover {
+  transition: background-color .2s linear;
+    background-color: #F29E39;
+    color: white;
+    border-color: transparent;
+}
+
+
+@media only screen and (max-width: 420px) {
+  .whitelist-button {
+    font-size: 10px;
+    border-width: 1px;
+    padding: 2px 2px;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .whitelist-button {
+    font-size: 10px;
+    border-width: 1px;
+    margin: 2px 1px;
+    padding: 2px 2px;
+  }
+}
 
 @media only screen and (max-width:400px) {
    html {
