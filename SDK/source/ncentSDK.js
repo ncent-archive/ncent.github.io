@@ -38,6 +38,20 @@ class ncentSDK {
         Array<string> emailAddress: array of email addresses 
     */
     init() {
+        // init(emails) {
+        //     // pseudocode - writing up shortly.
+        //     //stampToken() // stamp the token.
+        //     for loop (array emails) {
+        //         createWallet();
+        //         axios.post(
+    
+        //         ).then(
+    
+        //         ).catch(
+    
+        //         )};
+        //     return tokentype_id, balanceID;          
+        //     }
     }
     
     /*
