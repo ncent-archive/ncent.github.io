@@ -36,24 +36,31 @@ class ncentSDK {
         all NCNT employees and initializes all balances. 
         int tokenType: UUID associated with NCNT.
         Array<string> emailAddress: array of email addresses 
-    */
-    init() {
-        // init(emails) {
-        //     // pseudocode - writing up shortly.
-        //     //stampToken() // stamp the token.
-        //     for loop (array emails) {
-        //         createWallet();
-        //         axios.post(
-    
-        //         ).then(
-    
-        //         ).catch(
-    
-        //         )};
-        //     return tokentype_id, balanceID;          
-        //     }
-    }
-    
+    */   
+    init(emails) {
+        // pseudocode - writing up shortly.
+        let emailAddress = emails;
+        stampToken("company@ncnt.io", ); // stamp the token.
+        let arrayLength = emailAddress.length;
+        for (let i = 0; i < arrayLength; i++) {
+            this.createWallet;
+            alert(myStringArray[i]);
+                //Do something
+            createWallet();
+            axios.post(this.net, {
+
+            }
+
+            ).then(function(response) {
+
+            }
+            ).catch(function(error) {
+
+            });
+        return arrayLength; //tokentypeID, balanceID;          
+        }
+}
+
     /*
         destroyTokens destroys all tokens of a certain tokenType.
         string walletAddress: The user's wallet address.
@@ -62,7 +69,6 @@ class ncentSDK {
         success: callback;
         error: callback;
     */
-
     //change time to server side
 
     destroyTokens(tokentype_id) {
