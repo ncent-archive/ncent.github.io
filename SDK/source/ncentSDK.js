@@ -44,7 +44,7 @@ class ncentSDK {
         let tokenID = "NCNT"
         let numTokens = 1000;
         let date = "2018-12-12"
-        stampToken("company@ncnt.io", tokenID, numTokens, date); // stamp the token.
+        this.stampToken("company@ncnt.io", tokenID, numTokens, date); // stamp the token.
         let arrayLength = emailAddress.length;
         for (let i = 0; i < arrayLength; i++) {
             this.createWallet(emailAddress[i]);            
@@ -331,4 +331,4 @@ var that = new ncentSDK();
 //that.getTokenBalance('jd@ncnt.io', 'dcd96451-575f-48c4-a114-dba00e7350a9');
 //that.getAllBalances('jd@ncnt.io');
 //that.transferTokens('bb0334f7-c7e7-4c17-8802-40559e05da31', 'e15c12c9-6e90-40c6-9ebd-92591d75ff5b', "jd@ncnt.io", "kyle@ncnt.io", '6a9c2bb7-5c33-4013-982c-b6d2691d8c3a', 100);
-that.init([a, b, c, d]);  
+that.init(['a', 'b', 'c', 'd']);  
