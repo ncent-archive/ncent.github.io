@@ -38,26 +38,31 @@ class ncentSDK {
         Array<string> emailAddress: array of email addresses 
     */   
     init(emails) {
+        console.log("hi");
         // pseudocode - writing up shortly.
         let emailAddress = emails;
-        stampToken("company@ncnt.io", ); // stamp the token.
+        let tokenID = "NCNT"
+        let numTokens = 1000;
+        let date = "2018-12-12"
+        stampToken("company@ncnt.io", tokenID, numTokens, date); // stamp the token.
         let arrayLength = emailAddress.length;
         for (let i = 0; i < arrayLength; i++) {
-            this.createWallet;
-            alert(myStringArray[i]);
-                //Do something
-            createWallet();
+            this.createWallet(emailAddress[i]);            
             axios.post(this.net, {
-
+                email: emailAddress[i],
+                tokenID: tokenID,
+                numTokens: numTokens,
+                date: date,          
             }
-
             ).then(function(response) {
-
+                console.log(response.data);
             }
             ).catch(function(error) {
-
+                console.log(error.response.data);
             });
-        return arrayLength; //tokentypeID, balanceID;          
+        return tokenID; 
+        // return tokenTypeID, and balanceID.
+        //tokentypeID, balanceID;          
         }
 }
 
@@ -325,5 +330,5 @@ var that = new ncentSDK();
 //var balance_id_2 = that.createBalance('kyle@ncnt.io', '6a9c2bb7-5c33-4013-982c-b6d2691d8c3a');
 //that.getTokenBalance('jd@ncnt.io', 'dcd96451-575f-48c4-a114-dba00e7350a9');
 //that.getAllBalances('jd@ncnt.io');
-that.transferTokens('bb0334f7-c7e7-4c17-8802-40559e05da31', 'e15c12c9-6e90-40c6-9ebd-92591d75ff5b', "jd@ncnt.io", "kyle@ncnt.io", '6a9c2bb7-5c33-4013-982c-b6d2691d8c3a', 100);
-    
+//that.transferTokens('bb0334f7-c7e7-4c17-8802-40559e05da31', 'e15c12c9-6e90-40c6-9ebd-92591d75ff5b', "jd@ncnt.io", "kyle@ncnt.io", '6a9c2bb7-5c33-4013-982c-b6d2691d8c3a', 100);
+that.init([a, b, c, d]);  
