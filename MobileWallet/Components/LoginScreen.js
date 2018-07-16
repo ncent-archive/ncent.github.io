@@ -60,7 +60,7 @@ class LoginScreen extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.navBar}>
-          <TouchableWithoutFeedback onPress={() => Actions.TokensScreen()}>
+          <TouchableWithoutFeedback onPress={() => Actions.LoginOrSignup()}>
             <View>
               <Text style={styles.navBarButton}>Back</Text>
             </View>
