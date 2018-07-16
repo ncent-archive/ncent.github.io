@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/thejnaut1/ncnt.git"
+    "url": "https://github.com/ncent/ncent.github.io"
   },
   "keywords": [],
   "author": "",
@@ -31,5 +31,5 @@
     "nodemon": "^1.17.5",
     "sequelize-cli": "^4.0.0"
   },
-  "homepage": "https://github.com/thejnaut1/ncnt"
+  "homepage": "https://github.com/ncent/ncent.github.io"
 }
