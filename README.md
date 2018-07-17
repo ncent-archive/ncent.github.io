@@ -1,6 +1,6 @@
 # nCent Labs, Inc
 ## Who are we?
-<img src="https://res.cloudinary.com/dxwddglzt/image/upload/v1531859074/Logo_nCent-header_dark.png" width="500" height="519"></img>
+<img src="https://res.cloudinary.com/dxwddglzt/image/upload/v1531859074/Logo_nCent-header_dark.png" width="300" height="200"></img>
 ##### We are a Stanford spinout blockchain startup pursuing an uncommonly bold mission to create a fairer internet for people to own the networks they use
 ## Investors
 <img src="http://res.cloudinary.com/dfufqfnjx/image/upload/c_scale,w_971/v1531442674/Screen_Shot_2018-07-12_at_5.42.35_PM_f8vnmz.png" width="500" height="519"></img>
