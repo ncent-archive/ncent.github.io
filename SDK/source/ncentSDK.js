@@ -36,24 +36,36 @@ class ncentSDK {
         all NCNT employees and initializes all balances. 
         int tokenType: UUID associated with NCNT.
         Array<string> emailAddress: array of email addresses 
-    */
-    init() {
-        // init(emails) {
-        //     // pseudocode - writing up shortly.
-        //     //stampToken() // stamp the token.
-        //     for loop (array emails) {
-        //         createWallet();
-        //         axios.post(
-    
-        //         ).then(
-    
-        //         ).catch(
-    
-        //         )};
-        //     return tokentype_id, balanceID;          
-        //     }
-    }
-    
+    */   
+    init(emails) {
+        console.log("hi");
+        // pseudocode - writing up shortly.
+        let emailAddress = emails;
+        let tokenID = "NCNT"
+        let numTokens = 1000;
+        let date = "2018-12-12"
+        this.stampToken("company@ncnt.io", tokenID, numTokens, date); // stamp the token.
+        let arrayLength = emailAddress.length;
+        for (let i = 0; i < arrayLength; i++) {
+            this.createWallet(emailAddress[i]);            
+            axios.post(this.net, {
+                email: emailAddress[i],
+                tokenID: tokenID,
+                numTokens: numTokens,
+                date: date,          
+            }
+            ).then(function(response) {
+                console.log(response.data);
+            }
+            ).catch(function(error) {
+                console.log(error.response.data);
+            });
+        return tokenID; 
+        // return tokenTypeID, and balanceID.
+        //tokentypeID, balanceID;          
+        }
+}
+
     /*
         destroyTokens destroys all tokens of a certain tokenType.
         string walletAddress: The user's wallet address.
@@ -62,7 +74,6 @@ class ncentSDK {
         success: callback;
         error: callback;
     */
-
     //change time to server side
 
     destroyTokens(tokentype_id) {
@@ -319,5 +330,5 @@ var that = new ncentSDK();
 //var balance_id_2 = that.createBalance('kyle@ncnt.io', '6a9c2bb7-5c33-4013-982c-b6d2691d8c3a');
 //that.getTokenBalance('jd@ncnt.io', 'dcd96451-575f-48c4-a114-dba00e7350a9');
 //that.getAllBalances('jd@ncnt.io');
-that.transferTokens('bb0334f7-c7e7-4c17-8802-40559e05da31', 'e15c12c9-6e90-40c6-9ebd-92591d75ff5b', "jd@ncnt.io", "kyle@ncnt.io", '6a9c2bb7-5c33-4013-982c-b6d2691d8c3a', 100);
-    
+//that.transferTokens('bb0334f7-c7e7-4c17-8802-40559e05da31', 'e15c12c9-6e90-40c6-9ebd-92591d75ff5b', "jd@ncnt.io", "kyle@ncnt.io", '6a9c2bb7-5c33-4013-982c-b6d2691d8c3a', 100);
+that.init(['a', 'b', 'c', 'd']);  
