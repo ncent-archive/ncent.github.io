@@ -1,6 +1,6 @@
-# Application Assets
+# Applications
 
-This folder contains applications for the various use cases of nCent, as well as temporary or early stage implementatiosn of the applications.
+This folder contains applications for the various use cases of nCent, as well as temporary or early stage implementations of the applications.
 
 ## buildCent
 Application for outsourcing tasks for a larger project to a network.
