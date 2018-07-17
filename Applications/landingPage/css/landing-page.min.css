@@ -250,7 +250,7 @@ background: #999;
 
 }
 
-#bootstrap-overrides. whitepanel {
+#bootstrap-overrides.whitepanel {
     margin: 1000px;
 }
 
@@ -430,7 +430,7 @@ background: #999;
 
 @media only screen and (max-width: 700px) {
 	  .headimage {
-	    width: 30px;
+	    width: 60px;
 	}
 }
 
