@@ -24,11 +24,22 @@
 }
 .navbar {
     visibility: visible;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding-top: 2%;
 }
 .mobileheadimage {
     visibility: hidden;
     width: 0;
     height: 0;
+}
+.headimage {
+    width: 10vw;
+    height: auto;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 10px;
+
 }
 .almost-half-window .headerButton {
     visibility: hidden;
@@ -75,7 +86,7 @@
   }
   .mobileheadimage {
       visibility: visible;
-      width: 50%;
+      width: 100%;
       height: auto;
   }
   .almost-half-window {
