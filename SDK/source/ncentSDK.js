@@ -38,6 +38,20 @@ class ncentSDK {
         Array<string> emailAddress: array of email addresses 
     */
     init() {
+        // init(emails) {
+        //     // pseudocode - writing up shortly.
+        //     //stampToken() // stamp the token.
+        //     for loop (array emails) {
+        //         createWallet();
+        //         axios.post(
+    
+        //         ).then(
+    
+        //         ).catch(
+    
+        //         )};
+        //     return tokentype_id, balanceID;          
+        //     }
     }
     
     /*
@@ -121,13 +135,12 @@ class ncentSDK {
             tokentype_uuid: tokentype_id,
         })
         .then(function(response) {
-            return new Promise (resolve, reject) {
-                console.log(response.data);
-                resolve(response.data.uuid);
-            };
+            console.log(response.data);
+            return response.data.uuid;
         })
         .catch(function(error) {
             console.log(error.response.data);
+            return -1;
         });
     }
     /*
@@ -139,40 +152,31 @@ class ncentSDK {
         success: callback;
         error: callback;
     */
-    transferTokens(senderBalance_id, receiverBalance_id, walletSender_id, walletReceiver_id, tokentype_id, tokenAmount) {
-        axios.then(
-            if (!senderBalance_id) {
-                senderBalance_id = this.createBalance(walletSender_id, tokentype_id).then(function () {
-                    if (!receiverBalance_id) {
-                        receiverBalance_id = this.createBalance(walletReceiver_id, tokentype_id); 
-                    }
-                })
-            }
-        )
 
-        var sendertokenAmount = this.getTokenBalance(walletSender_id, senderBalance_id);
-        var receivertokenAmount = this.getTokenBalance(walletReceiver_id, receiverBalance_id);
-        // axios.all([
-        //     axios.post(this._net + '/tokentypes/' + tokentype_id + '/items', {
-        //         amount: tokenAmount,
-        //         fromAddress: walletSender_id,
-        //         toAddress: walletReceiver_id,
-        //     }),
-        //     axios.put(this._net + '/wallets/' + walletSender_id + '/' + tokentype_id, {
-        //         amount: sendertokenAmount - tokenAmount
-        //     }),
-        //     axios.put(this._net + '/wallets/' + walletReceiver_id + '/' + tokentype_id, {
-        //         amount: receivertokenAmount + tokenAmount
-        //     })
-        // ])
-        // .then(axios.spread(function(txn, sdrbal, rvrbal) {
-        //     console.log(txn.data);
-        //     console.log(sdrbal.data);
-        //     console.log(rvrbal.data);
-        // }))
-        // .catch(function(error) {
-        //     console.log(error.response.data);
-        // });d 
+    transferTokens(senderBalance_id, receiverBalance_id, walletSender_id, walletReceiver_id, tokentype_id, tokenAmount) {
+        const sendertokenAmount = this.getTokenBalance(walletSender_id, senderBalance_id)
+        const receivertokenAmount = this.getTokenBalance(walletReceiver_id, receiverBalance_id);
+        axios.all([
+            axios.post(this._net + '/tokentypes/' + tokentype_id + '/items', {
+                amount: tokenAmount,
+                fromAddress: walletSender_id,
+                toAddress: walletReceiver_id,
+            }),
+            axios.put(this._net + '/wallets/' + walletSender_id + '/' + senderBalance_id, {
+                amount: sendertokenAmount - tokenAmount
+            }),
+            axios.put(this._net + '/wallets/' + walletReceiver_id + '/' + receiverBalance_id, {
+                amount: receivertokenAmount + tokenAmount
+            })
+        ])
+        .then(axios.spread(function(txn, sdrbal, rvrbal) {
+            console.log(txn.data);
+            console.log(sdrbal.data);
+            console.log(rvrbal.data);
+        }))
+        .catch(function(error) {
+            console.log(error.response.data);
+        });
     }
     
     /*
@@ -183,10 +187,9 @@ class ncentSDK {
         error: callback;
     */
     getTokenBalance(walletAddress, balance_id) {
-        axios.get(this._net + '/wallets/' + walletAddress + '/' + balance_id, {
-        })
+        axios.get(this._net + '/wallets/' + walletAddress + '/' + balance_id)
         .then(function(response) {
-            console.log(response.data);
+            //console.log(response.data);
             return response.data.amount;
         })
         .catch(function(error) {
@@ -303,6 +306,7 @@ class ncentSDK {
     //         });
     // }        
 }
+module.exports = ncentSDK;
 var that = new ncentSDK();
 //that.inIt("kd@gmail.com", 090, 'success', 'error');
 //that.destroyTokens('hi@hi.com', 'password', 001, success, error);
@@ -311,8 +315,9 @@ var that = new ncentSDK();
 //that.createWallet("jd@ncnt.io");   
 //that.destroyTokens(tokentype_id);
 
-//var balance_id = that.createBalance('jd@ncnt.io', '587e0c4b-97b8-4202-9a8f-9ad30e63fdb5');
+//var balance_id = that.createBalance('jd@ncnt.io', '6a9c2bb7-5c33-4013-982c-b6d2691d8c3a');
+//var balance_id_2 = that.createBalance('kyle@ncnt.io', '6a9c2bb7-5c33-4013-982c-b6d2691d8c3a');
 //that.getTokenBalance('jd@ncnt.io', 'dcd96451-575f-48c4-a114-dba00e7350a9');
 //that.getAllBalances('jd@ncnt.io');
-that.transferTokens('dcd96451-575f-48c4-a114-dba00e7350a9', null, "jd@ncnt.io", "kyle@ncnt.io", '587e0c4b-97b8-4202-9a8f-9ad30e63fdb5', 100);
+that.transferTokens('bb0334f7-c7e7-4c17-8802-40559e05da31', 'e15c12c9-6e90-40c6-9ebd-92591d75ff5b', "jd@ncnt.io", "kyle@ncnt.io", '6a9c2bb7-5c33-4013-982c-b6d2691d8c3a', 100);
     

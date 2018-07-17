@@ -2,24 +2,82 @@ import React, {Component} from 'react';
 import {Alert, Button, FlatList, TextInput, StyleSheet, Text, View,
  TouchableHighlight, TouchableOpacity, TouchableNativeFeedback, TouchableWithoutFeedback  } from 'react-native';
 import {Actions} from 'react-native-router-flux';
-
+import {connect} from 'react-redux';
+import {userUpdate, createUser} from '../Actions';
+import {Spinner} from './Common';
+ 
 class SignupScreen extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {usernameEntered: '', passwordEntered: '', lastname: '', firstname: '', email: '', phoneNumber: '', password: '', confirmedPassword: ''};
+  
+  signUp() {
+    const {first, last, email, username, phone, password, confirm} = this.props;
+    this.props.createUser({first, last, email, username, phone, password, confirm});
   }
 
-  signUp() {
-    Actions.LoginScreen();
-    return;
+  renderInputForm() {
+    if (this.props.loading) {
+      return <Spinner size="large"/>;
+    }
+    return (
+      <View style = {{}}>
+            <TextInput
+              autoCorrect= {false}
+              style={{height: 50, paddingLeft: 30, fontSize: 20}}
+              placeholder="First"
+              value={this.props.first}
+              onChangeText={(text) => this.props.userUpdate({prop:'first', value: text})}
+            />
+            <TextInput
+              autoCorrect= {false}
+              style={{height: 50, paddingLeft: 30, backgroundColor: 'lightgray', fontSize: 20}}
+              placeholder="Last"
+              value={this.props.last}
+              onChangeText={(text) => this.props.userUpdate({prop:'last', value: text})}
+            />
+            <TextInput
+              autoCorrect= {false}
+              style={{height: 50, paddingLeft: 30, fontSize: 20}}
+              placeholder="Email *"
+              value={this.props.email}
+              onChangeText={(text) => this.props.userUpdate({prop:'email', value: text})}
+            />
+            <TextInput
+              autoCorrect= {false}
+              style={{height: 50, paddingLeft: 30, backgroundColor: 'lightgray', fontSize: 20}}
+              placeholder="Phone Number"
+              value={this.props.phone}
+              onChangeText={(text) => this.props.userUpdate({prop:'phone', value: text})}
+            />
+            <TextInput
+              autoCorrect= {false}
+              style={{height: 50, paddingLeft: 30, fontSize: 20}}
+              placeholder="Username"
+              value={this.props.username}
+              onChangeText={(text) => this.props.userUpdate({prop:'username', value: text})}
+            />
+            <TextInput
+              autoCorrect= {false}
+              style={{height: 50, paddingLeft: 30, backgroundColor: 'lightgray', fontSize: 20}}
+              placeholder="Password *"
+              value={this.props.password}
+              onChangeText={(text) => this.props.userUpdate({prop:'password', value: text})}
+            />
+            <TextInput
+              autoCorrect= {false}
+              style={{height: 50, paddingLeft: 30, fontSize: 20}}
+              placeholder="Confirm Password"
+              value={this.props.confirm}
+              onChangeText={(text) => this.props.userUpdate({prop:'confirm', value: text})}
+            />
+          </View>
+    )
   }
 
   render() {
     return (
       <View style={styles.container}>
         <View style={styles.navBar}>
-          <TouchableWithoutFeedback onPress={() => Actions.LoginOrSignup()}>
+          <TouchableWithoutFeedback onPress={() => Actions.popTo("LoginOrSignup")}>
             <View>
               <Text style={styles.navBarButton}>Back</Text>
             </View>
@@ -31,48 +89,8 @@ class SignupScreen extends Component {
             </View>
           </TouchableWithoutFeedback>
         </View>
-          <TextInput
-            autoCorrect= {false}
-            style={{height: 50, paddingLeft: 30, fontSize: 20}}
-            placeholder="First"
-            onChangeText={(firstname) => this.setState({firstname})}
-          />
-          <TextInput
-            autoCorrect= {false}
-            style={{height: 50, paddingLeft: 30, backgroundColor: 'lightgray', fontSize: 20}}
-            placeholder="Last"
-            onChangeText={(lastname) => this.setState({lastname})}
-          />
-        <TextInput
-          autoCorrect= {false}
-          style={{height: 50, paddingLeft: 30, fontSize: 20}}
-          placeholder="Email"
-          onChangeText={(email) => this.setState({email})}
-        />
-        <TextInput
-          autoCorrect= {false}
-          style={{height: 50, paddingLeft: 30, backgroundColor: 'lightgray', fontSize: 20}}
-          placeholder="Phone Number"
-          onChangeText={(phoneNumber) => this.setState({phoneNumber})}
-        />
-        <TextInput
-          autoCorrect= {false}
-          style={{height: 50, paddingLeft: 30, fontSize: 20}}
-          placeholder="Username"
-          onChangeText={(usernameEntered) => this.setState({usernameEntered})}
-        />
-        <TextInput
-          autoCorrect= {false}
-          style={{height: 50, paddingLeft: 30, backgroundColor: 'lightgray', fontSize: 20}}
-          placeholder="Password"
-          onChangeText={(passwordEntered) => this.setState({passwordEntered})}
-        />
-        <TextInput
-          autoCorrect= {false}
-          style={{height: 50, paddingLeft: 30, fontSize: 20}}
-          placeholder="Confirm Password"
-          onChangeText={(confirmedPassword) => this.setState({confirmedPassword})}
-        />
+
+        {this.renderInputForm()}
 
         <View style={styles.content}>
           <Button
@@ -83,7 +101,6 @@ class SignupScreen extends Component {
             title= "Already Have an Account? Login"
             onPress= {() => Actions.LoginScreen()}  
           />
-
         </View>
       </View>
 
@@ -118,17 +135,14 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'center',
     backgroundColor: 'white',
-    paddingTop: 40
-  },
-  balance_content: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#374046'
-  },
-  text: {
-    color: '#EEEEEE'
-  },
+    paddingTop: 20
+  }
 });
 
-module.exports = SignupScreen;
+const mapStateToProps = (state) => {
+  const {first, last, email, username, phone, password, confirm, error, loading} = state.signup;
+  return {first, last, email, username, phone, password, confirm, error, loading};
+}
+
+module.exports = connect(mapStateToProps, {userUpdate, createUser})(SignupScreen);
+

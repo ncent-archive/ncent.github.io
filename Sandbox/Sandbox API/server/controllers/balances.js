@@ -42,7 +42,7 @@ module.exports = {
         }
         return balance
           .update({
-            amount: req.body.amount || balance.amount,
+            amount: req.body.amount,
           })
           .then(() => res.status(200).send(balance))  // Send back the updated tokentype.
           .catch((error) => res.status(400).send(error));

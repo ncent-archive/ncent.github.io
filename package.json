@@ -1,0 +1,22 @@
+{
+  "name": "ncent.github.io",
+  "version": "1.0.0",
+  "description": "nCent Labs Public Repository",
+  "main": "index.js",
+  "scripts": {
+    "test": "ncent-test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ncent/ncent.github.io.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ncent/ncent.github.io/issues"
+  },
+  "homepage": "https://github.com/ncent/ncent.github.io#readme",
+  "dependencies": {
+    "eslint": "^5.1.0"
+  }
+}

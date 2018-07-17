@@ -2,53 +2,49 @@ import React, {Component} from 'react';
 import {Alert, Button, FlatList, TextInput, StyleSheet, Text, View,
  TouchableHighlight, TouchableOpacity, TouchableNativeFeedback, TouchableWithoutFeedback  } from 'react-native';
 import {Actions} from 'react-native-router-flux';
+import {connect} from 'react-redux';
+import {sendInfoUpdate, sendTokensToAddress, cancelTransaction} from '../Actions';
+import {Spinner} from './Common';
+
 
 class SendTokens extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {address: '', amount: '', balance: this.getBalance(), tokenName: 'hi'};
-  }
 
-  getBalance() {
-    return 0.0;
-  }
 
   sendTokens() {
-    // if (this.state.address === '') {
-    //   Alert.alert('Error', 'Invalid address');
-    //   return;
-    // }
-    // if (this.state.amount === '') {
-    //   Alert.alert('Error', 'Invalid amount');
-    //   return;
-    // }
-    return;
+    const {address, amount} = this.props;
+    const {tokenType} = this.props.tokenType;
+    this.props.sendTokensToAddress({address, amount});
+  }
+
+  cancel() {
+    this.props.cancelTransaction();
   }
 
   render() {
-    const tokenName = "placeholder";
     return (
 
       <View style={styles.container}>
         <View style={styles.navBar}>
-          <TouchableWithoutFeedback onPress={() => Actions.TokenDetails()}>
+          <TouchableWithoutFeedback onPress={() => this.cancel()}>
             <View>
               <Text style={styles.navBarButton}>Cancel</Text>
             </View>
           </TouchableWithoutFeedback>
-          <Text style={styles.navBarHeader}>Send {tokenName}</Text>
+          <Text style={styles.navBarHeader}>Send {this.props.tokenType}</Text>
           <Text style={styles.navBarButton}></Text>
         </View>
         <TextInput
           style={{height: 100, paddingLeft: 30, fontSize: 25}}
           placeholder="Address of Recipient"
-          onChangeText={(address) => this.setState({address})}
+          value={this.props.address}
+          onChangeText={(text) => this.props.sendInfoUpdate({prop:'address', value: text})}
         />
 
         <TextInput
           style={{height: 100, paddingLeft: 30, fontSize: 25, backgroundColor: 'lightgray'}}
           placeholder="Amount"
-          onChangeText={(amount) => this.setState({amount})}
+          value={this.props.amount}
+          onChangeText={(text) => this.props.sendInfoUpdate({prop:'amount', value: text})}
         />
 
         <View style={{flex: 1}}>
@@ -87,23 +83,13 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     textAlign:'center',
     width: 64
-  },
-  content: {
-    flex: 2,
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    backgroundColor: 'white',
-    paddingTop: 40
-  },
-  balance_content: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#374046'
-  },
-  text: {
-    color: '#EEEEEE'
-  },
+  }
 });
 
-module.exports = SendTokens;
+const mapStateToProps = (state) => {
+  const {address, amount, error, loading} = state.sendTokens;
+  return {address, amount, error, loading};
+}
+
+module.exports = connect(mapStateToProps, {sendInfoUpdate, sendTokensToAddress, cancelTransaction})(SendTokens);
+

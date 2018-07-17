@@ -1,27 +1,21 @@
 import React, {Component} from 'react';
 import {Button, FlatList, TextInput, StyleSheet, Text, View, TouchableHighlight, TouchableOpacity, TouchableNativeFeedback, TouchableWithoutFeedback  } from 'react-native';
 import {Actions} from 'react-native-router-flux';
+import {connect} from 'react-redux';
+import {getTokens, signOut} from '../Actions';
+import {Spinner} from './Common';
 
 class TokensScreen extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {tokens: this.getAllTokens()};
-  }
 
   logOut() {
-    Actions.LoginOrSignup();
+    this.props.signOut();
   }
 
-  getAllTokens() {
-    let tokens = [
-                {key: 'nCent'},
-                {key: 'fanCent'},
-                {key: 'jobCent'},
-                {key: 'buildCent'}
-              ];
-    return tokens;
-  };
 
+  componentWillMount() {
+    this.props.getTokens();
+  }
+ 
   render() {
     return (
       <View style={styles.container}>
@@ -36,10 +30,10 @@ class TokensScreen extends Component {
         </View>
         <View style={{ flex: 1}}>
           <FlatList
-              data={this.state.tokens}
+              data={this.props.allTokens}
               renderItem={({item}) => 
               <View>
-                <TouchableHighlight onPress={() => Actions.TokenDetails()}>
+                <TouchableHighlight onPress={() => Actions.TokenDetails({tokenType: item.key})} underlayColor="white">
                   <View style={{flexDirection: 'row', paddingTop: 30, height: 90}}>
                     <Text style={{paddingLeft: 20, fontSize: 20}}>{item.key}</Text>
                   </View>
@@ -96,4 +90,13 @@ const styles = StyleSheet.create({
   },
 });
 
-module.exports = TokensScreen;
+
+
+const mapStateToProps = (state) => {
+  const {error, loading, allTokens} = state.tokens;
+  return {error, loading, allTokens};
+}
+
+module.exports = connect(mapStateToProps, {getTokens, signOut})(TokensScreen);
+
+
