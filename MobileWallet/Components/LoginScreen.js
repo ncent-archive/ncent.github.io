@@ -6,7 +6,7 @@ import {emailChanged, passwordChanged, loginUser} from '../Actions';
 import {Spinner} from './Common';
 import {Actions} from 'react-native-router-flux';
 
-
+ 
 
 class LoginScreen extends Component {
 
@@ -60,7 +60,7 @@ class LoginScreen extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.navBar}>
-          <TouchableWithoutFeedback onPress={() => Actions.TokensScreen()}>
+          <TouchableWithoutFeedback onPress={() => Actions.popTo("LoginOrSignup")}>
             <View>
               <Text style={styles.navBarButton}>Back</Text>
             </View>
@@ -122,23 +122,7 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     textAlign:'center',
     width: 64
-  },
-  content: {
-    flex: 2,
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    backgroundColor: 'white',
-    paddingTop: 40
-  },
-  balance_content: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#374046'
-  },
-  text: {
-    color: '#EEEEEE'
-  },
+  }
 });
 
 const mapStateToProps = state => {

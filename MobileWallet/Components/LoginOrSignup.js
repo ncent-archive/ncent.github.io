@@ -7,7 +7,7 @@ class LoginOrSignup extends Component {
   constructor(props) {
     super(props);
   }
-
+ 
   render() {
     return (
       <View style={styles.container}>
@@ -44,40 +44,6 @@ class LoginOrSignup extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1
-  },
-  navBar: {
-    flexDirection: 'row',
-    paddingTop: 30,
-    height: 64,
-    backgroundColor: '#1EAAF1'
-  },
-  navBarHeader: {
-    flex: 1,
-    color: '#FFFFFF',
-    fontWeight: 'bold',
-    textAlign: 'center',
-    fontSize: 20,
-  },
-  navBarButton: {
-    color: '#FFFFFF',
-    textAlign:'center',
-    width: 64
-  },
-  content: {
-    flex: 2,
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    backgroundColor: 'white',
-    paddingTop: 40
-  },
-  balance_content: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#374046'
-  },
-  text: {
-    color: '#EEEEEE'
   },
 });
 
