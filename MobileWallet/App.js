@@ -12,15 +12,15 @@ import RootStack from './Components/Navigation.js';
 export default class App extends React.Component {
   componentWillMount() {
     const config = {
-    apiKey: "AIzaSyCgEGmw7Q9Y113Nb1wgfSLW4rZmYcgCLhE",
-    authDomain: "walletaccounts.firebaseapp.com",
-    databaseURL: "https://walletaccounts.firebaseio.com",
-    projectId: "walletaccounts",
-    storageBucket: "",
-    messagingSenderId: "700254836520"
-  };
+      apiKey: "AIzaSyCgEGmw7Q9Y113Nb1wgfSLW4rZmYcgCLhE",
+      authDomain: "walletaccounts.firebaseapp.com",
+      databaseURL: "https://walletaccounts.firebaseio.com",
+      projectId: "walletaccounts",
+      storageBucket: "",
+      messagingSenderId: "700254836520"
+    };
 
-  firebase.initializeApp(config);
+    firebase.initializeApp(config);
   }
 
   render() {

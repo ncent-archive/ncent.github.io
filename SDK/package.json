@@ -1,5 +1,5 @@
 {
-  "name": "ncent-sdk",
+  "name": "ncent-sdk-public",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ncent/ncent.github.io"
+    "url": "https://github.com/ncent/ncent.github.io.git"
   },
   "keywords": [],
   "author": "",

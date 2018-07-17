@@ -16,9 +16,9 @@ const RouterComponent = () => {
       <Scene key="root">
         <Scene key="TokenDetails" component={TokenDetailsScreen} hideNavBar="true"/>
         <Scene key="SendTokens" component={SendTokens} hideNavBar="true"/>
-        <Scene key="LoginScreen" component={LoginScreen} hideNavBar="true" initial/>
+        <Scene key="LoginScreen" component={LoginScreen} hideNavBar="true"/>
         <Scene key="SignupScreen" component={SignupScreen} hideNavBar="true"/>
-        <Scene key="LoginOrSignup" component={LoginOrSignup} hideNavBar="true"/>
+        <Scene key="LoginOrSignup" component={LoginOrSignup} hideNavBar="true" initial/>
         <Scene key="TokensScreen" component={TokensScreen} hideNavBar="true" />
       </Scene>
     </Router>

@@ -1,46 +1,38 @@
 import React, {Component} from 'react';
 import {Alert, Button, FlatList, TextInput, StyleSheet, Text, View,
  TouchableHighlight, TouchableOpacity, TouchableNativeFeedback, TouchableWithoutFeedback  } from 'react-native';
+import {Actions} from 'react-native-router-flux';
+import {connect} from 'react-redux';
+import {getTokenBalance} from '../Actions';
+import {Spinner} from './Common';
 
-
+ 
 class TokenDetailsScreen extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      address: '', 
-      amount: '', 
-      balance: this.getBalance(), 
-      tokenName: this.props.navigation.getParam('tokenName', 'Token')
-    };
-  }
-
-  getBalance() {
-    return 0.0;
-  }
-
+ 
   goToSend() {
     // if (this.state.balance <= 0.0) {
     //   Alert.alert("Error", "You don't have any tokens");
     //   return;
     // }
-    this.props.navigation.navigate('SendTokens', {tokenName: this.state.tokenName});
+    Actions.SendTokens({tokenType: this.props.tokenType});
     return;
   }
 
-  render() {
-    const {navigation} = this.props;
-    const tokenName = navigation.getParam('tokenName', 'Token');
-    const sendTitle = "SEND " + tokenName;
+  componentWillMount() {
+    this.props.getTokenBalance(this.props.tokenType);
+  }
+
+  render() { 
     return (
       <View style={styles.container}>
         <View style={styles.navBar}>
-          <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('Home')}>
+          <TouchableWithoutFeedback onPress={() => Actions.pop()}>
             <View>
               <Text style={styles.navBarButton}>Back</Text>
             </View>
           </TouchableWithoutFeedback>
-          <Text style={styles.navBarHeader}>{tokenName} Wallet</Text>
+          <Text style={styles.navBarHeader}>{this.props.tokenType} Wallet</Text>
           <Text style={styles.navBarButton}></Text>
         </View>
         <View style={styles.balance_content}>
@@ -48,7 +40,7 @@ class TokenDetailsScreen extends Component {
             Balance
           </Text>
           <Text style={{color: 'white', fontSize: 50}}>
-            {this.state.balance}
+            {this.props.balance}
           </Text>
         </View>
         <View style={{flex: 2}}>
@@ -111,4 +103,9 @@ const styles = StyleSheet.create({
   },
 });
 
-module.exports = TokenDetailsScreen;
+const mapStateToProps = (state) => {
+  const {balance, error, loading} = state.tokenDetails;
+  return {balance, error, loading};
+}
+
+module.exports = connect(mapStateToProps, {getTokenBalance})(TokenDetailsScreen);
