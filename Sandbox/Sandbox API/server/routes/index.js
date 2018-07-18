@@ -1,7 +1,6 @@
 const tokentypesController = require('../controllers').tokentypes;
 const transactionsController = require('../controllers').transactions;
 const walletsController = require('../controllers').wallets;
-const balancesController = require('../controllers').balances;
 
 module.exports = (app) => {
     app.get('/api', (req, res) => res.status(200).send({
@@ -16,13 +15,13 @@ module.exports = (app) => {
     app.get('/api/tokentypes/:tokentype_uuid/items', transactionsController.list);
 
     app.post('/api/wallets', walletsController.create);
-    app.get('/api/wallets', walletsController.list);
-    app.get('/api/wallets/:wallet_uuid', walletsController.retrieve);
-
-    app.post('/api/wallets/:wallet_uuid/items', balancesController.create);
-    app.get('/api/wallets/:wallet_uuid/items', balancesController.list);
-    app.get('/api/wallets/:wallet_uuid/:uuid', balancesController.retrieve);
-    app.put('/api/wallets/:wallet_uuid/:uuid', balancesController.update);
+    app.get('/api/wallets', walletsController.listAll);
+    app.get('/api/wallets/:wallet_uuid', walletsController.listSome);
+    app.get('/api/wallets/:wallet_uuid/:tokentype_uuid', walletsController.retrieve);
+    app.put('/api/wallets/:wallet_uuid/:tokentype_uuid', walletsController.update);
+    // app.get('/api/wallets/:wallet_uuid/items', balancesController.list);
+    // app.get('/api/wallets/:wallet_uuid/:uuid', balancesController.retrieve);
+    // app.put('/api/wallets/:wallet_uuid/:uuid', balancesController.update);
     // For any other request method on transactions, we're going to return "Method Not Allowed"
     app.all('/api/todos/:todoId/items', (req, res) =>
         res.status(405).send({
