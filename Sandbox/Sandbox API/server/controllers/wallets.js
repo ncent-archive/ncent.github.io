@@ -4,9 +4,8 @@ module.exports = {
   create(req, res) {
     return Wallet
       .create({
-          wallet_uuid: req.body.wallet_uuid,
-          tokentype_uuid: req.body.tokentype_uuid,
-          balance: req.body.amount,
+        wallet_uuid: req.body.wallet_uuid,
+        tokentype_uuid: req.body.tokentype_uuid,
       })
       .then(wallet => res.status(201).send(wallet))
       .catch(error => res.status(400).send(error));
