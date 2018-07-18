@@ -10,7 +10,7 @@ html,body
 
 body{font-family:Lato,'Helvetica Neue',Helvetica,Arial,sans-serif}
 h1,h2,h3,h4,h5,h6{font-family:Lato,'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:700}
-header.masthead{position:relative;background-color:#343a40;background:url(../img/bg-masthead.jpg) no-repeat center center;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;padding-top:8rem;padding-bottom:8rem}
+header.masthead{position:relative;background-color:#343a40;background:url(https://res.cloudinary.com/dxwddglzt/image/upload/v1531943735/landingpage/bg-masthead.jpg) no-repeat center center;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;padding-top:8rem;padding-bottom:8rem}
 header.masthead .overlay{pointer-events:none;position:absolute;background-color:#212529;height:100%;width:100%;top:0;left:0;opacity:.3}
 header.masthead h1{font-size:2rem}
 @media (min-width:768px){header.masthead{padding-top:12rem;padding-bottom:12rem}
