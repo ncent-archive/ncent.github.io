@@ -2855,12 +2855,12 @@ html.no-csstransitions .home-content__main {
 
 .clients-testimonials .testimonials .slick-prev {
     left: -130px;
-    background-image: url("../images/left-arrow.png");
+    background-image: url("https://res.cloudinary.com/dxwddglzt/image/upload/v1531945862/nspire/left-arrow.png");
 }
 
 .clients-testimonials .testimonials .slick-next {
     right: -130px;
-    background-image: url("../images/right-arrow.png");
+    background-image: url("https://res.cloudinary.com/dxwddglzt/image/upload/v1531945866/nspire/right-arrow.png");
 }
 
 .clients-testimonials .testimonials .slick-dots {
@@ -2941,7 +2941,7 @@ html.no-csstransitions .home-content__main {
  * ------------------------------------------------------------------- */
 .s-contact {
     background-color: #151515;
-    background-image: url("../images/contact-bg.jpg");
+    background-image: url("https://res.cloudinary.com/dxwddglzt/image/upload/v1531945896/nspire/contact-bg.jpg");
     background-repeat: no-repeat;
     background-position: center, center;
     padding-top: 15rem;
@@ -3391,7 +3391,6 @@ footer .row {
     border: none;
     width: 85px;
     height: 28px;
-    background: url("../images/logo-footer.png") no-repeat center;
     background-size: 85px 28px;
     font: 0/0 a;
     text-shadow: none;
