@@ -16,7 +16,9 @@ class ncentSDK {
     * string walletAddress - a new walletAddress for the user.
     * string emailAddress - email.
     * string privateKey - a new privateKey for the user.
-    */   
+    */  
+
+    //if tokentype_id is null, default is the ncnt uuid
     createWalletAddress(emailAddress, tokentype_id) {
        //let privateKey = ((+new Date) + Math.random()* 2).toString(32);
        //console.log(privateKey);
@@ -52,10 +54,11 @@ class ncentSDK {
         Array<string> emailAddress: array of email addresses 
     */
     initNCNT() {
-        let tokenID = "NCNT"
+        let name = "NCNT"
         let numTokens = 1000;
         let date = "2018-12-12"
-        this.stampToken("company@ncnt.io", tokenID, numTokens, date);
+        const ncnt_uuid = this.stampToken("company@ncnt.io", name, numTokens, date);
+        return ncnt_uuid;
     }   
     init(emails) {
         console.log("hi");
@@ -131,6 +134,7 @@ class ncentSDK {
         })
         .catch(function(error) {
             console.log(error.response.data);
+            return -1;
         });
     }
     
