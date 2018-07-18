@@ -16,7 +16,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     tokentype_uuid: {
       type: DataTypes.UUID,
-      allowNull: false
+      allowNull: false,
+      defaultValue: '5963c694-59f2-4cd5-9fc0-d28175094fd4',
     },
     balance: {
       type: DataTypes.INTEGER,

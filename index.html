@@ -60,7 +60,11 @@
         var $nava = $("nav a");
         $nava.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
         var $button = $(".whitelist-button");
-        $button.toggleClass('scrolled', $(this).scrollTop() > $nav.height())
+        $button.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
+        let $headimageBlack = $(".headimageBlack");
+        let $headimageWhite = $(".headimageWhite");
+        $headimageBlack.toggleClass('visible', $(this).scrollTop() > $nav.height());
+        $headimageWhite.toggleClass('visible', $(this).scrollTop() <= $nav.height());
       });
     });
 
@@ -70,6 +74,16 @@
 
 
     $(document).ready(function() {
+        var $nav = $(".fixed-top");
+        $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
+        var $nava = $("nav a");
+        $nava.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
+        var $button = $(".whitelist-button");
+        $button.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
+        let $headimageBlack = $(".headimageBlack");
+        let $headimageWhite = $(".headimageWhite");
+        $headimageBlack.toggleClass('visible', $(this).scrollTop() > $nav.height());
+        $headimageWhite.toggleClass('visible', $(this).scrollTop() <= $nav.height());
 
     /* Every time the window is scrolled ... */
       $(window).scroll( function(){
@@ -113,7 +127,10 @@
       <div class="headnavbar">
         <div class="col-xs-2-mx-0">
             <div style="display: inline-block">
-              <img src = "https://res.cloudinary.com/dxwddglzt/image/upload/v1531859074/Logo_nCent-header_dark.png" class="img-fluid headimage">
+              <img src = "https://res.cloudinary.com/dxwddglzt/image/upload/v1531859075/Logo_nCent-header_white.png" class="img-fluid headimageWhite">
+            </div>
+            <div style="display: inline-block">
+                <img src = "https://res.cloudinary.com/dxwddglzt/image/upload/v1531859074/Logo_nCent-header_dark.png" class="img-fluid headimageBlack">
             </div>
             </div>
         </div>
@@ -149,6 +166,10 @@
             </div>
             <div style="" class="huline middle-header">
               <a class=" mx-0 text-center headtext" href="./Applications/blog/blog.html">Blog</a>
+              <div class="uhuline"></div>
+            </div>
+             <div style="" class="huline middle-header">
+              <a class=" mx-0 text-center headtext" href="./Applications/nSpire.network/index.html">nSpire.network</a>
               <div class="uhuline"></div>
             </div>
         </div>

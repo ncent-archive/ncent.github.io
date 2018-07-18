@@ -20,18 +20,18 @@ Install NodeJS at https://nodejs.org/en/ and run npm install in ncent.github.io/
 	- Name
 	- UUID
 	- Expiry Date
-	- Value Escrow Rate (Initial value in NCNT obtained if redeemed)
-	- Cashout Rate (Value in NCNT obtained if cashed out)
-        - Provenance Length
-        - Lambda (i.e Fraction referrer gets)
-	- Transaction History (Table of Transactions)
-	  - ID
-	  - Amount
-	  - From Wallet Address
-	  - To Wallet Address
+	- Sponsor_UUID
+	- Total Tokens Stamped
+
+2. Transaction:
+	- UUID
+	- Amount
+	- From Wallet Address
+	- To Wallet Address
+	- TokenType_UUID (Foreign Key)
  
-2.  Wallet:
-	- ID
-	- Token Types (Table of Token Types)
-	  - UUID
-	  - Amount
+3.  Wallet:
+	- UUID
+	- Wallet_UUID
+	- Tokentype_UUID
+	- Balance
