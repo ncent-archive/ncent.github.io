@@ -68,8 +68,8 @@ const styles = StyleSheet.create({
   },
   navBar: {
     flexDirection: 'row',
-    paddingTop: 30,
-    height: 64,
+    paddingTop: 10,
+    height: 70, //64
     backgroundColor: '#1EAAF1'
   },
   navBarHeader: {
@@ -77,13 +77,15 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     fontWeight: 'bold',
     textAlign: 'center',
+    paddingTop: 25,
     fontSize: 20,
   },
   navBarButton: {
     color: '#FFFFFF',
     textAlign:'center',
+    paddingTop: 25,
     width: 64
-  }
+  },
 });
 
 const mapStateToProps = (state) => {
