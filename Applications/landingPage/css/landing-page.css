@@ -13,7 +13,7 @@ h6 {
 }
 
 header.masthead {
-  position: relative;
+  position: center;
   background-color: #343a40;
   background: url("https://res.cloudinary.com/dbs657aen/image/upload/v1531172517/bg-masthead.jpg") no-repeat center center;
   -webkit-background-size: cover;
