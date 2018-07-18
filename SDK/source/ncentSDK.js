@@ -16,19 +16,35 @@ class ncentSDK {
     * string walletAddress - a new walletAddress for the user.
     * string emailAddress - email.
     * string privateKey - a new privateKey for the user.
-    */   
-    createWallet(emailAddress) {
+    */  
+
+    //if tokentype_id is null, default is the ncnt uuid
+    createWalletAddress(emailAddress, tokentype_id) {
        //let privateKey = ((+new Date) + Math.random()* 2).toString(32);
        //console.log(privateKey);
-        axios.post(this._net + '/wallets', {
-            uuid: emailAddress
-        })
-        .then(function(response) {
-            console.log(response.data);
-        })
-        .catch(function(error) {
-            console.log(error.response.data);
-        });
+        if (tokentype_id == null) {
+            axios.post(this._net + '/wallets', {
+                wallet_uuid: emailAddress
+            })
+            .then(function(response) {
+                console.log(response.data);
+            })
+            .catch(function(error) {
+                console.log(error.response.data);
+            });
+        } else {
+            axios.post(this._net + '/wallets', {
+                tokentype_uuid: tokentype_id,
+                wallet_uuid: emailAddress
+            })
+            .then(function(response) {
+                console.log(response.data);
+            })
+            .catch(function(error) {
+                console.log(error.response.data);
+            });
+        }
+
     };
     
     /*
@@ -36,15 +52,19 @@ class ncentSDK {
         all NCNT employees and initializes all balances. 
         int tokenType: UUID associated with NCNT.
         Array<string> emailAddress: array of email addresses 
-    */   
+    */
+    initNCNT() {
+        let name = "NCNT"
+        let numTokens = 1000;
+        let date = "2018-12-12"
+        const ncnt_uuid = this.stampToken("company@ncnt.io", name, numTokens, date);
+        return ncnt_uuid;
+    }   
     init(emails) {
         console.log("hi");
         // pseudocode - writing up shortly.
+        this.initNCNT();
         let emailAddress = emails;
-        let tokenID = "NCNT"
-        let numTokens = 1000;
-        let date = "2018-12-12"
-        this.stampToken("company@ncnt.io", tokenID, numTokens, date); // stamp the token.
         let arrayLength = emailAddress.length;
         for (let i = 0; i < arrayLength; i++) {
             this.createWallet(emailAddress[i]);            
@@ -114,46 +134,10 @@ class ncentSDK {
         })
         .catch(function(error) {
             console.log(error.response.data);
-        });
-    }
-    
-    /*
-        getWalletAddress gets passed in an email from the client and returns
-        the wallet address associated with the email.
-        string emailAddress: The user's email address.
-        string walletAddress: The user's walletAddress.
-        success: callback;
-        error: callback;
-    */
-    // getWalletAddress(emailAddress, params, success, error) {
-    //     // checker here.
-    //     axios.get(this._net +'/tokentypes', {
-    //         params: {
-    //             emailAddress: emailAddress,
-    //         }
-    //     })
-    //     .then(function(response){
-    //         console.log(error);
-    //     })
-    //     .catch(function(error){
-    //         console.log(error);
-    //     })
-    //     .then(function(){
-    //     });     
-    // }
-    createBalance(wallet_id, tokentype_id) {
-        axios.post(this._net + '/wallets/' + wallet_id + '/items', {
-            tokentype_uuid: tokentype_id,
-        })
-        .then(function(response) {
-            console.log(response.data);
-            return response.data.uuid;
-        })
-        .catch(function(error) {
-            console.log(error.response.data);
             return -1;
         });
     }
+    
     /*
         transferTokens allows tokens to be transferred between two parties.
         string walletSender: The sender's wallet address.
@@ -164,30 +148,35 @@ class ncentSDK {
         error: callback;
     */
 
-    transferTokens(senderBalance_id, receiverBalance_id, walletSender_id, walletReceiver_id, tokentype_id, tokenAmount) {
-        const sendertokenAmount = this.getTokenBalance(walletSender_id, senderBalance_id)
-        const receivertokenAmount = this.getTokenBalance(walletReceiver_id, receiverBalance_id);
+    transferTokens(walletSender_id, walletReceiver_id, tokentype_id, tokenAmount) {
+        const sdk = this;
         axios.all([
-            axios.post(this._net + '/tokentypes/' + tokentype_id + '/items', {
-                amount: tokenAmount,
-                fromAddress: walletSender_id,
-                toAddress: walletReceiver_id,
-            }),
-            axios.put(this._net + '/wallets/' + walletSender_id + '/' + senderBalance_id, {
-                amount: sendertokenAmount - tokenAmount
-            }),
-            axios.put(this._net + '/wallets/' + walletReceiver_id + '/' + receiverBalance_id, {
-                amount: receivertokenAmount + tokenAmount
-            })
+            axios.get(sdk._net + '/wallets/' + walletSender_id + '/' + tokentype_id),
+            axios.get(sdk._net + '/wallets/' + walletReceiver_id + '/' + tokentype_id)
         ])
-        .then(axios.spread(function(txn, sdrbal, rvrbal) {
-            console.log(txn.data);
-            console.log(sdrbal.data);
-            console.log(rvrbal.data);
+        .then(axios.spread(function(sender, receiver) {
+            axios.all([
+                axios.post(sdk._net + '/tokentypes/' + tokentype_id + '/items', {
+                    amount: tokenAmount,
+                    fromAddress: walletSender_id,
+                    toAddress: walletReceiver_id,
+                }),
+                axios.put(sdk._net + '/wallets/' + walletSender_id + '/' + tokentype_id, {
+                    balance: sender.data[0].balance - tokenAmount
+                }),
+                axios.put(sdk._net + '/wallets/' + walletReceiver_id + '/' + tokentype_id, {
+                    balance: receiver.data[0].balance + tokenAmount
+                })
+            ])
+            .then(axios.spread(function(txn, sdrbal, rvrbal) {
+                console.log(txn.data);
+                console.log(sdrbal.data);
+                console.log(rvrbal.data);
+            }))
+            .catch(function(error) {
+                console.log(error.response.data);
+            })
         }))
-        .catch(function(error) {
-            console.log(error.response.data);
-        });
     }
     
     /*
@@ -197,11 +186,11 @@ class ncentSDK {
         success: callback;
         error: callback;
     */
-    getTokenBalance(walletAddress, balance_id) {
-        axios.get(this._net + '/wallets/' + walletAddress + '/' + balance_id)
+    getTokenBalance(wallet_uuid, tokentype_uuid) {
+        axios.get(this._net + '/wallets/' + wallet_uuid + '/' + tokentype_uuid)
         .then(function(response) {
-            //console.log(response.data);
-            return response.data.amount;
+            console.log(response.data);
+            return response.data[0].balance;
         })
         .catch(function(error) {
             console.log(error.response.data);
@@ -216,8 +205,8 @@ class ncentSDK {
         success: callback;
         error: callback;
     */
-    getAllBalances(walletAddress) {
-        axios.get(this._net + '/wallets/' + walletAddress + '/items', {
+    getAllBalances(wallet_uuid) {
+        axios.get(this._net + '/wallets/' + wallet_uuid, {
         })
         .then(function(response) {
             console.log(response.data);
@@ -319,16 +308,13 @@ class ncentSDK {
 }
 module.exports = ncentSDK;
 var that = new ncentSDK();
-//that.inIt("kd@gmail.com", 090, 'success', 'error');
-//that.destroyTokens('hi@hi.com', 'password', 001, success, error);
-//var tokentype_id = that.stampToken('an@ncnt.io', "jobCent", 100, '2018-09-09');
-//that.createWallet("kyle@ncnt.io");
-//that.createWallet("jd@ncnt.io");   
-//that.destroyTokens(tokentype_id);
+//that.initNCNT();
+//that.destroyTokens('5963c694-59f2-4cd5-9fc0-d28175094fd4');
+//that.stampToken("jd@ncnt.io", "devCent", 100, 09-09-2018)
+//that.createWalletAddress("kyle@ncnt.io", '2a619391-73e9-44d4-a1f0-02ee1bbab1fa');
+//that.createWalletAddress("jd@ncnt.io", '2a619391-73e9-44d4-a1f0-02ee1bbab1fa');
 
-//var balance_id = that.createBalance('jd@ncnt.io', '6a9c2bb7-5c33-4013-982c-b6d2691d8c3a');
-//var balance_id_2 = that.createBalance('kyle@ncnt.io', '6a9c2bb7-5c33-4013-982c-b6d2691d8c3a');
-//that.getTokenBalance('jd@ncnt.io', 'dcd96451-575f-48c4-a114-dba00e7350a9');
+//that.getTokenBalance('jd@ncnt.io', '5963c694-59f2-4cd5-9fc0-d28175094fd4');
 //that.getAllBalances('jd@ncnt.io');
-//that.transferTokens('bb0334f7-c7e7-4c17-8802-40559e05da31', 'e15c12c9-6e90-40c6-9ebd-92591d75ff5b', "jd@ncnt.io", "kyle@ncnt.io", '6a9c2bb7-5c33-4013-982c-b6d2691d8c3a', 100);
-that.init(['a', 'b', 'c', 'd']);  
+that.transferTokens("kyle@ncnt.io", "jd@ncnt.io", '2a619391-73e9-44d4-a1f0-02ee1bbab1fa', 50);
+//that.init(['a', 'b', 'c', 'd']);  

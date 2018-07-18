@@ -5,11 +5,22 @@ module.exports = {
     .then(() => {
       queryInterface.createTable('Wallets', {
         uuid: {
+          type: DataTypes.UUID,
+          primaryKey: true,
+          allowNull: false,
+        },
+        wallet_uuid: {
           //type: DataTypes.UUID,
           type: DataTypes.STRING,
           allowNull: false,
-          primaryKey: true,
-	        autoIncrement: false
+        },
+        tokentype_uuid: {
+          type: DataTypes.UUID,
+          allowNull: false,
+        },
+        balance: {
+          type: DataTypes.INTEGER,
+          allowNull: false
         },
         createdAt: {
           allowNull: false,
