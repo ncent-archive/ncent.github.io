@@ -3,7 +3,8 @@ module.exports = (sequelize, DataTypes) => {
   const TokenType = sequelize.define('TokenType', {
     Name: {
 	    type: DataTypes.STRING, 
-	    allowNull: false
+      allowNull: false,
+      unique: true
     },
     uuid: {
 	    type: DataTypes.UUID,
@@ -24,6 +25,7 @@ module.exports = (sequelize, DataTypes) => {
     totalTokens: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      validate: {min: 0}
     },
     // ValueEscrowRate: {
     //   type: DataTypes.FLOAT,
