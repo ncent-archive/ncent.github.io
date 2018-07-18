@@ -1263,7 +1263,7 @@ header .header-logo a {
   border: none;
   width: 100px;
   height: 27px;
-  background: url("../images/logo.png") no-repeat center;
+  background: url("https://res.cloudinary.com/dxwddglzt/image/upload/v1531945274/buildcent/logo.png") no-repeat center;
   background-size: 57px 27px;
   font: 0/0 a;
   text-shadow: none;
@@ -1510,7 +1510,7 @@ header .header-logo a {
   width: 100%;
   height: 100%;
   background-color: #151515;
-  background-image: url(../images/hero-bg.jpg);
+  background-image: url("https://res.cloudinary.com/dxwddglzt/image/upload/v1531945298/buildcent/hero-bg.jpg");
   background-repeat: no-repeat;
   background-position: center 30%;
   -webkit-background-size: cover;
@@ -1916,7 +1916,7 @@ html[data-useragent*='MSIE 10.0'] .scrolldown,
  * ------------------------------------------------------------------- */
 #services {
   background-color: #19191b;
-  background-image: url(../images/services-bg.jpg);
+  background-image: url("https://res.cloudinary.com/dxwddglzt/image/upload/v1531945315/buildcent/services-bg.jpg");
   background-repeat: no-repeat;
   background-position: center;
   -webkit-background-size: cover;
@@ -2522,7 +2522,7 @@ html[data-useragent*='MSIE 10.0'] .scrolldown,
  * ------------------------------------------------------------------- */
 #contact {
   background-color: #111111;
-  background-image: url(../images/contact-bg.jpg);
+  background-image: url("https://res.cloudinary.com/dxwddglzt/image/upload/v1531945334/buildcent/contact-bg.jpg");
   background-repeat: no-repeat;
   background-position: center;
   -webkit-background-size: cover;
