@@ -10,15 +10,16 @@ It provides:
 In our initial version, we will provide support for:
 
  - transferTokens
- - createWallet
+ - createWalletAddress
  - getAllBalances
  - getTokenBalances
+ - destroyTokens
+ - stampToken
+ 
+ In our next version, there will be support for
  - getAllTransactionHistory
  - getTokenTransactionHistory
- - destroyTokens
  - redeemToken
- - stampToken
- - signMessage
 
 ## Quick start
 
@@ -59,7 +60,7 @@ In the event the above does not work, please contact us to get help resolving yo
 1. Clone the repo:
 
   ```shell
-  git clone https://github.com/thejnaut1/ncnt/ncentSDK.git
+  git clone https://github.com/ncent/ncent.github.io/
   ```
 
 2. Install dependencies inside our ncentSDK folder:
@@ -69,7 +70,6 @@ In the event the above does not work, please contact us to get help resolving yo
   ```
 
 ## Usage
-
 TBD
 
 ## Testing
