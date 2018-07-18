@@ -25,6 +25,7 @@
     "pg-hstore": "^2.3.2",
     "request": "^2.81.0",
     "sequelize": "^4.37.10",
+    "user": "0.0.0",
     "webpack": "^4.15.1"
   },
   "devDependencies": {
