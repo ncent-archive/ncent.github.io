@@ -26,17 +26,35 @@
     visibility: visible;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
-    padding-top: 2%;
+    justify-content: space-between;
+}
+#navbar-middle {
+    margin-left: 0;
 }
 .mobileheadimage {
     visibility: hidden;
     width: 0;
     height: 0;
 }
-.headimage {
-    width: 12vw;
+.headimageWhite {
+    height: 0;
+    width: 0;
+    visibility: hidden;
+}
+.headimageWhite.visible {
+    width: 15vw;
     height: auto;
+    visibility: visible;
+}
+.headimageBlack {
+    height: 0;
+    width: 0;
+    visibility: hidden;
+}
+.headimageBlack.visible {
+    width: 15vw;
+    height: auto;
+    visibility: visible;
 }
 .almost-half-window .headerButton {
     visibility: hidden;
