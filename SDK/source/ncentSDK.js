@@ -178,9 +178,11 @@ class ncentSDK {
                 console.log(txn.data);
                 console.log(sdrbal.data);
                 console.log(rvrbal.data);
+                return [txn, sdrbal, rvrbal];
             }))
             .catch(function(error) {
                 console.log(error.response.data);
+                return error;
             })
         }))
     }
@@ -196,11 +198,11 @@ class ncentSDK {
         axios.get(this._net + '/wallets/' + wallet_uuid + '/' + tokentype_uuid)
         .then(function(response) {
             console.log(response.data);
-            return response.data[0].balance;
+            return response;
         })
         .catch(function(error) {
             console.log(error.response.data);
-            return -1;
+            return error;
         });
     }
     
@@ -216,9 +218,11 @@ class ncentSDK {
         })
         .then(function(response) {
             console.log(response.data);
+            return response;
         })
         .catch(function(error) {
             console.log(error.response.data);
+            return error;
         });
     }
     
