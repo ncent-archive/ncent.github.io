@@ -19,7 +19,6 @@ module.exports = (app) => {
     app.get('/api/wallets/:wallet_uuid', walletsController.listSome);
     app.get('/api/wallets/:wallet_uuid/:tokentype_uuid', walletsController.retrieve);
     app.put('/api/wallets/:wallet_uuid/:tokentype_uuid', (req, res) => {
-        //tokentypesController.retrieve(req, res);
         walletsController.update(req, res);
     });
     // app.get('/api/wallets/:wallet_uuid/items', balancesController.list);

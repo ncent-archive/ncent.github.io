@@ -24,6 +24,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     totalTokens: {
       type: DataTypes.INTEGER,
+      
       allowNull: false,
       validate: {min: 0}
     },
