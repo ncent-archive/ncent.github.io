@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "postgres",
-    "password": "dickey",
-    "database": "ncnt-dev",
-    "host": "127.0.0.1",
+    "username": "joel_dominic",
+    "password": "nCentLabs2018",
+    "database": "ncnt_dev",
+    "host": "postgresql-test.cfjopvwc8bw8.us-west-1.rds.amazonaws.com",
     "port": 5432,
     "dialect": "postgres"
   },
