@@ -28,9 +28,11 @@ class ncentSDK {
             })
             .then(function(response) {
                 console.log(response.data);
+                return response;
             })
             .catch(function(error) {
                 console.log(error.response.data);
+                return error;
             });
         } else {
             axios.post(this._net + '/wallets', {
@@ -39,9 +41,11 @@ class ncentSDK {
             })
             .then(function(response) {
                 console.log(response.data);
+                return response;
             })
             .catch(function(error) {
                 console.log(error.response.data);
+                return error;
             });
         }
 
@@ -60,31 +64,31 @@ class ncentSDK {
         const ncnt_uuid = this.stampToken("company@ncnt.io", name, numTokens, date);
         return ncnt_uuid;
     }   
-    init(emails) {
-        console.log("hi");
-        // pseudocode - writing up shortly.
-        this.initNCNT();
-        let emailAddress = emails;
-        let arrayLength = emailAddress.length;
-        for (let i = 0; i < arrayLength; i++) {
-            this.createWallet(emailAddress[i]);            
-            axios.post(this.net, {
-                email: emailAddress[i],
-                tokenID: tokenID,
-                numTokens: numTokens,
-                date: date,          
-            }
-            ).then(function(response) {
-                console.log(response.data);
-            }
-            ).catch(function(error) {
-                console.log(error.response.data);
-            });
-        return tokenID; 
-        // return tokenTypeID, and balanceID.
-        //tokentypeID, balanceID;          
-        }
-}
+//     init(emails) {
+//         console.log("hi");
+//         // pseudocode - writing up shortly.
+//         this.initNCNT();
+//         let emailAddress = emails;
+//         let arrayLength = emailAddress.length;
+//         for (let i = 0; i < arrayLength; i++) {
+//             this.createWallet(emailAddress[i]);            
+//             axios.post(this.net, {
+//                 email: emailAddress[i],
+//                 tokenID: tokenID,
+//                 numTokens: numTokens,
+//                 date: date,          
+//             }
+//             ).then(function(response) {
+//                 console.log(response.data);
+//             }
+//             ).catch(function(error) {
+//                 console.log(error.response.data);
+//             });
+//         return tokenID; 
+//         // return tokenTypeID, and balanceID.
+//         //tokentypeID, balanceID;          
+//         }
+// }
 
     /*
         destroyTokens destroys all tokens of a certain tokenType.
@@ -105,9 +109,11 @@ class ncentSDK {
         })
         .then(function(response) {
             console.log(response.data);
+            return response;
         })
         .catch(function(error) {
             console.log(error.response.data);
+            return error;
         });
     }
     /*
@@ -130,11 +136,11 @@ class ncentSDK {
         })
         .then(function(response) {
             console.log(response.data);
-            return response.data.uuid;
+            return response;
         })
         .catch(function(error) {
             console.log(error.response.data);
-            return -1;
+            return error;
         });
     }
     
