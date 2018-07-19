@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       primaryKey: true,
       autoIncrement: false,
-      defaultValue: DataTypes.UUIDV4,
+      defaultValue: DataTypes.UUIDV4
     },
     wallet_uuid: {
 	    type:DataTypes.STRING,
@@ -17,12 +17,26 @@ module.exports = (sequelize, DataTypes) => {
     tokentype_uuid: {
       type: DataTypes.UUID,
       allowNull: false,
-      defaultValue: '5963c694-59f2-4cd5-9fc0-d28175094fd4',
+      defaultValue: '498cc1fe-62d3-4863-a0e0-a42049b90fff'
+      // validate: {
+      //   exists: function(value) {
+      //     console.log(value);
+      //     return sequelize.models.TokenType.findById(value)
+      //     .then(tokentype => {
+      //       if (!tokentype) {
+      //         throw new Error({error: [{message: 'TokenType Not Found'}]});
+      //       } else {
+      //         return;
+      //       }
+      //     })
+      //     .catch(error => console.log(error.message))
+      //   }
+      // }
     },
     balance: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      defaultValue: 0,
+      defaultValue: 0
       //validate: {min: 0, max: }
     }
   },{

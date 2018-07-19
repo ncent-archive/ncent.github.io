@@ -30,7 +30,23 @@ module.exports = {
           allowNull: false,
           type: DataTypes.DATE,
         },
-      });
+      }, {
+        validate: {
+          exists () {
+            sequelize.models.TokenType.findById(this.tokentype_uuid)
+            .then(tokentype => {
+              console.log(tokentype);
+              if (!tokentype) {
+                throw new Error({error: [{message: 'TokenType Not Found'}]});
+              } else {
+                return;
+              }
+            })
+            .catch(error => console.log(error.message))
+          }
+        }
+      }
+    );
     });
   },
   down: (queryInterface) => queryInterface.dropTable('Wallets'),
