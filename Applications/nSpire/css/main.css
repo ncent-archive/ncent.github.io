@@ -3637,5 +3637,65 @@ footer .row {
     }
 }
 
+.registerLink {
+    width: 60%;
+    align-self: center;
+}
+
+.registerNowButton {
+    font-size: 3vw;
+    border: 2px solid white;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+}
+
+.pulse {
+    cursor: pointer;
+    box-shadow: 0 0 0 white;
+    animation: pulse 2s infinite;
+}
+.pulse:hover {
+    animation: none;
+}
+
+@-webkit-keyframes pulse {
+    0% {
+        -webkit-box-shadow: 0 0 0 0 rgba(255,255,255, 0.6);
+    }
+    70% {
+        -webkit-box-shadow: 0 0 0 20px rgba(255,255,255, 0);
+    }
+    100% {
+        -webkit-box-shadow: 0 0 0 0 rgba(255,255,255, 0);
+    }
+}
+@keyframes pulse {
+    0% {
+        -moz-box-shadow: 0 0 0 0 rgba(255,255,255, 0.6);
+        box-shadow: 0 0 0 0 rgba(255,255,255, 0.6);
+    }
+    70% {
+        -moz-box-shadow: 0 0 0 20px rgba(255,255,255, 0);
+        box-shadow: 0 0 0 20px rgba(255,255,255, 0);
+    }
+    100% {
+        -moz-box-shadow: 0 0 0 0 rgba(255,255,255, 0);
+        box-shadow: 0 0 0 0 rgba(255,255,255, 0);
+    }
+}
+
+.home-content__main {
+    display: flex;
+    flex-direction: column;
+}
+
+.fa {
+    color: white;
+}
+.fa:hover {
+    color: #39b54a;
+}
+
 
 /*# sourceMappingURL=main.css.map */
