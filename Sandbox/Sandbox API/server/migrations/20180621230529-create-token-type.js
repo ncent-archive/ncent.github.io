@@ -6,7 +6,8 @@ module.exports = {
       return queryInterface.createTable('TokenTypes', {
         Name: {
 	        type: DataTypes.STRING, 
-	        allowNull: false
+          allowNull: false,
+          unique: true
         },
         uuid: {
 	        type: DataTypes.UUID,
