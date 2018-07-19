@@ -128,6 +128,8 @@ class ncentSDK {
     */
     stampToken(walletAddress, tokenName, numTokens, ExpiryDate) {
         // Make a request for a user with a given ID
+        let resp;
+        let uuid;
         axios.post(this._net + '/tokentypes', {
             sponsor_uuid: walletAddress,
             Name: tokenName,
@@ -136,12 +138,27 @@ class ncentSDK {
         })
         .then(function(response) {
             console.log(response.data);
-            return response;
+            uuid = response.data.uuid;
+            resp[0] = response;
         })
         .catch(function(error) {
             console.log(error.response.data);
             return error;
         });
+        axios.post(this._net + '/wallets', {
+            tokentype_uuid: uuid,
+            wallet_uuid: emailAddress,
+            balance: numTokens
+        })
+        .then(function(response) {
+            console.log(response.data);
+            resp[1] = response;
+        })
+        .catch(function(error) {
+            console.log(error.response.data);
+            return error;
+        });
+        return resp;
     }
     
     /*
