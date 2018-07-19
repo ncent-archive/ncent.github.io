@@ -6,6 +6,7 @@ module.exports = {
       .create({
         wallet_uuid: req.body.wallet_uuid,
         tokentype_uuid: req.body.tokentype_uuid,
+        balance: req.body.balance
       })
       .then(wallet => res.status(201).send(wallet))
       .catch(error => res.status(400).send(error));
