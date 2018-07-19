@@ -47,29 +47,41 @@ let token_id;
 
 function initJobCent(){
 	//ncentSDKInstance.init(walletsCreated);
-	let response = await ncentSdkInstance.stampTokens('jobcent@ncnt.io', 'jobCent', 10000, '2021');
-	if(response.errors){
-		console.log("Error stamping tokens");
+	new Promise(function(resolve, reject) {
+		ncentSdkInstance.stampToken('jobcent@ncnt.io', 'jobCent', 10000, '2021');
+	})
+	.then(function(response) {
+		token_id = response.data.uuid;
+	})
+	.catch(function(error) {
+		console.log(error.response.data);
 		return;
-	}
-	token_id = response.data.uuid;
-	await ncentSdkInstance.createWalletAddress('jobcent@ncnt.io', token_id);
-	await ncentSdkInstance.createWalletAddress('mb@ncnt.io', token_id);
-	await ncentSdkInstance.createWalletAddress('kk@ncnt.io', token_id);
-	await ncentSdkInstance.createWalletAddress('af@ncnt.io', token_id);
-	await ncentSdkInstance.createWalletAddress('jd@ncnt.io', token_id);
-	await ncentSdkInstance.createWalletAddress('kd@ncnt.io', token_id);
-	await ncentSdkInstance.createWalletAddress('an@ncnt.io', token_id);
-	await ncentSdkInstance.createWalletAddress('jp@ncnt.io', token_id);
-	await ncentSdkInstance.createWalletAddress('ag@ncnt.io', token_id);
-	ncentSdkInstance.transferTokens('jobcent@ncnt.io', 'mb@ncnt.io', token_id, 500);
-	ncentSdkInstance.transferTokens('jobcent@ncnt.io', 'kk@ncnt.io', token_id, 500);
-	ncentSdkInstance.transferTokens('jobcent@ncnt.io', 'af@ncnt.io', token_id, 500);
-	ncentSdkInstance.transferTokens('jobcent@ncnt.io', 'jd@ncnt.io', token_id, 500);
-	ncentSdkInstance.transferTokens('jobcent@ncnt.io', 'kd@ncnt.io', token_id, 500);
-	ncentSdkInstance.transferTokens('jobcent@ncnt.io', 'an@ncnt.io', token_id, 500);
-	ncentSdkInstance.transferTokens('jobcent@ncnt.io', 'jp@ncnt.io', token_id, 500);
-	ncentSdkInstance.transferTokens('jobcent@ncnt.io', 'ag@ncnt.io', token_id, 500);
+	});
+	new Promise(function(resolve, reject) {
+		ncentSdkInstance.createWalletAddress('jobcent@ncnt.io', token_id);
+		ncentSdkInstance.createWalletAddress('mb@ncnt.io', token_id);
+		ncentSdkInstance.createWalletAddress('kk@ncnt.io', token_id);
+		ncentSdkInstance.createWalletAddress('af@ncnt.io', token_id);
+		ncentSdkInstance.createWalletAddress('jd@ncnt.io', token_id);
+		ncentSdkInstance.createWalletAddress('kd@ncnt.io', token_id);
+		ncentSdkInstance.createWalletAddress('an@ncnt.io', token_id);
+		ncentSdkInstance.createWalletAddress('jp@ncnt.io', token_id);
+		ncentSdkInstance.createWalletAddress('ag@ncnt.io', token_id);
+	})
+	.then(function(response) {
+		ncentSdkInstance.transferTokens('jobcent@ncnt.io', 'mb@ncnt.io', token_id, 500);
+		ncentSdkInstance.transferTokens('jobcent@ncnt.io', 'kk@ncnt.io', token_id, 500);
+		ncentSdkInstance.transferTokens('jobcent@ncnt.io', 'af@ncnt.io', token_id, 500);
+		ncentSdkInstance.transferTokens('jobcent@ncnt.io', 'jd@ncnt.io', token_id, 500);
+		ncentSdkInstance.transferTokens('jobcent@ncnt.io', 'kd@ncnt.io', token_id, 500);
+		ncentSdkInstance.transferTokens('jobcent@ncnt.io', 'an@ncnt.io', token_id, 500);
+		ncentSdkInstance.transferTokens('jobcent@ncnt.io', 'jp@ncnt.io', token_id, 500);
+		ncentSdkInstance.transferTokens('jobcent@ncnt.io', 'ag@ncnt.io', token_id, 500);
+	})
+	.catch(function(error) {
+		console.log(error);
+		return;
+	})
 }
 
 function createWalletIfNeeded(walletExists, toEmail){
@@ -87,15 +99,32 @@ function getEmailString(headerVal){
 }
 
 const processTransaction = async (to, from) => {
-	await createWalletIfNeeded(wallets_Created[to], to);
-	let response = await ncentSdkInstance.getTokenBalance(from, token_id);
-	let balance = response.data.balance;
-	if ( balance === 0) {
-		sendEmail(from, './nojobCent.html', "Error: You do not have any jobcents to send");
+	new Promise(function(resolve, reject) {
+		createWalletIfNeeded(wallets_Created[to], to);
+	})
+	.then(function(response) {
+		console.log(response);
+	})
+	.catch(function(error) {
+		console.log(error);
 		return;
-	}
-	ncentSdkInstance.transferTokens(from, to, token_id, 1);
-	sendEmail(to, './receivedjobCent.html', "Congrats, you've received a jobCent!");
+	});
+	new Promise(function(resolve, reject) {
+		ncentSdkInstance.getTokenBalance(from, token_id);
+	})
+	.then(function(response) {
+		let balance = response.data.balance;
+		if ( balance === 0) {
+			sendEmail(from, './nojobCent.html', "Error: You do not have any jobcents to send");
+			return;
+		}
+		ncentSdkInstance.transferTokens(from, to, token_id, 1);
+		sendEmail(to, './receivedjobCent.html', "Congrats, you've received a jobCent!");
+	})
+	.catch(function(error) {
+		console.log(error);
+		return;
+	})	
 }
 
 function printMessage(message){
@@ -127,15 +156,34 @@ const messageHandler = async message => {
   	}
 
   	// Result is basically the messages that we got notified for
-  	let result = await gmail.users.history.list(options);
-	result.data.history.forEach(entry => { 			// console.log(entry.messages); //Prints the new messages info
+  	let history;
+  	new Promise(function(resolve, reject) {
+  		gmail.users.history.list(options);
+  	})
+  	.then(function(response){
+  		history = response.data.history;
+  	})
+  	.catch(function(error){
+  		console.log(error);
+  		return;
+  	});
+	history.forEach(entry => { 			// console.log(entry.messages); //Prints the new messages info
 	  entry.messages.forEach(async (message) => {
 	  	if ((message.id in alreadyProcessed)) return;
 	  	alreadyProcessed[message.id] = 1;
 
 	  	const msgOptions = {userId: messageJSON.emailAddress, auth: oauth2Client, id: message.id};
-	  	let messageInfo = await gmail.users.messages.get(msgOptions);
-	  	let headers = messageInfo.data.payload.headers;
+	  	let headers;
+	  	new Promise(function(resolve, reject) {
+  			gmail.users.messages.get(msgOptions);
+  		})
+  		.then(function(response){
+  			headers = response.data.payload.headers;
+  		})
+  		.catch(function(error){
+  			console.log(error);
+  			return;
+  		});
 	  	let toEmail = '';
 	  	let fromEmail = '';
         let ccFound = false;
@@ -164,7 +212,6 @@ const messageHandler = async message => {
 
 	  	console.log('\nSending one jobCent from ' + fromEmail + ' to ' + toEmail);
 	  	processTransaction(toEmail, fromEmail);
-	  	
 	  });
 	});
   // "Ack" (acknowledge receipt of) the message
