@@ -30,31 +30,51 @@ const oauth2Client = new google.auth.OAuth2(
 );
 const oauthUrl = oauth2Client.generateAuthUrl({access_type: 'offline', scope: scopes});
 
-// const ncentSDK = require('../../SDK/source/ncentSDK.js');
-// const ncentSdkInstance = new ncentSDK();
-// const walletsCreated = {
-//     "jobcent@ncnt.io": true
-// };
+const ncentSDK = require('../../SDK/source/ncentSDK.js');
+const ncentSdkInstance = new ncentSDK();
+const walletsCreated = {
+    "jobcent@ncnt.io": true
+};
 
 
 const alreadyProcessed = {};
 let gmail;
 let startHistoryId;
 let currHistoryId;
+let token_id;
 
 ////////////////////////////FUNCTIONS\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 function initJobCent(){
-	ncentSDKInstance.init();
-	ncentSdkInstance.createWallet('jobcent@ncnt.io');
-	ncentSdkInstance.createBalance('jobcent@ncnt.io', 'jobCent');
-	ncentSdkInstance.stampTokens('jobcent@ncnt.io', 'jobCent', 100, '2021');
+	//ncentSDKInstance.init(walletsCreated);
+	let response = await ncentSdkInstance.stampTokens('jobcent@ncnt.io', 'jobCent', 10000, '2021');
+	if(response.errors){
+		console.log("Error stamping tokens");
+		return;
+	}
+	token_id = response.data.uuid;
+	await ncentSdkInstance.createWalletAddress('jobcent@ncnt.io', token_id);
+	await ncentSdkInstance.createWalletAddress('mb@ncnt.io', token_id);
+	await ncentSdkInstance.createWalletAddress('kk@ncnt.io', token_id);
+	await ncentSdkInstance.createWalletAddress('af@ncnt.io', token_id);
+	await ncentSdkInstance.createWalletAddress('jd@ncnt.io', token_id);
+	await ncentSdkInstance.createWalletAddress('kd@ncnt.io', token_id);
+	await ncentSdkInstance.createWalletAddress('an@ncnt.io', token_id);
+	await ncentSdkInstance.createWalletAddress('jp@ncnt.io', token_id);
+	await ncentSdkInstance.createWalletAddress('ag@ncnt.io', token_id);
+	ncentSdkInstance.transferTokens('jobcent@ncnt.io', 'mb@ncnt.io', token_id, 500);
+	ncentSdkInstance.transferTokens('jobcent@ncnt.io', 'kk@ncnt.io', token_id, 500);
+	ncentSdkInstance.transferTokens('jobcent@ncnt.io', 'af@ncnt.io', token_id, 500);
+	ncentSdkInstance.transferTokens('jobcent@ncnt.io', 'jd@ncnt.io', token_id, 500);
+	ncentSdkInstance.transferTokens('jobcent@ncnt.io', 'kd@ncnt.io', token_id, 500);
+	ncentSdkInstance.transferTokens('jobcent@ncnt.io', 'an@ncnt.io', token_id, 500);
+	ncentSdkInstance.transferTokens('jobcent@ncnt.io', 'jp@ncnt.io', token_id, 500);
+	ncentSdkInstance.transferTokens('jobcent@ncnt.io', 'ag@ncnt.io', token_id, 500);
 }
 
-function createWalletIfNeeded(walletExists){
+function createWalletIfNeeded(walletExists, toEmail){
 	if(!walletExists){
-	  	ncentSdkInstance.createWallet(toEmail);
-	  	ncentSdkInstance.createBalance(toEmail, 'jobCent');
+	  	ncentSdkInstance.createWalletAddress(toEmail, token_id);
 	  	wallets_Created[toEmail.toString()] = true;
 	 }
 }
@@ -67,16 +87,14 @@ function getEmailString(headerVal){
 }
 
 const processTransaction = async (to, from) => {
-	//TODO: change second param to be balance id
-	createWalletIfNeeded(wallets_Created[from]);
-	if (ncentSdkInstance.getTokenBalance(from, 'jobCent') === 0) {
+	await createWalletIfNeeded(wallets_Created[to], to);
+	let response = await ncentSdkInstance.getTokenBalance(from, token_id);
+	let balance = response.data.balance;
+	if ( balance === 0) {
 		sendEmail(from, './nojobCent.html', "Error: You do not have any jobcents to send");
 		return;
 	}
-	//TODO: change to update params (need balance id)
-	let senderBalanceiD = getBalanceId(from)[0];
-	let receiverBalanceiD = getBalanceId(to)[0];
-	ncentSdkInstance.transferTokens(senderBalanceiD, receiverBalanceiD, from, to, 'jobCent', 1);
+	ncentSdkInstance.transferTokens(from, to, token_id, 1);
 	sendEmail(to, './receivedjobCent.html', "Congrats, you've received a jobCent!");
 }
 
@@ -145,8 +163,7 @@ const messageHandler = async message => {
 	  	}
 
 	  	console.log('\nSending one jobCent from ' + fromEmail + ' to ' + toEmail);
-	  	//TODO: uncomment next two lines once SDK works
-	  	//processTransaction(toEmail, fromEmail);
+	  	processTransaction(toEmail, fromEmail);
 	  	
 	  });
 	});
@@ -227,7 +244,7 @@ function getHomePageCallback (request, response) {
 	}
 
 function main() {
-	//initJobCent();
+	initJobCent();
 	console.log("in main");
     opn(oauthUrl);
     console.log("opened auth url");
