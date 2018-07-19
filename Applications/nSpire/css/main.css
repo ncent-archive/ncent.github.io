@@ -59,6 +59,37 @@
  * # base style overrides
  *
  * ------------------------------------------------------------------- */
+.section-ajenda .session {
+    padding       : 15px 0;
+    border-left   : 1px solid #000;
+    margin-bottom : 40px;
+    }
+
+.section-ajenda .session time {
+    padding       : 5px 25px 15px;
+    border-bottom : 1px solid #000;
+    display       : inline-block;
+    }
+
+.section-ajenda .session h2 {
+    margin : 20px 0 0 20px;
+    }
+
+.section-ajenda .session h3 {
+    margin         : 20px 0 20px 20px;
+    font-size      : 20px;
+    text-transform : uppercase;
+    }
+
+.section-ajenda .session h3 span {
+    font-size   : 14px;
+    display     : block;
+    line-height : 1;
+    }
+.section-wrapper {
+    padding : 100px 0;
+    }
+
 html {
     font-size: 10px;
 }
