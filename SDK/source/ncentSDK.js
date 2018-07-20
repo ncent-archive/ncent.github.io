@@ -19,7 +19,7 @@ class ncentSDK {
     */  
 
     //if tokentype_id is null, default is the ncnt uuid
-    createWalletAddress(emailAddress, tokentype_id) {
+    createWalletAddress(emailAddress, tokentype_id, resolve) {
        //let privateKey = ((+new Date) + Math.random()* 2).toString(32);
        //console.log(privateKey);
         if (tokentype_id == null) {
@@ -27,8 +27,8 @@ class ncentSDK {
                 wallet_uuid: emailAddress
             })
             .then(function(response) {
-                console.log(response.data);
-                return response;
+                //console.log(response.data);
+                return resolve(response);
             })
             .catch(function(error) {
                 console.log(error.response.data);
@@ -40,8 +40,8 @@ class ncentSDK {
                 wallet_uuid: emailAddress
             })
             .then(function(response) {
-                console.log(response.data);
-                return response;
+                //console.log(response.data);
+                return resolve(response);
             })
             .catch(function(error) {
                 console.log(error.response.data);
@@ -100,7 +100,7 @@ class ncentSDK {
     */
     //change time to server side
 
-    destroyTokens(tokentype_id) {
+    destroyTokens(tokentype_id, resolve) {
     // checker here.
         //if (typeof walletAddress == 'object' && typeof privateKey == 'object')
         var currentDate = new Date();
@@ -108,8 +108,8 @@ class ncentSDK {
             ExpiryDate: currentDate.getTime(),
         })
         .then(function(response) {
-            console.log(response.data);
-            return response;
+            //console.log(response.data);
+            return resolve(response);
         })
         .catch(function(error) {
             console.log(error.response.data);
@@ -126,7 +126,7 @@ class ncentSDK {
         success: callback;
         error: callback;
     */
-    stampToken(walletAddress, tokenName, numTokens, ExpiryDate) {
+    stampToken(walletAddress, tokenName, numTokens, ExpiryDate, success) {
         // Make a request for a user with a given ID
         let resp;
         let uuid;
@@ -137,28 +137,33 @@ class ncentSDK {
             ExpiryDate: ExpiryDate,          
         })
         .then(function(response) {
-            console.log(response.data);
+            //console.log(response.data);
             uuid = response.data.uuid;
-            resp[0] = response;
+            resp = response;
+            resp.data = {
+                tokenTypeResponseData: response.data
+            };
         })
         .catch(function(error) {
             console.log(error);
             return error;
-        });
-        axios.post(this._net + '/wallets', {
-            tokentype_uuid: uuid,
-            wallet_uuid: walletAddress,
-            balance: numTokens
         })
-        .then(function(response) {
-            console.log(response.data);
-            resp[1] = response;
-        })
-        .catch(function(error) {
-            console.log(error.response);
-            return error;
-        });
-        return resp;
+        .then(function() {
+            axios.post(this._net + '/wallets', {
+                tokentype_uuid: uuid,
+                wallet_uuid: walletAddress,
+                balance: numTokens
+            })
+            .then(function(response) {
+                resp.data["walletResponseData"] = response.data;
+                // console.log(resp);
+                return success(resp);
+            })
+            .catch(function(error) {
+                console.log(error.response);
+                return error;
+            });
+        }.bind(this));
     }
     
     /*
@@ -173,6 +178,7 @@ class ncentSDK {
 
     transferTokens(walletSender_id, walletReceiver_id, tokentype_id, tokenAmount) {
         const sdk = this;
+        let resp;
         axios.all([
             axios.get(sdk._net + '/wallets/' + walletSender_id + '/' + tokentype_id),
             axios.get(sdk._net + '/wallets/' + walletReceiver_id + '/' + tokentype_id)
@@ -192,10 +198,16 @@ class ncentSDK {
                 })
             ])
             .then(axios.spread(function(txn, sdrbal, rvrbal) {
-                console.log(txn.data);
-                console.log(sdrbal.data);
-                console.log(rvrbal.data);
-                return [txn, sdrbal, rvrbal];
+                resp = txn;
+                resp.data = {
+                    tr: txn.data,
+                    sdr: sdrbal.data,
+                    rvr: rvrbal.data
+                };
+                //console.log(txn.data);
+                //console.log(sdrbal.data);
+                //console.log(rvrbal.data);
+                return resolve(resp);
             }))
             .catch(function(error) {
                 console.log(error.response.data);
@@ -211,11 +223,11 @@ class ncentSDK {
         success: callback;
         error: callback;
     */
-    getTokenBalance(wallet_uuid, tokentype_uuid) {
+    getTokenBalance(wallet_uuid, tokentype_uuid, resolve) {
         axios.get(this._net + '/wallets/' + wallet_uuid + '/' + tokentype_uuid)
         .then(function(response) {
-            console.log(response.data);
-            return response;
+            //console.log(response.data);
+            return resolve(response);
         })
         .catch(function(error) {
             console.log(error.response.data);
@@ -230,12 +242,12 @@ class ncentSDK {
         success: callback;
         error: callback;
     */
-    getAllBalances(wallet_uuid) {
+    getAllBalances(wallet_uuid, resolve) {
         axios.get(this._net + '/wallets/' + wallet_uuid, {
         })
         .then(function(response) {
-            console.log(response.data);
-            return response;
+            //console.log(response.data);
+            return resolve(response);
         })
         .catch(function(error) {
             console.log(error.response.data);
