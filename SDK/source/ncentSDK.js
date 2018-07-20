@@ -338,7 +338,7 @@ var that = new ncentSDK();
 //that.initNCNT();
 //that.destroyTokens('5963c694-59f2-4cd5-9fc0-d28175094fd4');
 //that.stampToken("jd@ncnt.io", "devCent", 100, 09-09-2018)
-that.createWalletAddress("kyle@ncnt.io", 'c5809dad-bed1-4432-a131-edb886beee42');
+//that.createWalletAddress("kyle@ncnt.io", 'c5809dad-bed1-4432-a131-edb886beee42');
 //that.createWalletAddress("jd@ncnt.io", '2a619391-73e9-44d4-a1f0-02ee1bbab1fa');
 
 //that.getTokenBalance('jd@ncnt.io', '5963c694-59f2-4cd5-9fc0-d28175094fd4');
