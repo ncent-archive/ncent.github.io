@@ -142,7 +142,7 @@ class ncentSDK {
             resp[0] = response;
         })
         .catch(function(error) {
-            console.log(error.response.data);
+            console.log(error);
             return error;
         });
         axios.post(this._net + '/wallets', {
@@ -155,7 +155,7 @@ class ncentSDK {
             resp[1] = response;
         })
         .catch(function(error) {
-            console.log(error.response.data);
+            console.log(error.response);
             return error;
         });
         return resp;
