@@ -46,55 +46,58 @@ let token_id;
 ////////////////////////////FUNCTIONS\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 const initJobCent = async() => {
-	let pms = new Promise(function(resolve, reject) {
-		ncentSdkInstance.stampToken('jobcent@ncnt.io', 'jobCent', 10000, '2021');
-	})
-	.then(function(response) {
-		token_id = response.data["tokenTypeResponseData"]["uuid"];
-		new Promise(function(resolve, reject) {
-			ncentSdkInstance.createWalletAddress('mb@ncnt.io', token_id);
-		})
-		.then(function(response) {
-			console.log(response);
-		})
-	})
-	.catch(function(error) {
-		console.log(error);
-		return;
-	});
-	let response = await pms;
-	return;
-	// new Promise(function(resolve, reject) {
+	// let pms = new Promise(function(resolve, reject) {
 	// 	ncentSdkInstance.stampToken('jobcent@ncnt.io', 'jobCent', 10000, '2021');
 	// })
 	// .then(function(response) {
-	// 	token_id = response.data["tokenTypeResponseData"]["uuid"];		
-	// })
-
-	// new Promise(function(resolve, reject) {
-	// 	ncentSdkInstance.createWalletAddress('mb@ncnt.io', token_id);
-	// 	// ncentSdkInstance.createWalletAddress('kk@ncnt.io', token_id);
-	// 	// ncentSdkInstance.createWalletAddress('af@ncnt.io', token_id);
-	// 	// ncentSdkInstance.createWalletAddress('jd@ncnt.io', token_id);
-	// 	// ncentSdkInstance.createWalletAddress('kd@ncnt.io', token_id);
-	// 	// ncentSdkInstance.createWalletAddress('an@ncnt.io', token_id);
-	// 	// ncentSdkInstance.createWalletAddress('jp@ncnt.io', token_id);
-	// 	// ncentSdkInstance.createWalletAddress('ag@ncnt.io', token_id);
-	// })
-	// .then(function(response) {
-	// 	ncentSdkInstance.transferTokens('jobcent@ncnt.io', 'mb@ncnt.io', token_id, 500);
-	// 	// ncentSdkInstance.transferTokens('jobcent@ncnt.io', 'kk@ncnt.io', token_id, 500);
-	// 	// ncentSdkInstance.transferTokens('jobcent@ncnt.io', 'af@ncnt.io', token_id, 500);
-	// 	// ncentSdkInstance.transferTokens('jobcent@ncnt.io', 'jd@ncnt.io', token_id, 500);
-	// 	// ncentSdkInstance.transferTokens('jobcent@ncnt.io', 'kd@ncnt.io', token_id, 500);
-	// 	// ncentSdkInstance.transferTokens('jobcent@ncnt.io', 'an@ncnt.io', token_id, 500);
-	// 	// ncentSdkInstance.transferTokens('jobcent@ncnt.io', 'jp@ncnt.io', token_id, 500);
-	// 	// ncentSdkInstance.transferTokens('jobcent@ncnt.io', 'ag@ncnt.io', token_id, 500);
+	// 	token_id = response.data["tokenTypeResponseData"]["uuid"];
+	// 	new Promise(function(resolve, reject) {
+	// 		ncentSdkInstance.createWalletAddress('mb@ncnt.io', token_id);
+	// 	})
+	// 	.then(function()
 	// })
 	// .catch(function(error) {
 	// 	console.log(error);
 	// 	return;
 	// });
+	// let response = await pms;
+	
+	// console.log(token_id);
+
+	// let y = await x;
+	// return;
+	return new Promise(function(resolve, reject) {
+		return ncentSdkInstance.stampToken('jobcent@ncnt.io', 'jobCent', 10000, '2021', resolve);
+	})
+	.then(function(response) {
+		console.log(response);
+		token_id = response.data["tokenTypeResponseData"]["uuid"];	
+		console.log(token_id);	
+	})
+	.then(function() {
+		ncentSdkInstance.createWalletAddress('mb@ncnt.io', token_id, resolve);
+		// ncentSdkInstance.createWalletAddress('kk@ncnt.io', token_id);
+		// ncentSdkInstance.createWalletAddress('af@ncnt.io', token_id);
+		// ncentSdkInstance.createWalletAddress('jd@ncnt.io', token_id);
+		// ncentSdkInstance.createWalletAddress('kd@ncnt.io', token_id);
+		// ncentSdkInstance.createWalletAddress('an@ncnt.io', token_id);
+		// ncentSdkInstance.createWalletAddress('jp@ncnt.io', token_id);
+		// ncentSdkInstance.createWalletAddress('ag@ncnt.io', token_id);
+	})
+	.then(function() {
+		ncentSdkInstance.transferTokens('jobcent@ncnt.io', 'mb@ncnt.io', token_id, 500, resolve);
+		// ncentSdkInstance.transferTokens('jobcent@ncnt.io', 'kk@ncnt.io', token_id, 500);
+		// ncentSdkInstance.transferTokens('jobcent@ncnt.io', 'af@ncnt.io', token_id, 500);
+		// ncentSdkInstance.transferTokens('jobcent@ncnt.io', 'jd@ncnt.io', token_id, 500);
+		// ncentSdkInstance.transferTokens('jobcent@ncnt.io', 'kd@ncnt.io', token_id, 500);
+		// ncentSdkInstance.transferTokens('jobcent@ncnt.io', 'an@ncnt.io', token_id, 500);
+		// ncentSdkInstance.transferTokens('jobcent@ncnt.io', 'jp@ncnt.io', token_id, 500);
+		// ncentSdkInstance.transferTokens('jobcent@ncnt.io', 'ag@ncnt.io', token_id, 500);
+	})
+	.catch(function(error){
+		console.log(error);
+		return;
+	});
 }
 
 function createWalletIfNeeded(walletExists, toEmail){
