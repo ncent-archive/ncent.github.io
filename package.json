@@ -1,6 +1,6 @@
 {
   "name": "ncent.github.io",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "nCent Labs Public Repository",
   "main": "index.js",
   "scripts": {
