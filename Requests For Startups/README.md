@@ -2,51 +2,51 @@
 ## Requests for Startups
 nCent Labs needs YOUR help to build applications on top of our upcoming blockchain platform! We are looking for talented developers who want to contribute to our public repository and show off their work to the world. While we are grateful for any open source contributions, we would also like to share a few ideas that we would really love to see the community help us develop. Following is a list of ideas where we really feel that proper incentive markets can flourish - with details to help you get started.
 ### 1. JobCent
-##### Problem
+#### Problem
 
-##### Why JobCent
+#### Why JobCent
 
 ### 2. DevCent
-#####Problem
+#### Problem
 
-##### Why DevCent
+#### Why DevCent
 
 ### 3. DateCent
-#####Problem
+#### Problem
 
-##### Why DateCent
+#### Why DateCent
 
 ### 4. SportCent
-#####Problem
+#### Problem
 
-##### Why SportCent
+#### Why SportCent
 
 ### 5. SongCent
-#####Problem
+#### Problem
 
-##### Why SongCent
+#### Why SongCent
 
 ### 6. FanCent
-#####Problem
+#### Problem
 
-##### Why FanCent
+#### Why FanCent
 
 ### 7. BuildCent
-#####Problem
+#### Problem
 
-##### Why BuildCent
+#### Why BuildCent
 
 ### 8. FashionCent
-#####Problem
+#### Problem
 
-##### Why FashionCent
+#### Why FashionCent
 
 ### 9. LearnCent
-#####Problem
+#### Problem
 
-##### Why LearnCent
+#### Why LearnCent
 
 ### 10. GiveCent
-#####Problem
+#### Problem
 
-##### Why GiveCent
+#### Why GiveCent
