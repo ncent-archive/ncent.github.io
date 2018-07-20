@@ -1,8 +1,8 @@
 {
   "name": "ncent-sdk-public",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "",
-  "main": "src/index.js",
+  "main": "source/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
