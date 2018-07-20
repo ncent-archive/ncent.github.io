@@ -147,7 +147,7 @@ class ncentSDK {
         });
         axios.post(this._net + '/wallets', {
             tokentype_uuid: uuid,
-            wallet_uuid: emailAddress,
+            wallet_uuid: walletAddress,
             balance: numTokens
         })
         .then(function(response) {
