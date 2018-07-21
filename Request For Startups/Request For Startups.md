@@ -2,7 +2,9 @@
 ## Requests for Startups
 nCent Labs needs YOUR help to build applications on top of our upcoming blockchain platform! We are looking for talented developers who want to contribute to our public repository and show off their work to the world. While we are grateful for any open source contributions, we would also like to share a few ideas that we would really love to see the community help us develop. Following is a list of ideas where we really feel that proper incentive markets can flourish - with details to help you get started.
 
-If you are a developer with a keen passion for building applications like these for our blockchain platform, please check out https://ncent.io/Applications/yCent/index.html to apply for our startup incubator!
+Feeling inspired by the ideas below? Feel free to submit a *merge request* to us so that we can show off your work!
+
+If you have a keen passion for building applications like these for our blockchain platform, please check out https://ncent.io/Applications/yCent/index.html to apply for our startup incubator!
 
 ### 1. JobCent
 #### Problem
