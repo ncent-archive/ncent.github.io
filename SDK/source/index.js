@@ -8,6 +8,6 @@ require('es6-promise').polyfill();
 // export {StellarTomlResolver, STELLAR_TOML_MAX_SIZE} from "./stellar_toml_resolver";
 
 // expose classes and functions from ncentSDK
-export * from "ncentSDK.js";
+export * from "./ncentSDK.js";
 
 //export default module.exports;
