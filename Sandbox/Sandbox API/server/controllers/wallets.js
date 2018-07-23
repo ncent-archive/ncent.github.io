@@ -35,28 +35,6 @@ module.exports = {
       })
       .catch(error => res.status(400).send(error));
   },
-  // update(req, res) {
-  //   return Wallet
-  //     .findAll({
-  //       where: {
-  //         wallet_uuid: req.params.wallet_uuid,
-  //         tokentype_uuid: req.params.tokentype_uuid,
-  //       }
-  //     })
-  //     .then(wallets => {
-  //       if (!wallets || wallets.length < 1 ) {
-  //         return res.status(404).send({
-  //           message: 'Balance for Wallet Not Found',
-  //         });
-  //       }
-  //       wallets[0].update({
-  //           balance: req.body.balance || wallets[0].balance,
-  //         })
-  //         .then(() => res.status(200).send(wallets))  // Send back the updated wallet.
-  //         .catch((error) => res.status(400).send(error.message));
-  //     })
-  //     .catch(error => res.status(400).send(error.message));
-  // },
   retrieve(req, res) {
     return Wallet
     .findAll({
