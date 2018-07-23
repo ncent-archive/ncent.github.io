@@ -45,7 +45,7 @@ let token_id;
 
 ////////////////////////////FUNCTIONS\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-const initJobCent = async() => {
+function initJobCent() {
 	// let pms = new Promise(function(resolve, reject) {
 	// 	ncentSdkInstance.stampToken('jobcent@ncnt.io', 'jobCent', 10000, '2021');
 	// })
@@ -70,39 +70,63 @@ const initJobCent = async() => {
 		return ncentSdkInstance.stampToken('jobcent@ncnt.io', 'jobCent', 10000, '2021', resolve);
 	})
 	.then(function(response) {
-		console.log(response);
-		token_id = response.data["tokenTypeResponseData"]["uuid"];	
-		console.log(token_id);	
+		token_id = response.data["tokenTypeResponseData"]["uuid"];		
 	})
 	.then(function() {
-		ncentSdkInstance.createWalletAddress('mb@ncnt.io', token_id, resolve);
-		// ncentSdkInstance.createWalletAddress('kk@ncnt.io', token_id);
-		// ncentSdkInstance.createWalletAddress('af@ncnt.io', token_id);
-		// ncentSdkInstance.createWalletAddress('jd@ncnt.io', token_id);
-		// ncentSdkInstance.createWalletAddress('kd@ncnt.io', token_id);
-		// ncentSdkInstance.createWalletAddress('an@ncnt.io', token_id);
-		// ncentSdkInstance.createWalletAddress('jp@ncnt.io', token_id);
-		// ncentSdkInstance.createWalletAddress('ag@ncnt.io', token_id);
+		createAndTransfer('mb@ncnt.io');
 	})
 	.then(function() {
-		ncentSdkInstance.transferTokens('jobcent@ncnt.io', 'mb@ncnt.io', token_id, 500, resolve);
-		// ncentSdkInstance.transferTokens('jobcent@ncnt.io', 'kk@ncnt.io', token_id, 500);
-		// ncentSdkInstance.transferTokens('jobcent@ncnt.io', 'af@ncnt.io', token_id, 500);
-		// ncentSdkInstance.transferTokens('jobcent@ncnt.io', 'jd@ncnt.io', token_id, 500);
-		// ncentSdkInstance.transferTokens('jobcent@ncnt.io', 'kd@ncnt.io', token_id, 500);
-		// ncentSdkInstance.transferTokens('jobcent@ncnt.io', 'an@ncnt.io', token_id, 500);
-		// ncentSdkInstance.transferTokens('jobcent@ncnt.io', 'jp@ncnt.io', token_id, 500);
-		// ncentSdkInstance.transferTokens('jobcent@ncnt.io', 'ag@ncnt.io', token_id, 500);
+		createAndTransfer('kk@ncnt.io');
+	})
+	.then(function() {
+		createAndTransfer('af@ncnt.io');
+	})
+	.then(function() {
+		createAndTransfer('jd@ncnt.io');
+	})
+	.then(function() {
+		createAndTransfer('kd@ncnt.io');
+	})
+	.then(function() {
+		createAndTransfer('jp@ncnt.io');
+	})
+	.then(function() {
+		createAndTransfer('an@ncnt.io');
+	})
+	.then(function() {
+		createAndTransfer('ag@ncnt.io');
 	})
 	.catch(function(error){
 		console.log(error);
 		return;
 	});
 }
+function createAndTransfer(email) {
+	return new Promise(function(resolve, reject) {
+		ncentSdkInstance.createWalletAddress(email, token_id, resolve);
+	})
+	.then(function(response) {
+		return new Promise(function(resolve, reject) {
+			ncentSdkInstance.transferTokens('jobcent@ncnt.io', email, token_id, 500, resolve);
+		})
+		.then(function(response) {
+			console.log(response.data);
+			return;
+		})
+		.catch(function(error) {
+			console.log(error);
+			return;
+		})	
+	})
+	.catch(function(error) {
+		console.log(error);
+		return;
+	})
+}
 
-function createWalletIfNeeded(walletExists, toEmail){
+function createWalletIfNeeded(walletExists, toEmail, resolve){
 	if(!walletExists){
-	  	ncentSdkInstance.createWalletAddress(toEmail, token_id);
+	  	ncentSdkInstance.createWalletAddress(toEmail, token_id, resolve);
 	  	wallets_Created[toEmail.toString()] = true;
 	 }
 }
@@ -116,7 +140,7 @@ function getEmailString(headerVal){
 
 const processTransaction = async (to, from) => {
 	new Promise(function(resolve, reject) {
-		createWalletIfNeeded(wallets_Created[to], to);
+		createWalletIfNeeded(wallets_Created[to], to, resolve);
 	})
 	.then(function(response) {
 		//console.log(response);
@@ -126,16 +150,24 @@ const processTransaction = async (to, from) => {
 		return;
 	});
 	new Promise(function(resolve, reject) {
-		ncentSdkInstance.getTokenBalance(from, token_id);
+		ncentSdkInstance.getTokenBalance(from, token_id, resolve);
 	})
 	.then(function(response) {
 		let balance = response.data.balance;
 		if ( balance === 0) {
 			sendEmail(from, './nojobCent.html', "Error: You do not have any jobcents to send");
 			return;
-		}
-		ncentSdkInstance.transferTokens(from, to, token_id, 1);
-		sendEmail(to, './receivedjobCent.html', "Congrats, you've received a jobCent!");
+		};
+		new Promise(function(resolve, reject) {
+			ncentSdkInstance.transferTokens(from, to, token_id, 1, resolve);
+		})
+		.then(function(response) {
+			sendEmail(to, './receivedjobCent.html', "Congrats, you've received a jobCent!");
+		})
+		.catch(function(error) {
+			console.log(error);
+			return;
+		});
 	})
 	.catch(function(error) {
 		console.log(error);
