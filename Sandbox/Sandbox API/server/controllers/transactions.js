@@ -21,7 +21,7 @@ function updateBalance(req, res, data, to) {
         tokentype_uuid: req.params.tokentype_uuid,
       }
     })
-    .then(wallets => {
+    .then(function(wallets) {
       if (!wallets || wallets.length < 1 ) {
         return res.status(404).send({
           message: 'Balance for Wallet Not Found',
