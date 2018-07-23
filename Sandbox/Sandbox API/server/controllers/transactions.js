@@ -1,10 +1,11 @@
 const Transaction = require('../models').Transaction;
 const Wallet = require('../models').Wallet;
 
-function updateBalance(req, res, data, to) {
+function updateBalance(req, res, to) {
   let phrase;
   let address;
   let amount;
+  let retObject;
   if (to) {
     phrase = "sender";
     address = req.body.fromAddress;
@@ -14,11 +15,10 @@ function updateBalance(req, res, data, to) {
     address = req.body.toAddress;
     amount = parseInt(req.body.amount, 10);
   }
-  Wallet
-    .findAll({
+  Wallet.findAll({
       where: {
         wallet_uuid: address,
-        tokentype_uuid: req.params.tokentype_uuid,
+        tokentype_uuid: req.params.tokentype_uuid
       }
     })
     .then(function(wallets) {
@@ -31,7 +31,8 @@ function updateBalance(req, res, data, to) {
         balance: parseInt(wallets[0].balance, 10) + amount,
       })
       .then(function(wallets) {
-        data[phrase] = wallets
+        retObject[phrase] = wallets;
+        return retObject;
       })  // Send back the updated wallet.
       .catch((error) => res.status(400).send(error));
     })
@@ -48,12 +49,12 @@ module.exports = {
         tokentype_uuid: req.params.tokentype_uuid
       })
       .then(function(transaction) {
-        data = {txn: transaction}
-        updateBalance(req, res, data, true);
-        console.log(data)
+        data = {txn: transaction};
+        Object.assign(data, updateBalance(req, res, true));
+        console.log(data);
       })
       .then(function() {
-        updateBalance(req, res, data, false);
+        Object.assign(data, updateBalance(req, res, false));
       })
       .then(function() {
         res.status(200).send(data);
