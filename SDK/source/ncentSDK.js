@@ -31,7 +31,7 @@ class ncentSDK {
                 return resolve(response);
             })
             .catch(function(error) {
-                console.log(error.response.data);
+                console.log(error.response);
                 return error;
             });
         } else {
@@ -44,7 +44,7 @@ class ncentSDK {
                 return resolve(response);
             })
             .catch(function(error) {
-                console.log(error.response.data);
+                console.log(error);
                 return error;
             });
         }
@@ -57,11 +57,11 @@ class ncentSDK {
         int tokenType: UUID associated with NCNT.
         Array<string> emailAddress: array of email addresses 
     */
-    initNCNT() {
+    initNCNT(resolve) {
         let name = "NCNT"
         let numTokens = 1000;
         let date = "2018-12-12"
-        const ncnt_uuid = this.stampToken("company@ncnt.io", name, numTokens, date);
+        const ncnt_uuid = this.stampToken("company@ncnt.io", name, numTokens, date, resolve);
         return ncnt_uuid;
     }   
 //     init(emails) {
@@ -82,7 +82,7 @@ class ncentSDK {
 //                 console.log(response.data);
 //             }
 //             ).catch(function(error) {
-//                 console.log(error.response.data);
+//                 console.log(error.response);
 //             });
 //         return tokenID; 
 //         // return tokenTypeID, and balanceID.
@@ -112,7 +112,7 @@ class ncentSDK {
             return resolve(response);
         })
         .catch(function(error) {
-            console.log(error.response.data);
+            console.log(error.response);
             return error;
         });
     }
@@ -156,11 +156,11 @@ class ncentSDK {
             })
             .then(function(response) {
                 resp.data["walletResponseData"] = response.data;
-                // console.log(resp);
+                console.log(resp);
                 return success(resp);
             })
             .catch(function(error) {
-                console.log(error.response);
+                console.log(error);
                 return error;
             });
         }.bind(this));
@@ -176,7 +176,7 @@ class ncentSDK {
         error: callback;
     */
 
-    transferTokens(walletSender_id, walletReceiver_id, tokentype_id, tokenAmount) {
+    transferTokens(walletSender_id, walletReceiver_id, tokentype_id, tokenAmount, resolve) {
         const sdk = this;
         let resp;
         axios.all([
@@ -210,7 +210,7 @@ class ncentSDK {
                 return resolve(resp);
             }))
             .catch(function(error) {
-                console.log(error.response.data);
+                console.log(error.response);
                 return error;
             })
         }))
@@ -230,7 +230,7 @@ class ncentSDK {
             return resolve(response);
         })
         .catch(function(error) {
-            console.log(error.response.data);
+            console.log(error.response);
             return error;
         });
     }
@@ -250,7 +250,7 @@ class ncentSDK {
             return resolve(response);
         })
         .catch(function(error) {
-            console.log(error.response.data);
+            console.log(error.response);
             return error;
         });
     }
@@ -349,11 +349,11 @@ module.exports = ncentSDK;
 var that = new ncentSDK();
 //that.initNCNT();
 //that.destroyTokens('5963c694-59f2-4cd5-9fc0-d28175094fd4');
-//that.stampToken("jd@ncnt.io", "devCent", 100, 09-09-2018)
-//that.createWalletAddress("kyle@ncnt.io", 'c5809dad-bed1-4432-a131-edb886beee42');
-//that.createWalletAddress("jd@ncnt.io", '2a619391-73e9-44d4-a1f0-02ee1bbab1fa');
+
+//that.createWalletAddress("kyle@ncnt.io", '2d388c45-2b02-484c-b673-9809bcaaa309');
+//that.createWalletAddress("jd@ncnt.io", 'c5809dad-bed1-4432-a131-edb886beee42');
 
 //that.getTokenBalance('jd@ncnt.io', '5963c694-59f2-4cd5-9fc0-d28175094fd4');
 //that.getAllBalances('jd@ncnt.io');
-//that.transferTokens("kyle@ncnt.io", "jd@ncnt.io", '2a619391-73e9-44d4-a1f0-02ee1bbab1fa', 50);
+//that.transferTokens("kyle@ncnt.io", "jd@ncnt.io", 'c5809dad-bed1-4432-a131-edb886beee42', 50);
 //that.init(['a', 'b', 'c', 'd']);  
