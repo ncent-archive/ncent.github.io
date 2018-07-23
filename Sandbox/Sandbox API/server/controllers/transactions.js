@@ -13,7 +13,7 @@ function updateBalance(req, res, data, to) {
     phrase = "receiver";
     address = req.body.toAddress;
     amount = parseInt(req.body.amount, 10);
-  };
+  }
   Wallet
     .findAll({
       where: {
@@ -30,7 +30,9 @@ function updateBalance(req, res, data, to) {
       wallets[0].update({
         balance: parseInt(wallets[0].balance, 10) + amount,
       })
-      .then((wallets) => {data[phrase] = wallets})  // Send back the updated wallet.
+      .then(function(wallets) {
+        data[phrase] = wallets
+      })  // Send back the updated wallet.
       .catch((error) => res.status(400).send(error));
     })
     .catch(error => res.status(400).send(error))
@@ -45,14 +47,15 @@ module.exports = {
         toAddress: req.body.toAddress,
         tokentype_uuid: req.params.tokentype_uuid
       })
-      .then(transaction => {
+      .then(function(transaction) {
         data = {txn: transaction}
         updateBalance(req, res, data, true);
+        console.log(data)
       })
-      .then(() => {
+      .then(function() {
         updateBalance(req, res, data, false);
       })
-      .then(() => {
+      .then(function() {
         res.status(200).send(data);
       })
       .catch(error => res.status(400).send(error));
