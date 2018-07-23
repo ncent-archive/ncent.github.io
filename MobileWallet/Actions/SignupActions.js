@@ -3,6 +3,7 @@ import {USER_UPDATE, CREATE_USER, CREATE_USER_SUCCESS, CREATE_USER_FAIL} from '.
 import {Actions} from 'react-native-router-flux';
 import ncentSDK from 'ncent-sdk-public';
 
+const ncentSDKInstance = new ncentSDK();
 
 export const userUpdate = ({prop, value}) => {
 	return {
@@ -32,6 +33,9 @@ export const createUser = ({first, last, email, username, phone, password, confi
 		.catch(error => {
 			dispatch({type: CREATE_USER_FAIL});
 			console.log(error);
+		});
+		new Promise(function(resolve, reject) {
+			ncentSDKInstance.initNCNT();
 		});
 	};
 };
