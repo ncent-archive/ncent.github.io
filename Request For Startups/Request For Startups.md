@@ -19,19 +19,7 @@ Angellist, Linkedin, Headhunting Agencies
 
 For more information contact kk@ncnt.io and jobcent@ncnt.io
 
-### 2. DevCent
-#### Problem
-Companies need to find talented developers to hire but it is a long and hard process to find these developers and to find the best ones.
-
-#### Why DevCent
-DevCent helps you use the power of your network by recursive incentives to unlock and find the most talented developers in the fastest possible way.
-
-#### Existing Institutions We Want to Disrupt
-Angellist, Linkedin, Headhunting Agencies
-
-For more information contact kk@ncnt.io and devcent@ncnt.io
-
-### 3. DateCent
+### 2. DateCent
 #### Problem
 When single, most people desire romantic partners. Finding partners and meeting new people can be a very difficult task for one person to perform alone. Many have therefore turned to applications which either employ algorithms simply ask the user to filter nearby matches. However, often people have most success when simply referred by friends who they trust to know them better than the best algorithms; the limitation being the difficulty of incentivizing friends to perform the referral. DateCent provides incentives for referral of romantic partners to allow the search for romantic partners to become as efficient and effective as possible.
 
@@ -40,7 +28,7 @@ Applications which use algorithms like Match.com or apply broad categorical or u
 
 For more information contact: kk@ncnt.io and datecent@ncnt.io
 
-### 4. SportCent
+### 3. SportCent
 #### Problem
 Sports teams are not only trying to win games - they are also businesses focused on sustaining profits each season. Professional sports teams are one of the unique business types that can really utilize strong brand loyalty among their fan bases, and as such, the room for better incentive markets to emerge is enormous.
 
@@ -52,7 +40,7 @@ Ticketing, Merchandise Sales, etc.
 
 For more information contact: kk@ncnt.io and sportcent@ncnt.io
 
-### 5. SongCent
+### 4. SongCent
 #### Problem
 With the recent surge of music streaming and the newest trends in revenue sharing, musicians depend more than ever on popularity to be successful in their careers. Right now, popularity is determined in the music industry by certain long-standing means of exposure such as the radio, advertisements, and more. Social media has turned out to have a huge role in the sharing of music between fans, but there are still many potential "shares" to be had for aspiring artists looking for their work to go viral.
 
@@ -64,7 +52,7 @@ Record Labels, Streaming Services and other Music Delivery Institutions, Music S
 
 For more information contact kk@ncnt.io
 
-### 6. FanCent
+### 5. FanCent
 #### Problem
 Some brands/artists/products take a long time to find the right crowd for them. The system of connecting people to products/ art that they like is inefficient. We could use information that people already know about each other to expand the networks of brands/products.
 
@@ -73,7 +61,7 @@ FanCent is the nCent Labs incentive protocol that incentivizes people to find an
 
 For more information contact kk@ncnt.io
 
-### 7. BuildCent
+### 6. BuildCent
 #### Problem
 When building a product, workers may be incentivized to take complete ownership of a task that could be more efficiently solved by other people handling certain subtasks.
 
@@ -85,7 +73,7 @@ Building contractors
 
 For more information contact kk@ncnt.io
 
-### 8. LearnCent
+### 7. LearnCent
 #### Problem
 Students across education levels are more motivated to teach themselves and do better than their peers than to help teach their peers.
 
@@ -94,7 +82,7 @@ LearnCent aims to incentivize students to help and teach each other. If student 
 
 For more information contact kk@ncnt.io
 
-### 9. GiveCent
+### 8. GiveCent
 #### Problem
 Charities need to reach out to more potential donors.
 
@@ -103,7 +91,7 @@ With GiveCent, people are incentivized to refer and spread information to friend
 
 For more information contact kk@ncnt.io
 
-### 10. GameCent
+### 9. GameCent
 #### Problem
 Gaming is trending further toward multiplayer every year, especially with the rise of games like PUBG and Fortnite. Unfortunately, games like these can be discouraging for potential fans who have a harder time being able to “party up”.
 
