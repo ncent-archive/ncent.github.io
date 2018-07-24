@@ -173,7 +173,7 @@ function printMessage(message){
 
 const messageHandler = async message => {
   	let messageJSON = JSON.parse(message.data);
-  	
+  	console.log("in message handler");
   	if(messageJSON.emailAddress !== 'jobcent@ncnt.io') {
   		message.ack();
   		return;
@@ -287,7 +287,6 @@ const sendEmail = async (receiver, file, subject) => {
 }
 
 function initEmailWatcher() {
-	//console.log("in email watch init");
 	let options = {
 	    userId: 'me',
 	    auth: oauth2Client,
@@ -296,11 +295,12 @@ function initEmailWatcher() {
 	        topicName: "projects/jobcent-210021/topics/emailTransaction"
 	    }
 	};
-	gmail.users.watch(options, function (err, res) {
+	return gmail.users.watch(options, function (err, res) {
 	    if (err) {
 	        //console.log(err);
 	        return;
-	    }
+		}
+		console.log("in email watch init");
 	});
 }
 
@@ -318,13 +318,19 @@ function getHomePageCallback (request, response) {
 //	console.log("get home page call back");
     getOauthTokens(request.query.code)
         .then(function(tokens) {
-            setOauthCredentials(tokens);
-			gmail = google.gmail({version: 'v1', oauth2Client});
-			//console.log("before init");
-			initEmailWatcher();
-			//console.log("here");
-			subscription.on('message', messageHandler);
-			response.send("Done with authentication.");
+			new Promise(function(resolve, reject) {
+				setOauthCredentials(tokens);
+				gmail = google.gmail({version: 'v1', oauth2Client});
+				return initEmailWatcher();
+			})
+			.then(function(rsponse) {
+				console.log(rsponse);
+				subscription.on('message', messageHandler);
+				response.send("Done with authentication.");
+			})
+			.catch(function(error) {
+				console.log(error);
+			})
 		}, function(reason){
 		//	console.log("get auth tokens failed" + reason)
 		});
@@ -336,6 +342,7 @@ function main() {
     opn(oauthUrl);
    // console.log("opened auth url");
 
+   	app.get('/', getHomePageCallback);
     app.listen(gmailPort, (err) => {
       if (err) {
       	console.log(`failed to listen to ${gmailPort}`, err);
@@ -343,8 +350,6 @@ function main() {
 
     });
    // console.log("after listen");
-
-    app.get('/', getHomePageCallback);
 }
 ////////////////////////CODE\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 main();
