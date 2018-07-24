@@ -1,43 +1,6 @@
 const Transaction = require('../models').Transaction;
 const Wallet = require('../models').Wallet;
 
-function updateBalance(req, res, to) {
-  let phrase;
-  let address;
-  let amount;
-  let retObject;
-  if (to) {
-    phrase = "sender";
-    address = req.body.fromAddress;
-    amount = - parseInt(req.body.amount, 10);
-  } else {
-    phrase = "receiver";
-    address = req.body.toAddress;
-    amount = parseInt(req.body.amount, 10);
-  }
-  Wallet.findAll({
-      where: {
-        wallet_uuid: address,
-        tokentype_uuid: req.params.tokentype_uuid
-      }
-    })
-    .then(function(wallets) {
-      if (!wallets || wallets.length < 1 ) {
-        return res.status(404).send({
-          message: 'Balance for Wallet Not Found',
-        });
-      }
-      wallets[0].update({
-        balance: parseInt(wallets[0].balance, 10) + amount,
-      })
-      .then(function(wallets) {
-        retObject[phrase] = wallets;
-        return retObject;
-      })  // Send back the updated wallet.
-      .catch((error) => res.status(400).send(error));
-    })
-    .catch(error => res.status(400).send(error))
-}
 module.exports = {
   create(req, res) {
     let data;
@@ -48,19 +11,56 @@ module.exports = {
         toAddress: req.body.toAddress,
         tokentype_uuid: req.params.tokentype_uuid
       })
-      .then(function(transaction) {
-        data = {txn: transaction};
-        Object.assign(data, updateBalance(req, res, true));
-        console.log(data);
+      .then(transaction => {
+        data = {txn: transaction}
+        Wallet
+          .findAll({
+            where: {
+              wallet_uuid: req.body.fromAddress,
+              tokentype_uuid: req.params.tokentype_uuid,
+            }
+          })
+          .then(function(wallets){
+            if (!wallets || wallets.length < 1 ) {
+              return res.status(404).send({
+                message: 'Balance for Wallet Not Found',
+              });
+            }
+            wallets[0].update({
+                balance: parseInt(wallets[0].balance, 10) + parseInt(req.body.amount, 10),
+              })
+              .then((wallets) => {
+                data["sender"] = wallets[0]
+                Wallet
+                  .findAll({
+                    where: {
+                      wallet_uuid: req.body.toAddress,
+                      tokentype_uuid: req.params.tokentype_uuid,
+                    }
+                  })
+                  .then(function(wallets) {
+                    if (!wallets || wallets.length < 1 ) {
+                      return res.status(404).send({
+                        message: 'Balance for Wallet Not Found',
+                      });
+                    }
+                    wallets[0].update({
+                        balance: parseInt(wallets[0].balance, 10) + parseInt(req.body.amount, 10),
+                      })
+                      .then((wallets) => {
+                        data["receiver"] = wallets[0]
+                        return res.status(200).send(data);
+                      })  // Send back the updated wallet.
+                      .catch((error) => res.status(406).send(error));
+                  })
+                  .catch(error => res.status(405).send(error))
+              })  // Send back the updated wallet.
+              .catch((error) => res.status(403).send(error));
+          })
+          .catch(error => res.status(402).send(error))
       })
-      .then(function() {
-        Object.assign(data, updateBalance(req, res, false));
-      })
-      .then(function() {
-        res.status(200).send(data);
-      })
-      .catch(error => res.status(400).send(error));
-  },
+      .catch(error => res.status(401).send(error));
+    },
   list(req, res) {
     return Transaction
       .findAll({
