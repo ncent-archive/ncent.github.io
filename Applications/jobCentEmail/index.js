@@ -296,7 +296,6 @@ function initEmailWatcher() {
 	        topicName: "projects/jobcent-210021/topics/emailTransaction"
 	    }
 	};
-
 	gmail.users.watch(options, function (err, res) {
 	    if (err) {
 	        //console.log(err);
@@ -324,12 +323,12 @@ function getHomePageCallback (request, response) {
 			//console.log("before init");
 			initEmailWatcher();
 			//console.log("here");
-			subscription.on(`message`, messageHandler);
+			subscription.on('message', messageHandler);
 			response.send("Done with authentication.");
 		}, function(reason){
 		//	console.log("get auth tokens failed" + reason)
 		});
-	}
+}
 
 function main() {
 	//initJobCent();
