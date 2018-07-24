@@ -11,44 +11,43 @@ module.exports = {
         toAddress: req.body.toAddress,
         tokentype_uuid: req.params.tokentype_uuid
       })
-      .then(transaction => {
+      .then(function(transaction) {
         data = {txn: transaction}
-        Wallet
-          .findAll({
+        Wallet.findAll({
             where: {
               wallet_uuid: req.body.fromAddress,
               tokentype_uuid: req.params.tokentype_uuid,
             }
           })
-          .then(function(wallets){
-            if (!wallets || wallets.length < 1 ) {
+          .then(function(senderWallets) {
+            if (!senderWallets || senderWallets.length < 1 ) {
               return res.status(404).send({
                 message: 'Balance for Wallet Not Found',
               });
             }
-            wallets[0].update({
-                balance: parseInt(wallets[0].balance, 10) + parseInt(req.body.amount, 10),
+            senderWallets[0].update({
+                balance: parseInt(senderWallets[0].balance, 10) - parseInt(req.body.amount, 10),
               })
-              .then((wallets) => {
-                data["sender"] = wallets[0]
-                Wallet
-                  .findAll({
+              .then(function(updatedSdrWallets) {
+                data["sender"] = updatedSdrWallets
+                Wallet.findAll({
                     where: {
                       wallet_uuid: req.body.toAddress,
                       tokentype_uuid: req.params.tokentype_uuid,
                     }
                   })
-                  .then(function(wallets) {
-                    if (!wallets || wallets.length < 1 ) {
+                  .then(function(receiverWallets) {
+                    if (!receiverWallets || receiverWallets.length < 1 ) {
                       return res.status(404).send({
                         message: 'Balance for Wallet Not Found',
                       });
                     }
-                    wallets[0].update({
-                        balance: parseInt(wallets[0].balance, 10) + parseInt(req.body.amount, 10),
+                    receiverWallets[0].update({
+                        balance: parseInt(receiverWallets[0].balance, 10) + parseInt(req.body.amount, 10),
                       })
-                      .then((wallets) => {
-                        data["receiver"] = wallets[0]
+                      .then(function(updatedRecWallets) {
+                        data["receiver"] = updatedRecWallets
+                        //console.log(updatedRecWallets);
                         return res.status(200).send(data);
                       })  // Send back the updated wallet.
                       .catch((error) => res.status(406).send(error));
