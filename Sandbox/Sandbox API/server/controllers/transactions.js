@@ -20,7 +20,7 @@ module.exports = {
               tokentype_uuid: req.params.tokentype_uuid,
             }
           })
-          .then(wallets => {
+          .then(function(wallets){
             if (!wallets || wallets.length < 1 ) {
               return res.status(404).send({
                 message: 'Balance for Wallet Not Found',
@@ -38,7 +38,7 @@ module.exports = {
                       tokentype_uuid: req.params.tokentype_uuid,
                     }
                   })
-                  .then(wallets => {
+                  .then(function(wallets) {
                     if (!wallets || wallets.length < 1 ) {
                       return res.status(404).send({
                         message: 'Balance for Wallet Not Found',
@@ -51,15 +51,15 @@ module.exports = {
                         data["receiver"] = wallets[0]
                         return res.status(200).send(data);
                       })  // Send back the updated wallet.
-                      .catch((error) => res.status(400).send(error));
+                      .catch((error) => res.status(406).send(error));
                   })
-                  .catch(error => res.status(400).send(error))
+                  .catch(error => res.status(405).send(error))
               })  // Send back the updated wallet.
-              .catch((error) => res.status(400).send(error));
+              .catch((error) => res.status(403).send(error));
           })
-          .catch(error => res.status(400).send(error))
+          .catch(error => res.status(402).send(error))
       })
-      .catch(error => res.status(400).send(error));
+      .catch(error => res.status(401).send(error));
     },
   list(req, res) {
     return Transaction
