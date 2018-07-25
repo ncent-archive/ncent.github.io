@@ -295,7 +295,8 @@ function initEmailWatcher() {
 	        topicName: "projects/jobcent-210021/topics/emailTransaction"
 	    }
 	};
-	return gmail.users.watch(options, function (err, res) {
+
+	gmail.users.watch(options, function (err, res) {
 	    if (err) {
 	        //console.log(err);
 	        return;
@@ -318,23 +319,17 @@ function getHomePageCallback (request, response) {
 //	console.log("get home page call back");
     getOauthTokens(request.query.code)
         .then(function(tokens) {
-			new Promise(function(resolve, reject) {
-				setOauthCredentials(tokens);
-				gmail = google.gmail({version: 'v1', oauth2Client});
-				return initEmailWatcher();
-			})
-			.then(function(rsponse) {
-				console.log(rsponse);
-				subscription.on('message', messageHandler);
-				response.send("Done with authentication.");
-			})
-			.catch(function(error) {
-				console.log(error);
-			})
+            setOauthCredentials(tokens);
+			gmail = google.gmail({version: 'v1', oauth2Client});
+			//console.log("before init");
+			initEmailWatcher();
+			//console.log("here");
+			subscription.on(`message`, messageHandler);
+			response.send("Done with authentication.");
 		}, function(reason){
 		//	console.log("get auth tokens failed" + reason)
 		});
-}
+	}
 
 function main() {
 	//initJobCent();
