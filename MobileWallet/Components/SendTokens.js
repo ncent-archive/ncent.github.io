@@ -12,8 +12,9 @@ class SendTokens extends Component {
 
   sendTokens() {
     const {address, amount} = this.props;
-    const {tokenType} = this.props.tokenType;
-    this.props.sendTokensToAddress({address, amount});
+    const tokenType = this.props.tokenType;
+    console.log(tokenType);
+    this.props.sendTokensToAddress({address, amount, tokenType});
   }
 
   cancel() {
