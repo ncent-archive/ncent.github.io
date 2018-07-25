@@ -46,15 +46,14 @@ class LoginScreen extends Component {
     }
     return (
       <TouchableOpacity onPress= {this.onButtonPress.bind(this)}>
-              <View style = {{backgroundColor: 'orange', alignItems: 'center', 
-                              justifyContent: 'center', borderRadius: 30, height: 60, margin: 30, marginTop: 0}}
+              <View style = {{backgroundColor: '#5c4da0', alignItems: 'center', 
+                              justifyContent: 'center', borderRadius: 30, height: 50, margin: 70, marginTop: 0}}
                      >
-                     <Text style={{color:'white', fontSize: 30}}> Login </Text>
+                     <Text style={{color:'white', fontSize: 25}}> Login </Text>
               </View>
         </TouchableOpacity>
     )
   }
-
 
   render() {
     return (
@@ -68,22 +67,24 @@ class LoginScreen extends Component {
           <Text style={styles.navBarHeader}>Please Login</Text>
           <Text style={styles.navBarButton}></Text>
         </View>
+        <View style={{margin: 12, marginBottom: 0}}>
+          <TextInput
+            style={{height: 100, paddingLeft: 30, fontSize: 25, backgroundColor: '#F8F8F8'}}
+            keyboardType='email-address'
+            placeholder="Email"
+            onChangeText={this.onEmailChange.bind(this)}
+            value={this.props.email}
+          />
+          <View style={{ height: 8}} />
+          <TextInput
+            style={{height: 100, paddingLeft: 30, fontSize: 25, backgroundColor: '#F8F8F8'}}
+            secureTextEntry={true}
 
-        <TextInput
-          style={{height: 100, paddingLeft: 30, fontSize: 25}}
-
-          placeholder="Email"
-          onChangeText={this.onEmailChange.bind(this)}
-          value={this.props.email}
-        />
-        <TextInput
-          style={{height: 100, paddingLeft: 30, fontSize: 25, backgroundColor: 'lightgray'}}
-          secureTextEntry={true}
-
-          placeholder="Password"
-          onChangeText={this.onPasswordChange.bind(this)}
-          value={this.props.password}
-        />
+            placeholder="Password"
+            onChangeText={this.onPasswordChange.bind(this)}
+            value={this.props.password}
+          />
+        </View>
 
         {this.renderError()}
 
@@ -108,19 +109,23 @@ const styles = StyleSheet.create({
   navBar: {
     flexDirection: 'row',
     paddingTop: 10,
-    height: 70, //64
-    backgroundColor: '#1EAAF1'
+    height: 75,
+    backgroundColor: '#F8F8F8',
+    shadowColor: '#000',
+    shadowOffset: {width: 0, height: 1},
+    shadowOpacity: .2,
+    zIndex:999
   },
   navBarHeader: {
     flex: 1,
-    color: '#FFFFFF',
+    color: '#4c3e99',
     fontWeight: 'bold',
     textAlign: 'center',
     paddingTop: 25,
     fontSize: 20,
   },
   navBarButton: {
-    color: '#FFFFFF',
+    color: '#4c3e99',
     textAlign:'center',
     paddingTop: 25,
     width: 64
