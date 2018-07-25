@@ -73,25 +73,28 @@ function initJobCent() {
 		token_id = response.data["tokenTypeResponseData"]["uuid"];		
 	})
 	.then(function() {
-		return createAndTransfer('mb@ncnt.io');
+		createAndTransfer('mb@ncnt.io');
 	})
 	.then(function() {
-		return createAndTransfer('af@ncnt.io');
+		createAndTransfer('kk@ncnt.io');
 	})
 	.then(function() {
-		return createAndTransfer('jd@ncnt.io');
+		createAndTransfer('af@ncnt.io');
 	})
 	.then(function() {
-		return createAndTransfer('kd@ncnt.io');
+		createAndTransfer('jd@ncnt.io');
 	})
 	.then(function() {
-		return createAndTransfer('jp@ncnt.io');
+		createAndTransfer('kd@ncnt.io');
 	})
 	.then(function() {
-		return createAndTransfer('an@ncnt.io');
+		createAndTransfer('jp@ncnt.io');
 	})
 	.then(function() {
-		return createAndTransfer('ag@ncnt.io');
+		createAndTransfer('an@ncnt.io');
+	})
+	.then(function() {
+		createAndTransfer('ag@ncnt.io');
 	})
 	.catch(function(error){
 		console.log(error);
@@ -102,11 +105,18 @@ function createAndTransfer(email) {
 	return new Promise(function(resolve, reject) {
 		ncentSdkInstance.createWalletAddress(email, token_id, resolve);
 	})
-	.then(function(createWalletResponse) {
-		//console.log(createWalletResponse.data);
+	.then(function(response) {
 		return new Promise(function(resolve, reject) {
 			ncentSdkInstance.transferTokens('jobcent@ncnt.io', email, token_id, 500, resolve);
 		})
+		.then(function(response) {
+			console.log(response.data);
+			return;
+		})
+		.catch(function(error) {
+			console.log(error);
+			return;
+		})	
 	})
 	.catch(function(error) {
 		console.log(error);
@@ -337,7 +347,7 @@ function getHomePageCallback (request, response) {
 }
 
 function main() {
-	//initJobCent();
+	initJobCent();
 	//console.log("in main");
     opn(oauthUrl);
    // console.log("opened auth url");
