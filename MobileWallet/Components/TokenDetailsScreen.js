@@ -19,8 +19,15 @@ class TokenDetailsScreen extends Component {
     return;
   }
 
-  componentWillMount() {
-    this.props.getTokenBalance(this.props.tokenType);
+  componentDidMount() {
+    this.props.getTokenBalance({tokenType: this.props.tokenType});
+  }
+
+  componentWillReceiveProps() {
+    // console.log(this.props.loading);
+    // if (this.props.loading) {
+      this.props.getTokenBalance({tokenType: this.props.tokenType});
+    // }
   }
 
   render() { 
@@ -54,7 +61,7 @@ class TokenDetailsScreen extends Component {
             </TouchableOpacity>
           </View>
           <View style={{flex: 1}}>
-            <Text style={{textAlign: 'center'}}> No Transaction History </Text>
+            <Text style={{textAlign: 'center'}}> No Transaction History Unavailable </Text>
           </View>
         </View>
       </View>
