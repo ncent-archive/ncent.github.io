@@ -1,5 +1,5 @@
 import firebase from 'firebase';
-import {SEND_INFO_UPDATE, SEND_TOKENS, CLEAR_TRANSACTION_INPUTS} from './types';
+import {SEND_INFO_UPDATE, SEND_TOKENS, SEND_TOKENS_SUCCESS, SEND_TOKENS_FAIL, CLEAR_TRANSACTION_INPUTS} from './types';
 import {Actions} from 'react-native-router-flux';
 
 export const sendInfoUpdate = ({prop, value}) => {
@@ -13,13 +13,14 @@ export const sendTokensToAddress = ({address, amount, tokenType}) => {
 	return (dispatch) => {
 		dispatch({type: SEND_TOKENS});
 
-		// firebase.auth.getAddress
-			// .then( send tokens )
-				// create wallet, get address, pk
+		const {currentUser} = firebase.auth();
+		//const address = currentUser.email
+			//send tokens,
 					//.then(dispatch ({type: SEND_TOKENS_SUCCESS}))
 					//.catch
 			//
 			//.catch(failed)
+			// dispatch({type: SEND_TOKENS_FAIL})
 	};
 };
 
