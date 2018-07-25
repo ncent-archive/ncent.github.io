@@ -1,12 +1,12 @@
 import firebase from 'firebase';
-import {GET_ALL_TOKENS, GET_TOKENS_SUCCESS} from './types';
+import {GET_ALL_TOKENS, GET_TOKENS_SUCCESS, GET_TOKENS_FAIL} from './types';
 import {Actions} from 'react-native-router-flux';
 
 
 export const getTokens = () => {
 	return (dispatch) => {
-		// const {currentUser} = firebase.auth();
-		// currentUser.address
+		const {currentUser} = firebase.auth();
+		const address = currentUser.email;
 		const allTokens = [
                 {key: 'nCent'},
                 {key: 'fanCent'},
@@ -22,7 +22,6 @@ export const getTokens = () => {
 
 export const signOut = () => {
 	return (dispatch) => {
-		console.log("now here");
 		firebase.auth().signOut()
 			.then( () => {
 				Actions.popTo("LoginOrSignup");

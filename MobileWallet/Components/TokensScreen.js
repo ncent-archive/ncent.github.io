@@ -15,6 +15,19 @@ class TokensScreen extends Component {
   componentWillMount() {
     this.props.getTokens();
   }
+
+  renderError() {
+    if (this.props.error) {
+      return (
+        <View> 
+          <Text>
+            {this.props.error}
+          </Text>
+        </View>
+      );   
+    }
+    return;
+  }
  
   render() {
     return (
@@ -45,6 +58,7 @@ class TokensScreen extends Component {
             keyExtractor={(item) => item.key}
           />
         </View>
+        {this.renderError()}
       </View>
     );
   }
@@ -57,19 +71,22 @@ const styles = StyleSheet.create({
  navBar: {
     flexDirection: 'row',
     paddingTop: 10,
-    height: 70, //64
-    backgroundColor: '#1EAAF1'
+    height: 75,
+    backgroundColor: '#F8F8F8',
+    shadowColor: '#000',
+    shadowOffset: {width: 0, height: 1},
+    shadowOpacity: .2
   },
   navBarHeader: {
     flex: 1,
-    color: '#FFFFFF',
+    color: '#4c3e99',
     fontWeight: 'bold',
     textAlign: 'center',
     paddingTop: 25,
     fontSize: 20,
   },
   navBarButton: {
-    color: '#FFFFFF',
+    color: '#4c3e99',
     textAlign:'center',
     paddingTop: 25,
     width: 64
