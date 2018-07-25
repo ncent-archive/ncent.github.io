@@ -30,7 +30,7 @@ const oauth2Client = new google.auth.OAuth2(
 );
 const oauthUrl = oauth2Client.generateAuthUrl({access_type: 'offline', scope: scopes});
 
-const ncentSDK = require('../../SDK/source/ncentSDK.js');
+const ncentSDK = require('../../SDK/source/');
 const ncentSdkInstance = new ncentSDK();
 const walletsCreated = {
     "jobcent@ncnt.io": true
@@ -46,26 +46,6 @@ let token_id;
 ////////////////////////////FUNCTIONS\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 function initJobCent() {
-	// let pms = new Promise(function(resolve, reject) {
-	// 	ncentSdkInstance.stampToken('jobcent@ncnt.io', 'jobCent', 10000, '2021');
-	// })
-	// .then(function(response) {
-	// 	token_id = response.data["tokenTypeResponseData"]["uuid"];
-	// 	new Promise(function(resolve, reject) {
-	// 		ncentSdkInstance.createWalletAddress('mb@ncnt.io', token_id);
-	// 	})
-	// 	.then(function()
-	// })
-	// .catch(function(error) {
-	// 	console.log(error);
-	// 	return;
-	// });
-	// let response = await pms;
-	
-	// console.log(token_id);
-
-	// let y = await x;
-	// return;
 	return new Promise(function(resolve, reject) {
 		return ncentSdkInstance.stampToken('jobcent@ncnt.io', 'jobCent', 10000, '2021', resolve);
 	})
@@ -182,20 +162,16 @@ const messageHandler = async message => {
  	printMessage(message);
   	startHistoryId = currHistoryId;
   	currHistoryId = messageJSON.historyId;
-  	//console.log("before options");
   	const options = {	userId: messageJSON.emailAddress, 
   						auth: oauth2Client, 
   						startHistoryId: startHistoryId, 
   						historyTypes:"messageAdded"
   					};
-  	//console.log("after options");
   	if (startHistoryId === undefined) {
   		//console.log("going to die");
   		message.ack();
   		return; //The first time we get a message we don't get notified. The first message kind of sets things up
   	}
-  //	console.log("before history");
-  	// Result is basically the messages that we got notified for
   	new Promise(function(resolve, reject) {
   		//console.log("in promise");
   		gmail.users.history.list(options);
@@ -301,7 +277,6 @@ function initEmailWatcher() {
 	        //console.log(err);
 	        return;
 		}
-		console.log("in email watch init");
 	});
 }
 
@@ -321,9 +296,7 @@ function getHomePageCallback (request, response) {
         .then(function(tokens) {
             setOauthCredentials(tokens);
 			gmail = google.gmail({version: 'v1', oauth2Client});
-			//console.log("before init");
 			initEmailWatcher();
-			//console.log("here");
 			subscription.on(`message`, messageHandler);
 			response.send("Done with authentication.");
 		}, function(reason){
