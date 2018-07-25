@@ -15,6 +15,7 @@ export const userUpdate = ({prop, value}) => {
 export const createUser = ({first, last, email, username, phone, password, confirm}) => {
 	return (dispatch) => {
 		dispatch({type: CREATE_USER});
+		// check if wallet address exists, return error if so
 		let new_user = undefined;
 		firebase.auth().createUserWithEmailAndPassword(email, password)
 		.then(user => {
@@ -34,8 +35,16 @@ export const createUser = ({first, last, email, username, phone, password, confi
 			dispatch({type: CREATE_USER_FAIL});
 			console.log(error);
 		});
-		new Promise(function(resolve, reject) {
-			ncentSDKInstance.initNCNT();
-		});
+		// new Promise(function(resolve, reject) {
+		// 	ncentSDKInstance.initNCNT();
+		// })
+		// .then( () => {
+	 // 		dispatch({type: CREATE_USER_SUCCESS, payload: new_user});
+		// 	Actions.LoginScreen();
+		// })
+		// .catch(error => {
+		// 	dispatch({type: CREATE_USER_FAIL});
+		// 	console.log(error);
+		// });
 	};
 };
