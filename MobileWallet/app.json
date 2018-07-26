@@ -1,5 +1,16 @@
-{
-  "expo": {
-    "sdkVersion": "27.0.0"
-  }
-}
+ {
+   "expo": {
+    "name": "nCent Mobile Wallet",
+    "icon": "./Img/ncent_NOsubline_1000px_BG_blue.png",
+    "version": "0.0.1",
+    "slug": "expo-mobile-wallet",
+    "sdkVersion": "27.0.0",
+    "privacy": "public",
+    "ios": {
+      "bundleIdentifier": "com.ncent.mobilewallet"
+    },
+    "android": {
+      "package": "com.ncent.mobilewallet"
+    }
+   }
+ }
