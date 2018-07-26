@@ -13,6 +13,8 @@ export default (state = INITIAL_STATE, action) => {
 			return {...state, [action.payload.prop]: action.payload.value};
 		case SEND_TOKENS:
 			return {...state, loading: true, error: ''}
+		case SEND_TOKENS_SUCCESS:
+			return {...INITIAL_STATE}
 		case SEND_TOKENS_FAIL:
 			return {...INITIAL_STATE, loading: false, error: 'Send Tokens Failed'}
 		case CLEAR_TRANSACTION_INPUTS:
@@ -21,4 +23,4 @@ export default (state = INITIAL_STATE, action) => {
 			return state;
 	}
 
-};  
+}; 
