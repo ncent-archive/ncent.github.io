@@ -61,7 +61,7 @@ class TokenDetailsScreen extends Component {
             </TouchableOpacity>
           </View>
           <View style={{flex: 1}}>
-            <Text style={{textAlign: 'center'}}> No Transaction History Unavailable </Text>
+            <Text style={{textAlign: 'center'}}> Transaction History Unavailable </Text>
           </View>
         </View>
       </View>

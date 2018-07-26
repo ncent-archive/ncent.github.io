@@ -12,9 +12,11 @@ export const getTokens = () => {
 		const address = currentUser.email;
         new Promise(function(resolve, reject) {
 			console.log("getting all tokens");
+			console.log(address);
 			ncentSDKInstance.getAllBalances(address, resolve);
 		})
 		.then( response => {
+			console.log(response);
 			dispatch({type: GET_TOKENS_SUCCESS, payload: response.data});
 		})
 		// hmmm, somehow set balance to the balance retrived

@@ -24,7 +24,7 @@ export const createUser = ({first, last, email, username, phone, password, confi
 			new_user = user;
 			console.log("here");
 			firebase.database().ref(`/users/${user.user.uid}/information`)
-			.push({first, last, email, username, phone});
+			.push({});
 			console.log("and here");
 					
 		})
