@@ -42,7 +42,7 @@ var months = ["January", "February", "March", "April", "May", "June", "July", "A
 function getDateString(pubDate){
     var year = pubDate.substring(0,4);
     var month = Number(pubDate.substring(5, 7));
-    month = months[month];
+    month = months[month-1];
     var day = pubDate.substring(8);
     return month + ' ' + day + ', ' + year;
 
