@@ -30,6 +30,7 @@ function callAjaxAgain(){
     }).done(function(rss) {
         let posts = rss.items;
         updateAllArticles(posts);
+        window.location.reload(true);
     });
 }
 function updateLatestArticle(posts){
