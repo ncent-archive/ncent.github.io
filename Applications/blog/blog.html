@@ -13,10 +13,7 @@
     ================================================== -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <!-- CSS
-    ================================================== -->
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/vendor.css">
+    
     <link rel="stylesheet" href="css/main.css">
     <link rel="icon"
       type="image/png"
@@ -25,6 +22,7 @@
     <!-- script
     ================================================== -->
     <script src="js/modernizr.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script src="js/pace.min.js"></script>
 <script>
     $(document).on('click', 'a[href^="#"]', function (event) {
@@ -33,18 +31,15 @@
           scrollTop: $($.attr(this, 'href')).offset().top
       -73}, 700);
       });
-
     $(function () {
       $(document).scroll(function () {
         var $nav = $(".fixed-top");
         $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
         var $nava = $("nav a");
         $nava.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
-        var $button = $(".whitelist-button");
-        $button.toggleClass('scrolled', $(this).scrollTop() > $nav.height())
+        
       });
     });
-
 </script>
 
 
@@ -60,12 +55,11 @@
         <header class="header">
             <img src ="https://res.cloudinary.com/dxwddglzt/image/upload/v1531944833/blog%20page/logo1.png">
 
-            <!--<div><font color = "#fff">nCent Labs</font></div>-->
 
             <div class="header__content row">
 
 
-                </div>  <!-- end header__search -->
+                </div>  
 
 
                 <a class="header__toggle-menu" href="#0" title="Menu"><span>Menu</span></a>
@@ -99,12 +93,12 @@
                 <div class="featured">
 
                     <div class="featured__column featured__column--big">
-                        <div class="entry" style="background-image:url('images/latest.png');">
+                        <div id = "latestimage" class="entry" style="">
 
                             <div class="entry__content">
                                 <span class="entry__category"><a href="https://medium.com/@kk_ncnt/latest">Latest</a></span>
 
-                                <h1><a href="https://medium.com/@kk_ncnt/incentives-and-our-political-divide-d9907a5209a0" title="">Incentives and Our Political Divide
+                                <h1><a id = "latestheader" href="" title="">
                                 </a></h1>
 
                                 <div class="entry__info">
@@ -114,7 +108,7 @@
 
                                     <ul class="entry__meta">
                                         <li><a href="https://medium.com/@kk_ncnt">KK Jain</a></li>
-                                        <li>July 24, 2018</li>
+                                        <li id = "latestdate">July 24, 2018</li>
                                     </ul>
                                 </div>
                             </div> <!-- end entry__content -->
@@ -187,7 +181,7 @@
 
                     <div class="entry__thumb">
                         <a href="single-standard.html" class="entry__thumb-link">
-                            <img src="./images/maximal.png"
+                            <img id = "article1pic" src=""
                                      alt="">
                         </a>
                     </div>
@@ -196,29 +190,20 @@
                         <div class="entry__header">
 
                             <div class="entry__date">
-                                <a href="https://medium.com/@kk_ncnt/top-10-bitcoin-maximalism-quotes-66ae2b9c094a">July 23, 2018</a>
+                                <a id = "article1date" href=""></a>
                             </div>
-                            <h1 class="entry__title"><a href="https://medium.com/@kk_ncnt/top-10-bitcoin-maximalism-quotes-66ae2b9c094a">Top 10 Bitcoin Maximalism Quotes
-
-</a></h1>
-
+                            <h1 id = "article1header" class="entry__title"><a href=""></a></h1>
                         </div>
                         <div class="entry__excerpt">
                             <p>
-                                If you ask 10 different crypto-enthusiast to define Bitcoin Maximalism — you will get 12 different answers. What is clear however is that Bitcoin was the first decentralized cryptocurrency — and one that has been proven to be surprisingly resilient, at Internet scale...
+                                KK Jain<br>
+                                <div id = "article1cont"></div>
                             </p>
                         </div>
                         <div class="entry__meta">
                             <span class="entry__meta-links">
-
-                                <a href="https://medium.com/tag/blockchain">Blockchain</a>
-                                <a href="https://medium.com/tag/bitcoin">Bitcoin</a>
-                                <a href="https://medium.com/tag/cryptocurrency">Cryptocurrency</a>
-                                
-                                <a href="https://medium.com/tag/twitter">Twitter</a>
-                                <a href="https://medium.com/tag/quotes">Quotes</a>
-
-
+                                <div id= "article1tags" ></div>
+                    
                             </span>
                         </div>
                     </div>
@@ -228,7 +213,7 @@
 
                     <div class="entry__thumb">
                         <a href="single-standard.html" class="entry__thumb-link">
-                            <img src="./images/incentive.png"
+                            <img id = "article2pic" src=""
                                      alt="">
                         </a>
                     </div>
@@ -237,28 +222,20 @@
                         <div class="entry__header">
 
                             <div class="entry__date">
-                                <a href="https://medium.com/@kk_ncnt/the-psychology-of-incentives-in-decentralized-networks-d029ddfa30ca">July 19, 2018</a>
+                                <a id = "article2date" href=""></a>
                             </div>
-                            <h1 class="entry__title"><a href="https://medium.com/@kk_ncnt/the-psychology-of-incentives-in-decentralized-networks-d029ddfa30ca">The Psychology of Incentives on Blockchains
-</a></h1>
+                            <h1 id = "article2header" class="entry__title"><a href=""></a></h1>
 
                         </div>
                         <div class="entry__excerpt">
                             <p>
-                                Decentralized networks such as blockchains, have the potential to solve complex problems by incentivizing individuals to contribute their specialized knowledge and skills to achieve a common goal.
-                                For example, the challenge of quickly finding the...
+                                KK Jain<br>
+                                <div id = "article2cont"></div>
                             </p>
                         </div>
                         <div class="entry__meta">
                             <span class="entry__meta-links">
-
-                                <a href="https://medium.com/tag/blockchain">Blockchain</a>
-                                <a href="https://medium.com/tag/bitcoin">Bitcoin</a>
-                                <a href="https://medium.com/tag/economics">Economics</a>
-                                
-                                <a href="https://medium.com/tag/behavioral-economics">Behavioral Economics</a>
-                                <a href="https://medium.com/tag/psychology">Psychology</a>
-
+                                <div id = "article2tags"></div>
 
                             </span>
                         </div>
@@ -269,7 +246,7 @@
 
                     <div class="entry__thumb">
                         <a href="single-standard.html" class="entry__thumb-link">
-                            <img src="./images/ncentblock.png"
+                            <img id = "article3pic"src=""
                                      alt="">
                         </a>
                     </div>
@@ -278,26 +255,20 @@
                         <div class="entry__header">
 
                             <div class="entry__date">
-                                <a href="https://medium.com/@kk_ncnt/how-ncent-compares-with-other-blockchains-a9e2ffc8ecca">July 18, 2018</a>
+                                <a id = "article3date" href=""></a>
                             </div>
-                            <h1 class="entry__title"><a href="https://medium.com/@kk_ncnt/how-ncent-compares-with-other-blockchains-a9e2ffc8ecca">How nCent Compares With Other Blockchains</a></h1>
+                            <h1 class="entry__title"><a id = "article3header"href=""></a></h1>
 
                         </div>
                         <div class="entry__excerpt">
                             <p>
-                                One of the most important decisions we’ve made at nCent Labs is to create our own base layer protocol, rather than build on an existing “Turing Complete” chain like Ethereum, EOS, or NEO. The fact that Ethereum was released only three years ago — considered alongside...
+                                KK Jain<br>
+                                <div id = "article3cont"></div>
                             </p>
                         </div>
                         <div class="entry__meta">
                             <span class="entry__meta-links">
-
-                                <a href="https://medium.com/tag/blockchain">Blockchain</a>
-                                <a href="https://medium.com/tag/bitcoin">Bitcoin</a>
-                                <a href="https://medium.com/tag/ethereum">Ethereum</a>
-                                
-                                <a href="https://medium.com/tag/stellar">Stellar</a>
-                                <a href="https://medium.com/tag/protocol">Protocol</a>
-
+                                <div id = "article3tags"></div>
 
                             </span>
                         </div>
@@ -308,7 +279,7 @@
 
                     <div class="entry__thumb">
                         <a href="single-standard.html" class="entry__thumb-link">
-                            <img src="https://res.cloudinary.com/dxwddglzt/image/upload/v1531944754/blog%20page/ngage.png"
+                            <img id = "article4pic "src="https://cdn-images-1.medium.com/max/1600/1*650H30VrIYqcbdxZ0tIFew.jpeg"
                                      alt="">
                         </a>
                     </div>
@@ -317,25 +288,21 @@
                         <div class="entry__header">
 
                             <div class="entry__date">
-                                <a href="https://medium.com/@kk_ncnt/introducing-ngage-the-ncent-labs-worldwide-campus-founders-program-f9b56b55e57b">July 17, 2018</a>
+                                <a id = "article4date" href=""></a>
                             </div>
-                            <h1 class="entry__title"><a href="https://medium.com/@kk_ncnt/introducing-ngage-the-ncent-labs-worldwide-campus-founders-program-f9b56b55e57b">Introducing nGage: the nCent Labs Worldwide Campus Founder’s Program</a></h1>
+                            <h1 class="entry__title"><a id = "article4header" href=""></a></h1>
 
                         </div>
                         <div class="entry__excerpt">
                             <p>
-                                The field of incentive design is both broad and interdisciplinary, touching Economics, Sociology, Computer Science and even Biology. However, applications of incentive design to blockchain is an emergent field of thought inquiry. Making enough progress...
+                                KK Jain<br>
+                                <div id = "article4cont"></div>
                             </p>
                         </div>
                         <div class="entry__meta">
                             <span class="entry__meta-links">
 
-                                <a href="https://medium.com/tag/blockchain">Blockchain</a>
-                                <a href="https://medium.com/tag/community">Community</a>
-                                <a href="https://medium.com/tag/entrepreneurship">Entrepreneurship</a>
-                                
-                                <a href="https://medium.com/tag/startup">Startup</a>
-                                <a href="https://medium.com/tag/research">Research</a>
+                                <div id = "article4tags"></div>
 
 
                             </span>
@@ -347,7 +314,7 @@
 
                     <div class="entry__thumb">
                         <a href="single-standard.html" class="entry__thumb-link">
-                            <img src="https://res.cloudinary.com/dxwddglzt/image/upload/v1531944746/blog%20page/socialmedia1.jpg"
+                            <img id = "article5pic" src=""
                                      alt="">
                         </a>
                     </div>
@@ -356,24 +323,21 @@
                         <div class="entry__header">
 
                             <div class="entry__date">
-                                <a href="https://medium.com/@kk_ncnt/get-paid-for-the-value-you-provide-to-a-social-network-d7867d59652">July 17, 2018</a>
+                                <a id = "article5date" href=""></a>
                             </div>
-                            <h1 class="entry__title"><a href="https://medium.com/@kk_ncnt/get-paid-for-the-value-you-provide-to-a-social-network-d7867d59652">Get Paid for the Value You Provide to a Social Network</a></h1>
+                            <h1 class="entry__title"><a id = "article5header" href=""></a></h1>
 
                         </div>
                         <div class="entry__excerpt">
                             <p>
-                                Social media networks and applications like Facebook and Twitter have become a primary means by which many people exchange information on a day-to-day basis. This exchange is made public more often than not; a musician might publicize...
+                                KK Jain<br>
+                                <div id = "article5cont"></div>
                             </p>
                         </div>
                         <div class="entry__meta">
                             <span class="entry__meta-links">
 
-                                <a href="https://medium.com/tag/blockchain">Blockchain</a>
-                                <a href="https://medium.com/tag/social-network">Social Network</a>
-                                <a href="https://medium.com/tag/cryptocurrency">Cryptocurrency</a>
-                                <a href="https://medium.com/tag/mobile">Mobile</a>
-                                <a href="https://medium.com/tag/networking">Networking</a>
+                                <div id = "article5tags"></div>
 
 
                             </span>
@@ -385,7 +349,7 @@
 
                     <div class="entry__thumb">
                         <a href="single-standard.html" class="entry__thumb-link">
-                            <img src="https://res.cloudinary.com/dxwddglzt/image/upload/v1531944748/blog%20page/back2.jpg"
+                            <img id = "article6pic" src=""
                                      alt="">
                         </a>
                     </div>
@@ -394,20 +358,21 @@
                         <div class="entry__header">
 
                             <div class="entry__date">
-                                <a href="https://medium.com/@kk_ncnt/the-success-of-incentive-centered-blockchain-markets-f7b63e998a31">July 16, 2018</a>
+                                <a id = "article6date" href=""></a>
                             </div>
-                            <h1 class="entry__title"><a href="https://medium.com/@kk_ncnt/the-success-of-incentive-centered-blockchain-markets-f7b63e998a31">The Success of Incentive-Centered Blockchain Markets</a></h1>
+                            <h1 class="entry__title"><a id = "article6header" href=""></a></h1>
 
                         </div>
                         <div class="entry__excerpt">
                             <p>
-                                In ordinary contexts, the term ‘incentive’ refers to an individual’s reason for acting towards a particular goal. Within the blockchain community, the concept of an incentive is becoming increasingly popular, although here it takes on a more technical meaning. We say, for instance, that an incentive-centered design...
+                                KK Jain<br>
+                                <div id = "article6cont"></div>
                             </p>
                         </div>
                         <div class="entry__meta">
                             <span class="entry__meta-links">
 
-                                <a href="https://medium.com/tag/blockchain">Blockchain</a>
+                                <div id = "article6tags"></div>
 
 
                             </span>
@@ -420,8 +385,8 @@
 
                     <div class="entry__thumb">
                         <a href="single-standard.html" class="entry__thumb-link">
-                            <img src="https://res.cloudinary.com/dxwddglzt/image/upload/v1531944747/blog%20page/back1.jpg"
-                                     alt="">
+                            <img id = "article7pic" src="https://cdn-images-1.medium.com/max/1024/1*yDd_8GfghBizIXZpf9Y-2Q.jpeg"
+                                    alt="">
                         </a>
                     </div>
 
@@ -429,22 +394,19 @@
                         <div class="entry__header">
 
                             <div class="entry__date">
-                                <a href="https://medium.com/@kk_ncnt/follow-the-coin-who-stands-to-gain-from-blockchains-95e00bbb85b2">July 12, 2018</a>
+                                <a id = "article7date" href=""></a>
                             </div>
-                            <h1 class="entry__title"><a href="https://medium.com/@kk_ncnt/follow-the-coin-who-stands-to-gain-from-blockchains-95e00bbb85b2">Follow the Coin: Who Stands to Gain from Blockchains Today</a></h1>
+                            <h1 class="entry__title"><a id = "article7header" href=""></a></h1>
 
                         </div>
                         <div class="entry__excerpt">
                             <p>
-                                The 2008 Global Credit Crises was a crises of confidence in markets, — — but also a breakdown of trust in central authorities. Out of this chaos, Satoshi Nakamoto birthed Bitcoin. This decentralized currency promised to work without requiring parties to trust one another. Other properties of blockchains proved useful in this paradigm...
-                            </p>
+                                KK Jain<br>
+                                <div id = "article7cont"></div>
                         </div>
                         <div class="entry__meta">
                             <span class="entry__meta-links">
-                                <a href="https://medium.com/tag/bitcoin">Bitcoin</a>
-                                <a href="https://medium.com/tag/Ethereum">Ethereum</a>
-                                <a href="https://medium.com/tag/blockchain">Blockchain</a>
-                                <a href="https://medium.com/tag/cryptocurrency">Cryptocurrency</a>
+                                <div id = "article7tags"></div>
 
                             </span>
                         </div>
@@ -457,8 +419,8 @@
 
                     <div class="entry__thumb">
                         <a href="single-standard.html" class="entry__thumb-link">
-                            <img src="https://res.cloudinary.com/dxwddglzt/image/upload/v1531944750/blog%20page/images.jpg"
-                                    srcset="https://res.cloudinary.com/dxwddglzt/image/upload/v1531944750/blog%20page/images.jpg 1x, https://res.cloudinary.com/dxwddglzt/image/upload/v1531944750/blog%20page/images.jpg 2x" alt="">
+                            <img id = "article8pic" src=""
+                                    alt="">
                         </a>
                     </div>
 
@@ -466,21 +428,20 @@
                         <div class="entry__header">
 
                             <div class="entry__date">
-                                <a href="https://medium.com/@kk_ncnt/the-week-of-100-logos-thank-you-ncent-nation-2f5ea4b52fbd">July 13, 2018</a>
+                                <a id = "article8date" href=""></a>
                             </div>
-                            <h1 class="entry__title"><a href="https://medium.com/@kk_ncnt/the-week-of-100-logos-thank-you-ncent-nation-2f5ea4b52fbd">The Week of 100 Logos: Thank you nCent Nation!!!</a></h1>
+                            <h1 class="entry__title"><a id = "article8header" href=""></a></h1>
 
                         </div>
                         <div class="entry__excerpt">
                             <p>
-                                At nCent Labs one of our aims is to unlock collective talent and appropriately attribute value within communities. As such, we think a great deal about incentives, incentives, and incentives; and how to best leverage them to support a broad set of diverse communities. Incentive markets are a natural...
+                                KK Jain<br>
+                                <div id = "article8cont"></div>
                             </p>
                         </div>
                         <div class="entry__meta">
                             <span class="entry__meta-links">
-                                <a href="https://medium.com/tag/cryptocurrency">Crytocurrency</a>
-                                <a href="https://medium.com/tag/design">Design</a>
-                                <a href="https://medium.com/tag/blockchain">Blockchain</a>
+                                <div id = "article8tags"></div>
 
                             </span>
                         </div>
@@ -492,8 +453,8 @@
 
                     <div class="entry__thumb">
                         <a href="single-standard.html" class="entry__thumb-link">
-                            <img src="https://res.cloudinary.com/dxwddglzt/image/upload/v1531944748/blog%20page/eth.jpg"
-                                    srcset="https://res.cloudinary.com/dxwddglzt/image/upload/v1531944748/blog%20page/eth.jpg 1x, https://res.cloudinary.com/dxwddglzt/image/upload/v1531944748/blog%20page/eth.jpg 2x" alt="">
+                            <img id = "article9pic" src=""
+                                    srcset="" alt="">
                         </a>
                     </div>
 
@@ -501,30 +462,27 @@
                         <div class="entry__header">
 
                             <div class="entry__date">
-                                <a href="https://medium.com/@kk_ncnt/why-not-ethereum-for-everything-a391ffdfe26f">July 12, 2018</a>
+                                <a id = "article9date" href=""></a>
                             </div>
-                            <h1 class="entry__title"><a href="https://medium.com/@kk_ncnt/why-not-ethereum-for-everything-a391ffdfe26f">Why Not Ethereum for Everything?</a></h1>
+                            <h1 class="entry__title"><a id = "article9header" href=""></a></h1>
 
                         </div>
                         <div class="entry__excerpt">
                             <p>
-                                In recent years, we have seen an explosion in the number of cryptocurrencies. Ethereum is an adaptable blockchain on which Turing-complete “smart contracts” can be programmed to implement a mind-boggling assortment of applications. The ability of Ethereum...
+                                KK Jain<br>
+                                <div id = "article9cont"></div>
                             </p>
                         </div>
                         <div class="entry__meta">
                             <span class="entry__meta-links">
-                                <a href="https://medium.com/tag/ethereum">Ethereum</a>
-                                <a href="https://medium.com/tag/blockchain">Blockchain</a>
-                                <a href="https://medium.com/tag/development">Development</a>
-                                <a href="https://medium.com/tag/cryptocurrency">Cryptocurrency</a>
-                                <a href="https://medium.com/tag/bitcoin">Bitcoin</a>
+                                <div id = "article9tags"></div>
                             </span>
                         </div>
                     </div>
 
                 </article> <!-- end article -->
 
-                <article class="masonry__brick entry format-video" data-aos="fade-up">
+                <article class="masonry__brick entry format-standard" data-aos="fade-up">
 
                     <div class="entry__thumb">
 
@@ -537,9 +495,9 @@
                         <div class="entry__header">
 
                             <div class="entry__date">
-                                <a href="single-video.html">July 3, 2018</a>
+                                <a href="https://medium.com/@kk_ncnt/ncent-presents-summer-of-incentive-hacking-reading-list-423e961c2e8a">July 3, 2018</a>
                             </div>
-                            <h1 class="entry__title"><a href="single-video.html">nCent Presents: Summer of Incentive Hacking Reading List</a></h1>
+                            <h1 class="entry__title"><a href="https://medium.com/@kk_ncnt/ncent-presents-summer-of-incentive-hacking-reading-list-423e961c2e8a">nCent Presents: Summer of Incentive Hacking Reading List</a></h1>
 
                         </div>
                         <div class="entry__excerpt">
@@ -690,11 +648,7 @@
 
 
     </footer> <!-- end s-footer -->
-
-
-    <!-- preloader
-    ================================================== -->
-    <div id="preloader">
+ <div id="preloader">
         <div id="loader">
             <div class="line-scale">
                 <div></div>
@@ -712,6 +666,7 @@
     <script src="js/jquery-3.2.1.min.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
+    <script src="medium/med.js"></script>
 
 </body>
 
