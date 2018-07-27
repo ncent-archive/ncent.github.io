@@ -1,5 +1,6 @@
 
 $(document).ready(function () {
+    $('#preloader').fadeIn();
     $.ajax({
         url: 'https://cors-anywhere.herokuapp.com/https://api.rss2json.com/v1/api.json',
         type: 'GET',
@@ -49,7 +50,13 @@ function getDateString(pubDate){
 }
 function getExcerpt(posts, num){
     var fullContent = posts[num].content;
-    var str = fullContent.substring(fullContent.indexOf('</figure>')+9);
+    var str;
+    if(fullContent.indexOf('</figure>')== -1){
+        str = fullContent;
+    }
+    else{
+        str = fullContent.substring(fullContent.indexOf('</figure>')+9);
+    } 
     var el = $('<div></div>');
     var excerpt = el.html(str);
     var plainText = '<p>'+ excerpt.text().substr(0, 300)+'</p>';
