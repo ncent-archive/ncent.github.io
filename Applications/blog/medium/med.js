@@ -36,7 +36,7 @@ function updateLatestArticle(posts){
     $( '#latestheader' ).text(posts[0].title);
     $( '#latestimage').attr('style', 'background-image:url('+posts[0].thumbnail + ');');
     $( '#latestheader' ).attr('href', posts[0].link);
-    $( '#latestdate' ).text(posts[0].pubDate.substring(0, 10));
+    $( '#latestdate' ).text(getDateString(posts[0].pubDate.substring(0, 10));
 }
 function updateAllArticles(posts){
     updateLatestArticle(posts);
