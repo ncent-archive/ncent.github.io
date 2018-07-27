@@ -47,6 +47,17 @@
 </head>
 
 <body id="top">
+    <div id="preloader">
+        <div id="loader">
+            <div class="line-scale">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
 
     <!-- pageheader
     ================================================== -->
@@ -648,17 +659,7 @@
 
 
     </footer> <!-- end s-footer -->
- <div id="preloader">
-        <div id="loader">
-            <div class="line-scale">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-        </div>
-    </div>
+ 
 
 
     <!-- Java Script
@@ -667,6 +668,12 @@
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
     <script src="medium/med.js"></script>
+    <script language="javascript" type="text/javascript">
+     $(window).load(function() {
+     $('#preloader').hide();
+  });
+</script>
+
 
 </body>
 
