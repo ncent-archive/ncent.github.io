@@ -30,7 +30,7 @@ function callAjaxAgain(){
     }).done(function(rss) {
         let posts = rss.items;
         updateAllArticles(posts);
-        window.location.reload(true);
+       // window.location.reload(true);
     });
 }
 function updateLatestArticle(posts){
@@ -44,16 +44,17 @@ function updateAllArticles(posts){
     for(var i = 1; i < 10; i++){
         updateSingleArticle('#article'+i+'header', '#article'+i+'date', '#article'+i+'pic', '#article'+i+'tags','#article'+i+'cont', i, posts);
     }
+
 }
 function updateSingleArticle(header, date, pic, tags, content, num, posts){
+        $( pic).attr('src', posts[num].thumbnail);
+        $( getExcerpt(posts, num)).insertAfter(content);
         $( header).text(posts[num].title);
+        $( makeTags(posts[num].categories) ).insertAfter(tags);
+        $( date).text(getDateString(posts[num].pubDate.substring(0, 10)));
         $( header).attr('href', posts[num].link);
         $( date).attr('href', posts[num].link);
-        $( date).text(getDateString(posts[num].pubDate.substring(0, 10)));
         
-        $( pic).attr('src', posts[num].thumbnail);
-        $( makeTags(posts[num].categories) ).insertAfter(tags);
-        $( getExcerpt(posts, num)).insertAfter(content);
 }
 var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 function getDateString(pubDate){
