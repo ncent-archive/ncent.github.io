@@ -1,8 +1,8 @@
-# Logo Assets folder is a compilation of logo assets for nCent Labs
+# Logo Assets Folder is a Compilation of Logo Assets for nCent Labs
 
 ## Hex Files - Color Codes 
 
-### Headers
+### **Headers**
 
 #### Pixel
 
@@ -84,7 +84,7 @@
         * Symbol Range: Darker #656486, Lighter #C7C8DC
         * Name Range: #FDFCFF
 
-### Square Logos (no print)
+### **Square Logos (no print)**
 
 #### Pixel
 
@@ -165,13 +165,105 @@
         * Darker #656486
         * Lighter #C7C8DC
 
-### Square Logos (with print)
+### **Square Logos (with print)**
 
 #### Pixel
 
 ###### PNG 
+* Black_subline.png: #000002 
+
+* Blue_subline.png: 
+    * Symbol
+        * Darker #626388 
+        * Lighter #CDDEE5
+    * Text
+        * #CEE5F0
+
+* Dark_subline.png:
+    * Symbol
+        * Darker #252629
+        * Lighter #726F71
+    * Text
+        * #202B37
+
+* Orange_subline.png:
+    * Symbol
+        * Darker #FFDB9A, 
+        * Lighter #FBE4BD
+    * Text
+        * #C2CEDA
+
+* Red_subline.png:
+    * Symbol
+        * Darker #F1CECF
+        * Lighter #FEFFFD 
+    * Text
+        * #D9DFEB
+
+* Silver.png:
+    * Symbol
+        * Darker #403C3A
+        * Whiter #E9E9E6
+    * Text
+        * #D9DFEB
+
+* White.png: #FBFDFB
 
 ###### PNG BG
+* BG_Subline_Black.png
+    * Background: #FFFFFF
+    * Foreground (including text): #030303
+
+* BG_Subline_Blue.png
+    * Background Range: #131437 to #2B2951
+    * Foreground:
+        * Darker #8C89A8,
+        * Lighter #D4D6E5.
+        * Text #D4D3E1
+
+
+* BG_Subline_Dark.png
+    * Background: #FFFFFF
+    * Foreground:
+        * Darker #101010
+        * Lighter #6E6E6E
+        * Text #252525
+
+* BG_Subline_Orange.png
+    * Background: Lighter top left #FF9F00, Darker bottom right #FE6904
+    * Foreground:
+        * Darker #F4D99B
+        * Lighter #F8EFDF
+        * Text #DBCBBA
+
+* BG_Subline_Red.png
+    * Background: #C2272F
+    * Foreground:
+        * Darker #ECC9C6
+        * Lighter #F8FCFB
+        * Text #E3D2C0
+
+* BG_Subline_Silver.png
+    * Background: #131313
+    * Foreground:
+        * Darker #4C4C4C
+        * Lighter #DEDEDE
+        * Text #CACACA
+
+###### PSD
+* Subline.psd
+    * Background: #FFFFFF
+    * Foreground: #040404
+    * Text: #040404
+
+#### Vector
+* Header_no_Subline(ai)
+    * Background: Darker Top #171636, Lighter Bottom #2A2448
+    * Foreground:
+        * Darker #656486
+        * Lighter #C7C8DC
+        * Text #C8C9CA
+
 
 
 
