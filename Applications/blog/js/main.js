@@ -108,6 +108,7 @@
     var clMasonryFolio = function () {
         
         var containerBricks = $('.masonry');
+        containerBricks.masonry('layout');
 
         containerBricks.imagesLoaded(function () {
             containerBricks.masonry({
@@ -117,11 +118,11 @@
             });
         });
 
-
-        // layout Masonry after each image loads
-        containerBricks.imagesLoaded().progress( function() {
-            containerBricks.masonry('layout');
-        });
+        containerBricks.imagesLoaded();
+        // // layout Masonry after each image loads
+        // containerBricks.imagesLoaded().progress( function() {
+        //     containerBricks.masonry('layout');
+        // });
     };
 
     var clSlickSlider = function() {
