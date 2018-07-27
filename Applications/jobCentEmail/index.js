@@ -289,23 +289,23 @@ const messageHandler = async message => {
   	// 	response.data.history.forEach(entry => { 			
 	//   		entry.messages.forEach(async (message) => {
 	
-	alreadyProcessed[message.id] = 1;
+	// alreadyProcessed[message.id] = 1;
 	
-	//console.log(messageJSON.emailAddress + ', ' + message.id);
-	new Promise(function(resolve, reject) {
-		listMessages(messageJSON.emailAddress, resolve);
-	})
-	.then(function(response) {
-		for (var i in response) {
+	// //console.log(messageJSON.emailAddress + ', ' + message.id);
+	// new Promise(function(resolve, reject) {
+	// 	listMessages(messageJSON.emailAddress, resolve);
+	// })
+	// .then(function(response) {
+	// 	for (var i in response) {
 			//console.log(response[i].id);
-			const msgOptions = {'userId': messageJSON.emailAddress, 'auth': oauth2Client, 'id': response[i].id};
+			const msgOptions = {'userId': messageJSON.emailAddress, 'auth': oauth2Client, 'id': message.id};
 			dealNewMessage(msgOptions, message);
-		}
-	})
-	.catch(function(error) {
-		console.log(error);
-		return;
-	})
+	// 	}
+	// })
+	// .catch(function(error) {
+	// 	console.log(error);
+	// 	return;
+	// })
 	
 };
 
