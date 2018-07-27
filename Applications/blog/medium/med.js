@@ -6,7 +6,7 @@ $(document).ready(function () {
         dataType: 'json',
         data:{
             rss_url: 'https://medium.com/feed/@kk_ncnt',
-            api_key: 'q7nxkxbvnnywdsyqh9vfsbpfo9zk2ziurkea5z6p',
+            api_key: 'n6vdjnyzq3vjg7j9ifarrny7ivn1onzpcaljyqen',
             count: 15
         },
         error: function(error) { alert('Failed!');}
