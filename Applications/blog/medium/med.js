@@ -32,12 +32,21 @@ function updateSingleArticle(header, date, pic, tags, content, num, posts){
         $( header).text(posts[num].title);
         $( header).attr('href', posts[num].link);
         $( date).attr('href', posts[num].link);
-        $( date).text(posts[num].pubDate.substring(0, 10));
+        $( date).text(getDateString(posts[num].pubDate.substring(0, 10));
+        
         $( pic).attr('src', posts[num].thumbnail);
         $( makeTags(posts[num].categories) ).insertAfter(tags);
         $( getExcerpt(posts, num)).insertAfter(content);
 }
+var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+function getDateString(pubDate){
+    var year = pubDate.substring(0,4);
+    var month = Number(pubDate.substring(5, 7));
+    month = months[month];
+    var day = pubDate.substring(8);
+    return month + ' ' + day + ', ' + year;
 
+}
 function getExcerpt(posts, num){
     var fullContent = posts[num].content;
     var str = fullContent.substring(fullContent.indexOf('</figure>')+9);
