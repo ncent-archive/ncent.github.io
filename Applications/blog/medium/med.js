@@ -10,13 +10,28 @@ $(document).ready(function () {
             api_key: 'mqa7ssz0pessoufddh6hy2uk1u98wyegtpmphtwi',
             count: 15
         },
-        error: function(error) { alert('Failed!');}
+        error: function(error) { callAjaxAgain();}
     }).done(function(rss) {
         let posts = rss.items;
         updateAllArticles(posts);
     });
 })
-
+function callAjaxAgain(){
+    $.ajax({
+        url: 'https://cors-anywhere.herokuapp.com/https://api.rss2json.com/v1/api.json',
+        type: 'GET',
+        dataType: 'json',
+        data:{
+            rss_url: 'https://medium.com/feed/@kk_ncnt',
+            api_key: 'mqa7ssz0pessoufddh6hy2uk1u98wyegtpmphtwi',
+            count: 15
+        },
+        error: function(error) { callAjaxAgain();}
+    }).done(function(rss) {
+        let posts = rss.items;
+        updateAllArticles(posts);
+    });
+}
 function updateLatestArticle(posts){
     $( '#latestheader' ).text(posts[0].title);
     $( '#latestimage').attr('style', 'background-image:url('+posts[0].thumbnail + ');');
