@@ -6,7 +6,7 @@ $(document).ready(function () {
         dataType: 'json',
         data:{
             rss_url: 'https://medium.com/feed/@kk_ncnt',
-            api_key: 'n6vdjnyzq3vjg7j9ifarrny7ivn1onzpcaljyqen',
+            api_key: 'mqa7ssz0pessoufddh6hy2uk1u98wyegtpmphtwi',
             count: 15
         },
         error: function(error) { alert('Failed!');}
@@ -32,7 +32,7 @@ function updateSingleArticle(header, date, pic, tags, content, num, posts){
         $( header).text(posts[num].title);
         $( header).attr('href', posts[num].link);
         $( date).attr('href', posts[num].link);
-        $( date).text(getDateString(posts[num].pubDate.substring(0, 10));
+        $( date).text(getDateString(posts[num].pubDate.substring(0, 10)));
         
         $( pic).attr('src', posts[num].thumbnail);
         $( makeTags(posts[num].categories) ).insertAfter(tags);
