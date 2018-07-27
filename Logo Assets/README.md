@@ -128,26 +128,42 @@
 * BG_Dark.png
     * Background: #FFFFFF
     * Foreground:
-        * Symbol Range: Darker #101010, Lighter #6E6E6E
+        * Darker #101010
+        * Lighter #6E6E6E
 
 * BG_Orange.png
     * Background: Lighter top left #FF9F00, Darker bottom right #FE6904
     * Foreground:
-        * Symbol Range: Darker #F4D99B, Lighter #F8EFDF
+        * Darker #F4D99B
+        * Lighter #F8EFDF
 
 * BG_Red.png
     * Background: #C2272F
     * Foreground:
-        * Symbol Range: Darker #FF8286, Lighter #FDD4D5
+        * Darker #FF8286
+        * Lighter #FDD4D5
 
 * BG_Silver.png
     * Background: #131313
     * Foreground:
-        * Symbol Range: Darker #4C4C4C, Ligher #DEDEDE
+        * Darker #4C4C4C
+        * Lighter #DEDEDE
 
 * BG_White.png
     * Background: #131313
     * Foreground: #FAFAFA
+
+###### PSD
+* NoSubline.psd
+    * Background: #FFFFFF
+    * Foreground: #040404
+
+#### Vector
+* Header_no_Subline(ai)
+    * Background: Darker Top #171636, Lighter Bottom #2A2448
+    * Foreground:
+        * Darker #656486
+        * Lighter #C7C8DC
 
 ### Square Logos (with print)
 
