@@ -109,16 +109,16 @@ function getEmailString(headerVal){
 }
 
 const processTransaction = async (to, from) => {
-	new Promise(function(resolve, reject) {
-		createWalletIfNeeded(wallets_Created[to], to, resolve);
-	})
-	.then(function(response) {
-		//console.log(response);
-	})
-	.catch(function(error) {
-		console.log(error);
-		return;
-	});
+	// new Promise(function(resolve, reject) {
+	// 	createWalletIfNeeded(wallets_Created[to], to, resolve);
+	// })
+	// .then(function(response) {
+	// 	//console.log(response);
+	// })
+	// .catch(function(error) {
+	// 	console.log(error);
+	// 	return;
+	// });
 	new Promise(function(resolve, reject) {
 		ncentSdkInstance.getTokenBalance(from, token_id, resolve);
 	})
@@ -151,86 +151,162 @@ function printMessage(message){
   	console.log(`\tAttributes: ${message.attributes}`);
 }
 
+// function listHistory(address, startHistoryId, callback) {
+// 	const getPageOfHistory = function(resp, result) {
+// 		//console.log(resp);
+// 		result = result.concat(resp.data.historyId);
+// 		let nextPageToken = resp.nextPageToken;
+// 		const options = {
+// 			'userId': address, 
+// 			'auth': oauth2Client, 
+// 			'startHistoryId': startHistoryId, 
+// 			'historyTypes': "messageAdded",
+// 			'pageToken': nextPageToken
+// 		};
+// 		if (nextPageToken) {
+// 		  gmail.users.history.list(options)
+// 		  .then(function(response) {
+// 			getPageOfHistory(response, result);
+// 		  })
+// 		  .catch(function(error) {
+// 			console.log(error);
+// 			return;
+// 		  })
+// 		} else {
+// 		  callback(result);
+// 		}
+// 	};
+// 	gmail.users.history.list({
+// 	  'auth': oauth2Client,
+// 	  'startHistoryId': startHistoryId,
+// 	  'historyTypes': "messageAdded",
+// 	  'userId': address
+// 	})
+// 	.then(function(response){
+// 		getPageOfHistory(response, []);
+// 	})
+// 	.catch(function(error) {
+// 		console.log(error);
+// 		return;
+// 	})
+//   }
+
+function dealNewMessage(msgOptions, message) {
+	gmail.users.messages.get(msgOptions)
+	.then(function(response){
+		console.log("getresponse: " + response.data.id.to_s(10));
+		let toEmail = '';
+		let fromEmail = '';
+	  	let ccFound = false;
+	  	let multiTo = false;
+		let headers = response.data.payload.headers;
+		for(idx in headers) {
+			if (headers[idx].name === 'To') {
+			  if ((headers[idx].value.match(/@/g) || []).length !== 1) multiTo = true;
+				toEmail = getEmailString(headers[idx]);
+			}
+			if (headers[idx].name === "From") fromEmail = getEmailString(headers[idx]);
+			if (headers[idx].name === "Cc") {
+				let startIdx = headers[idx].value.indexOf('jobcent@ncnt.io');
+				if (startIdx !== -1) ccFound = true;
+			}
+			if (toEmail !== '' && fromEmail !== '' && ccFound) break;
+		}
+		if(!ccFound) return;
+		if(multiTo) {
+			sendEmail(fromEmail, './manyAddresses.html', "Error: You've entered too many addresses in the To line");
+			return;
+		}
+		console.log('\nSending one jobCent from ' + fromEmail + ' to ' + toEmail);
+		//processTransaction(toEmail, fromEmail);
+	})
+	.then(function(response) {
+		message.ack();
+	})
+	.catch(function(error){
+		console.log(error);
+		return;
+	});
+}
+
+function listMessages(userId, callback) {
+	let getPageOfMessages = function(resp, result) {
+		result = result.concat(resp.data.messages);
+		let nextPageToken = resp.data.nextPageToken;
+		//console.log(nextPageToken);
+		if (nextPageToken) {
+		  gmail.users.messages.list({
+			'userId': userId,
+			'pageToken': nextPageToken,
+			'auth': oauth2Client
+		  })
+		  .then(function(response) {
+			getPageOfMessages(response, result);
+		  })
+		  .catch(function(error) {
+			console.log(error);
+		  })
+		} else {
+		  callback(result);
+		}
+	};
+	gmail.users.messages.list({
+	  'userId': userId,
+	  'auth': oauth2Client
+	})
+	.then(function(response) {
+		//console.log(response);
+		getPageOfMessages(response, []);
+	})
+	.catch(function(error) {
+		console.log(error);
+	})
+  }
+
 const messageHandler = async message => {
   	let messageJSON = JSON.parse(message.data);
-  	console.log("in message handler");
+  	//console.log("in message handler");
   	if(messageJSON.emailAddress !== 'jobcent@ncnt.io') {
   		message.ack();
   		return;
- 	 }
- 	
- 	printMessage(message);
+	 }
+	if ((message.id in alreadyProcessed)) return;
+	printMessage(message);
   	startHistoryId = currHistoryId;
-  	currHistoryId = messageJSON.historyId;
-  	const options = {	userId: messageJSON.emailAddress, 
-  						auth: oauth2Client, 
-  						startHistoryId: startHistoryId, 
-  						historyTypes:"messageAdded"
-  					};
+	currHistoryId = messageJSON.historyId;
+	console.log("startHistoryId: " + startHistoryId + ", currHistoryId: " + currHistoryId);  
   	if (startHistoryId === undefined) {
   		//console.log("going to die");
   		message.ack();
   		return; //The first time we get a message we don't get notified. The first message kind of sets things up
-  	}
-  	new Promise(function(resolve, reject) {
-  		//console.log("in promise");
-  		gmail.users.history.list(options);
-  		//console.log("outside");
-  	})
-  	.then(function(response){
-  		//console.log("response " + response);
-  		response.data.history.forEach(entry => { 			// console.log(entry.messages); //Prints the new messages info
-	  		entry.messages.forEach(async (message) => {
-	  			if ((message.id in alreadyProcessed)) return;
-	  			alreadyProcessed[message.id] = 1;
-
-	  			const msgOptions = {userId: messageJSON.emailAddress, auth: oauth2Client, id: message.id};
-	  			new Promise(function(resolve, reject) {
-  					gmail.users.messages.get(msgOptions);
-  				})
-  				.then(function(response){
-  					let toEmail = '';
-	  				let fromEmail = '';
-        			let ccFound = false;
-        			let multiTo = false;
-  					let headers = response.data.payload.headers;
-  					for(idx in headers) {
-		  				if (headers[idx].name === 'To') {
-	            			if ((headers[idx].value.match(/@/g) || []).length !== 1) multiTo = true;
-		  					toEmail = getEmailString(headers[idx]);
-		  				}
-		  		
-		  				if (headers[idx].name === "From") fromEmail = getEmailString(headers[idx]);
-
-	          			if (headers[idx].name === "Cc") {
-		  					let startIdx = headers[idx].value.indexOf('jobcent@ncnt.io');
-		  					if (startIdx !== -1) ccFound = true;
-		  				}
-		  				if (toEmail !== '' && fromEmail !== '' && ccFound) break;
-		  			}
-	       			if(!ccFound) return;
-		  			if(multiTo) {
-		  				sendEmail(fromEmail, './manyAddresses.html', "Error: You've entered too many addresses in the To line");
-		  				return;
-		  			}
-		  			console.log('\nSending one jobCent from ' + fromEmail + ' to ' + toEmail);
-		  			processTransaction(toEmail, fromEmail);
-  				})
-  				.catch(function(error){
-  					console.log(error);
-  					return;
-  				});
-	  		});
-		});
-  		// "Ack" (acknowledge receipt of) the message
-  		message.ack();
-  		//console.log("history " + history);
-  	})
-  	.catch(function(error){
-  		//console.log("in error");
-  		console.log(error);
-  		return;
-  	});
+	}
+  	// new Promise(function(resolve, reject) {
+  	// 	console.log("in promise");
+  	// 	return listHistory(messageJSON.emailAddress, startHistoryId, resolve);
+  	// })
+  	// .then(function(response){
+  	// 	console.log("response " + response);
+  	// 	response.data.history.forEach(entry => { 			
+	//   		entry.messages.forEach(async (message) => {
+	
+	alreadyProcessed[message.id] = 1;
+	
+	//console.log(messageJSON.emailAddress + ', ' + message.id);
+	new Promise(function(resolve, reject) {
+		listMessages(messageJSON.emailAddress, resolve);
+	})
+	.then(function(response) {
+		for (var i in response) {
+			//console.log(response[i].id);
+			const msgOptions = {'userId': messageJSON.emailAddress, 'auth': oauth2Client, 'id': response[i].id};
+			dealNewMessage(msgOptions, message);
+		}
+	})
+	.catch(function(error) {
+		console.log(error);
+		return;
+	})
+	
 };
 
 const sendEmail = async (receiver, file, subject) => {
@@ -297,7 +373,7 @@ function getHomePageCallback (request, response) {
             setOauthCredentials(tokens);
 			gmail = google.gmail({version: 'v1', oauth2Client});
 			initEmailWatcher();
-			subscription.on(`message`, messageHandler);
+			setTimeout(function(){subscription.on(`message`, messageHandler)}, 5000);
 			response.send("Done with authentication.");
 		}, function(reason){
 		//	console.log("get auth tokens failed" + reason)
@@ -315,7 +391,6 @@ function main() {
       if (err) {
       	console.log(`failed to listen to ${gmailPort}`, err);
       }
-
     });
    // console.log("after listen");
 }
