@@ -46,16 +46,16 @@ class TokensScreen extends Component {
               data={this.props.allTokens}
               renderItem={({item}) => 
               <View>
-                <TouchableHighlight onPress={() => Actions.TokenDetails({tokenType: item.key})} underlayColor="white">
+                <TouchableHighlight onPress={() => Actions.TokenDetails({tokenType: item.tokentype_uuid})} underlayColor="white">
                   <View style={{flexDirection: 'row', paddingTop: 30, height: 90}}>
-                    <Text style={{paddingLeft: 20, fontSize: 20}}>{item.key}</Text>
+                    <Text style={{paddingLeft: 20, fontSize: 20}}>{item.tokentype_uuid}</Text>
                   </View>
                 </TouchableHighlight>
                   <View style={{flexDirection: 'row', paddingTop: 1, height: 1, backgroundColor: "gray"}}>
                   </View>                
               </View>
             }
-            keyExtractor={(item) => item.key}
+            keyExtractor={(item) => item.tokentype_uuid}
           />
         </View>
         {this.renderError()}

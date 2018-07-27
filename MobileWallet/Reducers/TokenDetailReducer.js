@@ -9,7 +9,7 @@ const INITIAL_STATE = {
 export default (state = INITIAL_STATE, action) => {
 	switch(action.type) {
 		case GET_BALANCE:
-			return {...state, loading: true, error: ''};
+			return {...state, loading: true};
 		case GET_BALANCE_SUCCESS:
 			return {...state, loading: false, error: '', balance: action.payload};
 		case GET_BALANCE_FAIL:
