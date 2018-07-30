@@ -180,9 +180,9 @@ ul, ol {
     margin-bottom: 60px;
 }
 
-.section-header .title {
+/*.section-header .title {
     text-transform: capitalize;
-}
+}*/
 
 .title:after {
     content:"";
