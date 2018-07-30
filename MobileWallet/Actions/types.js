@@ -21,3 +21,10 @@ export const GET_BALANCE_FAIL = 'get_balance_fail';
 export const GET_ALL_TOKENS = 'get_all_tokens';
 export const GET_TOKENS_SUCCESS = 'get_tokens_success';
 export const GET_TOKENS_FAIL = 'get_tokens_fail';
+
+export const MAITRE_EMAIL_CHANGED = 'maitre_email_changed';
+export const MAITRE_SIGNUP_SUCCESS = 'maitre_signup_success';
+export const MAITRE_SIGNUP_FAIL = 'maitre_signup_fail';
+export const MAITRE_SIGNUP_SUBMIT = 'maitre_signup_submit';
+
+export const USER_LOGOUT = 'user_logout';

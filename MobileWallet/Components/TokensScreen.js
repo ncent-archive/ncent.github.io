@@ -59,14 +59,39 @@ class TokensScreen extends Component {
           />
         </View>
         {this.renderError()}
+        <TouchableHighlight onPress={() => Actions.MaitreSignup()} underlayColor="white">
+          <View style={styles.bottomBar}>
+            <Text style={styles.bottomBarHeader}>Sign Up for Early Access</Text>
+          </View>
+        </TouchableHighlight>
+
       </View>
     );
   }
-}
+} 
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  bottomBar: {
+    flexDirection: 'row',
+    paddingTop: 10,
+    height: 80,
+    backgroundColor: '#5c4da0',
+    shadowColor: '#000',
+    shadowOffset: {width: 0, height: 1},
+    shadowOpacity: .2
+  },
+  bottomBarHeader: {
+    flex: 1,
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
+    fontSize: 20,
+    paddingTop: 15
   },
  navBar: {
     flexDirection: 'row',

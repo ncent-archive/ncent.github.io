@@ -11,7 +11,7 @@ export const sendInfoUpdate = ({prop, value}) => {
 		payload: { prop, value }
 	};
 };
-
+ 
 export const sendTokensToAddress = ({address, amount, tokenType}) => {
 	return (dispatch) => {
 		dispatch({type: SEND_TOKENS});
@@ -28,6 +28,11 @@ export const sendTokensToAddress = ({address, amount, tokenType}) => {
 			setTimeout(()=> {Actions.refresh({refresh: true})}, 500);
 			Actions.pop();
 		})
+		.catch(error => {
+			console.log(error);
+			console.log(error);
+			dispatch({type: SEND_TOKENS_FAIL, payload: "Error Sending Tokens"});
+		});
 	};
 };
 

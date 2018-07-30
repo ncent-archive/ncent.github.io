@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 import {sendInfoUpdate, sendTokensToAddress, cancelTransaction} from '../Actions';
 import {Spinner} from './Common';
 
-
+ 
 class SendTokens extends Component {
 
 

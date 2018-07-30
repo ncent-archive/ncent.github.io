@@ -1,5 +1,5 @@
 import firebase from 'firebase';
-import {GET_ALL_TOKENS, GET_TOKENS_SUCCESS, GET_TOKENS_FAIL} from './types';
+import {GET_ALL_TOKENS, GET_TOKENS_SUCCESS, GET_TOKENS_FAIL, USER_LOGOUT} from './types';
 import {Actions} from 'react-native-router-flux';
 import ncentSDK from 'ncent-sdk-public';
 
@@ -29,6 +29,7 @@ export const signOut = () => {
 	return (dispatch) => {
 		firebase.auth().signOut()
 			.then( () => {
+				dispatch({type: USER_LOGOUT})
 				Actions.popTo("LoginOrSignup");
 			})
 	}
