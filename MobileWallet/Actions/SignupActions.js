@@ -12,7 +12,7 @@ export const userUpdate = ({prop, value}) => {
 	};
 };
 
-const ncentuuid = 'c8e35e05-27f2-4306-be59-bc344897504a';
+let ncentuuid;
 
 export const createUser = ({first, last, email, username, phone, password, confirm}) => {
 	return (dispatch) => {
@@ -30,21 +30,33 @@ export const createUser = ({first, last, email, username, phone, password, confi
 		})
 		.then(()=> {
 			console.log("now here");
-			new Promise(function(resolve, reject) {
-				// when you need to make a new ncentSDK instance:
-				// console.log("making tokenid");
-				// return ncentSDKInstance.initNCNT(resolve);
-				console.log("making wallet");
-				ncentSDKInstance.createWalletAddress(email.toLowerCase(), ncentuuid, resolve);
-			})
-			// making wallet after you've made a new ncent sdk instance
-			// .then(function(response) {
-			// 	console.log("making wallet");
-			// 	ncentSDKInstance.createWalletAddress(email, response.data.tokenTypeResponseData.uuid, function(response){});
+			// new Promise(function(resolve, reject) {
+			// 	// when you need to make a new ncentSDK instance:
+			// 	console.log("making tokenid");
+			// 	return ncentSDKInstance.initNCNT(resolve);
 			// })
+			// .then(()=> {
+			// 	new Promise(function(resolve,reject) {
+			// 		ncentSDKInstance.getAllBalances("company@ncnt.io", resolve);
+			// 	})
+			// 	.then(response => {return response;});
+			// })
+			
+			new Promise( function(resolve, reject) {
+				ncentSDKInstance.getAllBalances("company@ncnt.io", resolve);
+			})
+
+			.then(response => {
+				console.log("making wallet");
+				console.log(response);
+				console.log(response.data);
+				ncentuuid = response.data[0].tokentype_uuid;
+				ncentSDKInstance.createWalletAddress(email.toLowerCase(), ncentuuid, function(response){});
+			})
 			.then( () => {
 				console.log("giving some tokens on signup cause why not");
-		 		ncentSDKInstance.transferTokens("company@ncnt.io", email.toLowerCase(), ncentuuid, 10, function(response){});
+				console.log(ncentuuid);
+		 		ncentSDKInstance.transferTokens("company@ncnt.io", email.toLowerCase(), ncentuuid, 100, function(){});
 			})
 			.then( () => {
 				console.log("no shot we get here");
