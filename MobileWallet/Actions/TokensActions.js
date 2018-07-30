@@ -32,4 +32,4 @@ export const signOut = () => {
 				Actions.popTo("LoginOrSignup");
 			})
 	}
-} 
+}  
