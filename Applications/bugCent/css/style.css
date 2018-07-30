@@ -593,9 +593,9 @@ header {
     text-align: center;
 }
 
-.home-content h1 {
+/*.home-content h1 {
   text-transform: uppercase;
-}
+}*/
 .home-content button {
   margin-top: 20px;
 }
