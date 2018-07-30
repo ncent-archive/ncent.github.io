@@ -1,6 +1,7 @@
 import firebase from 'firebase';
 import {USER_UPDATE, CREATE_USER, CREATE_USER_SUCCESS, CREATE_USER_FAIL} from './types';
 import {Actions} from 'react-native-router-flux';
+import {Alert} from 'react-native';
 import ncentSDK from 'ncent-sdk-public';
 
 const ncentSDKInstance = new ncentSDK();
@@ -65,13 +66,15 @@ export const createUser = ({first, last, email, username, phone, password, confi
 			})
 			.catch(error => {
 				console.log("this error");
-				dispatch({type: CREATE_USER_FAIL});
-				console.log(error);
+				new_user.delete();
+				Alert.alert("Server Error");
+				dispatch({type: CREATE_USER_FAIL, payload: "Server Error"});
 			});
 		})
 		.catch(error => {
 			console.log("no, this error");
-			dispatch({type: CREATE_USER_FAIL});
+			Alert.alert(error.toString());
+			dispatch({type: CREATE_USER_FAIL, payload: error.toString()});
 			console.log(error);
 		});
 		// new Promise(function(resolve, reject) {
