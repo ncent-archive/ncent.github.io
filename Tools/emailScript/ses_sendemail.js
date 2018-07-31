@@ -43,9 +43,10 @@ var params = {
 
     // Handle promise's fulfilled/rejected states
     sendPromise.then(
-    function(data) {
-        console.log(data.MessageId);
-    }).catch(
-        function(err) {
-        console.error(err, err.stack);
-    });
+        function(data) {
+            console.log(data.MessageId);
+        }).catch(
+            function(err) {
+            console.error(err, err.stack);
+        }
+    );
