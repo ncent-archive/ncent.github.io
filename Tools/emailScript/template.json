@@ -1,0 +1,40 @@
+{
+    "Source":"sender@example.com",
+    "ConfigurationSetName":"ConfigSet",
+    "Template":"MyTemplate",
+    "Destinations":[
+    {
+        "Destination":{
+        "ToAddresses":[
+            "anaya.iyengar@example.com"
+        ]
+        },
+        "ReplacementTemplateData":"{ \"name\":\"Anaya\", \"favoriteanimal\":\"yak\" }"
+    },
+    {
+        "Destination":{ 
+            "ToAddresses":[
+            "liu.jie@example.com"
+            ]
+        },
+        "ReplacementTemplateData":"{ \"name\":\"Liu\", \"favoriteanimal\":\"water buffalo\" }"
+    },
+    {
+        "Destination":{
+        "ToAddresses":[
+            "shirley.rodriguez@example.com"
+            ]
+        },
+        "ReplacementTemplateData":"{ \"name\":\"Shirley\", \"favoriteanimal\":\"vulture\" }"
+    },
+    {
+    "Destination":{
+        "ToAddresses":[
+            "richard.roe@example.com"
+        ]
+    },
+        "ReplacementTemplateData":"{}"
+    }
+    ],
+    "DefaultTemplateData":"{ \"name\":\"friend\", \"favoriteanimal\":\"unknown\" }"
+}
