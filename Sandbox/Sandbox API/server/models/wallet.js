@@ -36,8 +36,8 @@ module.exports = (sequelize, DataTypes) => {
     balance: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      defaultValue: 0
-      //validate: {min: 0, max: }
+      defaultValue: 0,
+      validate: {min: 0}
     }
   },{
     indexes: [
