@@ -22,7 +22,7 @@ var params = {
   },
   ],
   Source: 'kk@ncnt.io', /* required */
-  Template: 'TEMPLATE_NAME', /* required */
+  Template: 'signature.html', /* required */
   DefaultTemplateData: '{ \"REPLACEMENT_TAG_NAME\":\"REPLACEMENT_VALUE\" }',
   ReplyToAddresses: [
       'kk@ncnt.io',
