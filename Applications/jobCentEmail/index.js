@@ -11,7 +11,7 @@ const pubsub = new PubSub({
 const subscriptionName = 'projects/jobcent-210021/subscriptions/emailWatcher';
 const subscription = pubsub.subscription(subscriptionName);
 
-const jobCentHostUrl = "http://52.53.165.193:3000/";
+// const jobCentHostUrl = "http://52.53.165.193:3000/";
 const gmailPort = 3001;
 const app = express();
 
@@ -28,7 +28,7 @@ const oauth2Client = new google.auth.OAuth2(
   'aViJjmhHPZfy85l0vDnvwl5n',
   `http://52.53.165.193:3001/`
 );
-const oauthUrl = oauth2Client.generateAuthUrl({access_type: 'offline', scope: scopes});
+// const oauthUrl = oauth2Client.generateAuthUrl({access_type: 'offline', scope: scopes});
 
 const gmailApiSync = require('gmail-api-sync');
 gmailApiSync.setClientSecretsFile('./client_secret.json');
@@ -51,7 +51,7 @@ let gmail;
 let startHistoryId;
 let currHistoryId;
 let token_id;
-let tkn;
+let tkn = '';
 
 ////////////////////////////FUNCTIONS\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
@@ -368,10 +368,10 @@ function getOauthTokens (tokenCode) {
 	return oauth2Client.getToken(tokenCode);
 }
 
-function setOauthCredentials (tokens) {
+function setOauthCredentials () {
 	//console.log("set auth credentials");
-	tkn = tokens.tokens;
-	oauth2Client.credentials = tokens.tokens;
+	//tkn = tokens.tokens;
+	oauth2Client.credentials = tkn;
 }
 
 function syncMessages(full, syncOptions, resolve, reject) {
@@ -403,8 +403,8 @@ function syncMessages(full, syncOptions, resolve, reject) {
 
 function getHomePageCallback (request, response) {
 	const fullSyncOptions = {query: 'from: ncnt.io'};
-    getOauthTokens(request.query.code)
-        .then(function(tokens) {
+    // getOauthTokens(request.query.code)
+    //     .then(function(tokens) {
             setOauthCredentials(tokens);
 			gmail = google.gmail({version: 'v1', oauth2Client});
 			initEmailWatcher();
@@ -421,15 +421,15 @@ function getHomePageCallback (request, response) {
 				console.log(error);
 			})
 			response.send("Done with authentication.");
-		}, function(reason){
-			console.log("get auth tokens failed" + reason)
-		});
+		// }, function(reason){
+		// 	console.log("get auth tokens failed" + reason)
+		// });
 	}
 
 function main() {
 	initJobCent();
 	console.log(oauthUrl);
-	opn(oauthUrl);
+	// opn(oauthUrl);
    	app.get('/', getHomePageCallback);
 	app.listen(gmailPort, (err) => {
       		if (err) {
