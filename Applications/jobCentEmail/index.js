@@ -81,7 +81,7 @@ function initJobCent() {
 		return createAndTransfer('an@ncnt.io');
 	})
 	.then(function() {
-		return createAndTransfer('ag@ncnt.io');
+		return createAndTransfer('ag@ncnt.io')
 	})
 	.catch(function(error){
 		console.log(error);
@@ -99,7 +99,7 @@ function createAndTransfer(email) {
 		})
 	})
 	.catch(function(error) {
-		console.log(error.message);
+		console.log(error);
 		return;
 	})
 }
@@ -428,13 +428,14 @@ function getHomePageCallback (request, response) {
 
 function main() {
 	initJobCent();
-    opn(oauthUrl);
+	console.log(oauthUrl);
+	opn(oauthUrl);
    	app.get('/', getHomePageCallback);
-    app.listen(gmailPort, (err) => {
-      if (err) {
-      	console.log(`failed to listen to ${gmailPort}`, err);
-      }
-    });
+	app.listen(gmailPort, (err) => {
+      		if (err) {
+      			console.log(`failed to listen to ${gmailPort}`, err);
+      		}
+    	});
 }
 ////////////////////////CODE\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 main();
