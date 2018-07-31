@@ -1,17 +1,21 @@
 'use strict';
 
 var aws = require('aws-sdk');
+// Load the SDK for JavaScript
+
+// Set the region
+aws.config.update({region: 'us-west-2'});
 
 // Provide the full path to your config.json file.
 aws.config.loadFromPath('./config.json');
 
 // Replace sender@example.com with your "From" address.
 // This address must be verified with Amazon SES.
-const sender = "Sender Name <sender@recipient.com>";
+const sender = "KK Jain <kk@ncnt.io>";
 
 // Replace recipient@example.com with a "To" address. If your account
 // is still in the sandbox, this address must be verified.
-const recipient = "recipient@example.com";
+const recipient = "kd@ncnt.io";
 // try to make this a little clearer.
 // Specify a configuration set. If you do not want to use a configuration
 // set, comment the following variable, and the
@@ -19,12 +23,13 @@ const recipient = "recipient@example.com";
 const configuration_set = "ConfigSet";
 
 // The subject line for the email.
-const subject = "Amazon SES Test (AWS SDK for JavaScript in Node.js)";
+const subject = "Welcome to the Machine";
 
 // The email body for recipients with non-HTML email clients.
 const body_text = "Amazon SES Test (SDK for JavaScript in Node.js)\r\n"
                 + "This email was sent with Amazon SES using the "
-                + "AWS SDK for JavaScript in Node.js.";
+                + "AWS SDK for JavaScript in Node.js. "
+                + "Welcome to the Machine.";
 
 // The HTML body of the email.
 const body_html = `<html>
@@ -69,7 +74,10 @@ var params = {
     }
   },
   ConfigurationSetName: configuration_set
+
 };
+
+// setTimeout();
 
 //Try to send the email.
 ses.sendEmail(params, function(err, data) {
