@@ -11,7 +11,7 @@ const pubsub = new PubSub({
 const subscriptionName = 'projects/jobcent-210021/subscriptions/emailWatcher';
 const subscription = pubsub.subscription(subscriptionName);
 
-const jobCentHostUrl = "http://localhost:3000/";
+const jobCentHostUrl = "http://52.53.165.193:3000/";
 const gmailPort = 3001;
 const app = express();
 
@@ -26,7 +26,7 @@ const gmailClass = google.gmail('v1');
 const oauth2Client = new google.auth.OAuth2(
   '885935339824-qgg9t6caoi4v824kvrtktcte4taf6qi1.apps.googleusercontent.com',
   'aViJjmhHPZfy85l0vDnvwl5n',
-  `http://localhost:3001/`
+  `http://52.53.165.193:3001/`
 );
 const oauthUrl = oauth2Client.generateAuthUrl({access_type: 'offline', scope: scopes});
 
