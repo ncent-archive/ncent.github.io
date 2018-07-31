@@ -124,8 +124,8 @@ def send_email recipient, recipName
     # '<div>&nbsp;</div>'\
     # '<div>This e-mail may contain information that is confidential, privileged, or otherwise protected from disclosure. If you are not the intended recipient of this e-mail, please delete it and any attachments, promptly notify the sender that you received it in error, and do not duplicate, distribute, or disclose any information herein in any manner. This communication is neither an offer to sell nor a solicitation of an offer to buy an interest in any securities described herein.</div>'\
     # '</div>'\
-    // insert html file here, and add relevant information.
-    // or at least provide the option to go either way.
+    # insert html file here, and add relevant information.
+    # or at least provide the option to go either way.
     '<div class="">'\
     "<div id=':3lq' tabindex='-1'>Hi&nbsp;#{recipName},</div>"\
     '<div id=":3lf" class="ii gt adO">'\
