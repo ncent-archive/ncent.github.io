@@ -25,6 +25,11 @@ module.exports = {
                 message: 'Balance for Wallet Not Found',
               });
             }
+            if (parseInt(senderWallets[0].balance, 10) - parseInt(req.body.amount, 10) < 0 ) {
+              return res.status(403).send({
+                message: 'Inadequate Balance',
+              });
+            }
             senderWallets[0].update({
                 balance: parseInt(senderWallets[0].balance, 10) - parseInt(req.body.amount, 10),
               })
@@ -54,7 +59,7 @@ module.exports = {
                   })
                   .catch(error => res.status(405).send(error))
               })  // Send back the updated wallet.
-              .catch((error) => res.status(403).send(error));
+              .catch((error) => res.status(407).send(error));
           })
           .catch(error => res.status(402).send(error))
       })
