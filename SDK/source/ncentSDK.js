@@ -176,7 +176,7 @@ class ncentSDK {
         error: callback;
     */
 
-    transferTokens(walletSender_id, walletReceiver_id, tokentype_id, tokenAmount, resolve) {
+    transferTokens(walletSender_id, walletReceiver_id, tokentype_id, tokenAmount, resolve, reject) {
         const sdk = this;
         axios.all([
             axios.get(sdk._net + '/wallets/' + walletSender_id + '/' + tokentype_id),
@@ -193,8 +193,8 @@ class ncentSDK {
                 return resolve(response);
             })
             .catch(function(error) {
-                console.log(error.message);
-                return error;
+                console.log(error);
+                return reject(error);
             })
         }))
     }
