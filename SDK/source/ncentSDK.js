@@ -2,7 +2,7 @@ const axios = require('axios');
 
 // Create class for ncentSDK and SDK functions for each action.
 
-const testNet = 'http://localhost:8010/api';
+const testNet = 'http://54.153.103.132:8010/api';
 
 class ncentSDK {
     constructor () {
