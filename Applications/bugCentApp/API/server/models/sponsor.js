@@ -1,17 +1,17 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Sponsor = sequelize.define('Sponsor', {
-    name:{
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true
-    },
     uuid:{
       type: DataTypes.UUID,
       primaryKey: true,
       allowNull: false,
       autoIncrement: false,
       defaultValue: DataTypes.UUIDV4,
+    },
+    name:{
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true
     },
     email: {
       type: DataTypes.STRING,

@@ -3,7 +3,7 @@ module.exports = {
   up: (queryInterface, DataTypes) => {
     return queryInterface.sequelize.query('CREATE EXTENSION IF NOT EXISTS "uuid-ossp";')
     .then(() => {
-      return queryInterface.createTable('Programs', {
+      return queryInterface.createTable('Program', {
         uuid: {
           allowNull: false,
           primaryKey: true,
@@ -22,7 +22,6 @@ module.exports = {
           type: DataTypes.STRING,
           allowNull: true
         },
-        
         createdAt: {
           allowNull: false,
           type: DataTypes.DATE
@@ -45,6 +44,6 @@ module.exports = {
       });
     });
   },
-  down: (queryInterface) => queryInterface.dropTable('Programs'),
+  down: (queryInterface) => queryInterface.dropTable('Program'),
   
 };

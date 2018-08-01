@@ -1,17 +1,17 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Bug = sequelize.define('Bug', {
-    name:{
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true
-    },
     uuid:{
       type: DataTypes.UUID,
       primaryKey: true,
       allowNull: false,
       autoIncrement: false,
       defaultValue: DataTypes.UUIDV4
+    },
+    name:{
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true
     },
     status: {
       type: DataTypes.STRING,
