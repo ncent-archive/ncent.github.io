@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
     name:{
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true
+      unique: false
     },
     status: {
       type: DataTypes.STRING,
@@ -29,19 +29,12 @@ module.exports = (sequelize, DataTypes) => {
 	    foreignKey: 'program_uuid',
       onDelete: 'CASCADE',
     }); 
-    // Bug.belongsToMany(models.Developer, {
-    //   through: {
-    //     model:'bugDevelopers',
-    //     unique: false
-    //   },
-    //  // as: 'workingbugs',
-	  //   foreignKey: 'dev_uuid',
-    //   onDelete: 'CASCADE',
-    // }); 
-    // Bug.hasMany(models.Developer, {
-    //   foreignKey: 'Developer_uuid',
-    //   as: 'developers'
-    // })
+    Bug.belongsToMany(models.Developer, {
+      through: 'bugDevelopers',
+      as: 'bugs',
+	    foreignKey: 'developer_uuid',
+      onDelete: 'CASCADE',
+    }); 
   };
   sequelize.sync();
   return Bug;
