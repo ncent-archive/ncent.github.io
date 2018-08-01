@@ -1,17 +1,17 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Developer = sequelize.define('Developer', {
-    name:{
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true
-    },
     uuid:{
       type: DataTypes.UUID,
       primaryKey: true,
       allowNull: false,
       autoIncrement: false,
       defaultValue: DataTypes.UUIDV4
+    },
+    name:{
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true
     },
     email: {
       type: DataTypes.STRING,
@@ -21,17 +21,11 @@ module.exports = (sequelize, DataTypes) => {
   });
   Developer.associate = function(models) {
     Developer.belongsToMany(models.Bug, {
-      through: {
-        model: 'bugDevelopers',
-        unique: false,
-      },
+      through: 'bugDevelopers',
+        
       //as: 'developers',
 	    foreignKey: 'bug_uuid',
 	    onDelete: 'CASCADE',
-    }); 
-    Developer.hasMany(models.Bug, {
-	    foreignKey: 'developer_uuid',
-	    as: 'bugs',
     }); 
   };
   sequelize.sync();

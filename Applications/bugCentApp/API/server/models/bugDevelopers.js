@@ -1,25 +1,31 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
     const bugDevelopers = sequelize.define('bugDevelopers', {
-        id : {
-        type: DataTypes.UUID,
-        primaryKey: true,
-        autoIncrement: false
+        uuid : {
+            type: DataTypes.UUID,
+            primaryKey: true,
+            //autoIncrement: false
+            defaultValue: DataTypes.UUIDV4
         },
-        bug_id: {
-        type: DataTypes.INTEGER,
-        unique: 'item_tag_taggable'
+        bug_uuid: {
+            type: DataTypes.UUID,
+            unique: true,
         },
-        taggable: {
-        type: DataTypes.STRING,
-        unique: 'item_tag_taggable'
-        },
-        dev_id: {
-        type: DataTypes.INTEGER,
-        unique: 'item_tag_taggable',
-        references: null
+        dev_uuid: {
+            type: DataTypes.UUID,
+            unique: true,
         }
     });
+    bugDevelopers.associate = function(models) {
+        bugDevelopers.belongsTo(models.Bug, {
+            foreignKey: 'bug_uuid',
+            onDelete: 'CASCADE',
+        }); 
+        bugDevelopers.belongsTo(models.Developer, {
+            foreignKey: 'developer_uuid',
+            onDelete: 'CASCADE',
+        }); 
+      };
     sequelize.sync()
     return bugDevelopers;
 }

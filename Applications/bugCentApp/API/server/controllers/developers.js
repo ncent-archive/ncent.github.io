@@ -16,8 +16,8 @@ module.exports = {
     return Developer
       .findAll({
         include: [{
-          model: Bug,
-          as: 'workingbugs',
+          model: 'bugDevelopers',
+          as: 'bugs',
         }],
       })
       .then(dev => res.status(200).send(dev))
@@ -27,8 +27,8 @@ module.exports = {
     return Developer
       .findById(req.params.developer_uuid, {
         include: [{
-          model: Bug,
-          as: 'workingbugs',
+          model: 'bugDevelopers',
+          as: 'bugs',
         }],
       })
       .then(dev => {
@@ -45,8 +45,8 @@ module.exports = {
     return Developer
       .findById(req.params.developer_uuid, {
         include: [{
-          model: Bug,
-          as: 'workingbugs',
+          model: 'bugDevelopers',
+          as: 'bugs',
         }],
       })
       .then(dev => {

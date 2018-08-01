@@ -1,5 +1,6 @@
 const Bug = require('../models').Bug;
 const Developer = require('../models').Developer;
+const bugDeveloper = require('../models').bugDeveloper;
 
 module.exports = {
   create(req, res) {
@@ -8,7 +9,8 @@ module.exports = {
         name: req.body.name,
         bountyAmount: req.body.bountyAmount,
         status: req.body.status,
-        program_uuid: req.param.program_uuid
+        program_uuid: req.param.program_uuid,
+        //developer_uuid: req.param.developer_uuid
       })
       .then(bug => res.status(201).send(bug))
       .catch(error => res.status(400).send(error));
@@ -17,7 +19,7 @@ module.exports = {
     return Bug
       .findAll({
         include: [{
-          model: Developer,
+          model: bugDeveloper,
           as: 'developers',
         }],
       })
@@ -27,10 +29,11 @@ module.exports = {
   retrieve(req, res) {
     return Bug
       .findById(req.params.bug_uuid, {
-        include: [{
-          model: Developer,
-          as: 'developer',
-        }],
+        // include: [{
+        //   model: Developer,
+        //   through: bugDevelopers,
+        //   as: 'developer',
+        // }],
       })
       .then(bug => {
         if (!bug) {
@@ -45,10 +48,10 @@ module.exports = {
   update(req, res) {
     return Bug
       .findById(req.params.bug_uuid, {
-        include: [{
-          model: Developer,
-          as: 'developers',
-        }],
+        // include: [{
+        //   model: Developer,
+        //   as: 'developers',
+        // }],
       })
       .then(bug => {
         if (!bug) {
@@ -58,7 +61,11 @@ module.exports = {
         }
         return bug
           .update({
-            Developer: req.body.Developer || program.Developer,
+           // Developer: req.body.Developer || program.Developer,
+           name: req.body.name || bug.name,
+           bountyAmount: req.body.bountyAmount || bug.bountyAmount,
+           status: req.body.status || bug.status
+           
           })
           .then(() => res.status(200).send(bug))  
           .catch((error) => res.status(400).send(error));

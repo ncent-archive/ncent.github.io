@@ -6,7 +6,6 @@ module.exports = {
         return queryInterface.createTable('Bug', {
             uuid: {
                 allowNull: false,
-                autoIncrement: true,
                 primaryKey: true,
                 type: DataTypes.UUID
             },
@@ -23,6 +22,28 @@ module.exports = {
                 type: DataTypes.INTEGER,
                 allowNull: false
             },
+            program_uuid:{
+                type: DataTypes.UUID,
+                foreignKey: true,
+                allowNull: false,
+                onDelete: 'CASCADE',
+                references:{
+                  model: 'Program',
+                  key: 'uuid',
+                  as: 'program_uuid'
+                }
+            },
+            dev_uuid:{
+                type: DataTypes.UUID,
+                foreignKey: true,
+                allowNull: true,
+                onDelete: 'CASCADE',
+                references:{
+                  model: 'bugDevelopers',
+                  key: 'uuid',
+                  as: 'developer_uuid'
+                }
+            },
             createdAt: {
                 allowNull: false,
                 type: DataTypes.DATE
@@ -34,7 +55,6 @@ module.exports = {
         });
     });
 },
-  down: (queryInterface, DataTypes) => {
-    return queryInterface.dropTable('Bug');
-  }
+  down: (queryInterface) => queryInterface.dropTable('Bug'),
+  
 };

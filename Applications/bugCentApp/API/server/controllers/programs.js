@@ -1,4 +1,4 @@
-const Bug = require('../models').bug;
+const Bug = require('../models').Bug;
 const Program = require('../models').Program;
 const Sponsor = require('../models').Sponsor;
 module.exports = {
@@ -16,10 +16,10 @@ module.exports = {
   list(req, res) {
     return Program
       .findAll({
-        // include: [{
-        //   model: Bug,
-        //   as: 'bugs',
-        // }],
+        include: [{
+          model: Bug,
+          as: 'bugs',
+        }],
       })
       .then(program => res.status(200).send(program))
       .catch(error => res.status(400).send(error));
