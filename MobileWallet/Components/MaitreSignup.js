@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import {maitreEmailChanged, maitreSubscribe} from '../Actions';
 import {Spinner} from './Common';
 import {Actions} from 'react-native-router-flux';
+poopidiscoop
 
 class MaitreSignup extends Component {
 
