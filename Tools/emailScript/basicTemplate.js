@@ -13,25 +13,24 @@ var to = ['kd@ncnt.io, af@ncnt.io, jd@ncnt.io, an@ncnt.io']
 // this must relate to a verified SES account
 var from = 'kd@ncnt.io'
 
-
 // this sends the email
 // @todo - add HTML version
 ses.sendEmail( { 
-   Source: from, 
-   Destination: { ToAddresses: to },
-   Message: {
-       Subject: {
-          Data: 'A Message To You Rudy'
-       },
-       Body: {
-           Text: {
-               Data: 'Stop your messing around',
-           }
+    Source: from, 
+    Destination: { ToAddresses: to },
+    Message: {
+        Subject: {
+            Data: 'A Message To You Rudy'
+        },
+        Body: {
+            Text: {
+                Data: 'Stop your messing around',
+            }
         }
-   }
+    }
 }
 , function(err, data) {
     if(err) throw err
         console.log('Email sent:');
         console.log(data);
- });
+});
