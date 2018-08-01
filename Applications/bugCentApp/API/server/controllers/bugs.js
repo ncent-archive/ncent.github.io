@@ -1,4 +1,4 @@
-const Bug = require('../models').bug;
+const Bug = require('../models').Bug;
 const Developer = require('../models').Developer;
 
 module.exports = {
@@ -6,9 +6,9 @@ module.exports = {
     return Bug
       .create({
         name: req.body.name,
-        uuid: req.body.uuid,
         bountyAmount: req.body.bountyAmount,
-        status: req.body.status
+        status: req.body.status,
+        program_uuid: req.param.program_uuid
       })
       .then(bug => res.status(201).send(bug))
       .catch(error => res.status(400).send(error));

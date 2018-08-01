@@ -6,7 +6,6 @@ module.exports = {
     return Sponsor
       .create({
         name: req.body.name,
-        uuid: req.body.uuid,
         email: req.body.email,
         phone: req.body.phone,
         website: req.body.website
