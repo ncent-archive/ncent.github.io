@@ -15,6 +15,19 @@ class TokensScreen extends Component {
   componentWillMount() {
     this.props.getTokens();
   }
+
+  renderError() {
+    if (this.props.error) {
+      return (
+        <View> 
+          <Text>
+            {this.props.error}
+          </Text>
+        </View>
+      );   
+    }
+    return;
+  }
  
   render() {
     return (
@@ -33,43 +46,72 @@ class TokensScreen extends Component {
               data={this.props.allTokens}
               renderItem={({item}) => 
               <View>
-                <TouchableHighlight onPress={() => Actions.TokenDetails({tokenType: item.key})} underlayColor="white">
+                <TouchableHighlight onPress={() => Actions.TokenDetails({tokenType: item.tokentype_uuid})} underlayColor="white">
                   <View style={{flexDirection: 'row', paddingTop: 30, height: 90}}>
-                    <Text style={{paddingLeft: 20, fontSize: 20}}>{item.key}</Text>
+                    <Text style={{paddingLeft: 20, fontSize: 20}}>{item.tokentype_uuid}</Text>
                   </View>
                 </TouchableHighlight>
                   <View style={{flexDirection: 'row', paddingTop: 1, height: 1, backgroundColor: "gray"}}>
                   </View>                
               </View>
             }
-            keyExtractor={(item) => item.key}
+            keyExtractor={(item) => item.tokentype_uuid}
           />
         </View>
+        {this.renderError()}
+        <TouchableHighlight onPress={() => Actions.MaitreSignup()} underlayColor="white">
+          <View style={styles.bottomBar}>
+            <Text style={styles.bottomBarHeader}>Sign Up for Early Access</Text>
+          </View>
+        </TouchableHighlight>
+
       </View>
     );
   }
-}
+} 
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  bottomBar: {
+    flexDirection: 'row',
+    paddingTop: 10,
+    height: 80,
+    backgroundColor: '#5c4da0',
+    shadowColor: '#000',
+    shadowOffset: {width: 0, height: 1},
+    shadowOpacity: .2
+  },
+  bottomBarHeader: {
+    flex: 1,
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
+    fontSize: 20,
+    paddingTop: 15
+  },
  navBar: {
     flexDirection: 'row',
     paddingTop: 10,
-    height: 70, //64
-    backgroundColor: '#1EAAF1'
+    height: 75,
+    backgroundColor: '#F8F8F8',
+    shadowColor: '#000',
+    shadowOffset: {width: 0, height: 1},
+    shadowOpacity: .2
   },
   navBarHeader: {
     flex: 1,
-    color: '#FFFFFF',
+    color: '#4c3e99',
     fontWeight: 'bold',
     textAlign: 'center',
     paddingTop: 25,
     fontSize: 20,
   },
   navBarButton: {
-    color: '#FFFFFF',
+    color: '#4c3e99',
     textAlign:'center',
     paddingTop: 25,
     width: 64

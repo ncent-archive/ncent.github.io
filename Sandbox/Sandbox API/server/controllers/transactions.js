@@ -26,8 +26,18 @@ module.exports = {
                 message: 'Balance for Wallet Not Found',
               });
             }
+<<<<<<< HEAD
             wallets[0].update({
                 balance: parseInt(wallets[0].balance, 10) + parseInt(req.body.amount, 10),
+=======
+            if (parseInt(senderWallets[0].balance, 10) - parseInt(req.body.amount, 10) < 0 ) {
+              return res.status(403).send({
+                message: 'Inadequate Balance',
+              });
+            }
+            senderWallets[0].update({
+                balance: parseInt(senderWallets[0].balance, 10) - parseInt(req.body.amount, 10),
+>>>>>>> 4fa2d91b14b83ddf8000a3010f09726a4974ca9b
               })
               .then((wallets) => {
                 data["sender"] = wallets[0]
@@ -55,7 +65,7 @@ module.exports = {
                   })
                   .catch(error => res.status(405).send(error))
               })  // Send back the updated wallet.
-              .catch((error) => res.status(403).send(error));
+              .catch((error) => res.status(407).send(error));
           })
           .catch(error => res.status(402).send(error))
       })

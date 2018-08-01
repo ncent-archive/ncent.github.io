@@ -7,6 +7,7 @@ const TokensScreen = require('./TokensScreen.js');
 const LoginScreen = require('./LoginScreen.js');
 const SignupScreen = require('./SignupScreen.js');
 const LoginOrSignup = require('./LoginOrSignup.js');
+const MaitreSignup = require('./MaitreSignup.js');
 
 
 
@@ -20,9 +21,10 @@ const RouterComponent = () => {
         <Scene key="SignupScreen" component={SignupScreen} hideNavBar="true"/>
         <Scene key="LoginOrSignup" component={LoginOrSignup} hideNavBar="true" initial/>
         <Scene key="TokensScreen" component={TokensScreen} hideNavBar="true" />
+        <Scene key="MaitreSignup" component={MaitreSignup} hideNavBar="true"/>
       </Scene>
     </Router>
-  );
+  ); 
 };
 
 

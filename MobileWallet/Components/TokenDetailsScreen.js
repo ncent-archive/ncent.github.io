@@ -19,8 +19,15 @@ class TokenDetailsScreen extends Component {
     return;
   }
 
-  componentWillMount() {
-    this.props.getTokenBalance(this.props.tokenType);
+  componentDidMount() {
+    this.props.getTokenBalance({tokenType: this.props.tokenType});
+  }
+
+  componentWillReceiveProps() {
+    // console.log(this.props.loading);
+    // if (this.props.loading) {
+      this.props.getTokenBalance({tokenType: this.props.tokenType});
+    // }
   }
 
   render() { 
@@ -46,15 +53,15 @@ class TokenDetailsScreen extends Component {
         <View style={{flex: 2}}>
           <View style={{flex: 1}}>
             <TouchableOpacity onPress= {() => this.goToSend()}>
-                  <View style = {{backgroundColor: 'orange', alignItems: 'center', 
+                  <View style = {{backgroundColor: '#6D6792', alignItems: 'center', 
                                   justifyContent: 'center', borderRadius: 30, height: 50, margin: 30}}
                          >
-                         <Text style={{color:'white', fontSize: 20}}> Send </Text>
+                         <Text style={{color:'white', fontSize: 20}}> New Transaction </Text>
                   </View>
             </TouchableOpacity>
           </View>
           <View style={{flex: 1}}>
-            <Text style={{textAlign: 'center'}}> No Transaction History </Text>
+            <Text style={{textAlign: 'center'}}> Transaction History Unavailable </Text>
           </View>
         </View>
       </View>
@@ -67,30 +74,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  // old nav bar if you want to go back
-  // navBar: {
-  //   flexDirection: 'row',
-  //   paddingTop: 30,
-  //   height: 64,
-  //   backgroundColor: '#1EAAF1'
-  // },
-  // navBarHeader: {
-  //   flex: 1,
-  //   color: '#FFFFFF',
-  //   fontWeight: 'bold',
-  //   textAlign: 'center',
-  //   fontSize: 20,
-  // },
-  // navBarButton: {
-  //   color: '#FFFFFF',
-  //   textAlign:'center',
-  //   width: 64
-  // },
   navBar: {
     flexDirection: 'row',
     paddingTop: 10,
     height: 70, //64
-    backgroundColor: '#1EAAF1'
+    backgroundColor: '#6D6792'
   },
   navBarHeader: {
     flex: 1,
@@ -117,7 +105,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#374046'
+    backgroundColor: '#374046' //#374046
   },
   text: {
     color: '#EEEEEE'

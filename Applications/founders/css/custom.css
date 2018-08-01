@@ -9,3 +9,27 @@ h1{
 .about{
 	background-color: #fff;
 }
+
+.registerNowButton {
+    font-size: 3vw;
+    border: 2px solid white;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+}
+.registerNowButton:hover {
+    font-size: 3vw;
+    border: 2px solid blue;
+    border-radius: 10px;
+    color: blue;
+    text-align: center;
+}
+
+.pulse {
+    cursor: pointer;
+    box-shadow: 0 0 0 white;
+    animation: pulse 2s infinite;
+}
+.pulse:hover {
+    animation: none;
+}
