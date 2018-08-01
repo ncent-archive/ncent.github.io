@@ -10,11 +10,6 @@ import expolib_v1.okhttp3.OkHttpClient;
 
 // Needed for `react-native link`
 // import com.facebook.react.ReactApplication;
-import com.tradle.react.UdpSocketsModule;
-import com.peel.react.TcpSocketsModule;
-import com.peel.react.rnos.RNOSModule;
-import com.oblador.keychain.KeychainPackage;
-import com.bitgo.randombytes.RandomBytesPackage;
 
 public class MainApplication extends ExpoApplication {
 
@@ -30,12 +25,7 @@ public class MainApplication extends ExpoApplication {
         // TODO: add native modules!
 
         // Needed for `react-native link`
-        // new MainReactPackage(),
-            new UdpSocketsModule(),
-            new TcpSocketsModule(),
-            new RNOSModule(),
-            new KeychainPackage(),
-            new RandomBytesPackage()
+        // new MainReactPackage()
     );
   }
 

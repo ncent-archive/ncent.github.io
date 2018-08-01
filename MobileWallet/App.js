@@ -5,7 +5,9 @@ import ReduxThunk from 'redux-thunk';
 import firebase from 'firebase';
 import reducers from './Reducers';
 import RootStack from './Components/Navigation.js';
-// import './shim.js'
+
+
+
 
 export default class App extends React.Component {
   componentWillMount() {
