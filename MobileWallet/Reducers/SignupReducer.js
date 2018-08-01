@@ -21,9 +21,9 @@ export default (state = INITIAL_STATE, action) => {
 		case CREATE_USER_SUCCESS:
 			return {... state, ...INITIAL_STATE};
 		case CREATE_USER_FAIL:
-			return {... state, first: 'fail', loading: false, error: 'Sign Up Failed.'};
+			return {... state, loading: false, error: 'Sign Up Failed.'};
 		default:
 			return state;
 	}
 
-};  
+};   

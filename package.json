@@ -1,6 +1,6 @@
 {
   "name": "ncent.github.io",
-  "version": "1.2.0",
+  "version": "1.2.3",
   "description": "nCent Labs Public Repository",
   "main": "index.js",
   "scripts": {
@@ -17,8 +17,10 @@
   },
   "homepage": "https://github.com/ncent/ncent.github.io#readme",
   "dependencies": {
+    "aws-sdk": "^2.283.1",
     "axios": "^0.18.0",
     "eslint": "^5.1.0",
-    "ncent-sdk": "^1.0.0"
+    "ncent-sdk": "^1.0.0",
+    "pg": "^6.1.0"
   }
 }

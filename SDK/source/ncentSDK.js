@@ -2,7 +2,7 @@ const axios = require('axios');
 
 // Create class for ncentSDK and SDK functions for each action.
 
-const testNet = 'http://localhost:8010/api';
+const testNet = 'http://54.153.103.132:8010/api';
 
 class ncentSDK {
     constructor () {
@@ -176,7 +176,7 @@ class ncentSDK {
         error: callback;
     */
 
-    transferTokens(walletSender_id, walletReceiver_id, tokentype_id, tokenAmount, resolve) {
+    transferTokens(walletSender_id, walletReceiver_id, tokentype_id, tokenAmount, resolve, reject) {
         const sdk = this;
         let resp;
         axios.all([
@@ -210,8 +210,13 @@ class ncentSDK {
                 return resolve(resp);
             }))
             .catch(function(error) {
+<<<<<<< HEAD
                 console.log(error.response);
                 return error;
+=======
+                console.log(error);
+                return reject(error);
+>>>>>>> 4fa2d91b14b83ddf8000a3010f09726a4974ca9b
             })
         }))
     }
