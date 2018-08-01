@@ -428,7 +428,7 @@ function getHomePageCallback (request, response) {
 
 function main() {
 	initJobCent();
-	console.log(oauthUrl);
+	// console.log(oauthUrl);
 	// opn(oauthUrl);
    	app.get('/', getHomePageCallback);
 	app.listen(gmailPort, (err) => {
