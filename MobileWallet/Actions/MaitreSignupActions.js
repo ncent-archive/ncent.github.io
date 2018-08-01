@@ -20,7 +20,7 @@ export const maitreSubscribe = ({email}) => {
 	const uuid = 'MFfa1aa24de7'
 	const base_url = "https://maitreapp.co/api/v2/lists/"+ uuid +"/subscribers";
 	const payload = {
-	  api_token: "7bbdaa015d9c6025586a48f1603ab333b6fc458a",
+	  api_token: "token",
 	  hosting_url: "https://ncent.io/",
 	  email: email
 	};
