@@ -3,10 +3,9 @@ import {MAITRE_EMAIL_CHANGED, MAITRE_SIGNUP_SUCCESS, MAITRE_SIGNUP_FAIL, MAITRE_
 import {Actions} from 'react-native-router-flux';
 import Expo from 'expo';
 
-const CryptoJS = require("crypto-js");
-//import '../shim.js'
-//import crypto from 'crypto';
-//const bip39 = require('react-native-bip39');
+// const CryptoJS = require("crypto-js");
+// import '../shim.js'
+//import crypto from 'crypto'
 
 export const maitreEmailChanged = (text) => {
 	return {

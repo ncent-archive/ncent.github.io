@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0381B77C84434CBEB2CB15A3 /* libUdpSockets.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A32139F2F73D47E684116D57 /* libUdpSockets.a */; };
 		B501732B1DC01252003445D9 /* EXShell.plist in Resources */ = {isa = PBXBuildFile; fileRef = B501732A1DC01252003445D9 /* EXShell.plist */; };
 		B56386491DB9693800A0598C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B56386481DB9693800A0598C /* AppDelegate.m */; };
 		B56386511DB9693800A0598C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B56386501DB9693800A0598C /* Assets.xcassets */; };
@@ -18,12 +19,44 @@
 		B5CFBF4F1EDE419400B4BE24 /* EXBuildConstants.plist in Resources */ = {isa = PBXBuildFile; fileRef = B5CFBF4E1EDE419400B4BE24 /* EXBuildConstants.plist */; };
 		B5DB04801F3A684600E91581 /* shell-app-manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = B5DB047E1F3A684600E91581 /* shell-app-manifest.json */; };
 		B5DB04811F3A684600E91581 /* shell-app.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B5DB047F1F3A684600E91581 /* shell-app.bundle */; };
+		E02F407660AB43A597519979 /* libRNOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F35C62866148B991F3A608 /* libRNOS.a */; };
 		EBB8117C1BFA0514F79CAF74 /* libPods-ncent-mobile-wallet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C4A88D15726AD99E8A257BC7 /* libPods-ncent-mobile-wallet.a */; };
+		F57259934A74437DA887D3F8 /* libTcpSockets.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A831AE5322A04FB48AA9A4B3 /* libTcpSockets.a */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E8308982211227BA00ADFA87 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 93BF40D3C5A944378A439335 /* RNOS.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RNOS;
+		};
+		E8308985211227BA00ADFA87 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A2DE7621EF2A470F80B3B54C /* TcpSockets.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = TcpSockets;
+		};
+		E8308988211227BA00ADFA87 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A24DE390F48A42F1B7559FDE /* UdpSockets.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = UdpSockets;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		2C1548D9E4CB1AEFA5CCAE6D /* Pods-ncent-mobile-wallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ncent-mobile-wallet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ncent-mobile-wallet/Pods-ncent-mobile-wallet.debug.xcconfig"; sourceTree = "<group>"; };
+		84F35C62866148B991F3A608 /* libRNOS.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNOS.a; sourceTree = "<group>"; };
+		93BF40D3C5A944378A439335 /* RNOS.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNOS.xcodeproj; path = "../node_modules/react-native-os/ios/RNOS.xcodeproj"; sourceTree = "<group>"; };
+		A24DE390F48A42F1B7559FDE /* UdpSockets.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = UdpSockets.xcodeproj; path = "../node_modules/react-native-udp/ios/UdpSockets.xcodeproj"; sourceTree = "<group>"; };
+		A2DE7621EF2A470F80B3B54C /* TcpSockets.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = TcpSockets.xcodeproj; path = "../node_modules/react-native-tcp/ios/TcpSockets.xcodeproj"; sourceTree = "<group>"; };
+		A32139F2F73D47E684116D57 /* libUdpSockets.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libUdpSockets.a; sourceTree = "<group>"; };
 		A47FE4D7F70906B7DC8CE39B /* Pods-ncent-mobile-wallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ncent-mobile-wallet.release.xcconfig"; path = "Pods/Target Support Files/Pods-ncent-mobile-wallet/Pods-ncent-mobile-wallet.release.xcconfig"; sourceTree = "<group>"; };
+		A831AE5322A04FB48AA9A4B3 /* libTcpSockets.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libTcpSockets.a; sourceTree = "<group>"; };
 		B501732A1DC01252003445D9 /* EXShell.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = EXShell.plist; sourceTree = "<group>"; };
 		B56386411DB9693800A0598C /* ncent-mobile-wallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ncent-mobile-wallet.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B56386471DB9693800A0598C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -47,6 +80,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				EBB8117C1BFA0514F79CAF74 /* libPods-ncent-mobile-wallet.a in Frameworks */,
+				E02F407660AB43A597519979 /* libRNOS.a in Frameworks */,
+				F57259934A74437DA887D3F8 /* libTcpSockets.a in Frameworks */,
+				0381B77C84434CBEB2CB15A3 /* libUdpSockets.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +95,16 @@
 				C4A88D15726AD99E8A257BC7 /* libPods-ncent-mobile-wallet.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		22928F5A70404D7DA9FA294F /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				93BF40D3C5A944378A439335 /* RNOS.xcodeproj */,
+				A2DE7621EF2A470F80B3B54C /* TcpSockets.xcodeproj */,
+				A24DE390F48A42F1B7559FDE /* UdpSockets.xcodeproj */,
+			);
+			name = Libraries;
 			sourceTree = "<group>";
 		};
 		5B29BC350A332C58878A9F13 /* Pods */ = {
@@ -77,6 +123,8 @@
 				B56386421DB9693800A0598C /* Products */,
 				5B29BC350A332C58878A9F13 /* Pods */,
 				1A42804E64B7E9E0AB8B6799 /* Frameworks */,
+				22928F5A70404D7DA9FA294F /* Libraries */,
+				E830897A211227BA00ADFA87 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -116,6 +164,40 @@
 			path = Supporting;
 			sourceTree = "<group>";
 		};
+		E830897A211227BA00ADFA87 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				84F35C62866148B991F3A608 /* libRNOS.a */,
+				A831AE5322A04FB48AA9A4B3 /* libTcpSockets.a */,
+				A32139F2F73D47E684116D57 /* libUdpSockets.a */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		E830897B211227BA00ADFA87 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E8308983211227BA00ADFA87 /* libRNOS.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E830897D211227BA00ADFA87 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E8308986211227BA00ADFA87 /* libTcpSockets.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E830897F211227BA00ADFA87 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E8308989211227BA00ADFA87 /* libUdpSockets.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -146,7 +228,7 @@
 		B56386391DB9693800A0598C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 900;
 				ORGANIZATIONNAME = "650 Industries, Inc.";
 				TargetAttributes = {
 					B56386401DB9693800A0598C = {
@@ -167,12 +249,50 @@
 			mainGroup = B56386381DB9693800A0598C;
 			productRefGroup = B56386421DB9693800A0598C /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = E830897B211227BA00ADFA87 /* Products */;
+					ProjectRef = 93BF40D3C5A944378A439335 /* RNOS.xcodeproj */;
+				},
+				{
+					ProductGroup = E830897D211227BA00ADFA87 /* Products */;
+					ProjectRef = A2DE7621EF2A470F80B3B54C /* TcpSockets.xcodeproj */;
+				},
+				{
+					ProductGroup = E830897F211227BA00ADFA87 /* Products */;
+					ProjectRef = A24DE390F48A42F1B7559FDE /* UdpSockets.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				B56386401DB9693800A0598C /* ncent-mobile-wallet */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		E8308983211227BA00ADFA87 /* libRNOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNOS.a;
+			remoteRef = E8308982211227BA00ADFA87 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E8308986211227BA00ADFA87 /* libTcpSockets.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libTcpSockets.a;
+			remoteRef = E8308985211227BA00ADFA87 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E8308989211227BA00ADFA87 /* libUdpSockets.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libUdpSockets.a;
+			remoteRef = E8308988211227BA00ADFA87 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		B563863F1DB9693800A0598C /* Resources */ = {
@@ -407,6 +527,12 @@
 				DEVELOPMENT_TEAM = C8D8QTF339;
 				INFOPLIST_FILE = "$(SRCROOT)/ncent-mobile-wallet/Supporting/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ncent.mobilewallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -421,6 +547,12 @@
 				DEVELOPMENT_TEAM = C8D8QTF339;
 				INFOPLIST_FILE = "$(SRCROOT)/ncent-mobile-wallet/Supporting/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ncent.mobilewallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";

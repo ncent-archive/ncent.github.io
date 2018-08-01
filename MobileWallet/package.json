@@ -4,7 +4,7 @@
   "private": true,
   "devDependencies": {
     "jest-expo": "~27.0.0",
-    "react-native-scripts": "1.14.0",
+    "react-native-scripts": "^1.14.1",
     "react-test-renderer": "16.3.1",
     "rn-nodeify": "github:tradle/rn-nodeify"
   },
@@ -24,6 +24,7 @@
     "bip39": "^2.5.0",
     "browserify-zlib": "^0.1.4",
     "dns.js": "^1.0.1",
+    "es6-promise": "^4.2.4",
     "expo": "^27.0.1",
     "firebase": "^5.2.0",
     "https-browserify": "0.0.1",
@@ -52,10 +53,6 @@
     "string_decoder": "^0.10.31",
     "timers-browserify": "^1.4.2",
     "url": "^0.10.3"
-  },
-  "node": {
-    "crypto": true,
-    "stream": true
   },
   "react-native": {
     "zlib": "browserify-zlib",
