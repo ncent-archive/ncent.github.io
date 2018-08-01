@@ -30,7 +30,7 @@
     "ncent-sdk-public": "^1.2.3",
     "process": "^0.11.10",
     "react": "16.3.1",
-    "react-native": "~0.55.2",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-27.0.0.tar.gz",
     "react-native-bip39": "^2.3.0",
     "react-native-crypto": "^2.1.2",
     "react-native-fade-image": "^1.0.1",
