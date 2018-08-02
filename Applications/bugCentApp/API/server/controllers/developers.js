@@ -55,7 +55,15 @@ module.exports = {
             message: 'Dev Not Found',
           });
         }
+        // var bugArray = bugDeveloper.findById(dev.bug_uuid).then(function(bugs) {
+        //   if (!bugs) {
+        //     return 'not find';
+        //   }
+        //   return bugs;
+        // });
+        // bugArray.update
         return dev
+        .find
           .update({
             Bug: req.body.Bug || dev.Bug,
           })
@@ -64,4 +72,28 @@ module.exports = {
       })
       .catch((error) => res.status(400).send(error));
   },
+  addBg(req, res){
+    return Bug
+    .findById(req.params.dev_uuid, {
+      include: [{
+        model: bugDeveloper,
+        as: 'bugs',
+      }],
+    })
+    .then(dev => {
+      if(!dev){
+        return res.status(404).send({
+          message: 'Dev Not Found',
+        })
+      }
+      dev.addBug(findById(req.params.bug_uuid).then(function(bug){
+        if(!bug) return res.status(404).send({
+          message: 'Bug Not Found',
+        })
+        return bug;
+        })
+      )
+    })
+    .catch((error) => res.status(400).send(error));
+  }
 };

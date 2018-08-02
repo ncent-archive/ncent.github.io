@@ -31,10 +31,12 @@ module.exports = (sequelize, DataTypes) => {
     }); 
     Bug.belongsToMany(models.Developer, {
       through: 'bugDevelopers',
-      as: 'bugs',
-	    foreignKey: 'developer_uuid',
+      as: 'bugsInProgress',
+      foreignKey: 'developer_uuid',
+      otherKey: 'bugs_uuid',
       onDelete: 'CASCADE',
     }); 
+    
   };
   sequelize.sync();
   return Bug;
