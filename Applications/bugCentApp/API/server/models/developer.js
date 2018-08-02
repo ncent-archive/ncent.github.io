@@ -22,9 +22,9 @@ module.exports = (sequelize, DataTypes) => {
   Developer.associate = function(models) {
     Developer.belongsToMany(models.Bug, {
       through: 'bugDevelopers',
-        
-      //as: 'developers',
-	    foreignKey: 'bug_uuid',
+      as: 'devsOnTask',
+      foreignKey: 'bugs_uuid',
+      otherKey: 'developer_uuid',
 	    onDelete: 'CASCADE',
     }); 
   };

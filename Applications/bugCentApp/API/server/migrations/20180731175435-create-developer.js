@@ -1,6 +1,6 @@
 'use strict';
 module.exports = {
-  up: (queryInterface, Sequelize) => {
+  up: (queryInterface, DataTypes) => {
     return queryInterface.sequelize.query('CREATE EXTENSION IF NOT EXISTS "uuid-ossp";')
     .then(() => {
         return queryInterface.createTable('Developers', {
@@ -8,40 +8,40 @@ module.exports = {
                 allowNull: false,
                 autoIncrement: true,
                 primaryKey: true,
-                type: Sequelize.INTEGER
+                type: DataTypes.INTEGER
             },
             name: {
-                type: Sequelize.STRING,
+                type: DataTypes.STRING,
                 unique: false
             },
             email: {
-                type: Sequelize.STRING,
+                type: DataTypes.STRING,
                 unique: true
             },
-            bug_uuid:{
+            bugs_uuid:{
                 type: DataTypes.UUID,
                 foreignKey: true,
                 allowNull: true,
                 onDelete: 'CASCADE',
                 references:{
-                  model: 'bugDevelopers',
+                  model: bugDeveloper,
                   key: 'uuid',
-                  as: 'bug_uuid'
+                  as: 'bugs_uuid'
                 }
             },
             createdAt: {
                 allowNull: false,
-                type: Sequelize.DATE
+                type: DataTypes.DATE
             },
             updatedAt: {
                 allowNull: false,
-                type: Sequelize.DATE
+                type: DataTypes.DATE
             }
 
         });
     });
   },
-  down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Developers');
-  }
-};
+  down: (queryInterface) => queryInterface.dropTable('Developers'),
+  
+},
+{ timeStamps: true }

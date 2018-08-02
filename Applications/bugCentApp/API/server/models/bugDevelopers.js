@@ -4,10 +4,9 @@ module.exports = (sequelize, DataTypes) => {
         uuid : {
             type: DataTypes.UUID,
             primaryKey: true,
-            //autoIncrement: false
             defaultValue: DataTypes.UUIDV4
         },
-        bug_uuid: {
+        bugs_uuid: {
             type: DataTypes.UUID,
             unique: true,
         },
