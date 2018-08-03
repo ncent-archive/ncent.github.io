@@ -5,14 +5,6 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.UUID,
             primaryKey: true,
             defaultValue: DataTypes.UUIDV4
-        },
-        bugs_uuid: {
-            type: DataTypes.UUID,
-            unique: true,
-        },
-        dev_uuid: {
-            type: DataTypes.UUID,
-            unique: true,
         }
     });
     bugDevelopers.associate = function(models) {

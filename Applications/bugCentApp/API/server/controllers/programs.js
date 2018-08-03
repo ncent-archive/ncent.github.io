@@ -1,6 +1,6 @@
 const Bug = require('../models').Bug;
 const Program = require('../models').Program;
-const Sponsor = require('../models').Sponsor;
+
 module.exports = {
   create(req, res) {
     return Program

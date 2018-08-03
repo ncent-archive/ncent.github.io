@@ -3,12 +3,11 @@ module.exports = {
   up: (queryInterface, DataTypes) => {
     return queryInterface.sequelize.query('CREATE EXTENSION IF NOT EXISTS "uuid-ossp";')
     .then(() => {
-        return queryInterface.createTable('Developers', {
+        return queryInterface.createTable('Developer', {
             uuid: {
                 allowNull: false,
-                autoIncrement: true,
                 primaryKey: true,
-                type: DataTypes.INTEGER
+                type: DataTypes.UUID
             },
             name: {
                 type: DataTypes.STRING,
@@ -18,17 +17,17 @@ module.exports = {
                 type: DataTypes.STRING,
                 unique: true
             },
-            bugs_uuid:{
-                type: DataTypes.UUID,
-                foreignKey: true,
-                allowNull: true,
-                onDelete: 'CASCADE',
-                references:{
-                  model: bugDeveloper,
-                  key: 'uuid',
-                  as: 'bugs_uuid'
-                }
-            },
+            // bug_uuid:{
+            //     type: DataTypes.UUID,
+            //     foreignKey: true,
+            //     allowNull: true,
+            //     onDelete: 'CASCADE',
+            //     references:{
+            //       model: 'bugDevelopers',
+            //       key: 'uuid',
+            //       as: 'bugs_uuid'
+            //     }
+            // },
             createdAt: {
                 allowNull: false,
                 type: DataTypes.DATE
@@ -41,7 +40,7 @@ module.exports = {
         });
     });
   },
-  down: (queryInterface) => queryInterface.dropTable('Developers'),
+  down: (queryInterface) => queryInterface.dropTable('Developer'),
   
 },
 { timeStamps: true }
