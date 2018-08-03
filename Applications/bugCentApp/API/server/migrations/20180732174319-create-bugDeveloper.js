@@ -9,17 +9,6 @@ module.exports = {
           primaryKey: true,
           type: DataTypes.UUID
         },
-        bug_uuid:{
-            type: DataTypes.UUID,
-            unique: true,
-            allowNull: true
-        },
-        developer_uuid: {
-            type: DataTypes.UUID,
-            unique: true,
-            allowNull: true
-        },
-        
         createdAt: {
           allowNull: false,
           type: DataTypes.DATE
@@ -28,9 +17,32 @@ module.exports = {
           allowNull: false,
           type: DataTypes.DATE
         },
+        bug_uuid:{
+          type: DataTypes.UUID,
+          foreignKey: true,
+          allowNull: false,
+          onDelete: 'CASCADE',
+          references:{
+            model: 'Bug',
+            key: 'uuid',
+            as: 'bug_uuid'
+          }
+        },
+        developer_uuid: {
+            type: DataTypes.UUID,
+            foreignKey: true,
+            allowNull: false,
+            onDelete: 'CASCADE',
+            references:{
+              model: 'Developer',
+              key: 'uuid',
+              as: 'developer_uuid'
+            }
+        },
       });
     });
   },
   down: (queryInterface) => queryInterface.dropTable('bugDevelopers'),
   
-};
+},
+{ timeStamps: true }

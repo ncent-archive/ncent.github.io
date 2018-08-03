@@ -5,7 +5,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.UUID,
       primaryKey: true,
       allowNull: false,
-      autoIncrement: false,
       defaultValue: DataTypes.UUIDV4
     },
     name:{
@@ -27,14 +26,11 @@ module.exports = (sequelize, DataTypes) => {
   Bug.associate = function(models) {
     Bug.belongsTo(models.Program, {
 	    foreignKey: 'program_uuid',
-      onDelete: 'CASCADE',
+      onDelete: 'CASCADE'
     }); 
-    Bug.belongsToMany(models.Developer, {
-      through: 'bugDevelopers',
-      as: 'bugsInProgress',
-      foreignKey: 'developer_uuid',
-      otherKey: 'bugs_uuid',
-      onDelete: 'CASCADE',
+    Bug.hasMany(models.bugDevelopers, {
+      as: 'devsWorkingOn',
+      foreignKey: 'bug_uuid',
     }); 
     
   };

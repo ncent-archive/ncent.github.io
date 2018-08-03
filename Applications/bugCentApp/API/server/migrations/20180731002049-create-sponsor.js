@@ -6,7 +6,6 @@ module.exports = {
         return queryInterface.createTable('Sponsor', {
           uuid: {
             allowNull: false,
-            //autoIncrement: true,
             primaryKey: true,
             type: DataTypes.UUID
           },
@@ -37,8 +36,9 @@ module.exports = {
           }
         });
       });
-    // .catch(error => res.status(400).send(error));
+    
     },
       down: (queryInterface) =>  queryInterface.dropTable('Sponsor'),
       
-};
+},
+{ timeStamps: true }

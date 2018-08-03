@@ -46,4 +46,5 @@ module.exports = {
   },
   down: (queryInterface) => queryInterface.dropTable('Program'),
   
-};
+},
+{ timeStamps: true }

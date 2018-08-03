@@ -5,7 +5,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.UUID,
       primaryKey: true,
       allowNull: false,
-      autoIncrement: false,
       defaultValue: DataTypes.UUIDV4
     },
     name:{
@@ -20,12 +19,10 @@ module.exports = (sequelize, DataTypes) => {
     
   });
   Developer.associate = function(models) {
-    Developer.belongsToMany(models.Bug, {
-      through: 'bugDevelopers',
-      as: 'devsOnTask',
-      foreignKey: 'bugs_uuid',
-      otherKey: 'developer_uuid',
-	    onDelete: 'CASCADE',
+    Developer.hasMany(models.bugDevelopers, {
+      as: 'bugsInProgress',
+      foreignKey: 'developer_uuid',
+	   
     }); 
   };
   sequelize.sync();
