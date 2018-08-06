@@ -1,6 +1,6 @@
 const Bug = require('../models').Bug;
 const Developer = require('../models').Developer;
-const bugDeveloper = require('../models').bugDevelopers;
+const bugDeveloper = require('../models').bugDeveloper;
 const Program = require('../models').Program;
 
 module.exports = {

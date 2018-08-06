@@ -28,7 +28,7 @@ module.exports = (app) => {
   app.get('/api/developer/:developer_uuid', devsController.retrieve); 
   app.put('/api/developer/:developer_uuid', devsController.update);
 
-  app.post('/api/bugDevelopers/:bug_uuid/:developer_uuid', bugDevController.createNewDev); //5
+  app.post('/api/bug/:bug_uuid/items/:developer_uuid', bugDevController.createNewDev); //5
   app.get('/api/bug/:bug_uuid/items', bugDevController.listDevs);//6
 
   app.post('/api/developer/:developer_uuid/:bug_uuid/items', bugDevController.createNewBug); //5

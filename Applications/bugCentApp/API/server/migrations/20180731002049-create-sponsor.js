@@ -3,7 +3,7 @@ module.exports = {
   up: (queryInterface, DataTypes) => {
     return queryInterface.sequelize.query('CREATE EXTENSION IF NOT EXISTS "uuid-ossp";')
     .then(() => {
-        return queryInterface.createTable('Sponsor', {
+        return queryInterface.createTable('Sponsors', {
           uuid: {
             allowNull: false,
             primaryKey: true,
@@ -38,7 +38,7 @@ module.exports = {
       });
     
     },
-      down: (queryInterface) =>  queryInterface.dropTable('Sponsor'),
+      down: (queryInterface) =>  queryInterface.dropTable('Sponsors'),
       
 },
 { timeStamps: true }

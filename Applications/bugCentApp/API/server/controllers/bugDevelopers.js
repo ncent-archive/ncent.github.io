@@ -1,4 +1,4 @@
-const bugDeveloper = require('../models').bugDevelopers;
+const bugDeveloper = require('../models').bugDeveloper;
 const Developer = require('../models').developer;
 const Bug = require('../models').bug;
 module.exports = {
