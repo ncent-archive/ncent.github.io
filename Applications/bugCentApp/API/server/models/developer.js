@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     
   });
   Developer.associate = function(models) {
-    Developer.hasMany(models.bugDevelopers, {
+    Developer.hasMany(models.bugDeveloper, {
       as: 'bugsInProgress',
       foreignKey: 'developer_uuid',
 	   

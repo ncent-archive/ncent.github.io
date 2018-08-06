@@ -28,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
 	    foreignKey: 'program_uuid',
       onDelete: 'CASCADE'
     }); 
-    Bug.hasMany(models.bugDevelopers, {
+    Bug.hasMany(models.bugDeveloper, {
       as: 'devsWorkingOn',
       foreignKey: 'bug_uuid',
     }); 
