@@ -16,8 +16,10 @@ module.exports = (app) => {
   app.get('/api/bug', bugsController.list); //6
   app.get('/api/bug/:bug_uuid', bugsController.retrieve); //7
   app.put('/api/bug/:bug_uuid', bugsController.update);// 8
-  
+
+  app.post('/api/bugUser', bugUsersController.create);
   app.post('/api/bug/:bug_uuid/user/:user_uuid', bugUsersController.createNew); //5
+
   app.get('/signup', usersController.getPage);
   app.post('/signup', usersController.create);
   app.get('/', usersController.getRedirect);

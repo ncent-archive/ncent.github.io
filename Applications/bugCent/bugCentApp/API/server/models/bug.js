@@ -14,14 +14,21 @@ module.exports = (sequelize, DataTypes) => {
     },
     status: {
       type: DataTypes.STRING,
-      defaultValue: 'Incomplete',
+      defaultValue: 'Reported',
       allowNull: false
     },
-    bountyAmount:{
-      type: DataTypes.INTEGER,
-      allowNull: true
+    description:{
+      type: DataTypes.STRING,
+      allowNull: false
     }
-  });
+  },{
+    setterMethods: {
+        create(bugName, bugDescription) {
+          
+          this.setDataValue('name', bugName);
+          this.setDataValue('description', bugDescription);
+        }
+  }});
   Bug.associate = function(models) {
     Bug.hasMany(models.bugUser, {
       foreignKey: 'bug_uuid',

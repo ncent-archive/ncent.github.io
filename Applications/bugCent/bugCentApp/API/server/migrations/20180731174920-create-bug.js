@@ -18,9 +18,9 @@ module.exports = {
                 type: DataTypes.STRING,
                 allowNull: false
             },
-            bountyAmount:{
-                type: DataTypes.INTEGER,
-                allowNull: true
+            description:{
+                type: DataTypes.STRING,
+                allowNull: false
             },
             createdAt: {
                 allowNull: false,
