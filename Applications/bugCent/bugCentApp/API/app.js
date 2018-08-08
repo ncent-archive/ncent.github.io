@@ -4,11 +4,14 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const app = express();
 const session = require('express-session');
+const path = require('path');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 // initialize cookie-parser to allow us access the cookies stored in the browser. 
 app.use(cookieParser());
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "pug");
 // Require our routes into the application.
 require('./server/routes')(app);
 app.disable('etag');

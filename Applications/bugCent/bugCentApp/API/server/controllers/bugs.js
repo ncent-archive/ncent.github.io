@@ -1,7 +1,7 @@
 const Bug = require('../models').Bug;
 const User = require('../models').User;
 const bugUser = require('../models').bugUser;
-
+const bugUserController = require('./bugUsers.js');
 
 module.exports = {
   create(req, res) {
@@ -9,8 +9,18 @@ module.exports = {
       .create({
         name: req.body.name,
         status: req.body.status,
-        bountyAmount: req.body.bountyAmount
+        description: req.body.description
       })
+      // .then(bug => {
+      //   bugUserController.post(req, res);
+      //  // .catch(error=>res.status(400).send(error));
+      //   // console.log(req.params.email);
+      //   // User.findOne({where: {email:req.params.email}})
+      //   // .then(user => {
+      //   //   userid = user.uuid;
+      //   // })
+      //   // bugUser.create(bug.uuid, userid);
+      // })
       .then(bug => res.status(201).send(bug))
       .catch(error => res.status(400).send(error));
   },
@@ -62,7 +72,7 @@ module.exports = {
         return bug
           .update({
            name: req.body.name || bug.name,
-           bountyAmount: req.body.bountyAmount || bug.bountyAmount,
+           description: req.body.description || bug.description,
            status: req.body.status || bug.status
           })
           .then(() => res.status(200).send(bug))  
