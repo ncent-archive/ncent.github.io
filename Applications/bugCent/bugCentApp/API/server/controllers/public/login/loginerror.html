@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>bugCent - Sign Up</title>
+	<title>bugCent - Login</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->	
+<!--============================================================-->	
 	<link rel="icon" type="image/png" href="https://image.ibb.co/bLg0Oz/logo.png"/>
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -37,12 +37,12 @@
 
 @font-face {
   font-family: Ubuntu-Regular;
-  src: url('//fonts.googleapis.com/css?family=Ubuntu'); 
+  src: url('../fonts/ubuntu/Ubuntu-Regular.ttf'); 
 }
 
 @font-face {
   font-family: Ubuntu-Bold;
-  src: url('//fonts.googleapis.com/css?family=Ubuntu'); 
+  src: url('../fonts/ubuntu/Ubuntu-Bold.ttf'); 
 }
 
 
@@ -542,145 +542,29 @@ iframe {
 .p-t-29 {padding-top: 29px;}
 .p-t-30 {padding-top: 30px;}
 </style>
-<script>
-  function validateForm() {
-    var x = document.forms["signingup"]["username"].value;
-    if (x == "") {
-        alert("Username must be filled out");
-        return false;
-    }
-    var y = document.forms["signingup"]["email"].value;
-    if (y == "") {
-        alert("Email must be filled out");
-        return false;
-    }
-}
-</script>
-<style>
-  /* Customize the label (the container) */
-.cont {
-  display: block;
-  position: relative;
-  padding-left:50px;
-  margin-bottom: 12px;
-  cursor: pointer;
-  font-size: 22px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  display: inline-block;
-    vertical-align: top;
-    margin-right: 3%;
-}
-
-/* Hide the browser's default checkbox */
-.cont input {
-  position: center;
-  opacity: 0;
-  cursor: pointer;
-}
-
-/* Create a custom checkbox */
-.checkmark {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 25px;
-  width: 25px;
-  background-color: #eee;
-  align-content: center;
-}
-
-/* On mouse-over, add a grey background color */
-.cont:hover input ~ .checkmark {
-  background-color: #ccc;
-}
-
-/* When the checkbox is checked, add a blue background */
-.cont input:checked ~ .checkmark {
-  background-color: #2196F3;
-  margin-left: 300px;
-}
-
-/* Create the checkmark/indicator (hidden when not checked) */
-.checkmark:after {
-  content: "";
-  position: absolute;
-  display: none;
-}
-
-/* Show the checkmark when checked */
-.cont input:checked ~ .checkmark:after {
-  display: block;
-}
-
-/* Style the checkmark/indicator */
-.cont .checkmark:after {
-  left: 9px;
-  top: 5px;
-  width: 5px;
-  height: 10px;
-  border: solid white;
-  border-width: 0 3px 3px 0;
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
-}
-
-.radio-input {
-   display: inline-block;
-    vertical-align: top;
-  align-content: center;
-}
-</style>
 <body>
 	
 	<div class="limiter">
-		<div class="container-login100" style="width:100%;background-image: url('https://ak3.picdn.net/shutterstock/videos/5679173/thumb/10.jpg');">
-			<div class="wrap-login100 p-t-30 p-b-50" style="width:70%">
+		<div class="container-login100" style="background-image: url('https://ak3.picdn.net/shutterstock/videos/5679173/thumb/10.jpg');">
+			<div class="wrap-login100 p-t-30 p-b-50">
 				<span class="login100-form-title p-b-41"style="font-family: Ubuntu">
-					Sign Up for an Account
+					Account Login
 				</span>
-        <form name= "signingup" class="login100-form validate-form p-b-33 p-t-5" action="/signup" method="post"
-            onsubmit = "return validateFrom()">
+				<form class="login100-form validate-form p-b-33 p-t-5" action="/login" method="post">
 
-					<div class="wrap-input100 validate-input" data-validate = "Username required">
-						<input class="input100" type="text" name="username" placeholder="Username"style="font-family: Ubuntu">
+					<div class="wrap-input100 validate-input" data-validate = "Enter username">
+						<input class="input100" type="text" name="username" placeholder="User name"style="font-family: Ubuntu">
 						
 					</div>
-          <div class="wrap-input100 validate-input" data-validate = "Name required">
-            <input class="input100" type="text" name="name" placeholder="Name"style="font-family: Ubuntu">
-            
-          </div>
-          <div class="wrap-input100 validate-input" data-validate = "Email required">
-            <input class="input100" type="email" name="email" placeholder="Email"style="font-family: Ubuntu">
-            
-          </div>
 
-          <div class="wrap-input100 validate-input" data-validate = "Enter username">
-            <div class="form-check">
-              <input class="cont" id = "company"type="radio" name="isCompany" value="true" style="margin-left:80px">
-              <label class="cont" for="company"  style="font-family: Ubuntu;color:#7e7d7d">
-                Company
-              </label>
-            </div>
-            <div class="form-check">
-              <input class="cont" id= "user"type="radio" name="isCompany"  style="margin-left:80px"value="false">
-              <label class="cont" for="user" style="font-family: Ubuntu;color:#7e7d7d">
-                User
-              </label>
-            </div>
-            
-          </div>
-
-					<div class="wrap-input100 validate-input" data-validate="Password required">
+					<div class="wrap-input100 validate-input" data-validate="Enter password">
 						<input class="input100" type="password" name="password" placeholder="Password"style="font-family: Ubuntu">
 						
 					</div>
-
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Your password and username did not match up.<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Please try again.</p>
 					<div class="container-login100-form-btn m-t-32">
-						<input class="login100-form-btn" type="submit" value="Sign Up"style="font-family: Ubuntu"/>
+						<input class="login100-form-btn" type="submit" value="Log In"/style="font-family: Ubuntu">
+            
 					</div>
 
 				</form>
@@ -690,13 +574,14 @@ iframe {
 	
 
 	<div id="dropDownSelect1"></div>
-
-	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-
+	
+<!--===============================================================================================-->
+	<script src="./vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
 	<script src="./vendor/animsition/js/animsition.min.js"></script>
-
+<!--===============================================================================================-->
 	<script src="./vendor/bootstrap/js/popper.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="./vendor/bootstrap/js/bootstrap.min.js"></script>
 <!--===============================================================================================-->
 	<script src="./vendor/select2/select2.min.js"></script>
 <!--===============================================================================================-->
