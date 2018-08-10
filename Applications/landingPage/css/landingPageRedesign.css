@@ -612,7 +612,7 @@ a:hover {
     margin-right: 3vw;
     width: auto;
     align-items: center;
-    background-color: rgba(255, 255, 255, .6);
+    background-color: rgba(255, 255, 255, 1);
     border-radius: 20px;
     z-index: 100;
     padding: 1vh;
@@ -625,13 +625,13 @@ a:hover {
 }
 
 .githubImg, .twitterImg {
-    height: 5vh;
-    width: 5vh;
+    height: 6vh;
+    width: 6vh;
 }
 
 .socialMediaButton {
-    width: 8vh;
-    height: 8vh;
+    width: 6vh;
+    height: 6vh;
 }
 
 .breakingNews {
