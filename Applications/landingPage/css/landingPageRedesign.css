@@ -192,11 +192,16 @@ body {
     height: auto;
 }
 
+.headerLogo, .headerLogoImg {
+    width: 20vw;
+    height: auto;
+}
+
 .mastheadBreak .engagementButton {
     color: #ffffff;
-    height: 15vh;
+    height: 10vh;
     font-size: 3.5vh;
-    width: 50vw;
+    width: 30vw;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -228,7 +233,7 @@ body {
     position: absolute;
     z-index: 1;
     border-radius: 5vh;
-    right: 25%;
+    right: 35%;
     bottom: 15%;
 }
 
