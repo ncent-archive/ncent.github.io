@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>nCent Labs</title>
+
+        <script>!function(m,a,i,t,r,e){if(m.Maitre)return;r=m.Maitre={},r.uuid=t,r.loaded=0,r.base_url=i,r.queue=[],m.mtr=function(){r.queue.push(arguments)};e=a.getElementsByTagName('script')[0],c=a.createElement('script');c.async=!0,c.src=i+'/widget/'+t+'.js',e.parentNode.insertBefore(c,e)}(window,document,'https://maitreapp.co','MFfa1aa24de7');
+        </script>
+
+        <link rel="stylesheet" href="./Applications/landingPage/css/landingPageRedesign.css">
+        <link rel="stylesheet" href="./Applications/landingPage/css/Reset.css">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+        <script type="text/javascript">
+            $(document).on('click', 'a[href^="#"]', function (event) {
+                event.preventDefault();
+                $('html, body').animate({
+                    scrollTop: $($.attr(this, 'href')).offset().top
+                -20}, 700);
+              });
+        </script>
+
+        <script type="text/javascript">
+            $(document).ready(function() {
+                document.getElementById("maitreCustomForm").addEventListener("submit", function (e) {
+                    e.preventDefault();
+                    const email = document.getElementById("email").value;
+                    let data;
+                    if (email) {
+                        data = {
+                            email: email
+                        };
+                        Maitre.form.submit(data);
+                    }
+                });
+
+                window.MaitreConfig = {
+                    callbacks: {
+                        success: function(response, data) {
+                            console.log('maitre submission successful');
+                        }
+                    }
+                }
+            });
+        </script>
+    </head>
+
+    <body>
+        <!--<div class="newsContainerDiv">-->
+            <!--<a class="newsContainer" href="./Applications/hackCent/hackCent.html">-->
+                <!--<img class="newsBanner" src="Applications/landingPage/img/HackCent_Banner_v1.png"/>-->
+            <!--</a>-->
+        <!--</div>-->
+        <div class="socialMedia">
+            <div class="telegramButton socialMediaButton">
+                <a href="https://github.com/ncent/ncent.github.io">
+                    <img class="githubImg" src="./Applications/landingPage/img/telegram-landingPage.png"/>
+                </a>
+            </div>
+            <div class="githubButton socialMediaButton">
+                <a href="https://t.me/ncent">
+                    <img class="githubImg" src="./Applications/landingPage/img/githubLogo.jpg"/>
+                </a>
+            </div>
+
+            <a class="twitterButton socialMediaButton" href="https://twitter.com/kk_ncnt">
+                <img class="contactImg twitterImg" src="./Applications/landingPage/img/if_square-twitter_317723.png"/>
+            </a>
+        </div>
+        <section class="mastHead panel">
+            <div class="header">
+                <div class="headerLogo">
+                    <img src="./Applications/landingPage/img/ncent_header_300px_white.png" />
+                </div>
+                <div class="headerLinkContainer">
+                    <div class="dropdown">
+                        <span class="headerLink dropButton">About</span>
+                        <div class="dropdown-content">
+                            <div class="dropdownSpacer"></div>
+                            <div class="nonSpacer">
+                                <span class="headerLink dropLink"><a href="#aboutSection">Introduction</a></span>
+                                <span class="headerLink dropLink"><a href="#investors">Investors</a></span>
+                                <span class="headerLink dropLink"><a href="#careersSection">Careers</a></span>
+                                <span class="headerLink"><a href="https://github.com/ncent/ncent.github.io/tree/master/Media%20Kit%20V.0.3.1">Media Kit</a></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <span class="headerLink dropButton">Participate</span>
+                        <div class="dropdown-content">
+                            <div class="dropdownSpacer"></div>
+                            <div class="nonSpacer">
+                                <span class="headerLink dropLink"><a href="https://github.com/ncent/ncent.github.io">Developers</a></span>
+                                <span class="headerLink dropLink"><a href="./Applications/founders/founders.html">Campus</a></span>
+                                <span class="headerLink dropLink"><a href="./Applications/nSpire/nSpire.html">Conference</a></span>
+                                <span class="headerLink dropLink"><a href="./Applications/yCent/index.html">yCent</a></span>
+                                <span class="headerLink"><a href="./Applications/hackCent/hackCent.html">Hackathon</a></span>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="headerLink"><a href="./Applications/blog/blog.html">Blog</a></span>
+                    <a class="headerLink litepaper" href="./Applications/landingPage/LitePaper.pdf">Download LitePaper</a>
+                </div>
+            </div>
+
+            <div class="engagementContainer">
+                <div class="engagementLogo">
+                    <img src="./Applications/landingPage/img/ncent_NOsubline_500px_white.png" />
+                </div>
+                <h2 class="engagementSlogan">Own the Value of Your Networks</h2>
+                <div class="engagementButtonContainer">
+                    <a class="engagementButtonMobile" href="./Applications/landingPage/LitePaper.pdf">LitePaper</a>
+                    <div class="dropdown headerLinkMobile">
+                        <span class="headerLinkMobile dropButton">About</span>
+                        <div class="dropdown-content">
+                            <div class="nonSpacer">
+                                <span class="headerLinkMobile dropLink"><a href="#aboutSection">What is nCent?</a></span>
+                                <span class="headerLinkMobile dropLink"><a href="#investors">Investors</a></span>
+                                <span class="headerLinkMobile"><a href="#careersSection">Careers</a></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dropdown headerLinkMobile">
+                        <span class="headerLinkMobile dropButton">Participate</span>
+                        <div class="dropdown-content">
+                            <div class="nonSpacer">
+                                <span class="headerLinkMobile dropLink"><a href="./Applications/founders/founders.html">Campus</a></span>
+                                <span class="headerLinkMobile dropLink"><a href="./Applications/nSpire/nSpire.html">Conference</a></span>
+                                <span class="headerLinkMobile dropLink"><a href="./Applications/yCent/index.html">yCent</a></span>
+                                <span class="headerLinkMobile"><a href="./Applications/hackCent/hackCent.html">Hackathon</a></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="arrowToAbout mastheadBreak">
+            <div class="aboutStripe topStripe">
+                <div class="topStripeLeft"></div>
+                <div class="topStripeRight"></div>
+            </div>
+            <div class="earlyAccessInteractionContainer">
+                <a class="earlyAccessArrowContainer" href="#earlyAccessContainer"><img class="earlyAccessArrow verticalSlide" src="./Applications/landingPage/img/arrowDown.png"/></a>
+                <div class="earlyAccessContainer">
+                    <a class="engagementButton pulsate" href="#earlyAccessContainer">Register for Early Access</a>
+                </div>
+            </div>
+        </section>
+        <section class="aboutSection introduction" id="aboutSection">
+            <div class="concept">
+                <h1 class="stripeHeader">What is nCent?</h1>
+                <p class="conceptContent">
+                    nCent will establish a new cryptocurrency, NCNT, which will exist on a decentralized base layer protocol. NCNT lets users easily create, share and participate in incentive applications represented as smart contracts. These tokenized smart contracts (or “stamped tokens”) unlock the collective value of our networks. Incentive applications thrive given the trust, value attribution, and Sybil resistance afforded by blockchain technology.
+                </p>
+            </div>
+            <div class="aboutStripe fullStripe introStripe">
+                <img class="stripeImg left" src="./Applications/landingPage/img/BigCirclesIllustrations-1.png" />
+                <div class="stripeContent">
+                    <h2 class="stripeHeader">Incentivizing Virality without Sacrificing Security</h2>
+                    <p class="stripeParagraph">
+                        Networks go viral when the right incentives are in place. We aim to reward people for
+                            (i) joining and recruiting new users to your network
+                            (ii) maintaining the validity and security of your network
+                            (iii) providing specialized services that benefit your network.
+                        Since nCent is specifically optimized for scalability, auditability, and resistance to fraud, the virality it affords doesn’t sacrifice network security.
+                    </p>
+                </div>
+            </div>
+            <div class="aboutStripe fullStripe introStripe lastStripe">
+                <img class="stripeImg left" src="./Applications/landingPage/img/BigCirclesIllustrations-2.png" />
+                <div class="stripeContent">
+                    <h2 class="stripeHeader">Applications Abound</h2>
+                    <p class="stripeParagraph">
+                        nCent itself was successfully grown using incentive programs. Featured applications include       	customer acquisition, employment search, fundraising, crowdwork campaigns,
+                        social networks, online auctions, and more.
+                    </p>
+                </div>
+            </div>
+        </section>
+        <div class="arrowToAbout sectionBreak">
+            <div class="breakLeft"></div>
+            <div class="breakRight"></div>
+        </div>
+        <section class="aboutSection">
+            <h1 class="stripeHeader marketOppsHeader">Market Opportunities</h1>
+            <div class="fullStripe marketOpp">
+                <img class="stripeBalloonImg left" src="./Applications/landingPage/img/ballonIcon02.png" />
+                <div class="stripeContent">
+                    <h2 class="stripeHeader">Acquire More Customers</h2>
+                    <p class="stripeParagraph">
+                        Seed some discount coins for items you want to sell. Participants receive a discount when they purchase the item while holding a coin and receive a reward whenever someone they transfer a coin to purchases the item.
+                    </p>
+                </div>
+            </div>
+            <div class="fullStripe marketOpp">
+                <img class="stripeBalloonImg left" src="./Applications/landingPage/img/ballonIcon02.png" />
+                <div class="stripeContent">
+                    <h2 class="stripeHeader">Recruit the Ideal Employee</h2>
+                    <p class="stripeParagraph">
+                        Seed some recruitment coins for open positions in your business. Participants receive a reward when they are hired while holding a coin and whenever someone they transfer a coin to is hired.
+                    </p>
+                </div>
+            </div>
+            <div class="fullStripe marketOpp">
+                <img class="stripeBalloonImg left" src="./Applications/landingPage/img/ballonIcon02.png" />
+                <div class="stripeContent">
+                    <h2 class="stripeHeader">Maximize Charitable Donations</h2>
+                    <p class="stripeParagraph">
+                        Seed some pledge coins to invite donations in exchange for an appreciation package. Participants can pledge to donate by transferring the coin or donate immediately. When an immediate donation occurs, everyone who has pledged by transferring immediately donates and receives an appreciation package.
+                    </p>
+                </div>
+            </div>
+            <div class="fullStripe marketOpp lastOpp">
+                <img class="stripeBalloonImg left" src="./Applications/landingPage/img/ballonIcon02.png" />
+                <div class="stripeContent">
+                    <h2 class="stripeHeader">Create a Social Network</h2>
+                    <p class="stripeParagraph">
+                        Seed some coins to people using a dating app. Coins grant in-app benefits. Participants get more coins by using their network to match-make, growing the application's network.
+                    </p>
+                </div>
+            </div>
+        </section>
+        <div class="arrowToAbout sectionBreak">
+            <div class="breakLeft"></div>
+            <div class="breakRight"></div>
+        </div>
+        <section class="investorsSection" id="investors">
+            <h1 class="investorsHeader">Selected Investors</h1>
+            <div class="investorsContainer">
+                <div class="investorTile"><a href="https://www.sequoiacap.com/"><img class="investorImage" src="./Applications/landingPage/img/sequoia.jpg" /></a></div>
+                <div class="investorTile"><a href="https://angel.co/naval"><img class="investorImage" src="./Applications/landingPage/img/naval.png" /></a></div>
+                <div class="investorTile"><a href="https://svangel.com"><img class="investorImage" src="./Applications/landingPage/img/svangel.png" /></a></div>
+                <div class="investorTile"><a href="https://www.linkedin.com/in/stevejurvetson"><img class="investorImage" src="./Applications/landingPage/img/steve.png" /></a></div>
+                <div class="investorTile"><a href="https://www.metastablecapital.com/index.html"><img class="investorImage" src="./Applications/landingPage/img/metastable.jpg" /></a></div>
+                <div class="investorTile"><a href="https://winklevosscapital.com/"><img class="investorImage" src="./Applications/landingPage/img/winklevoss.jpg" /></a></div>
+                <div class="investorTile"><a href="http://floodgate.com/"><img class="investorImage" src="./Applications/landingPage/img/floodgate.png" /></a></div>
+                <div class="investorTile"><a href="https://www.amecloudventures.com/"><img class="investorImage" src="./Applications/landingPage/img/ame.png" /></a></div>
+                <div class="investorTile"><a href="http://www.zhenfund.com/"><img class="investorImage" src="./Applications/landingPage/img/zhen.png" /></a></div>
+                <div class="investorTile"><a href="https://signiaventurepartners.com/"><img class="investorImage" src="./Applications/landingPage/img/Signia_cropped.jpg" /></a></div>
+                <div class="investorTile"><a href="https://qcp.capital/"><img class="investorImage" src="./Applications/landingPage/img/qcp.png" /></a></div>
+                <div class="investorTile"><a href="https://jumpinvestors.com/"><img class="investorImage" src="./Applications/landingPage/img/jump.png" /></a></div>
+            </div>
+        </section>
+        <div class="arrowToAbout sectionBreak">
+            <div class="breakLeft"></div>
+            <div class="breakRight"></div>
+        </div>
+        <section id="careersSection">
+            <div class="concept">
+                <h1 class="stripeHeader careersHeader">Careers</h1>
+                <p class="conceptContent">
+                    Join our rapidly growing team! Visit our <a href="https://angel.co/ncent/jobs" id="careers-link"> careers page</a> to see all our job postings. <br><br> If you dont see a job that fits your exact skillset but think you can contribute, email <a href="mailto:kk@ncnt.io" id="careers-link"> <b> kk@ncnt.io </b> </a> and attach your CV / LinkedIn profile and let us know what you bring to the table. <br><br> If you are a current undergraduate click <a href="Applications/founders/founders.html" id="careers-link">here</a> to learn more about opportunities on campus.
+                </p>
+            </div>
+        </section>
+        <div class="arrowToAbout sectionBreak">
+            <div class="breakLeft"></div>
+            <div class="breakRight"></div>
+        </div>
+        <div class="maitre-container" id="earlyAccessContainer">
+            <form action="#" method="POST" id="maitreCustomForm">
+                <span class="maitreTitle">Sign Up for Early Access to our Whitepaper!</span>
+                <input class="formField email" type="email" id="email" name="email" placeholder="Your Email">
+                <button class="maitreSubmitButton" type="submit">Sign Up</button>
+            </form>
+            <div class="maitreDisclaimer" style="font-weight: bolder; color: white; margin-top: 2%">*All referrals will count toward your point total <i>after</i> the email address confirmation step</div>
+        </div>
+        <section class="footer">
+            <div class="headerLogo">
+                <img src="./Applications/landingPage/img/ncent_header_300px_white.png" />
+            </div>
+            <div class="contactUs">
+                <h3 class="followUsHeader">Follow Us</h3>
+                <div class="contactButtons">
+                    <a class="contactButton" href="https://github.com/ncent/ncent.github.io">
+                        <img class="contactImg" src="./Applications/landingPage/img/githubLogo.jpg"/>
+                    </a>
+                    <a class="contactButton" href="https://twitter.com/kk_ncnt">
+                        <img class="contactImg" src="./Applications/landingPage/img/if_square-twitter_317723.png"/>
+                    </a>
+                    <a class="contactButton" href="https://t.me/ncent">
+                        <img class="contactImg" src="./Applications/landingPage/img/telegram-landingPage.png"/>
+                    </a>
+                    <a class="contactButton" href="https://medium.com/@kk_ncnt">
+                        <img class="contactImg" src="./Applications/landingPage/img/if_medium_social_media_logo_1407938.png"/>
+                    </a>
+                    <a class="contactButton" href="https://www.youtube.com/watch?v=Op6t4u9rwMA&t=841s">
+                        <img class="contactImg" src="./Applications/landingPage/img/youtube_full_color_icon/social/64px/white/youtube_social_circle_white.png"/>
+                    </a>
+                    <a class="contactButton" href="https://www.linkedin.com/company/ncent">
+                        <img class="contactImg linkedinIcon" src="./Applications/landingPage/img/In-White-54px-TM.png"/>
+                    </a>
+                </div>
+            </div>
+            <div class="moreInfo">
+                <span class="phone"><b>Phone: </b>(650) 503-8785</span>
+                <span class="email">Email our Founder at <a href="mailto:kk@ncnt.io">kk@ncnt.io</a></span>
+                <div class="copyright">
+                    &copy; nCent Labs 2018. All Rights Reserved.
+                </div>
+            </div>
+        </section>
+    </body>
+
+</html>
