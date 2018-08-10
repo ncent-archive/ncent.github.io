@@ -55,6 +55,31 @@ module.exports = {
       })
       .catch(error => res.status(400).send(error));
   },
+  // updateBug(req, res) {
+  //   res.sendFile(__dirname + '/public/index.html');
+  //   return Bug
+  //     .findById(req.params.bug_uuid, {
+  //       include: [{
+  //         model: bugUser,
+  //         as: 'users',
+  //       }],
+  //     })
+  //     .then(bug => {
+  //       if (!bug) {
+  //         return res.status(404).send({
+  //           message: 'Bug Not Found',
+  //         });
+  //       }
+  //       return bug
+  //         .update({
+  //          description: req.body.description || bug.description,
+  //          status: req.body.status || bug.status
+  //         })
+  //         .then(() => res.status(200).send(bug))  
+  //         .catch((error) => res.status(400).send(error));
+  //     })
+  //     .catch((error) => res.status(400).send(error));
+  // },
   update(req, res) {
     return Bug
       .findById(req.params.bug_uuid, {
@@ -65,9 +90,9 @@ module.exports = {
       })
       .then(bug => {
         if (!bug) {
-          return res.status(404).send({
-            message: 'Bug Not Found',
-          });
+          return 
+             res.sendFile(__dirname + '/public/errorpage.html');
+          
         }
         return bug
           .update({
@@ -75,9 +100,11 @@ module.exports = {
            description: req.body.description || bug.description,
            status: req.body.status || bug.status
           })
-          .then(() => res.status(200).send(bug))  
-          .catch((error) => res.status(400).send(error));
+          .then(bug =>{
+            res.sendFile(__dirname + '/public/index.html');
+          })  
+          .catch((error) => res.sendFile(__dirname + '/public/errorpage.html'));
       })
-      .catch((error) => res.status(400).send(error));
+      .catch((error) => res.sendFile(__dirname + '/public/errorpage.html'));
   }
 };

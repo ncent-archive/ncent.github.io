@@ -12,7 +12,7 @@ module.exports = {
             name: {
                 type: DataTypes.STRING,
                 allowNull: false,
-                unique: true
+                unique: false
             },
             status: {
                 type: DataTypes.STRING,

@@ -16,11 +16,17 @@ module.exports = (sequelize, DataTypes) => {
     username: {
       type: DataTypes.STRING,
       unique: true,
-      allowNull: false
+      allowNull: false,
+      validate:{
+        len: [1,100]
+      }
     },
     password: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      validate:{
+        len: [1,100]
+      }
     },
     isCompany: {
       type: DataTypes.BOOLEAN,
@@ -28,7 +34,10 @@ module.exports = (sequelize, DataTypes) => {
     },
     email: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      validate:{
+        len: [4,100]
+      }
     }
   }, {
     hooks: {

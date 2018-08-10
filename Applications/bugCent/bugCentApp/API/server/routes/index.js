@@ -10,6 +10,7 @@ module.exports = (app) => {
   app.post('/api/user', usersController.create); //1
   app.get('/api/user', usersController.list); // 2
   app.get('/api/user/:user_uuid', usersController.retrieve); //3
+  app.get('/dashboard/reports', usersController.retrieveWithUser); //3
   app.put('/api/user/:user_uuid', usersController.update); //4
 
   app.post('/api/bug', bugsController.create); //5
@@ -19,6 +20,7 @@ module.exports = (app) => {
 
   app.post('/api/bugUser', bugUsersController.create);
   app.post('/api/bug/:bug_uuid/user/:user_uuid', bugUsersController.createNew); //5
+  //app.get('/update/:bug_uuid', bugsController.updateBug);
 
   app.get('/signup', usersController.getPage);
   app.post('/signup', usersController.create);
@@ -26,5 +28,7 @@ module.exports = (app) => {
   app.get('/login', usersController.getLogIn);
   app.post('/login', usersController.getUser);
   app.get('/dashboard', usersController.dashboard);
-  //app.get('/logout', usersController.logOut);
+  app.get('/dashboard/report', usersController.report);
+  app.get('/updatebug.html?:bug_uuid', usersController.updateBugPage);
+  app.get('/logout', usersController.logOut);
 };
