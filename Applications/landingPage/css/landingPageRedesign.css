@@ -612,10 +612,9 @@ a:hover {
     margin-right: 3vw;
     width: auto;
     align-items: center;
-    background-color: rgba(255, 255, 255, 1);
+    justify-content: center;
     border-radius: 20px;
     z-index: 100;
-    padding: 1vh;
 }
 
 .telegramButton, .twitterButton, .githubButton {
