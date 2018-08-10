@@ -41,25 +41,28 @@
 
 @-webkit-keyframes pulsate {
     0% {
-        font-size: 3vh;
-    }
-    50% {
         font-size: 4vh;
     }
+    50% {
+        font-size: 4.5vh;
+    }
     100% {
-        font-size: 3vh;
+        font-size: 4vh;
     }
 }
 
 @-webkit-keyframes verticalSlide {
     0% {
         bottom: 50%;
+        box-shadow: 0 0 0 0 rgba(255,255,255, 0.6);
     }
     50% {
         bottom: 60%;
+        box-shadow: 0 0 0 2vh rgba(255,255,255, 0);
     }
     100% {
         bottom: 50%;
+        box-shadow: 0 0 0 0 rgba(255,255,255, 0);
     }
 }
 
