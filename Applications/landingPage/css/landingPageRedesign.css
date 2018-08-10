@@ -188,14 +188,14 @@ body {
 }
 
 .engagementLogo, .engagementLogo img {
-    width: 400px;
-    height: 400px;
+    width: 20vw;
+    height: auto;
 }
 
 .mastheadBreak .engagementButton {
     color: #ffffff;
     height: 15vh;
-    font-size: 2.5vh;
+    font-size: 3.5vh;
     width: 50vw;
     display: flex;
     align-items: center;
@@ -255,7 +255,7 @@ body {
     height: auto;
     position: absolute;
     right: 47.5%;
-    bottom: 45%;
+    bottom: 50%;
     border-radius: 60px;
 }
 
