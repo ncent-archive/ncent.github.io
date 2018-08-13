@@ -345,9 +345,10 @@ html, body {
     background: linear-gradient(#4a29d7, #1d88d4);
     padding-left: 15vw;
     padding-right: 15vw;
-    padding-bottom: 30vw;
+    padding-bottom: 20vw;
     line-height: 4vh;
     text-align: justify;
+    text-justify: distribute;
     letter-spacing: 0.1vw;
     font-size: 2vh;
 }
@@ -371,6 +372,7 @@ html, body {
 .fullStripe {
     display: flex;
     margin-top: 10vh;
+    align-items: center;
 }
 
 .stripeImg {
@@ -387,8 +389,8 @@ html, body {
 }
 
 .stripeBalloonImg {
-    height: 8vh;
-    width: 8vh;
+    height: auto;
+    width: 8vw;
 }
 
 .stripeBalloonImg.left {
@@ -397,6 +399,19 @@ html, body {
 
 .stripeBalloonImg.right {
     margin-left: 5vw;
+}
+
+.redBalloonBullet {
+    width: 8vw;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 5vw;
+}
+
+.redBalloonBullet .stripeBalloonImg {
+    margin-right: 0;
 }
 
 .stripeContent {
@@ -470,11 +485,12 @@ html, body {
 
 #careersSection {
     background: linear-gradient(#4a29d7, #1d88d4);
-    padding-left: 20vw;
-    padding-right: 20vw;
+    padding-left: 15vw;
+    padding-right: 15vw;
     padding-bottom: 30vh;
     line-height: 4vh;
     text-align: justify;
+    text-justify: distribute;
     letter-spacing: 0.1vw;
 }
 
@@ -613,7 +629,7 @@ a:hover {
     flex-direction: column;
 }
 
-.dropdown:hover .dropdown-content, dropdown:focus .dropdown-content {
+.dropdown:hover .dropdown-content {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
@@ -630,7 +646,7 @@ a:hover {
     display: flex;
     flex-direction: column;
     right: 0;
-    top: 15%;
+    top: 20%;
     padding-right: 3vw;
     width: auto;
     align-items: center;
@@ -657,12 +673,13 @@ a:hover {
 
 .newsContainerDiv {
     width: 100%;
-    height: 5vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #4a29d7;
+    background-color: darkorange;
+    color: black;
     z-index: 10;
+    padding: 2vh;
 }
 
 .newsContainer {
@@ -670,7 +687,10 @@ a:hover {
     display: flex;
     justify-content: center;
     font-size: 2.5vh;
+    text-align: justify;
+    text-justify: distribute;
     z-index: 10;
+    line-height: 3vh;
 }
 
 .newsBanner {
@@ -753,7 +773,7 @@ a:hover {
 
     .mastHead .engagementContainer {
         position: absolute;
-        top: -5vh;
+        top: -10vh;
     }
 
     .engagementLogo, .engagementLogo img {
@@ -762,7 +782,7 @@ a:hover {
     }
 
     .mastHead .engagementContainer .engagementSlogan {
-        font-size: 2vh;
+        font-size: 2.5vh;
     }
 
     .telegramButton {
@@ -830,6 +850,11 @@ a:hover {
         padding-bottom: 2vh;
     }
 
+    #careersSection {
+        padding-left: 5vw;
+        padding-right: 5vw;
+    }
+
     .footer {
         height: auto;
         padding-top: 5vh;
@@ -842,7 +867,8 @@ a:hover {
     }
 
     .stripeHeader {
-        font-size: 3vh;
+        font-size: 2.5vh;
+        text-align: center;
     }
 
     .maitreDisclaimer {
@@ -857,12 +883,21 @@ a:hover {
     .earlyAccessArrow {
         width: 8vw;
         height: auto;
-        bottom: 30vh;
         right: 46%;
+        margin-bottom: 8vh;
+    }
+
+    .mastheadBreak .engagementButton {
+        margin-top: -5vh;
     }
 
     .stripeBalloonImg.left {
         margin-right: 0;
+    }
+
+    .stripeBalloonImg {
+        width: 20vw;
+        height: auto;
     }
 
     .nonSpacer {
@@ -878,7 +913,7 @@ a:hover {
     }
 
     .socialMedia {
-        top: 8vh;
+        top: 15vh;
     }
 
     .socialMediaButton {
@@ -923,17 +958,28 @@ a:hover {
     }
 
     html, body {
-        max-width: 100%;
+        max-width: 100vw;
         overflow-x: hidden;
     }
 
     .newsContainer {
-        font-size: 1.5vh;
-        text-align: center;
+        font-size: 2vh;
+        text-align: justify;
+        text-justify: distribute;
     }
 
     #maitreCustomForm {
         padding: 2vh;
+    }
+
+    .aboutSection {
+        padding-right: 5vw;
+        padding-left: 5vw;
+        padding-bottom: 40vh;
+    }
+
+    .maitreDisclaimer {
+        padding: 5vw;
     }
 }
 
