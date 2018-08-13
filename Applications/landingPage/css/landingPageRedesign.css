@@ -345,7 +345,7 @@ html, body {
     background: linear-gradient(#4a29d7, #1d88d4);
     padding-left: 15vw;
     padding-right: 15vw;
-    padding-bottom: 50vw;
+    padding-bottom: 20vw;
     line-height: 4vh;
     text-align: justify;
     text-justify: distribute;
@@ -485,8 +485,8 @@ html, body {
 
 #careersSection {
     background: linear-gradient(#4a29d7, #1d88d4);
-    padding-left: 5vw;
-    padding-right: 5vw;
+    padding-left: 15vw;
+    padding-right: 15vw;
     padding-bottom: 30vh;
     line-height: 4vh;
     text-align: justify;
@@ -850,6 +850,11 @@ a:hover {
         padding-bottom: 2vh;
     }
 
+    #careersSection {
+        padding-left: 5vw;
+        padding-right: 5vw;
+    }
+
     .footer {
         height: auto;
         padding-top: 5vh;
@@ -862,7 +867,8 @@ a:hover {
     }
 
     .stripeHeader {
-        font-size: 3vh;
+        font-size: 2.5vh;
+        text-align: center;
     }
 
     .maitreDisclaimer {
@@ -969,6 +975,7 @@ a:hover {
     .aboutSection {
         padding-right: 5vw;
         padding-left: 5vw;
+        padding-bottom: 50vh;
     }
 }
 
