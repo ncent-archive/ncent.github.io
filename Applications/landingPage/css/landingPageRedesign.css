@@ -204,7 +204,6 @@ body {
     color: #ffffff;
     height: 10vh;
     font-size: 3.5vh;
-    width: 30vw;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -233,11 +232,9 @@ body {
 }
 
 .engagementButton {
-    position: absolute;
     z-index: 1;
     border-radius: 5vh;
-    right: 35%;
-    bottom: 15%;
+    width: 100%;
 }
 
 .litepaper {
@@ -255,7 +252,6 @@ body {
 
 .aboutSection .aboutStripe {
     width: 100%;
-    height: 30vh;
 }
 
 .earlyAccessArrow {
@@ -362,10 +358,11 @@ body {
 .fullStripe {
     display: flex;
     margin-top: 10vh;
+    align-items: center;
 }
 
 .stripeImg {
-    height: 100%;
+    height: 30vh;
     width: auto;
 }
 
@@ -749,8 +746,8 @@ a:hover {
     }
 
     .engagementLogo, .engagementLogo img {
-        height: 300px;
-        width: 300px;
+        height: 50vw;
+        width: auto;
     }
 
     .mastHead .engagementContainer .engagementSlogan {
@@ -911,6 +908,16 @@ a:hover {
 
     .githubImg {
         margin-bottom: 1vh;
+    }
+
+    .moreInfo {
+        width: 95vw;
+        text-align: center;
+    }
+
+    .maitreSubmitButton {
+        width: 50vw;
+        height: 15vh;
     }
 }
 
