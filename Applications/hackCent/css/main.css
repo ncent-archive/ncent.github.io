@@ -1850,7 +1850,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 }
 
 .home-content__main {
-    padding-top: 24rem;
+    padding-top: 18rem;
     position: relative;
 }
 
@@ -2100,11 +2100,12 @@ html.no-csstransitions .home-content__main {
     }
 }
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1400px) {
     .home-content h1 {
         font-size: 5.5rem;
     }
     .home-content__main {
+        padding-top: 18rem;
         max-width: 800px;
     }
 }
@@ -2117,7 +2118,7 @@ html.no-csstransitions .home-content__main {
         display: none;
     }
     .home-content__main {
-        padding-top: 21rem;
+        padding-top: 18rem;
         padding-right: 80px;
         max-width: 680px;
     }
@@ -2195,7 +2196,7 @@ html.no-csstransitions .home-content__main {
     .home-content__main {
         text-align: center;
         max-width: none;
-        padding-top: 15rem;
+        padding-top: 12rem;
         padding-right: 25px;
         width: 85%;
     }
@@ -2225,7 +2226,7 @@ html.no-csstransitions .home-content__main {
         font-size: 3.2rem;
     }
     .home-content__main {
-        padding-top: 16.2rem;
+        padding-top: 13.2rem;
         width: auto;
     }
 }
