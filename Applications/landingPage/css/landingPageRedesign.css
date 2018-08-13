@@ -629,7 +629,7 @@ a:hover {
     flex-direction: column;
 }
 
-.dropdown:hover .dropdown-content, dropdown:focus .dropdown-content {
+.dropdown:hover .dropdown-content, .dropdown:focus .dropdown-content, .dropdown:active .dropdown-content {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
