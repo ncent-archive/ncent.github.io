@@ -163,8 +163,8 @@ html, body {
     align-items: center;
     position: absolute;
     justify-content: center;
-    padding-bottom: 20vh;
     height: 100%;
+    bottom: 5vh;
 }
 
 .mastHead .engagementContainer .engagementSlogan {
@@ -676,21 +676,18 @@ a:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: orange;
+    background-color: lightsalmon;
     color: black;
     z-index: 10;
-    padding: 2vh;
 }
 
 .newsContainer {
-    width: 100%;
-    display: flex;
-    justify-content: center;
     font-size: 2.5vh;
-    text-align: justify;
+    text-align: center;
     text-justify: distribute;
     z-index: 10;
     line-height: 3vh;
+    padding: 2vh;
 }
 
 .newsBanner {
@@ -777,7 +774,7 @@ a:hover {
 
     .mastHead .engagementContainer {
         position: absolute;
-        top: -10vh;
+        top: -20vh;
     }
 
     .engagementLogo, .engagementLogo img {
@@ -949,6 +946,11 @@ a:hover {
 
     .githubImg {
         margin-bottom: 1vh;
+    }
+
+    .linkedinIcon {
+        height: 5vh;
+        width: 7vh;
     }
 
     .moreInfo {
