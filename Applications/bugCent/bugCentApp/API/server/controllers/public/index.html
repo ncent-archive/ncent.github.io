@@ -1283,7 +1283,7 @@ header {
             let bugsList= $("#bug-list");
             bugsList.empty();
             if(data.bugs.length == 0){
-                bugsList.append(noBugYetCard(data));
+                bugsList.append(noBugYetCard(data.name));
             }
             for(var i =0; i < data.bugs.length; i++){
                 
@@ -1293,25 +1293,25 @@ header {
                     if(data.isCompany){
                         if(bug.users[0].user_uuid == data.uuid){
                             $.get('/api/user/'+ bug.users[1].user_uuid, function(author){
-                                bugsList.append(createBugCard(bug, author.name));
+                                bugsList.append(createBugCard(bug, author.name, true));
                             });
                             
                         }
                         else{
                             $.get('/api/user/'+ bug.users[0].user_uuid, function(author){
-                                bugsList.append(createBugCard(bug, author.name));
+                                bugsList.append(createBugCard(bug, author.name, true));
                             });
                         }
                     }
                     else{
-                        bugsList.append(createBugCard(bug, data.name));
+                        bugsList.append(createBugCard(bug, data.name, false));
                     }
                     document.getElementById(bug.createdAt).style.display = "none";
                 });
                 
                 
             }
-            $('#welcome').text('Welcome to bugCent, ' + data.name + "!");
+            $('#welcome').text('Welcome to bugCent, ' + data.name.charAt(0).toUpperCase() + data.name.substring(1) + "!");
             
         })
     });
@@ -1336,37 +1336,65 @@ header {
                         </div>`
             )
     }
-    function createBugCard(bug, name){
+    function createBugCard(bug, name, isCompany){
         var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
         let date = bug.createdAt;
         let year = date.substring(0, 4);
         let month = Number(date.substring(5, 7));
         let day = date.substring(8, 10);
         date = months[month-1] + ' ' + day + ', ' + year;
-        return $(`
-            <div class="col-md-4">
-                    <div class="blog">
-                        <div class="blog-img">
-                            <img class="img-responsive" src="./img/blog2.jpg" alt="">
-                        </div>
-                        <div class="blog-content">
-                            <ul class="blog-meta">
-                                <li><i class="fa fa-user"></i>${name}</li>
-                                <li><i class="fa fa-clock-o"></i>${date}</li>
-                                
-                            </ul>
-                            <h3>${bug.name}</h3>
-                            <p>${bug.description}<br><br><br></p>
-                            <form action="./updatebug.html" style="inline-block; float:left">
-                                <input type="hidden" name="bug_uuid" value ="${bug.uuid}"/>
-                                <input class = "report-btn" style="inline-block; float:right; opacity:1"type = "submit" value="Update Status Here"/>
+        if(isCompany){
+            return $(`
+                <div class="col-md-4">
+                        <div class="blog">
+                            <div class="blog-img">
+                                <img class="img-responsive" src="./img/blog2.jpg" alt="">
+                            </div>
+                            <div class="blog-content">
+                                <ul class="blog-meta">
+                                    <li><i class="fa fa-user"></i>${name}</li>
+                                    <li><i class="fa fa-clock-o"></i>${date}</li>
+                                    
+                                </ul>
+                                <h3>${bug.name}</h3>
+                                <p>${bug.description}<br><br><br></p>
+                                <form action="./updatebug.html" style="inline-block; float:left">
+                                    <input type="hidden" name="bug_uuid" value ="${bug.uuid}"/>
+                                    <input class = "report-btn" style="inline-block; float:right; opacity:1"type = "submit" value="Update Status Here"/>
 
-                                </form>
-                            <a href="./public/dashboard/dashboard.html"><br><br>Status: ${bug.status}<br></a>
+                                    </form>
+                                <a href="./public/dashboard/dashboard.html"><br><br>Status: ${bug.status}<br></a>
+                            </div>
                         </div>
-                    </div>
-                </div>`
+                    </div>`
             )
+        }
+       
+            return $(`
+                <div class="col-md-4">
+                        <div class="blog">
+                            <div class="blog-img">
+                                <img class="img-responsive" src="./img/blog2.jpg" alt="">
+                            </div>
+                            <div class="blog-content">
+                                <ul class="blog-meta">
+                                    <li><i class="fa fa-user"></i>${name}</li>
+                                    <li><i class="fa fa-clock-o"></i>${date}</li>
+                                    
+                                </ul>
+                                <h3>${bug.name}</h3>
+                                <p>${bug.description}<br><br><br></p>
+                                <form action="./updatebug.html" style="inline-block; float:left">
+                                    <input type="hidden" name="bug_uuid" value ="${bug.uuid}"/>
+                                    
+
+                                    </form>
+                                <a href="./public/dashboard/dashboard.html"><br><br>Status: ${bug.status}<br></a>
+                            </div>
+                        </div>
+                    </div>`
+                )
+        
     }
 
     </script>
