@@ -41,25 +41,28 @@
 
 @-webkit-keyframes pulsate {
     0% {
-        font-size: 3vh;
-    }
-    50% {
         font-size: 4vh;
     }
+    50% {
+        font-size: 4.5vh;
+    }
     100% {
-        font-size: 3vh;
+        font-size: 4vh;
     }
 }
 
 @-webkit-keyframes verticalSlide {
     0% {
         bottom: 50%;
+        box-shadow: 0 0 0 0 rgba(255,255,255, 0.6);
     }
     50% {
         bottom: 60%;
+        box-shadow: 0 0 0 2vh rgba(255,255,255, 0);
     }
     100% {
         bottom: 50%;
+        box-shadow: 0 0 0 0 rgba(255,255,255, 0);
     }
 }
 
@@ -102,6 +105,13 @@ body {
     font-size: 2.25vh;
 }
 
+html, body {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+}
+
 .panel {
     width: 100%;
     height: 100vh;
@@ -138,8 +148,8 @@ body {
 }
 
 .mastHead .header .headerLinkContainer .headerLink {
-    margin-left: 1vw;
-    margin-right: 1vw;
+    padding-left: 1vw;
+    padding-right: 1vw;
 }
 
 .mastHead .header .headerLinkContainer .headerLink:hover {
@@ -170,7 +180,7 @@ body {
 }
 
 .mastHead .engagementContainer .engagementButtonContainer .engagementButton {
-    margin: 3vw;
+    padding: 3vw;
     color: #1d88d4;
     background-color: #ffffff;
     border-radius: 20px;
@@ -188,15 +198,19 @@ body {
 }
 
 .engagementLogo, .engagementLogo img {
-    width: 400px;
-    height: 400px;
+    width: 20vw;
+    height: auto;
+}
+
+.headerLogo, .headerLogoImg {
+    width: 20vw;
+    height: auto;
 }
 
 .mastheadBreak .engagementButton {
     color: #ffffff;
-    height: 15vh;
-    font-size: 2.5vh;
-    width: 50vw;
+    height: 10vh;
+    font-size: 3.5vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -225,11 +239,9 @@ body {
 }
 
 .engagementButton {
-    position: absolute;
     z-index: 1;
     border-radius: 5vh;
-    right: 25%;
-    bottom: 15%;
+    width: 100%;
 }
 
 .litepaper {
@@ -237,7 +249,7 @@ body {
     color: #1d88d4;
     border-radius: 20px;
     padding: 2vh;
-    margin-right: 2vh;
+    margin-left: 2vh;
 }
 
 .aboutSection {
@@ -247,7 +259,6 @@ body {
 
 .aboutSection .aboutStripe {
     width: 100%;
-    height: 30vh;
 }
 
 .earlyAccessArrow {
@@ -255,7 +266,7 @@ body {
     height: auto;
     position: absolute;
     right: 47.5%;
-    bottom: 45%;
+    bottom: 50%;
     border-radius: 60px;
 }
 
@@ -354,19 +365,20 @@ body {
 .fullStripe {
     display: flex;
     margin-top: 10vh;
+    align-items: center;
 }
 
 .stripeImg {
-    height: 100%;
+    height: 30vh;
     width: auto;
 }
 
 .stripeImg.left {
-    margin-right: 5vw;
+    padding-right: 5vw;
 }
 
 .stripeImg.right {
-    margin-left: 5vw;
+    padding-left: 5vw;
 }
 
 .stripeBalloonImg {
@@ -422,8 +434,8 @@ body {
 
 .investorImage {
     height: auto;
-    width: 300px;
-    margin-right: 5vh;
+    width: 350px;
+    padding-right: 5vh;
     margin-bottom: 5vh;
 }
 
@@ -500,10 +512,10 @@ a:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-right: 10vw;
-    margin-left: 10vw;
+    padding-right: 10vw;
+    padding-left: 10vw;
     vertical-align: center;
-    width: 30vw;
+    width: 50vw;
 }
 
 .followUsHeader {
@@ -512,22 +524,23 @@ a:hover {
 }
 
 .contactImg {
-    width: 5vh;
+    width: 7vh;
     height: auto;
-    margin-left: 1vh;
-    margin-right: 1vh;
+    padding-left: 1vh;
+    padding-right: 1vh;
 }
 
 .contactImg.linkedinIcon {
-    width: 5.5vh;
-    height: 4.8vh;
+    width: 8vh;
+    height: 5vh;
 }
 
 .moreInfo {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 300px;
+    width: 25vw;
+    font-size: 2vh;
 }
 
 .phone {
@@ -592,7 +605,7 @@ a:hover {
     flex-direction: column;
 }
 
-.dropdown:hover .dropdown-content {
+.dropdown:hover .dropdown-content, dropdown:focus .dropdown-content {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
@@ -609,7 +622,7 @@ a:hover {
     flex-direction: column;
     right: 0;
     top: 15%;
-    margin-right: 3vw;
+    padding-right: 3vw;
     width: auto;
     align-items: center;
     justify-content: center;
@@ -740,8 +753,8 @@ a:hover {
     }
 
     .engagementLogo, .engagementLogo img {
-        height: 300px;
-        width: 300px;
+        height: 50vw;
+        width: auto;
     }
 
     .mastHead .engagementContainer .engagementSlogan {
@@ -795,10 +808,11 @@ a:hover {
         height: auto;
     }
 
-    .stripeImg {
+    .stripeImg.left {
         height: auto;
         width: 50%;
         padding-bottom: 10vh;
+        padding-right: 0;
     }
 
     .stripeContent {
@@ -818,8 +832,9 @@ a:hover {
     }
 
     .investorImage {
-        margin-right: 5vw;
-        padding-bottom: 5vh;
+        padding-left: 7vw;
+        padding-right: 12vw;
+        padding-bottom: 2vh;
     }
 
     .footer {
@@ -902,6 +917,21 @@ a:hover {
 
     .githubImg {
         margin-bottom: 1vh;
+    }
+
+    .moreInfo {
+        width: 95vw;
+        text-align: center;
+    }
+
+    .maitreSubmitButton {
+        width: 50vw;
+        height: 15vh;
+    }
+
+    html, body {
+        max-width: 100%;
+        overflow-x: hidden;
     }
 }
 
