@@ -655,31 +655,22 @@ a:hover {
     height: 6vh;
 }
 
-.breakingNews {
-    width: 100%;
-    position: absolute;
-    top: 0;
-    text-align: center;
-    background-color: #ffffff;
-    height: 2vh;
-    color: #1d88d4;
-    padding: 2vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 .newsContainerDiv {
     width: 100%;
+    height: 5vh;
     display: flex;
     justify-content: center;
-    background-color: rgba(0, 0, 0);
+    align-items: center;
+    background-color: #4a29d7;
+    z-index: 10;
 }
 
 .newsContainer {
     width: 100%;
     display: flex;
     justify-content: center;
+    font-size: 2.5vh;
+    z-index: 10;
 }
 
 .newsBanner {
@@ -887,7 +878,7 @@ a:hover {
     }
 
     .socialMedia {
-        top: 2vh;
+        top: 8vh;
     }
 
     .socialMediaButton {
@@ -928,12 +919,21 @@ a:hover {
 
     .maitreSubmitButton {
         width: 50vw;
-        height: 15vh;
+        height: 10vh;
     }
 
     html, body {
         max-width: 100%;
         overflow-x: hidden;
+    }
+
+    .newsContainer {
+        font-size: 1.5vh;
+        text-align: center;
+    }
+
+    #maitreCustomForm {
+        padding: 2vh;
     }
 }
 
