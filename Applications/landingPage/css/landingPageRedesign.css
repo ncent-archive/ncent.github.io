@@ -485,8 +485,8 @@ html, body {
 
 #careersSection {
     background: linear-gradient(#4a29d7, #1d88d4);
-    padding-left: 20vw;
-    padding-right: 20vw;
+    padding-left: 5vw;
+    padding-right: 5vw;
     padding-bottom: 30vh;
     line-height: 4vh;
     text-align: justify;
@@ -964,6 +964,11 @@ a:hover {
 
     #maitreCustomForm {
         padding: 2vh;
+    }
+
+    .aboutSection {
+        padding-right: 5vw;
+        padding-left: 5vw;
     }
 }
 
