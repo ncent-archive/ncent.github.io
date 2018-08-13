@@ -99,7 +99,6 @@
 }
 
 body {
-    height: 200vh;
     font-family: Avenir_Medium;
     color: #ffffff;
     font-size: 2.25vh;
@@ -163,7 +162,9 @@ html, body {
     flex-direction: column;
     align-items: center;
     position: absolute;
-    margin-top: 5vh;
+    justify-content: center;
+    padding-bottom: 20vh;
+    height: 100%;
 }
 
 .mastHead .engagementContainer .engagementSlogan {
@@ -261,6 +262,11 @@ html, body {
     width: 100%;
 }
 
+.contentLink {
+    color: lightsalmon;
+    text-decoration: underline;
+}
+
 .earlyAccessArrow {
     width: 5vw;
     height: auto;
@@ -339,7 +345,7 @@ html, body {
     background: linear-gradient(#4a29d7, #1d88d4);
     padding-left: 15vw;
     padding-right: 15vw;
-    padding-bottom: 15vw;
+    padding-bottom: 30vw;
     line-height: 4vh;
     text-align: justify;
     letter-spacing: 0.1vw;
@@ -479,6 +485,7 @@ html, body {
 
 #careersSection a {
     color: lightsalmon;
+    text-decoration: underline;
 }
 
 .careersHeader {
@@ -591,6 +598,8 @@ a:hover {
     z-index: 1;
     font-size: 2vh;
     margin-top: 2vh;
+    pointer-events: none;
+
 }
 
 .dropdownSpacer {
@@ -610,6 +619,7 @@ a:hover {
     flex-direction: column;
     flex-wrap: nowrap;
     align-items: center;
+    pointer-events: all;
 }
 
 .nonSpacer .dropLink {
@@ -718,11 +728,15 @@ a:hover {
 
 .maitreSubmitButton {
     width: 20vw;
-    height: 5vh;
+    height: 8vh;
     background: linear-gradient(to right, #4a29d7, #1d88d4);
     border-radius: 30px;
     color: #ffffff;
     font-size: 2.5vh;
+}
+
+.maitreSubmitButton:hover {
+    cursor: pointer;
 }
 
 .maitreTitle {
@@ -819,14 +833,6 @@ a:hover {
         height: 50%;
     }
 
-    .lastOpp {
-        padding-bottom: 25vh;
-    }
-
-    .lastStripe {
-        padding-bottom: 20vh;
-    }
-
     .marketOpp .stripeContent {
         margin-top: 5vh;
     }
@@ -864,7 +870,7 @@ a:hover {
     .earlyAccessArrow {
         width: 8vw;
         height: auto;
-        bottom: 20vh;
+        bottom: 30vh;
         right: 46%;
     }
 
