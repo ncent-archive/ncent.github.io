@@ -371,7 +371,6 @@ html, body {
 .fullStripe {
     display: flex;
     margin-top: 10vh;
-    align-items: center;
 }
 
 .stripeImg {
