@@ -771,8 +771,7 @@ a:hover {
     }
 
     .mastHead .engagementContainer .engagementSlogan {
-        margin-top: -5vh;
-        font-size: 3vh;
+        font-size: 2vh;
     }
 
     .telegramButton {
@@ -837,8 +836,6 @@ a:hover {
     }
 
     .investorImage {
-        padding-left: 7vw;
-        padding-right: 12vw;
         padding-bottom: 2vh;
     }
 
