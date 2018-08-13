@@ -629,7 +629,7 @@ a:hover {
     flex-direction: column;
 }
 
-.dropdown:hover .dropdown-content, .dropdown:focus .dropdown-content, .dropdown:active .dropdown-content {
+.dropdown:hover .dropdown-content {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
@@ -782,7 +782,7 @@ a:hover {
     }
 
     .mastHead .engagementContainer .engagementSlogan {
-        font-size: 2vh;
+        font-size: 2.5vh;
     }
 
     .telegramButton {
@@ -975,7 +975,7 @@ a:hover {
     .aboutSection {
         padding-right: 5vw;
         padding-left: 5vw;
-        padding-bottom: 50vh;
+        padding-bottom: 40vh;
     }
 }
 
