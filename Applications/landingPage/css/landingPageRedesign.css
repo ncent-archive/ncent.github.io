@@ -105,6 +105,13 @@ body {
     font-size: 2.25vh;
 }
 
+html, body {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+}
+
 .panel {
     width: 100%;
     height: 100vh;
@@ -141,8 +148,8 @@ body {
 }
 
 .mastHead .header .headerLinkContainer .headerLink {
-    margin-left: 1vw;
-    margin-right: 1vw;
+    padding-left: 1vw;
+    padding-right: 1vw;
 }
 
 .mastHead .header .headerLinkContainer .headerLink:hover {
@@ -173,7 +180,7 @@ body {
 }
 
 .mastHead .engagementContainer .engagementButtonContainer .engagementButton {
-    margin: 3vw;
+    padding: 3vw;
     color: #1d88d4;
     background-color: #ffffff;
     border-radius: 20px;
@@ -242,7 +249,7 @@ body {
     color: #1d88d4;
     border-radius: 20px;
     padding: 2vh;
-    margin-right: 2vh;
+    margin-left: 2vh;
 }
 
 .aboutSection {
@@ -367,11 +374,11 @@ body {
 }
 
 .stripeImg.left {
-    margin-right: 5vw;
+    padding-right: 5vw;
 }
 
 .stripeImg.right {
-    margin-left: 5vw;
+    padding-left: 5vw;
 }
 
 .stripeBalloonImg {
@@ -427,8 +434,8 @@ body {
 
 .investorImage {
     height: auto;
-    width: 300px;
-    margin-right: 5vh;
+    width: 350px;
+    padding-right: 5vh;
     margin-bottom: 5vh;
 }
 
@@ -505,10 +512,10 @@ a:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-right: 10vw;
-    margin-left: 10vw;
+    padding-right: 10vw;
+    padding-left: 10vw;
     vertical-align: center;
-    width: 30vw;
+    width: 50vw;
 }
 
 .followUsHeader {
@@ -517,15 +524,15 @@ a:hover {
 }
 
 .contactImg {
-    width: 5vh;
+    width: 7vh;
     height: auto;
-    margin-left: 1vh;
-    margin-right: 1vh;
+    padding-left: 1vh;
+    padding-right: 1vh;
 }
 
 .contactImg.linkedinIcon {
-    width: 5.5vh;
-    height: 4.8vh;
+    width: 8vh;
+    height: 5vh;
 }
 
 .moreInfo {
@@ -598,7 +605,7 @@ a:hover {
     flex-direction: column;
 }
 
-.dropdown:hover .dropdown-content {
+.dropdown:hover .dropdown-content, dropdown:focus .dropdown-content {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
@@ -615,7 +622,7 @@ a:hover {
     flex-direction: column;
     right: 0;
     top: 15%;
-    margin-right: 3vw;
+    padding-right: 3vw;
     width: auto;
     align-items: center;
     justify-content: center;
@@ -801,10 +808,11 @@ a:hover {
         height: auto;
     }
 
-    .stripeImg {
+    .stripeImg.left {
         height: auto;
         width: 50%;
         padding-bottom: 10vh;
+        padding-right: 0;
     }
 
     .stripeContent {
@@ -824,8 +832,9 @@ a:hover {
     }
 
     .investorImage {
-        margin-right: 5vw;
-        padding-bottom: 5vh;
+        padding-left: 7vw;
+        padding-right: 12vw;
+        padding-bottom: 2vh;
     }
 
     .footer {
@@ -918,6 +927,11 @@ a:hover {
     .maitreSubmitButton {
         width: 50vw;
         height: 15vh;
+    }
+
+    html, body {
+        max-width: 100%;
+        overflow-x: hidden;
     }
 }
 
