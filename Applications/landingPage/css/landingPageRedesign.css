@@ -676,7 +676,7 @@ a:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: darkorange;
+    background-color: orange;
     color: black;
     z-index: 10;
     padding: 2vh;
@@ -753,6 +753,10 @@ a:hover {
     color: #1d88d4;
     font-size: 4vh;
     margin-bottom: 5vh;
+}
+
+.boldIntro {
+    font-weight: bolder;
 }
 
 @media only screen and (max-width: 1440px) and (orientation: portrait) {
@@ -960,6 +964,8 @@ a:hover {
     html, body {
         max-width: 100vw;
         overflow-x: hidden;
+        height: 100vh;
+        overflow-y: visible;
     }
 
     .newsContainer {
