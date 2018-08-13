@@ -676,7 +676,7 @@ a:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: lightsalmon;
+    background-color: lightyellow;
     color: black;
     z-index: 10;
 }
@@ -754,6 +754,11 @@ a:hover {
 
 .boldIntro {
     font-weight: bolder;
+    font-size: 2.5vh;
+}
+
+.newsDate {
+    color: #1d88d4;
 }
 
 @media only screen and (max-width: 1440px) and (orientation: portrait) {
