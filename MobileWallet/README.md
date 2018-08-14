@@ -1,4 +1,5 @@
 # Mobile Wallet
+## Warning: this wallet uses older version of API and SDK. New wallet not under public development to ensure security. 
 
 Mobile application for management of nCent Account. 
 From the wallet you can
