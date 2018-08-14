@@ -34,8 +34,9 @@
                     let data;
                     if (email) {
                         data = {
-                            email: email
+                            email: emailer
                         };
+                        console.log(data);
                         Maitre.form.submit(data);
                     }
                 });
