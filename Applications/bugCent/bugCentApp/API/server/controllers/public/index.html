@@ -1267,7 +1267,21 @@ header {
     
     $(document).ready(function(){
         let bugs;
-        
+        $.get({
+            type: 'GET',
+            url: 'http://localhost:8000/dashboard/balance',
+            //data: {action:'bugCent'},
+            // callback: 'callback',
+            error: function(error){
+                console.log(error);
+            },
+            
+            dataType: "json"
+        })
+        .done(function(data){
+            console.log(data);
+            $('#balance').text('Balan: ' + data);
+        });
         $.get({
             type: 'GET',
             url: 'http://localhost:8000/dashboard/reports',
@@ -1530,8 +1544,15 @@ header {
 
 				
 				<div class="section-header text-center">
-					<h2 class="title"><font color = "white">Your Bugs</font></h2>
-				</div>
+                    <h2 class="title"><font color = "white">Your Profile</font></h2>
+                    <div>
+                    <h2 id="balance" style="text-align:left;"><font color = "white"><br>Balance: </font><button class="white-btn"style="display:inline-block; float:right;font-family: 'Varela Round', sans-serif;font-size:15px;">Send bugCent<br></button></h2>
+                    
+                    </div>
+                </div>
+                <div style="padding:5px">
+                    
+                </div>
 				<div id = "bug-list">
 				<div class="col-md-4">
 					<div class="blog">
