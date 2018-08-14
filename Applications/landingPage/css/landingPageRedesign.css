@@ -126,7 +126,7 @@ html, body {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    padding-top: 10px;
+    padding-top: 8vh;
     font-size: 2.25vh;
 }
 
@@ -665,13 +665,14 @@ a:hover {
     height: 6vh;
     width: 6vh;
 }
-
+                 
 .socialMediaButton {
     width: 6vh;
     height: 6vh;
 }
 
 .newsContainerDiv {
+    position:fixed;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -759,6 +760,69 @@ a:hover {
 
 .newsDate {
     color: #1d88d4;
+}
+
+@media only screen and (max-width: 415px) and (orientation: portrait) {
+    
+
+    @-webkit-keyframes verticalSlide {
+        0% {
+            bottom: 65%;
+            box-shadow: 0 0 0 0 rgba(255,255,255, 0.6);
+        }
+        50% {
+            bottom: 55%;
+            box-shadow: 0 0 0 4vh rgba(255,255,255, 0);
+        }
+        100% {
+            bottom: 65%;
+            box-shadow: 0 0 0 0 rgba(255,255,255, 0);
+        }
+    }
+}
+@media only screen and (max-width: 1024px) and (orientation: portrait) {
+    
+    .mastheadBreak .engagementButton {
+        color: #ffffff;
+        height: 9vh;
+        font-size: 3.5vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        margin-top: 5vh;
+    }
+
+    .mastHead {
+        position: relative;
+        padding-top:120vh;
+    }
+    .arrowToAbout.mastheadBreak {
+        height: 40vh;
+        margin-top: -40vh;
+    }
+    .earlyAccessInteractionContainer {
+        height: 100%;
+        width: 100%;
+        padding-top: 0;
+        background-color: #4a29d7;
+    }
+    
+
+    @-webkit-keyframes verticalSlide {
+        0% {
+            bottom: 60%;
+            box-shadow: 0 0 0 0 rgba(255,255,255, 0.6);
+        }
+        50% {
+            bottom: 55%;
+            box-shadow: 0 0 0 4vh rgba(255,255,255, 0);
+        }
+        100% {
+            bottom: 60%;
+            box-shadow: 0 0 0 0 rgba(255,255,255, 0);
+        }
+    }
 }
 
 @media only screen and (max-width: 1440px) and (orientation: portrait) {
