@@ -3,7 +3,7 @@
         -webkit-box-shadow: 0 0 0 0 rgba(255,255,255, 0.6);
     }
     70% {
-        -webkit-box-shadow: 0 0 0 2vh rgba(255,255,255, 0);
+        -webkit-box-shadow: 0 0 0 4vh rgba(255,255,255, 0);
     }
     100% {
         -webkit-box-shadow: 0 0 0 0 rgba(255,255,255, 0);
@@ -15,8 +15,8 @@
         box-shadow: 0 0 0 0 rgba(255,255,255, 0.6);
     }
     70% {
-        -moz-box-shadow: 0 0 0 2vh rgba(255,255,255, 0);
-        box-shadow: 0 0 0 2vh rgba(255,255,255, 0);
+        -moz-box-shadow: 0 0 0 4vh rgba(255,255,255, 0);
+        box-shadow: 0 0 0 4vh rgba(255,255,255, 0);
     }
     100% {
         -moz-box-shadow: 0 0 0 0 rgba(255,255,255, 0);
@@ -58,7 +58,7 @@
     }
     50% {
         bottom: 60%;
-        box-shadow: 0 0 0 2vh rgba(255,255,255, 0);
+        box-shadow: 0 0 0 4vh rgba(255,255,255, 0);
     }
     100% {
         bottom: 50%;
