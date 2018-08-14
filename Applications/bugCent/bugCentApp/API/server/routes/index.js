@@ -23,6 +23,7 @@ module.exports = (app) => {
   //app.get('/update/:bug_uuid', bugsController.updateBug);
 
   app.get('/signup', usersController.getPage);
+  app.get('/dashboard/balance', usersController.getBalance);
   app.post('/signup', usersController.create);
   app.get('/', usersController.getRedirect);
   app.get('/login', usersController.getLogIn);

@@ -11,27 +11,24 @@ Install NodeJS at https://nodejs.org/en/ and run npm install in ncent.github.io/
 
 
 ## Resources
-1. Sponsor:
+1. User:
+- UUID
 - Name
 - Email
-- List of Program_UUID
-- Total Programs Completed
+- isCompany (boolean value to record whether a user is a company)
+- list of bug_uuid's
 
-2. Program:
+
+2. Bug:
 - UUID
-- Deadline
-- Sponsor_UUID(Foreign Key)
 - Status
-- List of bug_UUIDs
+- Description
+- List of user_UUIDs
 
-3.  Bug:
+3.  bugUser:
 - UUID
-- Program_UUID
-- Bounty Amount
+- user_uuid
+- bug_uuid
 - Status
 - List of Developer_UUID
 
-4. Developer:
-- Name
-- Email
-- List of Bug_UUID

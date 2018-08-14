@@ -3,8 +3,30 @@ const User = require('../models').User;
 const bugUser = require('../models').bugUser;
 const bcrypt = require('bcrypt');
 const path = require('path');
+const ncentSDK = require('../../../../../../SDK/source/');
+const ncentSdkInstance = new ncentSDK();
 
 module.exports = {
+  getBalance(req, res){
+    return User
+      .findById(req.session.user.uuid, {
+      })
+      .then(user => {
+        console.log('here');
+        if (!user) {
+          return res.status(404).send({
+            message: 'User Not Found',
+          });
+        }
+        return new Promise(function(resolve, reject) {
+          return ncentSdkInstance.getTokenBalance(user.email,'9d91db6b-f33a-4392-a583-a6ea14bd368f',resolve);
+        })
+        .then(data => res.status(200).send(data))
+        .catch(error=> console.log(error));
+
+      })
+      .catch(error => res.status(400).send(error));
+  },
   updateBugPage(req, res){
     res.sendFile(path.resolve(__dirname + '/public/updatebug.html'));
   },
@@ -89,6 +111,12 @@ module.exports = {
         
       })
       .then(user =>{
+        return new Promise(function(resolve, reject) {
+          ncentSdkInstance.createWalletAddress(req.body.email, '9d91db6b-f33a-4392-a583-a6ea14bd368f', resolve);
+        })
+        .then(res.status.send(200))
+        .catch(error => console.log(error));
+       // ncentSdkInstance.createWalletAddress(req.body.email, TOKENTYPE_ID, resolve);
         req.session.user = user.dataValues;
         //req.login(user.uuid);
         if (user.dataValues && req.cookies.user_sid) {

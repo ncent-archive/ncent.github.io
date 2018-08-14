@@ -2,7 +2,7 @@ const axios = require('axios');
 
 // Create class for ncentSDK and SDK functions for each action.
 
-const testNet = 'http://54.153.103.132:8010/api';
+const testNet = 'http://localhost:8010/api';
 
 class ncentSDK {
     constructor () {
@@ -210,13 +210,9 @@ class ncentSDK {
                 return resolve(resp);
             }))
             .catch(function(error) {
-<<<<<<< HEAD
                 console.log(error.response);
                 return error;
-=======
-                console.log(error);
-                return reject(error);
->>>>>>> 4fa2d91b14b83ddf8000a3010f09726a4974ca9b
+
             })
         }))
     }
