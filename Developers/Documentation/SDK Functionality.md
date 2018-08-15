@@ -1,4 +1,5 @@
 Database commands
+
 	Open psql shell and login
 	\l - list databases in user
 	CREATE DATABASE “database_name”; - create database (not in video but do it if database is not created)
