@@ -71,7 +71,9 @@ select {
 figure {
   margin: 0;
 }
-
+#logoHeader:hover {
+content: url('../ncent_header_1000px_silver.png');
+}
 a {
   -webkit-transition: all 0.3s ease 0s;
   -moz-transition: all 0.3s ease 0s;
