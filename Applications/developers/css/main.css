@@ -1894,6 +1894,11 @@ h1, h2, h3, h4, h5, h6 {
 @media (max-width: 673px) {
   #logo {
     margin-left: 20px;
+    width: 40vw;
+  }
+
+  #logo a img {
+    height: 100%;
   }
 }
 
@@ -2050,9 +2055,9 @@ h1, h2, h3, h4, h5, h6 {
 /* Mobile Nav Toggle */
 #mobile-nav-toggle {
   position: fixed;
-  right: 15px;
+  right: 8vw;
   z-index: 999;
-  top: 16px;
+  top: 3vh;
   border: 0;
   background: none;
   font-size: 24px;
@@ -3023,10 +3028,23 @@ h4.iconDesc {
   .container {
     display: flex;
     flex-direction: column;
-    padding-right: 0;
+    align-items: center;
   }
 
   .iconRow {
     margin-top: -10vh;
+  }
+
+  .banner-area {
+    padding-bottom: 5vh;
+  }
+
+  .headerContainer {
+    align-items: flex-start;
+    height: 100%;
+  }
+
+  .headerRow {
+    height: 100%;
   }
 }
