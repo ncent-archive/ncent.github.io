@@ -14,8 +14,14 @@ $(document).ready(function () {
     }).done(function(rss) {
         let posts = rss.items;
         updateAllArticles(posts);
+        // document.getElementById("#article1tile").addEventListener('click', function() {
+        //     window.open(posts[1].link);
+        //     return false;
+        // });
     });
+    
 })
+
 function callAjaxAgain(){
     $.ajax({
         url: 'https://cors-anywhere.herokuapp.com/https://api.rss2json.com/v1/api.json',
@@ -31,6 +37,7 @@ function callAjaxAgain(){
         let posts = rss.items;
         updateAllArticles(posts);
        // window.location.reload(true);
+       
     });
 }
 function updateLatestArticle(posts){
@@ -42,18 +49,23 @@ function updateLatestArticle(posts){
 function updateAllArticles(posts){
     updateLatestArticle(posts);
     for(var i = 1; i < 10; i++){
-        updateSingleArticle('#article'+i+'header', '#article'+i+'date', '#article'+i+'pic', '#article'+i+'tags','#article'+i+'cont', i, posts);
+        updateSingleArticle('#article'+i+'piclink','#article'+i+'link','#article'+i+'header', '#article'+i+'date', '#article'+i+'pic', '#article'+i+'tags','#article'+i+'cont', i, posts);
     }
 
 }
-function updateSingleArticle(header, date, pic, tags, content, num, posts){
+function updateSingleArticle(piclink, link, header, date, pic, tags, content, num, posts){
         $( pic).attr('src', posts[num].thumbnail);
         $( getExcerpt(posts, num)).insertAfter(content);
         $( header).text(posts[num].title);
         $( makeTags(posts[num].categories) ).insertAfter(tags);
         $( date).text(getDateString(posts[num].pubDate.substring(0, 10)));
         $( header).attr('href', posts[num].link);
+        $( link).attr('href', posts[num].link);
+        $( link).attr('style', "color:#656565");
         $( date).attr('href', posts[num].link);
+        $( pic).attr('href', posts[num].link);
+        $( piclink).attr('href', posts[num].link);
+        // $(document).getElementById(tile).setAttribute('onclick', 'location.href = \"'+posts[num].link+'\"');
         
 }
 var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
