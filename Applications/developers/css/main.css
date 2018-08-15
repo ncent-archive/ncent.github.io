@@ -2510,9 +2510,9 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 @media (max-width: 1366px) {
-  .home-aboutus-area .about-right {
+  /*.home-aboutus-area .about-right {
     padding: 10px;
-  }
+  }*/
   .home-aboutus-area .about-right h1 {
     font-size: 24px;
   }
@@ -3081,6 +3081,9 @@ h6 {
   align-items: center;
   justify-content: center;
   margin: 5vh;
+  width:10vh;
+  height:10vh;
+
 }
 
 .iconRow {
