@@ -19,6 +19,7 @@
   "dependencies": {
     "aws-sdk": "^2.283.1",
     "axios": "^0.18.0",
+    "es6-promise": "^4.2.4",
     "eslint": "^5.1.0",
     "ncent-sdk": "^1.0.0",
     "pg": "^6.1.0"

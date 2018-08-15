@@ -1,0 +1,1061 @@
+@-webkit-keyframes pulse {
+    0% {
+        -webkit-box-shadow: 0 0 0 0 rgba(255,255,255, 0.6);
+    }
+    70% {
+        -webkit-box-shadow: 0 0 0 4vh rgba(255,255,255, 0);
+    }
+    100% {
+        -webkit-box-shadow: 0 0 0 0 rgba(255,255,255, 0);
+    }
+}
+@keyframes pulse {
+    0% {
+        -moz-box-shadow: 0 0 0 0 rgba(255,255,255, 0.6);
+        box-shadow: 0 0 0 0 rgba(255,255,255, 0.6);
+    }
+    70% {
+        -moz-box-shadow: 0 0 0 4vh rgba(255,255,255, 0);
+        box-shadow: 0 0 0 4vh rgba(255,255,255, 0);
+    }
+    100% {
+        -moz-box-shadow: 0 0 0 0 rgba(255,255,255, 0);
+        box-shadow: 0 0 0 0 rgba(255,255,255, 0);
+    }
+}
+
+.pulsate {
+    -webkit-animation: pulsate 3s ease-out;
+    -webkit-animation-iteration-count: infinite;
+}
+
+.pulsateArrow {
+    -webkit-animation: pulsateArrow 3s ease-out;
+    -webkit-animation-iteration-count: infinite;
+}
+
+.verticalSlide {
+    -webkit-animation: verticalSlide 3s ease-out;
+    -webkit-animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes pulsate {
+    0% {
+        font-size: 4vh;
+    }
+    50% {
+        font-size: 4.5vh;
+    }
+    100% {
+        font-size: 4vh;
+    }
+}
+
+@-webkit-keyframes verticalSlide {
+    0% {
+        bottom: 50%;
+        box-shadow: 0 0 0 0 rgba(255,255,255, 0.6);
+    }
+    50% {
+        bottom: 60%;
+        box-shadow: 0 0 0 4vh rgba(255,255,255, 0);
+    }
+    100% {
+        bottom: 50%;
+        box-shadow: 0 0 0 0 rgba(255,255,255, 0);
+    }
+}
+
+@-webkit-keyframes pulsateArrow {
+    0% {
+        width: 5vh;
+        height: auto;
+    }
+    50% {
+        width: 6vh;
+        height: auto;
+    }
+    100% {
+        width: 5vh;
+        height: auto;
+    }
+}
+
+@-webkit-keyframes pulsateMobile {
+    0% {
+        font-size: 2.5vh;
+    }
+    50% {
+        font-size: 3vh;
+    }
+    100% {
+        font-size: 2.5vh;
+    }
+}
+
+@font-face {
+    font-family: 'Avenir_Medium';
+    src: url(../fonts/Avenir-Medium.ttf) format('truetype');
+}
+
+body {
+    font-family: Avenir_Medium;
+    color: #ffffff;
+    font-size: 2.25vh;
+}
+
+html, body {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.panel {
+    width: 100%;
+    height: 100vh;
+}
+
+.mastHead {
+    background: url(../img/Balloons.png) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 8vh;
+    font-size: 2.25vh;
+}
+
+.mastHead .header {
+    height: 10%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.mastHead .header .headerLinkContainer {
+    display: flex;
+    align-items: center;
+    z-index: 2;
+}
+
+.mastHead .header .headerLinkContainer .headerLink {
+    padding-left: 1vw;
+    padding-right: 1vw;
+}
+
+.mastHead .header .headerLinkContainer .headerLink:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.mastHead .engagementContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    justify-content: center;
+    height: 100%;
+    bottom: 5vh;
+}
+
+.mastHead .engagementContainer .engagementSlogan {
+    font-size: 4vh;
+    margin-bottom: 5vh;
+}
+
+.mastHead .engagementContainer .engagementButtonContainer {
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mastHead .engagementContainer .engagementButtonContainer .engagementButton {
+    padding: 3vw;
+    color: #1d88d4;
+    background-color: #ffffff;
+    border-radius: 20px;
+    height: 8vh;
+    width: 30vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 3vh;
+}
+
+.mastHead .engagementContainer .engagementButtonContainer .engagementButton:hover {
+    cursor: pointer;
+}
+
+.engagementLogo, .engagementLogo img {
+    width: 20vw;
+    height: auto;
+}
+
+.headerLogo, .headerLogoImg {
+    width: 20vw;
+    height: auto;
+}
+
+.mastheadBreak .engagementButton {
+    color: #ffffff;
+    height: 10vh;
+    font-size: 3.5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 5vh;
+}
+
+.earlyAccessInteractionContainer {
+    height: 100%;
+    width: 100%;
+    background-color: #4a29d7;
+}
+
+/*.mastheadBreak .earlyAccessInteractionContainer:hover .earlyAccessContainer .engagementButton {*/
+    /*color: orange;*/
+    /*text-decoration: none;*/
+/*}*/
+
+/*.mastheadBreak .earlyAccessInteractionContainer:hover .earlyAccessContainer .earlyAccessArrowContainer .earlyAccessArrow {*/
+    /*color: orange;*/
+    /*text-decoration: none;*/
+/*}*/
+
+.mastHeadBreak .engagementButton:hover {
+    cursor: pointer;
+}
+
+.engagementButton {
+    z-index: 1;
+    border-radius: 5vh;
+    width: 100%;
+}
+
+.litepaper {
+    background-color: #ffffff;
+    color: #1d88d4;
+    border-radius: 20px;
+    padding: 2vh;
+    margin-left: 2vh;
+}
+
+.aboutSection {
+    display: flex;
+    flex-direction: column;
+}
+
+.aboutSection .aboutStripe {
+    width: 100%;
+}
+
+.contentLink {
+    color: lightsalmon;
+    text-decoration: underline;
+}
+
+.earlyAccessArrow {
+    width: 5vw;
+    height: auto;
+    position: absolute;
+    right: 47.5%;
+    bottom: 50%;
+    border-radius: 60px;
+}
+
+.arrowToAbout {
+    margin-top: -20vh;
+    height: 20vh;
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.arrowToAbout.mastheadBreak {
+    height: 35vh;
+    margin-top: -35vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.arrowToAbout.mastheadBreak .topStripe {
+    height: 20vh;
+}
+
+.earlyAccessContainer {
+    height: 20vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #4a29d7;
+}
+
+.arrowToAbout .topStripe {
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.arrowToAbout .topStripeLeft {
+    width: 50%;
+    height: 100%;
+    background-image: linear-gradient(to left top, #4a29d7 50%, rgba(0, 0, 0, 0) 50%);
+}
+
+.arrowToAbout .topStripeRight {
+    width: 50%;
+    height: 100%;
+    background-image: linear-gradient(to right top, #4a29d7 50%, rgba(0, 0, 0, 0) 50%);
+}
+
+.arrowImage {
+    height: 100%;
+    width: 100%;
+}
+
+.pulse {
+    cursor: pointer;
+    box-shadow: 0 0 0 white;
+    animation: pulse 2s infinite;
+}
+
+.pulse:hover {
+    animation: none;
+}
+
+.aboutSection {
+    background: linear-gradient(#4a29d7, #1d88d4);
+    padding-left: 15vw;
+    padding-right: 15vw;
+    padding-bottom: 20vw;
+    line-height: 4vh;
+    text-align: justify;
+    text-justify: distribute;
+    letter-spacing: 0.1vw;
+    font-size: 2vh;
+}
+
+.concept {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stripeHeader {
+    font-size: 3vh;
+    margin-bottom: 4vh;
+    text-align: left;
+}
+
+.conceptContent {
+    font-size: 2.25vh;
+}
+
+.fullStripe {
+    display: flex;
+    margin-top: 10vh;
+    align-items: center;
+}
+
+.stripeImg {
+    height: 30vh;
+    width: auto;
+}
+
+.stripeImg.left {
+    padding-right: 5vw;
+}
+
+.stripeImg.right {
+    padding-left: 5vw;
+}
+
+.stripeBalloonImg {
+    height: auto;
+    width: 8vw;
+}
+
+.stripeBalloonImg.left {
+    margin-right: 5vw;
+}
+
+.stripeBalloonImg.right {
+    margin-left: 5vw;
+}
+
+.redBalloonBullet {
+    width: 8vw;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 5vw;
+}
+
+.redBalloonBullet .stripeBalloonImg {
+    margin-right: 0;
+}
+
+.stripeContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    font-size: 2vh;
+}
+
+.marketOpp {
+    align-items: center;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+}
+
+.investorsSection {
+    background: linear-gradient(#4a29d7, #1d88d4);
+    padding-right: 5vh;
+    padding-left: 5vh;
+    padding-bottom: 15vh;
+}
+
+.investorsHeader {
+    font-size: 5vh;
+    text-align: center;
+    margin-bottom: 5vh;
+    z-index: 1;
+}
+
+.investorsContainer {
+    margin-top: 10vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-bottom: 5vh;
+    padding-right: 5vh;
+    padding-left: 10vh;
+}
+
+.investorImage {
+    height: auto;
+    width: 350px;
+    padding-right: 5vh;
+    margin-bottom: 5vh;
+}
+
+.arrowToAbout .breakLeft {
+    width: 50%;
+    height: 100%;
+    background-image: linear-gradient(to left top, #4a29d7 50%, rgba(0, 0, 0, 0) 50%);
+}
+
+.arrowToAbout .breakRight {
+    width: 50%;
+    height: 100%;
+    background-image: linear-gradient(to right top, #4a29d7 50%, rgba(0, 0, 0, 0) 50%);
+}
+
+.arrowToAbout.careersBreak .breakLeft {
+    width: 50%;
+    height: 100%;
+    background-image: linear-gradient(to left top, #4a29d7 50%, #1d88d4 50%);
+}
+
+.arrowToAbout.careersBreak .breakRight {
+    width: 50%;
+    height: 100%;
+    background-image: linear-gradient(to right top, #4a29d7 50%, #1d88d4 50%);
+}
+
+#careersSection {
+    background: linear-gradient(#4a29d7, #1d88d4);
+    padding-left: 15vw;
+    padding-right: 15vw;
+    padding-bottom: 30vh;
+    line-height: 4vh;
+    text-align: justify;
+    text-justify: distribute;
+    letter-spacing: 0.1vw;
+}
+
+.careersBreak {
+    margin-top: 0;
+}
+
+#careersSection a {
+    color: lightsalmon;
+    text-decoration: underline;
+}
+
+.careersHeader {
+    margin-bottom: 5vh;
+}
+
+a:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.footer {
+    width: 100%;
+    height: 20vh;
+    background-color: #1d88d4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 5vh;
+}
+
+#earlyAccessContainer {
+    width: 100%;
+    background: linear-gradient(#4a29d7, #1d88d4);
+    align-items: center;
+    padding-bottom: 10vh;
+    text-align: center;
+}
+
+.contactUs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-right: 10vw;
+    padding-left: 10vw;
+    vertical-align: center;
+    width: 50vw;
+}
+
+.followUsHeader {
+    font-size: 2.5vh;
+    padding-bottom: 5vh;
+}
+
+.contactImg {
+    width: 7vh;
+    height: auto;
+    padding-left: 1vh;
+    padding-right: 1vh;
+}
+
+.contactImg.linkedinIcon {
+    width: 8vh;
+    height: 5vh;
+}
+
+.moreInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 25vw;
+    font-size: 2vh;
+}
+
+.phone {
+    padding-bottom: 2vh;
+}
+
+.copyright {
+    padding-top: 2vh;
+}
+
+.contactButton:hover {
+    text-decoration: none;
+}
+
+.engagementButtonMobile {
+    visibility: hidden;
+    height: 0;
+    width: 0;
+}
+
+.headerLinkContainerMobile {
+    visibility: hidden;
+    height: 0;
+    width: 0;
+}
+
+.headerLinkMobile {
+    visibility: hidden;
+    height: 0;
+    width: 0;
+}
+
+.maitreDisclaimer {
+    font-size: 1vw;
+}
+
+.dropdown {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    color: #1d88d4;
+    z-index: 1;
+    font-size: 2vh;
+    margin-top: 2vh;
+    pointer-events: none;
+
+}
+
+.dropdownSpacer {
+    height: 2vh;
+}
+
+.nonSpacer {
+    background-color: rgba(255, 255, 255, .8);
+    border-radius: 10px;
+    padding: 1vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.dropdown:hover .dropdown-content {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    pointer-events: all;
+}
+
+.nonSpacer .dropLink {
+    margin-bottom: 2vh;
+}
+
+.socialMedia {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    right: 0;
+    top: 20%;
+    padding-right: 3vw;
+    width: auto;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    z-index: 100;
+}
+
+.telegramButton, .twitterButton, .githubButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.githubImg, .twitterImg {
+    height: 6vh;
+    width: 6vh;
+}
+                 
+.socialMediaButton {
+    width: 6vh;
+    height: 6vh;
+}
+
+.newsContainerDiv {
+    position:fixed;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: yellow;
+    color: black;
+    z-index: 10;
+}
+
+.newsContainer {
+    font-size: 2.5vh;
+    text-align: center;
+    text-justify: distribute;
+    z-index: 10;
+    line-height: 3vh;
+    padding: 2vh;
+}
+
+.newsBanner {
+    width: 50vw;
+    height: auto;
+    align-self: center;
+}
+
+.marketOppsHeader {
+    text-align: center;
+}
+
+.maitre-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#maitreCustomForm {
+    height: 36vh;
+    width: 70vw;
+    background-color: #ffffff;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5vh;
+}
+
+.formField.email {
+    width: 40vw;
+    height: 8vh;
+    border: 2px solid #1d88d4;
+    color: #1d88d4;
+    border-radius: 30px;
+    font-size: 3vh;
+    text-align: center;
+    margin-bottom: 5vh;
+}
+
+.formField.email::placeholder {
+    font-size: 3vh;
+    text-align: center;
+}
+
+.maitreSubmitButton {
+    width: 20vw;
+    height: 8vh;
+    background: linear-gradient(to right, #4a29d7, #1d88d4);
+    border-radius: 30px;
+    color: #ffffff;
+    font-size: 2.5vh;
+}
+
+.maitreSubmitButton:hover {
+    cursor: pointer;
+}
+
+.maitreTitle {
+    color: #1d88d4;
+    font-size: 4vh;
+    margin-bottom: 5vh;
+}
+
+.boldIntro {
+    font-weight: bolder;
+    font-size: 2.5vh;
+}
+
+.newsDate {
+    color: #1d88d4;
+}
+
+@media only screen and (max-width: 415px) and (orientation: portrait) {
+    
+
+    @-webkit-keyframes verticalSlide {
+        0% {
+            bottom: 65%;
+            box-shadow: 0 0 0 0 rgba(255,255,255, 0.6);
+        }
+        50% {
+            bottom: 55%;
+            box-shadow: 0 0 0 4vh rgba(255,255,255, 0);
+        }
+        100% {
+            bottom: 65%;
+            box-shadow: 0 0 0 0 rgba(255,255,255, 0);
+        }
+    }
+}
+@media only screen and (max-width: 1024px) and (orientation: portrait) {
+    
+    .mastheadBreak .engagementButton {
+        color: #ffffff;
+        height: 9vh;
+        font-size: 3.5vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        margin-top: 5vh;
+    }
+
+    .mastHead {
+        position: relative;
+        padding-top:120vh;
+    }
+    .arrowToAbout.mastheadBreak {
+        height: 40vh;
+        margin-top: -40vh;
+    }
+    .earlyAccessInteractionContainer {
+        height: 100%;
+        width: 100%;
+        padding-top: 0;
+        background-color: #4a29d7;
+    }
+    
+
+    @-webkit-keyframes verticalSlide {
+        0% {
+            bottom: 60%;
+            box-shadow: 0 0 0 0 rgba(255,255,255, 0.6);
+        }
+        50% {
+            bottom: 55%;
+            box-shadow: 0 0 0 4vh rgba(255,255,255, 0);
+        }
+        100% {
+            bottom: 60%;
+            box-shadow: 0 0 0 0 rgba(255,255,255, 0);
+        }
+    }
+}
+
+@media only screen and (max-width: 1440px) and (orientation: portrait) {
+    .mastHead .header {
+        visibility: hidden;
+        height: 0;
+        width: 0;
+        padding: 0;
+    }
+
+    .headerLinkContainer, .headerLogo, .headerLogo img {
+        height: 0;
+    }
+
+    .mastHead {
+        position: relative;
+    }
+
+    .mastHead .engagementContainer {
+        position: absolute;
+        top: -20vh;
+    }
+
+    .engagementLogo, .engagementLogo img {
+        height: 50vw;
+        width: auto;
+    }
+
+    .mastHead .engagementContainer .engagementSlogan {
+        font-size: 2.5vh;
+    }
+
+    .telegramButton {
+        margin-bottom: 2vh;
+    }
+
+    .mastHead .engagementContainer .engagementButtonContainer {
+        flex-direction: column;
+        justify-content: flex-start;
+        width: 80vw;
+        text-align: center;
+    }
+
+    .mastHead .engagementContainer .engagementButtonContainer .engagementButton {
+        visibility: hidden;
+        height: 0;
+        width: 0;
+        margin: 0;
+    }
+
+    .engagementButtonMobile, .headerLinkMobile {
+        visibility: visible;
+        height: 3vh;
+        width: 50%;
+        margin-bottom: 2vh;
+        background-color: #ffffff;
+        color: #1d88d4;
+        border-radius: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .headerLinkContainerMobile {
+        visibility: visible;
+        height: auto;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .aboutSection .aboutStripe, .fullStripe {
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+    }
+
+    .stripeImg.left {
+        height: auto;
+        width: 50%;
+        padding-bottom: 10vh;
+        padding-right: 0;
+    }
+
+    .stripeContent {
+        height: 50%;
+    }
+
+    .marketOpp .stripeContent {
+        margin-top: 5vh;
+    }
+
+    .investorImage {
+        padding-bottom: 2vh;
+    }
+
+    #careersSection {
+        padding-left: 5vw;
+        padding-right: 5vw;
+    }
+
+    .footer {
+        height: auto;
+        padding-top: 5vh;
+        flex-direction: column;
+    }
+
+    .contactButtons {
+        display: flex;
+        margin-bottom: 5vh;
+    }
+
+    .stripeHeader {
+        font-size: 2.5vh;
+        text-align: center;
+    }
+
+    .maitreDisclaimer {
+        font-size: 1.5vh;
+        text-align: center;
+    }
+
+    .dropButton {
+        margin-bottom: 0;
+    }
+
+    .earlyAccessArrow {
+        width: 8vw;
+        height: auto;
+        right: 46%;
+        margin-bottom: 8vh;
+    }
+
+    .mastheadBreak .engagementButton {
+        margin-top: -5vh;
+    }
+
+    .stripeBalloonImg.left {
+        margin-right: 0;
+    }
+
+    .stripeBalloonImg {
+        width: 20vw;
+        height: auto;
+    }
+
+    .nonSpacer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #ffffff;
+    }
+
+    .pulsate {
+        -webkit-animation: pulsateMobile 3s ease-out;
+        -webkit-animation-iteration-count: infinite;
+    }
+
+    .socialMedia {
+        top: 15vh;
+    }
+
+    .socialMediaButton {
+        height: 6vh;
+        width: 6vh;
+    }
+
+    .twitterImg {
+        height: 5vh;
+        width: 5vh;
+    }
+
+    .telegramImg {
+        height: 5vh;
+        width: 5vh;
+    }
+
+    .telegramButton {
+        margin-bottom: 1vh;
+    }
+
+    .maitreTitle {
+        font-size: 2.5vh;
+    }
+
+    .formField.email {
+        width: 60vw;
+    }
+
+    .githubImg {
+        margin-bottom: 1vh;
+    }
+
+    .linkedinIcon {
+        height: 5vh;
+        width: 7vh;
+    }
+
+    .moreInfo {
+        width: 95vw;
+        text-align: center;
+    }
+
+    .maitreSubmitButton {
+        width: 50vw;
+        height: 10vh;
+    }
+
+    html, body {
+        max-width: 100vw;
+        overflow-x: hidden;
+    }
+
+    .newsContainer {
+        font-size: 2vh;
+        text-align: justify;
+        text-justify: distribute;
+    }
+
+    #maitreCustomForm {
+        padding: 2vh;
+    }
+
+    .aboutSection {
+        padding-right: 5vw;
+        padding-left: 5vw;
+        padding-bottom: 40vh;
+    }
+
+    .maitreDisclaimer {
+        padding: 5vw;
+    }
+}
+
+
