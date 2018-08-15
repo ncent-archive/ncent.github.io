@@ -159,6 +159,11 @@ h6, .h6 {
   font-size: 16px;
   color: #222222;
 }
+.tutorial-content{
+  padding-left:10%; 
+  padding-right:10%;
+}
+
 
 td, th {
   border-radius: 0px;
