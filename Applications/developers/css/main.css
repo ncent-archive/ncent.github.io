@@ -1957,10 +1957,14 @@ h1, h2, h3, h4, h5, h6 {
 .nav-menu > li {
   float: left;
 }
+.menu-items:hover {
+    text-decoration: underline;
+}
 
 .nav-menu li:hover > ul,
 .nav-menu li.sfHover > ul {
   display: block;
+
 }
 
 .nav-menu ul ul {
