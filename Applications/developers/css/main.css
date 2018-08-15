@@ -187,7 +187,7 @@ td, th {
 }
 
 .fz-12 {
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .fz-13 {
@@ -1794,7 +1794,7 @@ h1, h2, h3, h4, h5, h6 {
   transition: all 0.3s ease 0s;
   line-height: 28px;
   min-height: 28px;
-  font-size: 12px;
+  font-size: 14px;
   padding-left: 20px;
 }
 
@@ -1849,7 +1849,7 @@ h1, h2, h3, h4, h5, h6 {
   transition: all 0.3s ease 0s;
   line-height: 28px;
   min-height: 28px;
-  font-size: 12px;
+  font-size: 14px;
   padding-left: 45px;
 }
 
@@ -2010,7 +2010,7 @@ h1, h2, h3, h4, h5, h6 {
   display: inline-block;
   color: #222;
   font-weight: 400;
-  font-size: 12px;
+  font-size: 14px;
   text-transform: uppercase;
   outline: none;
 }
@@ -2035,7 +2035,7 @@ h1, h2, h3, h4, h5, h6 {
   color: #333;
   transition: 0.3s;
   display: block;
-  font-size: 12px;
+  font-size: 14px;
   text-transform: none;
 }
 
@@ -2262,7 +2262,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .banner-area {
-  background: url(../img/header-bg.jpg) center;
+  background-color: lightblue;
   background-size: cover;
 }
 
@@ -2334,7 +2334,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .single-offer .desc {
-  margin-left: 12px;
+  margin-left: 14px;
 }
 
 .single-offer h4 {
@@ -2348,7 +2348,6 @@ body.mobile-nav-active #mobile-nav-toggle {
 .video-area {
   padding: 200px 0 200px 0;
   position: relative;
-  background: url(../img/video-bg.jpg) no-repeat center center/cover;
 }
 
 .video-area .overlay-bg {
@@ -2378,7 +2377,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 .video-right .top-title {
   color: #df003a;
   letter-spacing: 2px;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 500;
   text-transform: uppercase;
   margin-bottom: 20px;
@@ -2413,7 +2412,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 .home-aboutus-area .top-title {
   color: #df003a;
   letter-spacing: 2px;
-  font-size: 12px;
+  font-size: 14px;
   text-transform: uppercase;
   margin-bottom: 20px;
 }
@@ -2850,7 +2849,7 @@ h6 {
   position: absolute;
   margin-top: 122px;
   color: #fff;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .single-footer-widget .info.valid {
@@ -2986,4 +2985,12 @@ h6 {
 
 .switch-wrap p {
   margin: 0;
+}
+
+.iconContainer {
+  margin-top: -40vh;
+}
+
+.sloganContainer {
+  margin-top: -10vh;
 }
