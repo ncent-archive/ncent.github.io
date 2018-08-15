@@ -3033,6 +3033,14 @@ h4.iconDesc {
   font-weight: normal;
 }
 
+strong span {
+  font-weight: bolder;
+}
+
+.faq {
+  font-size: 16px;
+}
+
 @media (max-width: 991.98px) {
   .container {
     display: flex;
