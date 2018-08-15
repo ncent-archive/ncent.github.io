@@ -79,7 +79,7 @@ To be updated.
 Documentation for this repo lives in our Github and eventually on our website [Developers site](https://www.ncnt.io).
 
 ## Contributing
-For information on how to contribute, please email kk@ncnt.io, mb@ncnt.io, kd@ncnt.io, or jd@ncnt.io
+For information on how to contribute, please email kk@ncnt.io or dev.ncnt.io
 
 ## Publishing to npm
 
