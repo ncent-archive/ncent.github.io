@@ -52,7 +52,7 @@
 body {
   color: #777777;
   font-family: "Poppins", sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 300;
   line-height: 1.625em;
   position: relative;
@@ -156,7 +156,7 @@ h5, .h5 {
 }
 
 h6, .h6 {
-  font-size: 14px;
+  font-size: 16px;
   color: #222222;
 }
 
@@ -187,7 +187,7 @@ td, th {
 }
 
 .fz-12 {
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .fz-13 {
@@ -195,7 +195,7 @@ td, th {
 }
 
 .fz-14 {
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .fz-15 {
@@ -806,7 +806,7 @@ h5 {
 }
 
 h6 {
-  font-size: 14px;
+  font-size: 16px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -1180,8 +1180,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .list-style {
-  width: 14px;
-  height: 14px;
+  width: 16px;
+  height: 16px;
 }
 
 .unordered-list li {
@@ -1193,8 +1193,8 @@ h1, h2, h3, h4, h5, h6 {
 .unordered-list li:before {
   content: "";
   position: absolute;
-  width: 14px;
-  height: 14px;
+  width: 16px;
+  height: 16px;
   border: 3px solid #df003a;
   background: #fff;
   top: 4px;
@@ -1794,7 +1794,7 @@ h1, h2, h3, h4, h5, h6 {
   transition: all 0.3s ease 0s;
   line-height: 28px;
   min-height: 28px;
-  font-size: 14px;
+  font-size: 16px;
   padding-left: 20px;
 }
 
@@ -1849,7 +1849,7 @@ h1, h2, h3, h4, h5, h6 {
   transition: all 0.3s ease 0s;
   line-height: 28px;
   min-height: 28px;
-  font-size: 14px;
+  font-size: 16px;
   padding-left: 45px;
 }
 
@@ -1876,7 +1876,7 @@ h1, h2, h3, h4, h5, h6 {
 # Header
 --------------------------------------------------------------*/
 #header {
-  padding: 14px 0;
+  padding: 16px 0;
   position: fixed;
   left: 0;
   top: 0;
@@ -2010,7 +2010,7 @@ h1, h2, h3, h4, h5, h6 {
   display: inline-block;
   color: #222;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 16px;
   text-transform: uppercase;
   outline: none;
 }
@@ -2035,7 +2035,7 @@ h1, h2, h3, h4, h5, h6 {
   color: #333;
   transition: 0.3s;
   display: block;
-  font-size: 14px;
+  font-size: 16px;
   text-transform: none;
 }
 
@@ -2300,7 +2300,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   }
 }
 
-@media (max-width: 414px) {
+@media (max-width: 416px) {
   .banner-content h1 {
     font-size: 32px;
   }
@@ -2334,7 +2334,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .single-offer .desc {
-  margin-left: 14px;
+  margin-left: 16px;
 }
 
 .single-offer h4 {
@@ -2377,7 +2377,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 .video-right .top-title {
   color: #df003a;
   letter-spacing: 2px;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
   text-transform: uppercase;
   margin-bottom: 20px;
@@ -2412,7 +2412,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 .home-aboutus-area .top-title {
   color: #df003a;
   letter-spacing: 2px;
-  font-size: 14px;
+  font-size: 16px;
   text-transform: uppercase;
   margin-bottom: 20px;
 }
@@ -2849,7 +2849,7 @@ h6 {
   position: absolute;
   margin-top: 122px;
   color: #fff;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .single-footer-widget .info.valid {
@@ -2989,8 +2989,44 @@ h6 {
 
 .iconContainer {
   margin-top: -40vh;
+  display: flex;
 }
 
 .sloganContainer {
   margin-top: -10vh;
+}
+
+.singleIcon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 5vh;
+}
+
+.iconRow {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.singleIcon:hover .iconDesc {
+  text-decoration: underline;
+  color: black;
+}
+
+h4.iconDesc {
+  font-weight: normal;
+}
+
+@media (max-width: 991.98px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    padding-right: 0;
+  }
+
+  .iconRow {
+    margin-top: -10vh;
+  }
 }
