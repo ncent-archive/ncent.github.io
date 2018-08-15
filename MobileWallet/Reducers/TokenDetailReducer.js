@@ -1,7 +1,7 @@
 import {GET_BALANCE, GET_BALANCE_SUCCESS, GET_BALANCE_FAIL} from '../Actions/types';
 
 const INITIAL_STATE = {
-	balance: 6,
+	balance: '',
 	error: '',
 	loading: false
 };

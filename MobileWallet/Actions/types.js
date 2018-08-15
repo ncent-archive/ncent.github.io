@@ -8,6 +8,8 @@ export const USER_UPDATE = 'user_update';
 export const CREATE_USER = 'create_user';
 export const CREATE_USER_SUCCESS = 'create_user_success';
 export const CREATE_USER_FAIL = 'create_user_fail';
+export const TEMP_PIN_ENTERED = 'temp_pin_entered';
+export const PINS_DONT_MATCH = 'pins_dont_match';
 
 export const SEND_INFO_UPDATE = 'send_info_update';
 export const SEND_TOKENS = 'send_tokens';
@@ -28,3 +30,13 @@ export const MAITRE_SIGNUP_FAIL = 'maitre_signup_fail';
 export const MAITRE_SIGNUP_SUBMIT = 'maitre_signup_submit';
 
 export const USER_LOGOUT = 'user_logout';
+
+export const SHOW_PHRASE = 'show_phrase';
+export const HIDE_PHRASE = 'hide_phrase';
+
+export const USER_LOGOUT_FROM_SIDEMENU = 'user_logout_from_sidemenu';
+
+export const PASSWORD_CHANGED_IN_MODAL = 'password_changed_in_modal';
+export const LOGIN_USER_SUCCESS_IN_MODAL = 'login_user_success_in_modal';
+export const LOGIN_USER_FAIL_IN_MODAL = 'login_user_fail_in_modal';
+export const LOGIN_USER_IN_MODAL = 'login_user_in_modal';

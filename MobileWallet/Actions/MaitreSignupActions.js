@@ -3,10 +3,6 @@ import {MAITRE_EMAIL_CHANGED, MAITRE_SIGNUP_SUCCESS, MAITRE_SIGNUP_FAIL, MAITRE_
 import {Actions} from 'react-native-router-flux';
 import Expo from 'expo';
 
-// const CryptoJS = require("crypto-js");
-//import '../shim.js'
-//import crypto from 'crypto';
-//const bip39 = require('react-native-bip39');
 
 export const maitreEmailChanged = (text) => {
 	return {
@@ -40,24 +36,24 @@ export const maitreSubscribe = ({email}) => {
 	// console.log(seed);
 
 	return (dispatch) => {
-		// dispatch({type: MAITRE_SIGNUP_SUBMIT});
-		// fetch(base_url, {
-		// method: 'POST',
-		// headers: {
-		//     Accept: 'application/json',
-		//     'Content-Type': 'application/json',
-		//   },
-		//   body: JSON.stringify(payload),
-		// })
-		// .then((response) => {
-		// 	if (response.status === 200) {
-		// 		console.log("success");
-		// 		dispatch({type: MAITRE_SIGNUP_SUCCESS});
-		// 	}
-		// 	else {
-		// 		dispatch({type: MAITRE_SIGNUP_FAIL});
-		// 	}
-		// })
+		dispatch({type: MAITRE_SIGNUP_SUBMIT});
+		fetch(base_url, {
+		method: 'POST',
+		headers: {
+		    Accept: 'application/json',
+		    'Content-Type': 'application/json',
+		  },
+		  body: JSON.stringify(payload),
+		})
+		.then((response) => {
+			if (response.status === 200) {
+				console.log("success");
+				dispatch({type: MAITRE_SIGNUP_SUCCESS});
+			}
+			else {
+				dispatch({type: MAITRE_SIGNUP_FAIL});
+			}
+		})
 		
 
 

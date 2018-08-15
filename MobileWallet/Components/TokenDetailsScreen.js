@@ -23,7 +23,7 @@ class TokenDetailsScreen extends Component {
     this.props.getTokenBalance({tokenType: this.props.tokenType});
   }
 
-  componentWillReceiveProps() {
+  componentDidUpdate() {
     // console.log(this.props.loading);
     // if (this.props.loading) {
       this.props.getTokenBalance({tokenType: this.props.tokenType});
@@ -34,19 +34,19 @@ class TokenDetailsScreen extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.navBar}>
-          <TouchableWithoutFeedback onPress={() => Actions.pop()}>
+          <TouchableWithoutFeedback onPress={() => {       Actions.pop();  }}>
             <View>
               <Text style={styles.navBarButton}>Back</Text>
             </View>
           </TouchableWithoutFeedback>
-          <Text style={styles.navBarHeader}>{this.props.tokenType} Wallet</Text>
+          <Text style={styles.navBarHeader}>{this.props.tokenType.asset_code || this.props.tokenType.asset_type} Wallet</Text>
           <Text style={styles.navBarButton}></Text>
         </View>
         <View style={styles.balance_content}>
           <Text style={{color: 'white', fontSize: 30}}>
             Balance
           </Text>
-          <Text style={{color: 'white', fontSize: 50}}>
+          <Text style={{color: 'white', fontSize: 50, paddingTop: 15}}>
             {this.props.balance}
           </Text>
         </View>

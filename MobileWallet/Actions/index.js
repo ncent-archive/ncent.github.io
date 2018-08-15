@@ -4,3 +4,6 @@ export * from './SendTokensActions';
 export * from './TokenDetailActions';
 export * from './TokensActions';
 export * from './MaitreSignupActions';
+export * from './ShowPhraseActions';
+export * from './SideMenuActions';
+export * from './ModalPinActions';

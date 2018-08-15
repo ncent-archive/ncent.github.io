@@ -1,27 +1,54 @@
 import React, {Component} from 'react';
 import {Alert, Button, FlatList, TextInput, StyleSheet, Text, View,
  TouchableHighlight, TouchableOpacity, TouchableNativeFeedback, TouchableWithoutFeedback  } from 'react-native';
-import {connect} from 'react-redux';
-import { pinChanged, loginUser} from '../Actions';
-import {Spinner} from './Common';
 import {Actions} from 'react-native-router-flux';
-import CodeInput from 'react-native-code-input';
+import {connect} from 'react-redux';
 import {Icon} from 'react-native-elements';
+import {userUpdate, createUser, tempPinEntered, pinsDontMatch} from '../Actions';
+import {Spinner} from './Common';
  
-class LoginScreen extends Component {
-
-
-  onPinChanged(text) {
-    this.props.pinChanged(text);
+class PinSignup extends Component {
+ 
+  renderButtons() {
+    if (this.props.loading) {
+      console.log("hi");
+      return (
+        <View style={{marginTop: 50}}>
+          <Spinner size="large" />
+        </View>
+        );
+    }
+    return (
+        <View>
+          <View style={{flexDirection: 'row', justifyContent: 'center', marginTop: 30}}>
+            {this.renderEnterMessage()}
+          </View>
+          <View style={{flexDirection: 'row', justifyContent: 'center', marginTop: 40}}>
+              {this.passwordToIcons()}        
+          </View>
+          
+          <TextInput
+            style={{height: 0, paddingLeft: 30, fontSize: 0}}
+            secureTextEntry={true}
+            ref='pin_input'
+            autoFocus={true}
+            placeholder="PIN"
+            keyboardType="number-pad"
+            onChangeText={(text) => this.props.userUpdate({prop:'pin', value: text})}
+            value={this.props.pin} />
+        </View>
+      
+      );
   }
-  
-  componentWillReceiveProps(newProps) {
-    // doing this twice cause props update again
-    if (newProps.password.length === 4) {   
-      console.log(newProps);
-      let password = newProps.password;
-      this.props.loginUser({password});
-    } 
+
+  renderNavBarHeader() {
+  	const secondPin = false;
+  	if (secondPin) {
+  		return "Verify Your PIN";
+  	}
+  	else {
+  		return "Create a 4-digit PIN";
+  	}
   }
   renderError() {
     if (this.props.error) {
@@ -41,23 +68,26 @@ class LoginScreen extends Component {
         </View>
       );
   }
-  // renderLoginButton() {
-  //   if (this.props.loading) {
-  //     return (<Spinner size="large"/>);
-  //   }
-  //   return (
-  //     <TouchableOpacity onPress= {this.onButtonPress.bind(this)}>
-  //             <View style = {{backgroundColor: '#5c4da0', alignItems: 'center', 
-  //                             justifyContent: 'center', borderRadius: 30, height: 50, margin: 70, marginTop: 0}}
-  //                    >
-  //                    <Text style={{color:'white', fontSize: 25}}> Login </Text>
-  //             </View>
-  //       </TouchableOpacity>
-  //   )
-  // }
+
+  componentWillReceiveProps(newProps) {
+    console.log(newProps.pin);
+    if (newProps.pin.length === 4 && newProps.tempPin === '') {   
+      let pin = newProps.pin;
+      this.props.tempPinEntered(pin);
+    }
+    else if (newProps.pin.length === 4 && newProps.tempPin !== '') {
+      if (newProps.pin === newProps.tempPin) {
+        const {first, last, email, username, phone, pin} = newProps;
+        this.props.createUser({first, last, email, username, phone, pin});
+      }
+      else {
+        this.props.pinsDontMatch({});
+      }
+    } 
+  }
 
   passwordToIcons() {
-    if (this.props.password.length === 0) {
+    if (this.props.pin.length === 0) {
       return (
         <View style={{flexDirection: 'row'}} >
           <Icon size={40} type='font-awesome' name='circle-thin' color='#4c3e99' />
@@ -70,7 +100,7 @@ class LoginScreen extends Component {
         </View>
         )
     }
-    if (this.props.password.length === 1) {
+    if (this.props.pin.length === 1) {
       return (
         <View style={{flexDirection: 'row'}} >
           <Icon size={40} type='font-awesome' name='circle' color='#4c3e99' />
@@ -83,7 +113,7 @@ class LoginScreen extends Component {
         </View>
       )
     }
-    if (this.props.password.length === 2) {
+    if (this.props.pin.length === 2) {
       return (
         <View style={{flexDirection: 'row'}} >
           <Icon size={40} type='font-awesome' name='circle' color='#4c3e99' />
@@ -96,7 +126,7 @@ class LoginScreen extends Component {
         </View>
       )
     }
-    if (this.props.password.length === 3) {
+    if (this.props.pin.length === 3) {
       return (
         <View style={{flexDirection: 'row'}} >
           <Icon size={40} type='font-awesome' name='circle' color='#4c3e99' />
@@ -109,7 +139,7 @@ class LoginScreen extends Component {
         </View>
       )
     }
-    if (this.props.password.length === 4) {
+    if (this.props.pin.length === 4) {
       return (
         <View style={{flexDirection: 'row'}} >
           <Icon size={40} type='font-awesome' name='circle' color='#4c3e99' />
@@ -124,17 +154,26 @@ class LoginScreen extends Component {
     }
   }
 
+  renderEnterMessage() {
+    if (this.props.tempPin !== '') {
+      return (<Text style={{fontSize: 20}}> Confirm Your PIN </Text> );
+    }
+    else  {
+      return (<Text style={{fontSize: 20}}> Please Enter Your PIN </Text> );
+    }
+  }
+
   render() {
     return (
 
       <View style={styles.container}>
         <View style={styles.navBar}>
-          <TouchableWithoutFeedback onPress={() => Actions.popTo("LoginOrSignup")}>
-            <View>
-              <Text style={styles.navBarButton}>Back</Text>
-            </View>
-          </TouchableWithoutFeedback>
-          <Text style={styles.navBarHeader}>Welcome</Text>
+            <TouchableWithoutFeedback onPress={()=> Actions.popTo("EmailSignup")}>
+              <View>
+                <Text style={styles.navBarButton}>Back</Text>
+              </View>
+            </TouchableWithoutFeedback>
+          <Text style={styles.navBarHeader}>Create Your PIN</Text>
           <Text style={styles.navBarButton}></Text>
         </View>
         <View style={{ height: 8}} />
@@ -142,23 +181,8 @@ class LoginScreen extends Component {
           <View style={{paddingBottom: 40,
     paddingHorizontal: 20}}>
 
-        <View style={{flexDirection: 'row', justifyContent: 'center', marginTop: 30}}>
-          <Text style={{fontSize: 20}}> Please Enter Your PIN </Text> 
-        </View>
-        <View style={{flexDirection: 'row', justifyContent: 'center', marginTop: 40}}>
-            {this.passwordToIcons()}        
-        </View>
         
-          <TextInput
-            style={{height: 0, paddingLeft: 30, fontSize: 0}}
-            secureTextEntry={true}
-            ref='pin_input'
-            autoFocus={true}
-            placeholder="Password"
-            keyboardType="number-pad"
-            onChangeText={this.onPinChanged.bind(this)}
-            value={this.props.password}
-          />
+        {this.renderButtons()}
         
         
           </View>
@@ -211,14 +235,10 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = state => {
-  const {email, password, error, loading} = state.auth;
-  return {email, password, error, loading};
 
-};
+const mapStateToProps = (state) => {
+  const {first, last, email, username, phone, pin, confirm, error, loading, tempPin} = state.signup;
+  return {first, last, email, username, phone, pin, confirm, error, loading, tempPin};
+}
 
-module.exports = connect(mapStateToProps, 
-  {pinChanged,  loginUser})(LoginScreen);
-
-
-
+module.exports = connect(mapStateToProps, {userUpdate, createUser, tempPinEntered, pinsDontMatch})(PinSignup);

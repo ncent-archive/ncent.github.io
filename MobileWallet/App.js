@@ -4,10 +4,11 @@ import { createStore, applyMiddleware } from 'redux';
 import ReduxThunk from 'redux-thunk';
 import firebase from 'firebase';
 import reducers from './Reducers';
-import RootStack from './Components/Navigation.js';
+import RouterComponent from './Components/Navigation.js';
 
 
 
+import './shim.js';
 
 export default class App extends React.Component {
   componentWillMount() {
@@ -19,15 +20,17 @@ export default class App extends React.Component {
       storageBucket: "",
       messagingSenderId: "700254836520"
     };
-
     firebase.initializeApp(config);
   }
 
+
   render() {
     const store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
+    // console.log(store.getState());
     return (
-      <Provider store={store}>
-        <RootStack />
+      <Provider store={store}>       
+        <RouterComponent />
+
       </Provider>
     );
   }
