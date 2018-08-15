@@ -1,4 +1,4 @@
-# ncentSDK
+# ncentSDK (alpha)
 
 ncentSDK is a Javascript library for communicating with the nCent API. It is used for building nCent applications either on Node.js or in the browser, as well as for accessing base-level features on the API.
 
