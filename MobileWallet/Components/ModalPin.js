@@ -2,25 +2,27 @@ import React, {Component} from 'react';
 import {Alert, Button, FlatList, TextInput, StyleSheet, Text, View,
  TouchableHighlight, TouchableOpacity, TouchableNativeFeedback, TouchableWithoutFeedback  } from 'react-native';
 import {connect} from 'react-redux';
-import { pinChanged, loginUser} from '../Actions';
+import { pinChangedInModal, loginUserModal} from '../Actions';
 import {Spinner} from './Common';
 import {Actions} from 'react-native-router-flux';
 import CodeInput from 'react-native-code-input';
 import {Icon} from 'react-native-elements';
- 
-class LoginScreen extends Component {
+
+
+class ModalPin extends Component {
 
 
   onPinChanged(text) {
-    this.props.pinChanged(text);
+    this.props.pinChangedInModal(text);
   }
-  
+
   componentWillReceiveProps(newProps) {
-    // doing this twice cause props update again
+    console.log("*****************\n*****************\n**************")
     if (newProps.password.length === 4) {   
-      console.log(newProps);
       let password = newProps.password;
-      this.props.loginUser({password});
+      console.log(Actions.currentScene);
+      console.log("hiiiiii");
+      this.props.loginUserModal({password});
     } 
   }
   renderError() {
@@ -129,12 +131,10 @@ class LoginScreen extends Component {
 
       <View style={styles.container}>
         <View style={styles.navBar}>
-          <TouchableWithoutFeedback onPress={() => Actions.popTo("LoginOrSignup")}>
             <View>
-              <Text style={styles.navBarButton}>Back</Text>
+              <Text style={styles.navBarButton}></Text>
             </View>
-          </TouchableWithoutFeedback>
-          <Text style={styles.navBarHeader}>Welcome</Text>
+          <Text style={styles.navBarHeader}>Welcome Back</Text>
           <Text style={styles.navBarButton}></Text>
         </View>
         <View style={{ height: 8}} />
@@ -212,13 +212,13 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = state => {
-  const {email, password, error, loading} = state.auth;
-  return {email, password, error, loading};
+  const {password, error, loading} = state.modal;
+  return {password, error, loading};
 
 };
 
 module.exports = connect(mapStateToProps, 
-  {pinChanged,  loginUser})(LoginScreen);
+  {pinChangedInModal,  loginUserModal})(ModalPin);
 
 
 

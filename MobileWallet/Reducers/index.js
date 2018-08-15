@@ -5,6 +5,10 @@ import SendTokensReducer from './SendTokensReducer';
 import TokenDetailsReducer from './TokenDetailReducer';
 import TokensReducer from './TokensReducer';
 import MaitreSignupReducer from './MaitreSignupReducer';
+import ShowPhraseReducer from './ShowPhraseReducer';
+import SideMenuReducer from './SideMenuReducer';
+import ModalReducer from './ModalReducer';
+
 import {USER_LOGOUT} from '../Actions/types';
 
 
@@ -14,10 +18,14 @@ const appReducer = combineReducers({
 	 sendTokens: SendTokensReducer,
 	 tokenDetails: TokenDetailsReducer,
 	 tokens: TokensReducer,
-	 maitre: MaitreSignupReducer
+	 maitre: MaitreSignupReducer,
+	 phrase: ShowPhraseReducer,
+	 side: SideMenuReducer,
+	 modal: ModalReducer
 });
 
 const rootReducer = (state, action) => {
+	
 	if (action.type === USER_LOGOUT) {
 	    state = undefined;
 	 }

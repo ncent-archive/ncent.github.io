@@ -1,20 +1,26 @@
 import React, {Component} from 'react';
-import {Button, FlatList, TextInput, StyleSheet, Text, View, TouchableHighlight, TouchableOpacity, TouchableNativeFeedback, TouchableWithoutFeedback  } from 'react-native';
+import {AppState} from 'react-native';
+import {Modal, Button, FlatList, TextInput, StyleSheet, Text, View, TouchableHighlight, TouchableOpacity, TouchableNativeFeedback, TouchableWithoutFeedback  } from 'react-native';
 import {Actions} from 'react-native-router-flux';
 import {connect} from 'react-redux';
-import {getTokens, signOut} from '../Actions';
+import {getTokens} from '../Actions';
 import {Spinner} from './Common';
+import {Icon} from 'react-native-elements';
 
+
+ 
 class TokensScreen extends Component {
 
-  logOut() {
-    this.props.signOut();
+  state = {
+    appState: AppState.currentState
   }
 
-
-  componentWillMount() {
+  componentDidMount() {
     this.props.getTokens();
   }
+
+
+
 
   renderError() {
     if (this.props.error) {
@@ -33,29 +39,37 @@ class TokensScreen extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.navBar}>
-          <TouchableWithoutFeedback onPress={() => this.logOut()}>
-            <View>
-              <Text style={styles.navBarButton}> Log Out</Text>
+          <TouchableWithoutFeedback onPress={() => Actions.drawerOpen()}>
+            <View style={{justifyContent: 'center', paddingLeft: 10}}>
+              <Icon
+                size={30}
+                name='menu'
+                color='#4c3e99' />
             </View>
           </TouchableWithoutFeedback>
           <Text style={styles.navBarHeader}>Tokens</Text>
-          <Text style={styles.navBarButton}></Text>
+          <View style={{justifyContent: 'center', paddingLeft: 10}}>
+              <Icon
+                size={30}
+                name='menu'
+                color='#0000' />
+            </View>
         </View>
         <View style={{ flex: 1}}>
           <FlatList
               data={this.props.allTokens}
               renderItem={({item}) => 
               <View>
-                <TouchableHighlight onPress={() => Actions.TokenDetails({tokenType: item.tokentype_uuid})} underlayColor="white">
+                <TouchableHighlight onPress={() => Actions.TokenDetails({tokenType: item})} underlayColor="white">
                   <View style={{flexDirection: 'row', paddingTop: 30, height: 90}}>
-                    <Text style={{paddingLeft: 20, fontSize: 20}}>{item.tokentype_uuid}</Text>
+                    <Text style={{paddingLeft: 20, fontSize: 20}}>{item.asset_code || item.asset_type}</Text>
                   </View>
                 </TouchableHighlight>
                   <View style={{flexDirection: 'row', paddingTop: 1, height: 1, backgroundColor: "gray"}}>
                   </View>                
               </View>
             }
-            keyExtractor={(item) => item.tokentype_uuid}
+            keyExtractor={(item) => item.asset_code || item.asset_type}
           />
         </View>
         {this.renderError()}
@@ -141,6 +155,6 @@ const mapStateToProps = (state) => {
   return {error, loading, allTokens};
 }
 
-module.exports = connect(mapStateToProps, {getTokens, signOut})(TokensScreen);
+module.exports = connect(mapStateToProps, {getTokens})(TokensScreen);
 
 

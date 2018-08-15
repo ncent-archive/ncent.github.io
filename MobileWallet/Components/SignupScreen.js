@@ -8,7 +8,7 @@ import {Spinner} from './Common';
  
 class SignupScreen extends Component {
  
-  
+   
   signUp() {
     const {first, last, email, username, phone, password, confirm} = this.props;
     this.props.createUser({first, last, email, username, phone, password, confirm});
@@ -32,7 +32,6 @@ class SignupScreen extends Component {
         </View>
       );
   }
-
 
 
   renderInputForm() {

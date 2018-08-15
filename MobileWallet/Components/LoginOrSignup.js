@@ -3,14 +3,24 @@ import {Button, FlatList, TextInput, StyleSheet, Text, View,
  TouchableHighlight, TouchableOpacity, TouchableNativeFeedback, TouchableWithoutFeedback, Image  } from 'react-native';
 import {Actions} from 'react-native-router-flux';
 import FadeImage from 'react-native-fade-image';
+import Expo from 'expo';
 
 class LoginOrSignup extends Component {
 
-  constructor(props) {
-    super(props);
+  componentDidMount() {
+    console.log("mounted");
+    Expo.SecureStore.getItemAsync("pin")
+    .then(value => {
+      if (value === null) {
+        return;
+      }
+      else {
+        Actions.LoginScreen();
+        Expo.SecureStore.deleteItemAsync(key, options)
+      }
+    })
   }
 
-  
   render() {
     return (
       <View style={styles.container}>
@@ -33,7 +43,7 @@ class LoginOrSignup extends Component {
                      <Text style={{color:'white', fontSize: 30}}> Login </Text>
               </View>
           </TouchableOpacity>
-          <TouchableOpacity style={{flex: 1}} onPress= {() => Actions.SignupScreen()}>
+          <TouchableOpacity style={{flex: 1}} onPress= {() => Actions.NameSignup()}>
               <View style = {{backgroundColor: '#6D6792', alignItems: 'center', 
                               justifyContent: 'center', flex: 1}}
                      >

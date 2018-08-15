@@ -95,6 +95,7 @@ apply from: 'expo.gradle'
 
 
 dependencies {
+    compile project(':react-native-randombytes')
   compile fileTree(dir: 'libs', include: ['*.jar'])
 
   compile 'com.android.support:multidex:1.0.1'
@@ -164,7 +165,7 @@ dependencies {
     transitive = true
   }
   
-  
+  compile project(path: ':expoview')
 }
 
 // This has to be down here for some reason

@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import {maitreEmailChanged, maitreSubscribe} from '../Actions';
 import {Spinner} from './Common';
 import {Actions} from 'react-native-router-flux';
+import {Icon} from 'react-native-elements';
 
 
 class MaitreSignup extends Component {
@@ -80,13 +81,21 @@ class MaitreSignup extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.navBar}>
-          <TouchableWithoutFeedback onPress={() => Actions.popTo("TokensScreen")}>
-            <View>
-              <Text style={styles.navBarButton}>Back</Text>
+          <TouchableWithoutFeedback onPress={() => Actions.drawerOpen()}>
+            <View style={{justifyContent: 'center', paddingLeft: 10}}>
+              <Icon
+                size={30}
+                name='menu'
+                color='#4c3e99' />
             </View>
           </TouchableWithoutFeedback>
           <Text style={styles.navBarHeader}>Early Access</Text>
-          <Text style={styles.navBarButton}></Text>
+            <View style={{justifyContent: 'center', paddingLeft: 10}}>
+              <Icon
+                size={30}
+                name='menu'
+                color='#0000' />
+            </View>
         </View>
         {this.renderSuccess()}
         <View style={{margin: 12, marginBottom: 0}}>
