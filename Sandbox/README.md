@@ -7,17 +7,49 @@ The Sandbox API allows you to run a server that mimics the API to the Core but s
 #### Running Locally:
 If you want to set up a local instance of the Sandbox API and database to test and develop your app without publishing data to our centralized database, follow these instructions. We highly recommend developing locally as it will give you automony over your API calls and allow you to easilly manage your databases.
 
-1. Set up PostgreSQL
+#### 1. Set up PostgreSQL
 Use [this resource](https://www.enterprisedb.com/downloads/postgres-postgresql-downloads) to also gain access to the PSQL shell terminal. Set defaults as follows: *port=5432, password=”dickey”, user=”postgres”*
 
-2. Download Node.js
-Download Node [here](https://nodejs.org/en/download/) and run the following commands to make sure the downloads were successful
+#### 2. Download Node.js
+Download Node [here](https://nodejs.org/en/download/) and run the following commands in a terminal window to make sure the downloads were successful
 ``` shell
 npm -v
 node -v
 ```
+#### 3. Clone the nCent public repository
+Run the following command in a terminal window to clone the local repository.
+``` shell
+git clone https://github.com/ncent/ncent.github.io.git
+```
 
-Install NodeJS at https://nodejs.org/en/ and run npm install in ncent.github.io/Sandbox/Sandbox API/.
+#### 4. Enter the new repository and install the node dependencies
+``` shell
+cd ncent.github.io
+cd Sandbox/Sandbox\ API
+npm install
+```
+
+#### 5. Install the SDK to communicate with the Sandbox
+While not necessary, we highly recommend you communicate with our API through our much easier to use software development kit. To do so, create a new folder for your application and in the folder run 
+``` shell
+npm init -y
+```
+to create a new package.json file. Then, install the SDK
+``` shell
+npm i ncent-sdk-public
+```
+
+#### 6. Set up Sandbox enviroment database
+Open PSQL shell and log in with the permissions you set up in step 1. List all the databases with the following command
+``` shell
+\l
+```
+Create a new database for development
+``` shell
+CREATE DATABASE “ncnt-dev”
+```
+
+
 
 ## Structural Assumptions
 1. Fungible tokens for all stamped token types
