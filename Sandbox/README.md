@@ -89,27 +89,162 @@ to migrate again. Your tables should now be empty again. You can now use our SDK
 
 - - - -
 
-## List All Wallets
+## Get All Wallets
 #### `GET /wallets`
 #### Description:
-Retrieve all wallets.
-#### Arguments:
+Retrieve information about all wallets.
+#### Paramters:
+None
+#### Body:
 None
 #### Response:
 Hmm
 #### Possible Errors:
 
+- - - -
+<br />
 
+- - - -
+
+
+## Get Specific Wallet 
+#### `GET /wallets/{wallet_uuid}`
+#### Description:
+Retrieve information about a specific wallet
+#### Parameters:
 Name  | Type | Description
 --- | --- | ---
-walletAddress | String | Valid wallet public key
-resolve | callback | Function called on success
-reject | callback | Function called on error
+wallet_uuid | String | Valid wallet public key
+#### Body:
+None
+#### Response:
+Hmm
+#### Possible Errors:
 
 - - - -
 <br />
 
 - - - -
+
+
+## Get Specific Wallet and Tokentype
+#### `GET /wallets/{wallet_uuid}/{tokentype_uuid}`
+#### Description:
+Retrieve information about how much of a specific token a wallet holds
+#### Parameters:
+Name  | Type | Description
+--- | --- | ---
+wallet_uuid | String | Valid wallet public key
+tokentype_uuid | String | Valid unique tokentype id
+#### Body:
+None
+#### Response:
+Hmm
+#### Possible Errors:
+
+- - - -
+<br />
+
+- - - -
+
+## Stamp Token
+#### `POST /tokentypes`
+#### Description:
+Instantiate a new token type. In the current implementation creates new tokens from nothing. In production, one can only stamp existant nCent into a new token type.
+#### Parameters:
+None
+#### Body:
+Name  | Type | Description
+--- | --- | ---
+sponsor_uuid | String | Valid wallet public key of token sponsor
+Name | String | Token Name
+totalTokens | Int | Number of tokens to be stamped
+ExpiryDate | Date Object | The expiration date of the tokens stamped into existance 
+#### Response:
+#### Possible Errors:
+
+- - - -
+<br />
+
+- - - -
+
+## List Token Types
+#### `GET /tokentypes`
+#### Description:
+List all token types
+#### Parameters:
+None
+#### Body:
+None
+#### Response:
+#### Possible Errors:
+
+- - - -
+<br />
+
+- - - -
+
+## List Token Types
+#### `GET /tokentypes/{tokentype_uuid}`
+#### Description:
+List information about a specific token type
+#### Parameters:
+Name  | Type | Description
+--- | --- | ---
+tokentype_uuid | String | Unique identifier for a specific token type
+#### Body:
+None
+#### Response:
+#### Possible Errors:
+
+- - - -
+<br />
+
+- - - -
+
+## Destroy Tokens
+#### `PUT /tokentypes/{tokentype_uuid}`
+#### Description:
+List information about a specific token type
+#### Parameters:
+Name  | Type | Description
+--- | --- | ---
+tokentype_uuid | String | Unique identifier for a specific token type
+#### Body:
+Name  | Type | Description
+--- | --- | ---
+ExpiryDate | Date Object | Updated expiration date for a specific token type
+#### Response:
+#### Possible Errors:
+
+- - - -
+<br />
+
+- - - -
+
+## Transfer Tokens
+#### `POST /tokentypes/{tokentype_uuid}/items`
+#### Description:
+Transfer tokens from one account to another. Must be 
+#### Parameters:
+Name  | Type | Description
+--- | --- | ---
+tokentype_uuid | String | Unique identifier for a specific token type
+#### Body:
+Name  | Type | Description
+--- | --- | ---
+amount | Int | Amount of TokenType to transfer
+fromAddress | String | Valid public key of sender
+toAddress | String | Valid public key of receiver
+signed | String | JSON string of signed message object
+#### Response:
+#### Possible Errors:
+
+- - - -
+<br />
+
+- - - -
+
 
 ## Structural Assumptions
 1. Fungible tokens for all stamped token types
