@@ -87,8 +87,15 @@ to migrate again. Your tables should now be empty again. You can now use our SDK
 
 ## Endpoints Documentation
 
-- - - -
-<br />
+- [Get All Wallets](#get-all-wallets)
+- [Get Specific Wallet](#get-specific-wallet)
+- [Get Specific Wallet and Tokentype](#get-specific-wallet-and-tokentype)
+- [Stamp Token](#stamp-token)
+- [List Token Types](#list-token-types)
+- [Specific Token Information](#specific-token-information)
+- [Destroy Tokens](#destroy-tokens)
+- [Transfer Tokens](#transfer-tokens)
+- [List Token Transactions](#list-token-type-transactions)
 
 - - - -
 
