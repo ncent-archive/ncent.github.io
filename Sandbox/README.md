@@ -79,7 +79,7 @@ to revert your migration and
 ```shell
 node_modules/.bin/sequelize db:migrate
 ```
-to migrate again. Your tables should now be empty again. You can now use our SDK to interact with the API or interact with the API directly, though we highly recommend applications use our SDK.
+to migrate again. Your tables should now be empty again. You can now use our SDK to interact with the API or interact with the API directly, though we highly recommend applications use our SDK as it has more or less all the same functionality as the API with much simpler usage and implementation. To see how to use the SDK to talk to our API endpoints, take a look at [our SDK documentation](https://github.com/ncent/ncent.github.io/tree/master/SDK).
 
 
 ## Structural Assumptions
