@@ -55,7 +55,7 @@ Once completed, go back to your PSQL shell and run the following command to make
 ```
 You should see 4 tables: *SequalizeMeta, TokenTypes, Transactions, and Wallets*. Now type in your PSQL shell **select * from “table_name”** to see that your table is empty. For example
 ```shell
-SELECT * FROM "Wallets"
+SELECT * FROM "Wallets";
 ```
 
 #### 6. Run The Sandbox and Test
@@ -81,6 +81,35 @@ node_modules/.bin/sequelize db:migrate
 ```
 to migrate again. Your tables should now be empty again. You can now use our SDK to interact with the API or interact with the API directly, though we highly recommend applications use our SDK as it has more or less all the same functionality as the API with much simpler usage and implementation. To see how to use the SDK to talk to our API endpoints, take a look at [our SDK documentation](https://github.com/ncent/ncent.github.io/tree/master/SDK).
 
+
+## Endpoints Documentation
+
+- - - -
+<br />
+
+- - - -
+
+### `List All Wallets`
+#### `GET /wallets`
+### Description:
+Retrieve all wallets.
+### Arguments:
+None
+### Response:
+Hmm
+### Possible Errors:
+
+
+Name  | Type | Description
+--- | --- | ---
+walletAddress | String | Valid wallet public key
+resolve | callback | Function called on success
+reject | callback | Function called on error
+
+- - - -
+<br />
+
+- - - -
 
 ## Structural Assumptions
 1. Fungible tokens for all stamped token types
