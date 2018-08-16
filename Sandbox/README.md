@@ -184,7 +184,7 @@ None
 
 - - - -
 
-## List Token Types
+## Specific Token Information
 #### `GET /tokentypes/{tokentype_uuid}`
 #### Description:
 List information about a specific token type
