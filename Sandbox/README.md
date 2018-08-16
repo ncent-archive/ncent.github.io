@@ -107,9 +107,6 @@ Retrieve information about all wallets.
 None
 #### Body:
 None
-#### Response:
-Hmm
-#### Possible Errors:
 
 - - - -
 <br />
@@ -127,9 +124,6 @@ Name  | Type | Description
 wallet_uuid | String | Valid wallet public key
 #### Body:
 None
-#### Response:
-Hmm
-#### Possible Errors:
 
 - - - -
 <br />
@@ -148,9 +142,6 @@ wallet_uuid | String | Valid wallet public key
 tokentype_uuid | String | Valid unique tokentype id
 #### Body:
 None
-#### Response:
-Hmm
-#### Possible Errors:
 
 - - - -
 <br />
@@ -170,8 +161,6 @@ sponsor_uuid | String | Valid wallet public key of token sponsor
 Name | String | Token Name
 totalTokens | Int | Number of tokens to be stamped
 ExpiryDate | Date Object | The expiration date of the tokens stamped into existance 
-#### Response:
-#### Possible Errors:
 
 - - - -
 <br />
@@ -186,8 +175,6 @@ List all token types
 None
 #### Body:
 None
-#### Response:
-#### Possible Errors:
 
 - - - -
 <br />
@@ -204,8 +191,6 @@ Name  | Type | Description
 tokentype_uuid | String | Unique identifier for a specific token type
 #### Body:
 None
-#### Response:
-#### Possible Errors:
 
 - - - -
 <br />
@@ -225,8 +210,6 @@ Name  | Type | Description
 --- | --- | ---
 ExpiryDate | Date Object | Updated expiration date for a specific token type
 signed | String | JSON string of signed message object
-#### Response:
-#### Possible Errors:
 
 - - - -
 <br />
@@ -266,8 +249,6 @@ Name  | Type | Description
 tokentype_uuid | String | Unique identifier for a specific token type
 #### Body:
 None
-#### Response:
-#### Possible Errors:
 
 - - - -
 <br />
