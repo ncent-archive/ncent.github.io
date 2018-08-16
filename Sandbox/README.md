@@ -89,15 +89,15 @@ to migrate again. Your tables should now be empty again. You can now use our SDK
 
 - - - -
 
-### List All Wallets
+## List All Wallets
 #### `GET /wallets`
-### Description:
+#### Description:
 Retrieve all wallets.
-### Arguments:
+#### Arguments:
 None
-### Response:
+#### Response:
 Hmm
-### Possible Errors:
+#### Possible Errors:
 
 
 Name  | Type | Description
