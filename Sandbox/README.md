@@ -43,7 +43,7 @@ Now connect to your database
 ``` shell
 \connect “ncnt-dev”
 ```
-As a check, return to your folder in **Sandbox/Sandbox\ API/config/config.json** and make sure that your information in the “development” object matches your setup in PostgreSQL.  
+As a check, return to your Sandbox folder in the local repository and look at the file **Sandbox/Sandbox\ API/config/config.json** and make sure that your information in the “development” object matches your setup in PostgreSQL. If not, edit the development object.  
   
 Now, we migrate the schema into the database. In your **terminal shell**, navigate to **server** under **Sandbox\ API** and run the following command
 ``` shell
