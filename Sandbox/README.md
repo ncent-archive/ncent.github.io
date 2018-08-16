@@ -59,11 +59,11 @@ SELECT * FROM "Wallets"
 ```
 
 #### 6. Run The Sandbox and Test
-Now you should have the Sandbox and API set up locally. From your terminal, type
+Now you should have the Sandbox and API set up locally. From your terminal, in **server** under **Sandbox\ API** run the following command
 ```shell
 npm run start:dev
 ```
-you shuold see a lot of text appear on the screen. If you get any errors, don't fear, type
+you should see a lot of text appear on the screen to indicate that the Sandbox API is up and running. If you get any errors, don't fear, type
 ```shell
 rs
 ```
