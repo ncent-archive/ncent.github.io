@@ -214,6 +214,7 @@ tokentype_uuid | String | Unique identifier for a specific token type
 Name  | Type | Description
 --- | --- | ---
 ExpiryDate | Date Object | Updated expiration date for a specific token type
+signed | String | JSON string of signed message object
 #### Response:
 #### Possible Errors:
 
@@ -237,6 +238,24 @@ amount | Int | Amount of TokenType to transfer
 fromAddress | String | Valid public key of sender
 toAddress | String | Valid public key of receiver
 signed | String | JSON string of signed message object
+#### Response:
+#### Possible Errors:
+
+- - - -
+<br />
+
+- - - -
+
+## List Token Type Transactions
+#### `GET /tokentypes/{tokentype_uuid}/items`
+#### Description:
+List transaction history of a specific token type
+#### Parameters:
+Name  | Type | Description
+--- | --- | ---
+tokentype_uuid | String | Unique identifier for a specific token type
+#### Body:
+None
 #### Response:
 #### Possible Errors:
 
