@@ -239,7 +239,7 @@ new Promise(function(resolve, reject) {
 ```
 
 ## Contributing
-For information on how to contribute, please email kk@ncnt.io, mb@ncnt.io, or af@ncnt.io
+For information on how to contribute, please email kk@ncnt.io, mb@ncnt.io, or dev@ncnt.io
 
 ## License
 SDK is licensed under ...
