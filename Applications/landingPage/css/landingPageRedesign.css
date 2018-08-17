@@ -786,6 +786,7 @@ a:hover {
         width:100px;
         text-align: center;
         justify-content: center;
+        padding-right:20px;
     }
     .contactButtons{
         align-content:center;
