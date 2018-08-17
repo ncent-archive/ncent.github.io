@@ -511,6 +511,11 @@ a:hover {
     cursor: pointer;
     text-decoration: underline;
 }
+.contactButtons a:hover {
+    cursor: pointer;
+    color:darkblue;
+    text-decoration:none;
+}
 
 .footer {
     width: 100%;
@@ -760,6 +765,37 @@ a:hover {
 
 .newsDate {
     color: #1d88d4;
+}
+@media only screen and (max-width: 1050px){
+    
+    .contactUs{
+        width:50vw;
+    }
+    .contactButtons{
+        align-content:center;
+        width:50vw;
+    }
+   
+}
+@media only screen and (max-width: 950px){
+    
+    .contactUs{
+        width:25vw;
+    }
+    .followUsHeader{
+        width:100px;
+        text-align: center;
+        justify-content: center;
+    }
+    .contactButtons{
+        align-content:center;
+        justify-content: center;
+        width:20vw;
+    }
+    .contactImg{
+        padding-bottom:3px;
+        padding-top:3px;
+    }
 }
 
 @media only screen and (max-width: 415px) and (orientation: portrait) {
