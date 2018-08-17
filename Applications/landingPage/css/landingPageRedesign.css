@@ -766,32 +766,93 @@ a:hover {
 .newsDate {
     color: #1d88d4;
 }
-@media only screen and (max-width: 1050px){
+@media only screen and (max-width: 1090px){
     
     .contactUs{
         width:50vw;
     }
     .contactButtons{
-        align-content:center;
+        /*align-content:center;*/
         width:50vw;
+        padding-left:10vw;
     }
    
+}
+@media only screen and (max-width: 7.4em){
+    
+    .contactUs{
+        width:20vw;
+        padding-left:0;
+        padding-right:0;
+    }
+    .followUsHeader{
+       
+        text-align: center;
+        min-width:20vw;
+        padding-bottom:2vw;
+        justify-content: center;
+        padding-right:0;
+    }
+    .contactButtons{
+        align-content:center;
+        justify-content: center;
+        max-width:20vw;
+        
+    }
+    .contactImg{
+        padding-bottom:3px;
+        padding-top:3px;
+    }
+}
+@media only screen and (max-width: 810px){
+    
+    .contactUs{
+        width:15vw;
+        padding-left:0;
+        padding-right:0;
+    }
+    .followUsHeader{
+       
+        text-align: center;
+        float:center;
+        padding-right:0;
+        padding-bottom:1vw;
+       /* justify-content: center;
+        padding-right:0px;*/
+    }
+    .contactButtons{
+        align-content:center;
+        justify-content: center;
+        max-width:15vw;
+        padding-left:10px;
+    }
+    .contactImg{
+        padding-bottom:3px;
+        padding-top:3px;
+    }
 }
 @media only screen and (max-width: 950px){
     
     .contactUs{
         width:25vw;
+        padding-left:0;
+        padding-right:0;
     }
+
     .followUsHeader{
         width:100px;
         text-align: center;
-        justify-content: center;
-        padding-right:20px;
+        float:center;
+        padding-right:3vw;
+        padding-bottom:1vw;
+       /* justify-content: center;
+        padding-right:0px;*/
     }
     .contactButtons{
         align-content:center;
         justify-content: center;
         width:20vw;
+        padding-left:0;
     }
     .contactImg{
         padding-bottom:3px;
