@@ -8,12 +8,12 @@
 /* =================================== */
 ::-moz-selection {
   /* Code for Firefox */
-  background-color: #df003a;
+  background-color: transparent;
   color: #fff;
 }
 
 ::selection {
-  background-color: #df003a;
+  background-color: transparent;
   color: #fff;
 }
 
@@ -852,7 +852,7 @@ td, th {
 }
 
 b, sup, sub, u, del {
-  color: #df003a;
+  color: transparent;
 }
 
 h1 {
@@ -987,25 +987,25 @@ h1, h2, h3, h4, h5, h6 {
 
 .genric-btn.primary {
   color: #fff;
-  background: #df003a;
+  background: transparent;
   border: 1px solid transparent;
 }
 
 .genric-btn.primary:hover {
-  color: #df003a;
-  border: 1px solid #df003a;
+  color: transparent;
+  border: 1px solid transparent;
   background: #fff;
 }
 
 .genric-btn.primary-border {
-  color: #df003a;
-  border: 1px solid #df003a;
+  color: transparent;
+  border: 1px solid transparent;
   background: #fff;
 }
 
 .genric-btn.primary-border:hover {
   color: #fff;
-  background: #df003a;
+  background: transparent;
   border: 1px solid transparent;
 }
 
@@ -1141,7 +1141,7 @@ h1, h2, h3, h4, h5, h6 {
 .generic-blockquote {
   padding: 30px 50px 30px 30px;
   background: #f9f9ff;
-  border-left: 2px solid #df003a;
+  border-left: 2px solid transparent;
 }
 
 .progress-table-wrap {
@@ -1265,7 +1265,7 @@ h1, h2, h3, h4, h5, h6 {
   position: absolute;
   width: 16px;
   height: 16px;
-  border: 3px solid #df003a;
+  border: 3px solid transparent;
   background: #fff;
   top: 4px;
   left: 0;
@@ -1278,7 +1278,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .ordered-list li {
   list-style-type: decimal-leading-zero;
-  color: #df003a;
+  color: transparent;
   font-weight: 500;
   line-height: 1.82em !important;
 }
@@ -1291,7 +1291,7 @@ h1, h2, h3, h4, h5, h6 {
 .ordered-list-alpha li {
   margin-left: 30px;
   list-style-type: lower-alpha;
-  color: #df003a;
+  color: transparent;
   font-weight: 500;
   line-height: 1.82em !important;
 }
@@ -1304,7 +1304,7 @@ h1, h2, h3, h4, h5, h6 {
 .ordered-list-roman li {
   margin-left: 30px;
   list-style-type: lower-roman;
-  color: #df003a;
+  color: transparent;
   font-weight: 500;
   line-height: 1.82em !important;
 }
@@ -1376,7 +1376,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .single-input-primary:focus {
   outline: none;
-  border: 1px solid #df003a;
+  border: 1px solid transparent;
 }
 
 .single-input-accent {
@@ -1437,7 +1437,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 15px;
   height: 15px;
   border-radius: 50%;
-  background: #df003a;
+  background: transparent;
   -webkit-transition: all 0.2s;
   -moz-transition: all 0.2s;
   -o-transition: all 0.2s;
@@ -1520,7 +1520,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .primary-switch input:checked + label:before {
-  background: #df003a;
+  background: transparent;
 }
 
 .confirm-switch {
@@ -1869,12 +1869,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .default-select .nice-select .list .option.selected {
-  color: #df003a;
+  color: transparent;
   background: transparent;
 }
 
 .default-select .nice-select .list .option:hover {
-  color: #df003a;
+  color: transparent;
   background: transparent;
 }
 
@@ -1924,12 +1924,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .form-select .nice-select .list .option.selected {
-  color: #df003a;
+  color: transparent;
   background: transparent;
 }
 
 .form-select .nice-select .list .option:hover {
-  color: #df003a;
+  color: transparent;
   background: transparent;
 }
 
@@ -1984,7 +1984,7 @@ h1, h2, h3, h4, h5, h6 {
 #header #logo h1 a, #header #logo h1 a:hover {
   color: #fff;
   padding-left: 10px;
-  border-left: 4px solid #df003a;
+  border-left: 4px solid transparent;
 }
 
 #header #logo img {
@@ -2119,7 +2119,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .nav-menu ul li:hover > a {
-  color: #df003a;
+  color: transparent;
 }
 
 .nav-menu ul ul {
@@ -2142,7 +2142,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #mobile-nav-toggle i {
-  color: #df003a;
+  color: transparent;
   font-weight: 900;
 }
 
@@ -2211,7 +2211,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #mobile-nav ul .menu-has-children i.fa-chevron-up {
-  color: #df003a;
+  color: transparent;
 }
 
 #mobile-nav ul .menu-has-children li a {
@@ -2219,7 +2219,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #mobile-nav ul .menu-item-active {
-  color: #df003a;
+  color: transparent;
 }
 
 #mobile-body-overly {
@@ -2270,7 +2270,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .primary-btn {
-  background-color: #df003a;
+  background-color: transparent;
   line-height: 42px;
   padding-left: 30px;
   padding-right: 60px;
@@ -2325,11 +2325,11 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 .primary-btn.white:hover {
   background: #fff;
-  color: #df003a;
+  color: transparent;
 }
 
 .primary-btn.white:hover span {
-  color: #df003a;
+  color: transparent;
 }
 
 .overlay {
@@ -2454,7 +2454,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .video-right .top-title {
-  color: #df003a;
+  color: transparent;
   letter-spacing: 2px;
   font-size: 16px;
   font-weight: 500;
@@ -2489,7 +2489,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .home-aboutus-area .top-title {
-  color: #df003a;
+  color: transparent;
   letter-spacing: 2px;
   font-size: 16px;
   text-transform: uppercase;
@@ -2555,7 +2555,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .text {
-  background-color: #df003a;
+  background-color: transparent;
   color: white;
   font-size: 25px;
   padding: 16px 32px;
@@ -2569,7 +2569,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 .callto-action-area .primary-btn {
   text-transform: capitalize;
   border-radius: 0;
-  background-color: #df003a;
+  background-color: transparent;
   color: #fff;
   border: 1px solid transparent;
   -webkit-transition: all 0.3s ease 0s;
@@ -2625,7 +2625,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .single-price .price-btn {
-  background: #df003a;
+  background: transparent;
   color: #fff;
   border-radius: 0;
   box-shadow: none;
@@ -2636,7 +2636,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .single-price:hover .bottom-sec, .single-price:hover .end-sec {
-  background-color: #df003a;
+  background-color: transparent;
   box-shadow: 0px 20px 20px 0px rgba(157, 157, 157, 0.5);
   color: #fff;
 }
@@ -2697,7 +2697,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   -moz-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s;
-  background: #df003a;
+  background: transparent;
 }
 
 .single-testimonial {
@@ -2722,7 +2722,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 .latest-blog-area .single-blog .tags li {
   display: inline-block;
-  background: #df003a;
+  background: transparent;
   border: 1px solid transparent;
 }
 
@@ -2758,11 +2758,11 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .footer-area .footer-nav li a:hover {
-  color: #df003a;
+  color: transparent;
 }
 
 .footer-area .primary-btn {
-  background-color: #df003a;
+  background-color: transparent;
   line-height: 42px;
   padding-left: 30px;
   padding-right: 60px;
@@ -2798,7 +2798,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .footer-area .primary-btn:hover {
-  background-color: #df003a;
+  background-color: transparent;
   box-shadow: none;
   color: #fff;
 }
@@ -2819,11 +2819,11 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 .footer-area .primary-btn.white:hover {
   background: #fff;
-  color: #df003a;
+  color: transparent;
 }
 
 .footer-area .primary-btn.white:hover span {
-  color: #df003a;
+  color: transparent;
 }
 
 h6 {
@@ -2834,7 +2834,7 @@ h6 {
 }
 
 .copy-right-text i, .copy-right-text a {
-  color: #df003a;
+  color: transparent;
 }
 
 .instafeed {
@@ -2869,7 +2869,7 @@ h6 {
 }
 
 .footer-social a:hover {
-  background-color: #df003a;
+  background-color: transparent;
 }
 
 .footer-social a:hover i {
@@ -2907,7 +2907,7 @@ h6 {
 }
 
 .single-footer-widget .bb-btn {
-  background-color: #df003a;
+  background-color: transparent;
   color: #fff;
   font-weight: 300;
   border-radius: 0;
@@ -2941,12 +2941,12 @@ h6 {
 
 .single-footer-widget ::-moz-selection {
   /* Code for Firefox */
-  background-color: #df003a;
+  background-color: transparent;
   color: #777777;
 }
 
 .single-footer-widget ::selection {
-  background-color: #df003a;
+  background-color: transparent;
   color: #777777;
 }
 
@@ -2993,7 +2993,7 @@ h6 {
 }
 
 .footer-text a, .footer-text i {
-  color: #df003a;
+  color: transparent;
 }
 
 .whole-wrap {
@@ -3001,7 +3001,7 @@ h6 {
 }
 
 .generic-banner {
-  background-color: #df003a;
+  background-color: transparent;
   text-align: center;
 }
 
@@ -3069,12 +3069,15 @@ h6 {
 .iconContainer {
   display: flex;
   flex-direction: column;
-    margin-right: 20vw;
-    width: 20vw;
+   /* margin-right: 20vw;
+    width: 20vw;*/
+  
 }
 
 .sloganContainer {
   margin-top: -10vh;
+  height:100%;
+  width:100%;
 }
 
 .singleIcon {
@@ -3124,8 +3127,8 @@ strong span {
 .walkthroughsSection {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    width: 25vw;
+    /*align-items: center;*/
+   /* width: 25vw;*/
 }
 
 .iconHeader {
