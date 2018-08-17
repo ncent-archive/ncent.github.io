@@ -3067,8 +3067,10 @@ h6 {
 }
 
 .iconContainer {
-  margin-top: -40vh;
   display: flex;
+  flex-direction: column;
+    margin-right: 20vw;
+    width: 25vw;
 }
 
 .sloganContainer {
@@ -3080,10 +3082,15 @@ h6 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 5vh;
+    margin: 5vh;
   width:10vh;
   height:10vh;
+    text-align: center;
+}
 
+.singleIcon div img {
+    height: 100%;
+    width: 100%;
 }
 
 .iconRow {
@@ -3109,6 +3116,50 @@ strong span {
   font-size: 16px;
 }
 
+.contentContainer {
+    display: flex;
+    padding-bottom: 5vh;
+}
+
+.walkthroughsSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 25vw;
+}
+
+.iconHeader {
+    color: black;
+    font-size: 24px;
+    margin-bottom: 5vh;
+}
+
+.iconHeader.walkthroughHeader {
+    margin-bottom: 10vh;
+}
+
+.panelTitle {
+    width: 100%;
+    margin-bottom: 5vh;
+    margin-top: 5vh;
+}
+
+.walkthroughPanelsContainer {
+    width: 100%;
+}
+
+.walkthroughPanel.left {
+    margin-bottom: 5vh;
+}
+
+.walkthroughPanel {
+    text-align: justify;
+}
+
+.walkthroughTitle {
+    color: black;
+    font-weight: bolder;
+}
 @media (max-width: 991.98px) {
   .container {
     display: flex;
