@@ -7,56 +7,69 @@ import {userUpdate, createUser} from '../Actions';
 import {Spinner} from './Common';
  
 class SignupScreen extends Component {
- 
-   
+
+  
   signUp() {
     const {first, last, email, username, phone, password, confirm} = this.props;
     this.props.createUser({first, last, email, username, phone, password, confirm});
   }
-
-  renderError() {
-    if (this.props.error) {
-      return (
-        <View> 
-          <Text style={styles.errorTextStyle}>
-            {this.props.error}
-          </Text>
-        </View>
-      );
-    }
-    return (
-        <View> 
-          <Text style={styles.errorTextStyle}>
-             {' '}
-          </Text>
-        </View>
-      );
-  }
-
 
   renderInputForm() {
     if (this.props.loading) {
       return <Spinner size="large"/>;
     }
     return (
-      <View style = {{margin: 10}}>
+      <View style = {{}}>
             <TextInput
               autoCorrect= {false}
-              style={{height: 60, paddingLeft: 30, fontSize: 22, backgroundColor: '#F8F8F8'}}
-              keyboardType='email-address'
-              placeholder="Email"
+              style={{height: 50, paddingLeft: 30, fontSize: 20}}
+              placeholder="First"
+              value={this.props.first}
+              onChangeText={(text) => this.props.userUpdate({prop:'first', value: text})}
+            />
+            <TextInput
+              autoCorrect= {false}
+              style={{height: 50, paddingLeft: 30, backgroundColor: 'lightgray', fontSize: 20}}
+              placeholder="Last"
+              value={this.props.last}
+              onChangeText={(text) => this.props.userUpdate({prop:'last', value: text})}
+            />
+            <TextInput
+              autoCorrect= {false}
+              style={{height: 50, paddingLeft: 30, fontSize: 20}}
+              placeholder="Email *"
               value={this.props.email}
               onChangeText={(text) => this.props.userUpdate({prop:'email', value: text})}
             />
-            <View style={{ height: 8}} />
             <TextInput
               autoCorrect= {false}
-              style={{height: 60, paddingLeft: 30, fontSize: 22, backgroundColor: '#F8F8F8'}}
-              placeholder="Password"
+              style={{height: 50, paddingLeft: 30, backgroundColor: 'lightgray', fontSize: 20}}
+              placeholder="Phone Number"
+              value={this.props.phone}
+              onChangeText={(text) => this.props.userUpdate({prop:'phone', value: text})}
+            />
+            <TextInput
+              autoCorrect= {false}
+              style={{height: 50, paddingLeft: 30, fontSize: 20}}
+              placeholder="Username"
+              value={this.props.username}
+              onChangeText={(text) => this.props.userUpdate({prop:'username', value: text})}
+            />
+            <TextInput
+              autoCorrect= {false}
+              style={{height: 50, paddingLeft: 30, backgroundColor: 'lightgray', fontSize: 20}}
+              placeholder="Password *"
               value={this.props.password}
               onChangeText={(text) => this.props.userUpdate({prop:'password', value: text})}
             />
-      </View>
+            <TextInput
+              autoCorrect= {false}
+              style={{height: 50, paddingLeft: 30, fontSize: 20}}
+              placeholder="Confirm Password"
+              value={this.props.confirm}
+              onChangeText={(text) => this.props.userUpdate({prop:'confirm', value: text})}
+            />
+          </View>
     )
   }
 
@@ -80,13 +93,11 @@ class SignupScreen extends Component {
         {this.renderInputForm()}
 
         <View style={styles.content}>
-          {this.renderError()}
           <Button
-            title= "Sign Up to Receive an Example Wallet"
+            title= "Sign Up"
             onPress= {() => this.signUp()}
             color = '#4c3e99'
           />
-          <View style={{ height: 1}} />
           <Button
             title= "Already Have an Account? Login"
             onPress= {() => Actions.LoginScreen()}
@@ -102,13 +113,6 @@ class SignupScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  },
-  errorTextStyle: {
-    margin: 3,
-    marginTop: 0,
-    fontSize: 18,
-    alignSelf: 'center',
-    color: 'red'
   },
   navBar: {
     flexDirection: 'row',
@@ -137,7 +141,8 @@ const styles = StyleSheet.create({
     flex: 2,
     justifyContent: 'flex-start',
     alignItems: 'center',
-    paddingTop: 0
+    backgroundColor: 'white',
+    paddingTop: 20
   }
 });
 
@@ -147,58 +152,4 @@ const mapStateToProps = (state) => {
 }
 
 module.exports = connect(mapStateToProps, {userUpdate, createUser})(SignupScreen);
-
-
-// All the input fields
-// <TextInput
-//   autoCorrect= {false}
-//   style={{height: 50, paddingLeft: 30, fontSize: 20}}
-//   placeholder="First"
-//   value={this.props.first}
-//   onChangeText={(text) => this.props.userUpdate({prop:'first', value: text})}
-// />
-// <TextInput
-//   autoCorrect= {false}
-//   style={{height: 50, paddingLeft: 30, backgroundColor: 'lightgray', fontSize: 20}}
-//   placeholder="Last"
-//   value={this.props.last}
-//   onChangeText={(text) => this.props.userUpdate({prop:'last', value: text})}
-// />
-// <TextInput
-//   autoCorrect= {false}
-//   style={{height: 50, paddingLeft: 30, fontSize: 20}}
-//   placeholder="Email *"
-//   value={this.props.email}
-//   onChangeText={(text) => this.props.userUpdate({prop:'email', value: text})}
-// />
-// <TextInput
-//   autoCorrect= {false}
-//   style={{height: 50, paddingLeft: 30, backgroundColor: 'lightgray', fontSize: 20}}
-//   placeholder="Phone Number"
-//   value={this.props.phone}
-//   onChangeText={(text) => this.props.userUpdate({prop:'phone', value: text})}
-// />
-// <TextInput
-//   autoCorrect= {false}
-//   style={{height: 50, paddingLeft: 30, fontSize: 20}}
-//   placeholder="Username"
-//   value={this.props.username}
-//   onChangeText={(text) => this.props.userUpdate({prop:'username', value: text})}
-// />
-// <TextInput
-//   autoCorrect= {false}
-//   style={{height: 50, paddingLeft: 30, backgroundColor: 'lightgray', fontSize: 20}}
-//   placeholder="Password *"
-//   value={this.props.password}
-//   onChangeText={(text) => this.props.userUpdate({prop:'password', value: text})}
-// />
-// <TextInput
-//   autoCorrect= {false}
-//   style={{height: 50, paddingLeft: 30, fontSize: 20}}
-//   placeholder="Confirm Password"
-//   value={this.props.confirm}
-//   onChangeText={(text) => this.props.userUpdate({prop:'confirm', value: text})}
-// />
-
-
 

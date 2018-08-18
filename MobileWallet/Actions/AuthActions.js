@@ -1,38 +1,34 @@
-import {PASSWORD_CHANGED, LOGIN_USER_SUCCESS, LOGIN_USER_FAIL, LOGIN_USER} from './types';
+import firebase from 'firebase';
+import {EMAIL_CHANGED, PASSWORD_CHANGED, LOGIN_USER_SUCCESS, LOGIN_USER_FAIL, LOGIN_USER} from './types';
 import {Actions} from 'react-native-router-flux';
-import Expo from 'expo';
 
-  
-export const pinChanged = (text) => {
+export const emailChanged = (text) => {
+	return {
+		type: EMAIL_CHANGED,
+		payload: text
+	};
+};
+ 
+export const passwordChanged = (text) => {
 	return {
 		type: PASSWORD_CHANGED,
 		payload: text
 	};
 };
- 
-export const loginUser = ({password}) => {
+
+export const loginUser = ({email, password}) => {
 	return (dispatch) => {
 		dispatch({type: LOGIN_USER});
 
-		Expo.SecureStore.getItemAsync("pin")
-			.then(value => {
-				console.log("twice?");
-				console.log(value);
-				console.log(password);
-				if (password === value) {
-					console.log("right on dude");
-					dispatch({type: LOGIN_USER_SUCCESS});
-					Actions.TokensScreen();
-				}
-				else {
-					console.log("sucks to suck bro");
-					dispatch({type: LOGIN_USER_FAIL});					
-				}
+		firebase.auth().signInWithEmailAndPassword(email, password)
+			.then(user => {
+				dispatch({type: LOGIN_USER_SUCCESS, payload: user});
+				Actions.TokensScreen();
 			})
-			.catch(error => {
-				console.log("error");
-				console.log(error);
+			.catch(() => {
 				dispatch({type: LOGIN_USER_FAIL});
 			});
 	};
 };
+
+ 

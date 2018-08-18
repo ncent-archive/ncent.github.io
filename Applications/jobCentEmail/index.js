@@ -11,7 +11,7 @@ const pubsub = new PubSub({
 const subscriptionName = 'projects/jobcent-210021/subscriptions/emailWatcher';
 const subscription = pubsub.subscription(subscriptionName);
 
-// const jobCentHostUrl = "http://52.53.165.193:3000/";
+// const jobCentHostUrl = "http://localhost:3000/";
 const gmailPort = 3001;
 const app = express();
 
@@ -25,25 +25,20 @@ const {google} = require('googleapis');
 const gmailClass = google.gmail('v1');
 const oauth2Client = new google.auth.OAuth2(
   '885935339824-qgg9t6caoi4v824kvrtktcte4taf6qi1.apps.googleusercontent.com',
-   #######private#########,
-  `http://52.53.165.193:3001/`
+  'aViJjmhHPZfy85l0vDnvwl5n',
+  `http://localhost:3001/`
 );
-// const oauthUrl = oauth2Client.generateAuthUrl({access_type: 'offline', scope: scopes});
+//const oauthUrl = oauth2Client.generateAuthUrl({access_type: 'offline', scope: scopes});
 
 const gmailApiSync = require('gmail-api-sync');
 gmailApiSync.setClientSecretsFile('./client_secret.json');
 
 const ncentSDK = require('../../SDK/source/');
+const jobcentSDK = require('../jobCentSDK/source')
 const ncentSdkInstance = new ncentSDK();
+const jobcentSDKInstance = new jobcentSDK();
 const walletsCreated = {
 	"jobcent@ncnt.io": true,
-	"mb@ncnt.io": true,
-	"jd@ncnt.io": true,
-	"af@ncnt.io": true,
-	"jp@ncnt.io": true,
-	"an@ncnt.io": true,
-	"kd@ncnt.io": true,
-	"ag@ncnt.io": true
 };
 
 const alreadyProcessed = {};
@@ -51,63 +46,81 @@ let gmail;
 let startHistoryId;
 let currHistoryId;
 let token_id;
-let tkn = 'ya29.GlsJBkl-GiAKSBzdgMiB-DFvkTysuJIanaq_LoKrCjB7bcbZdCEO2-cAG83GnhgYVIW5VDPd2-z9Tvcxk5H56V3yl48ica--_uqmMMVsGJVqMNTxpjiIW2asLPWB';
+let tkn = {access_token: 'ya29.GlvyBTay3Zvy7fNU1wNcs8vp5l0ll1p11x5sb7tVaBfiZRmxb9anRqZLRi1xItBU4X9AgzcLn4-u5MpBBJs1gL8DPIMFwNO6tJ1N0OtBL8tWfBNq7xNGrvDF5u4K',
+token_type: 'Bearer',
+refresh_token: '1/ap3cXlJe6Trf1tpx6tQlY_-eSdI8PdwY0L4ZhNVY56U',
+scope: 'https://www.googleapis.com/auth/gmail.modify https://www.googleapis.com/auth/gmail.readonly https://mail.google.com/ https://www.googleapis.com/auth/gmail.send',
+expiry_date: 1533689785525}; 
+//= 'ya29.GlsJBkl-GiAKSBzdgMiB-DFvkTysuJIanaq_LoKrCjB7bcbZdCEO2-cAG83GnhgYVIW5VDPd2-z9Tvcxk5H56V3yl48ica--_uqmMMVsGJVqMNTxpjiIW2asLPWB';
 
 ////////////////////////////FUNCTIONS\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 function initJobCent() {
 	return new Promise(function(resolve, reject) {
-		return ncentSdkInstance.stampToken('jobcent@ncnt.io', 'jobCent', 10000, '2021', resolve);
+		return ncentSdkInstance.stampToken('jobcent@ncnt.io', 'jobCent', 1000000, '2021', resolve);
 	})
 	.then(function(response) {
 		token_id = response.data["tokenTypeResponseData"]["uuid"];		
 	})
 	.then(function() {
-		return createAndTransfer('mb@ncnt.io');
+		return createAndTransfer('mb@ncnt.io', 2000);
 	})
 	.then(function() {
-		return createAndTransfer('af@ncnt.io');
+		return createAndTransfer('zp@ncnt.io', 2000);
 	})
 	.then(function() {
-		return createAndTransfer('jd@ncnt.io');
+		return createAndTransfer('jdominic@stanford.edu', 1000);
 	})
 	.then(function() {
-		return createAndTransfer('kd@ncnt.io');
+		return createAndTransfer('kk@ncnt.io', 2000);
 	})
 	.then(function() {
-		return createAndTransfer('jp@ncnt.io');
+		return createAndTransfer('bradfgross@gmail.com', 1);
 	})
 	.then(function() {
-		return createAndTransfer('an@ncnt.io');
+		return createAndTransfer('therealmeyer@gmail.com', 1);
 	})
 	.then(function() {
-		return createAndTransfer('ag@ncnt.io')
+		return createAndTransfer('fengxyalice@gmail.com', 1);
+	})
+	.then(function() {
+		return createAndTransfer('mkim.don@gmail.com', 1);
+	})
+	.then(function() {
+		return createAndTransfer('dev@ncnt.io', 2000);
 	})
 	.catch(function(error){
 		console.log(error);
 		return;
 	});
 }
-function createAndTransfer(email) {
-	return new Promise(function(resolve, reject) {
-		ncentSdkInstance.createWalletAddress(email, token_id, resolve);
-	})
-	.then(function(createWalletResponse) {
-		//console.log(createWalletResponse.data);
+function createAndTransfer(email, amount) {
+	if (email !== 'mailer-daemon@googlemail.com') {
 		return new Promise(function(resolve, reject) {
-			ncentSdkInstance.transferTokens('jobcent@ncnt.io', email, token_id, 20, resolve, reject);
+			createWalletIfNeeded(email, resolve);
 		})
-	})
-	.catch(function(error) {
-		console.log(error);
-		return;
-	})
+		.then(function(createWalletResponse) {
+			if (createWalletResponse !== "nothing done") {
+				return new Promise(function(resolve, reject) {
+					ncentSdkInstance.transferTokens('jobcent@ncnt.io', email, token_id, amount, resolve, reject);
+				})
+			} else {
+				return new Promise(function(resolve, reject) {
+					ncentSdkInstance.getTokenBalance(email, token_id, resolve);
+				})
+			}
+		})
+		.catch(function(error) {
+			console.log(error);
+			return;
+		})
+	}
 }
 
-function createWalletIfNeeded(walletExists, toEmail, resolve){
-	if(!walletExists){
-	  	ncentSdkInstance.createWalletAddress(toEmail, token_id, resolve);
-	  	walletsCreated[toEmail.toString()] = true;
+function createWalletIfNeeded(email, resolve){
+	if(!walletsCreated[email.toString()]){
+		ncentSdkInstance.createWalletAddress(email, token_id, resolve);
+		walletsCreated[email] = true;
 	} else {
 		resolve("nothing done");
 	}
@@ -130,23 +143,42 @@ function defaultError(error) {
 }
 
 function processTransaction(to, from) {
-	new Promise(function(resolve, reject) {
-		createWalletIfNeeded(walletsCreated[to.toString()], to, resolve);
-	})
+	createAndTransfer(from, 1)
 	.then(function(response) {
-		new Promise(function(resolve, reject) {
-			ncentSdkInstance.transferTokens(from, to, token_id, 1, resolve, reject);
-		})
-		.then(function() {
-			console.log("jobCent sent to " + to + " from " + from);
-			sendEmail(to, './receivedjobCent.html', "Congrats, you've received a jobCent!");
-			return;
-		})
-		.catch(function(error){
-			console.log(error.message);
-			if (error.response.status === 403) sendEmail(from, './nojobCent.html', "Error: You do not have any jobcents to send");
-			return;
-		});	
+		console.log(response.data.txn);
+		if (response.data.txn || (response.data[0].balance !== 0)) {
+			new Promise(function(resolve, reject) {
+				return createWalletIfNeeded(to, resolve);
+			})
+			.then(function(response) {
+				if (to !== 'jobcent@ncnt.io') {
+					new Promise(function(resolve, reject) {
+						ncentSdkInstance.transferTokens(from, to, token_id, 1, resolve, reject);
+					})
+					.then(function() {
+						console.log("jobCent sent to " + to + " from " + from);
+						sendEmail(to, './receivedJobCentnew.html', "Congrats, you've received a jobCent!");
+						return;
+					})
+					.catch(function(error){
+						console.log(error.message);
+						//if (error.response.status === 403) sendEmail(from, './noJobCentnew.html', "Error: You do not have any jobcents to send");
+						return;
+					});
+				} else {
+					console.log("jobCent sent to " + from + " from jobcent@ncnt.io");
+					sendEmail(from, './receivedJobCentnew.html', "Congrats, you've received a jobCent!");
+					return;
+				}
+			})
+			.catch(function(error){
+				console.log(error.message);
+				//if (error.response.status === 403) sendEmail(from, './noJobCentnew.html', "Error: You do not have any jobcents to send");
+				return;
+			});
+		} else if (response.data[0].balance === 0) {
+			sendEmail(from, './noJobCentnew.html', "Error: You do not have any jobcents to send");
+		}
 	})
 	.catch(function(error){
 		console.log(error.message);
@@ -160,80 +192,6 @@ function printMessage(message){
   	console.log(`\tAttributes: ${message.attributes}`);
 }
 
-// function listHistory(address, startHistoryId, callback) {
-// 	const getPageOfHistory = function(resp, result) {
-// 		//console.log(resp);
-// 		result = result.concat(resp.data.historyId);
-// 		let nextPageToken = resp.nextPageToken;
-// 		const options = {
-// 			'userId': address, 
-// 			'auth': oauth2Client, 
-// 			'startHistoryId': startHistoryId, 
-// 			'historyTypes': "messageAdded",
-// 			'pageToken': nextPageToken
-// 		};
-// 		if (nextPageToken) {
-// 		  gmail.users.history.list(options)
-// 		  .then(function(response) {
-// 			getPageOfHistory(response, result);
-// 		  })
-// 		  .catch(function(error) {
-// 			console.log(error);
-// 			return;
-// 		  })
-// 		} else {
-// 		  callback(result);
-// 		}
-// 	};
-// 	gmail.users.history.list({
-// 	  'auth': oauth2Client,
-// 	  'startHistoryId': startHistoryId,
-// 	  'historyTypes': "messageAdded",
-// 	  'userId': address
-// 	})
-// 	.then(function(response){
-// 		getPageOfHistory(response, []);
-// 	})
-// 	.catch(function(error) {
-// 		console.log(error);
-// 		return;
-// 	})
-//   }
-
-// function listMessages(userId, callback) {
-// 	let getPageOfMessages = function(resp, result) {
-// 		result = result.concat(resp.data.messages);
-// 		let nextPageToken = resp.data.nextPageToken;
-// 		//console.log(nextPageToken);
-// 		if (nextPageToken) {
-// 		  gmail.users.messages.list({
-// 			'userId': userId,
-// 			'pageToken': nextPageToken,
-// 			'auth': oauth2Client
-// 		  })
-// 		  .then(function(response) {
-// 			getPageOfMessages(response, result);
-// 		  })
-// 		  .catch(function(error) {
-// 			console.log(error);
-// 		  })
-// 		} else {
-// 		  callback(result);
-// 		}
-// 	};
-// 	gmail.users.messages.list({
-// 	  'userId': userId,
-// 	  'auth': oauth2Client
-// 	})
-// 	.then(function(response) {
-// 		//console.log(response);
-// 		getPageOfMessages(response, []);
-// 	})
-// 	.catch(function(error) {
-// 		console.log(error.message);
-// 	})
-//   }
-
 function dealNewMessage(msgOptions, message) {
 	let toEmail = '';
 	let fromEmail = '';
@@ -241,37 +199,52 @@ function dealNewMessage(msgOptions, message) {
 		gmail.users.messages.get(msgOptions)
 		.then(function(response){
 			console.log("getresponse: " + response.data.id);
-			let ccFound = false;
+			let ccFound = -1;
 			let multiTo = false;
+			let toJbCent = false;
 			let headers = response.data.payload.headers;
 			for(idx in headers) {
 				if (headers[idx].name === 'To') {
-				if ((headers[idx].value.match(/@/g) || []).length !== 1) multiTo = true;
+					console.log("full headers: " + headers[idx].value);
+					console.log("first header: " + headers[idx].value.substring(1, headers[idx].value.indexOf('<') - 1));
+					if (!((((headers[idx].value.match(/@/g) || []).length === 2) && (headers[idx].value.match(/</g)) && (headers[idx].value.substring(1, headers[idx].value.indexOf('<') - 1) === getEmailString(headers[idx]))) || ((headers[idx].value.match(/@/g) || []).length === 1))) multiTo = true;	
 					toEmail = getEmailString(headers[idx]);
+					let stIdx = headers[idx].value.indexOf('jobcent@ncnt.io');
+					if (stIdx !== -1) toJbCent = true;
 				}
-				if (headers[idx].name === "From") fromEmail = getEmailString(headers[idx]);
+				if (headers[idx].name === "From") {
+					fromEmail = getEmailString(headers[idx]);
+				}
 				if (headers[idx].name === "Cc") {
 					let startIdx = headers[idx].value.indexOf('jobcent@ncnt.io');
-					if (startIdx !== -1) ccFound = true;
+					if (startIdx !== -1) {
+						ccFound = 1;
+					} else {
+						ccFound = 0;
+					}
 				}
-				if (toEmail !== '' && fromEmail !== '' && ccFound) break;
+				if (toEmail !== '' && fromEmail !== '' && ccFound !== -1) break;
 			}
-			if(!ccFound) return;
+			console.log("out of loop" + ", FromEmail: " + fromEmail + ", ToEmail: " + toEmail + ", ccFound: " + ccFound + ", toJbCent: " + toJbCent);
+			if(((ccFound !== 1) && !toJbCent) || toEmail === fromEmail) {
+				return;
+			}
 			if(multiTo) {
-				sendEmail(fromEmail, './manyAddresses.html', "Error: You've entered too many addresses in the To line");
+				console.log("Too many addresses by " + fromEmail + " to " + toEmail);
+				sendEmail(fromEmail, './manyAddressesnew.html', "Error: You've entered too many addresses in the To line");
 				return;
 			}
 			console.log('\nSending one jobCent from ' + fromEmail + ' to ' + toEmail);
 			processTransaction(toEmail, fromEmail);
 		})
 		.catch(function(error){
-			console.log(error);
-			return;
+			console.log(error.message);
 		})
 	})
 	.then(function() {
 		console.log("message acknowledged");
 		message.ack();
+		return;
 	})
 	.catch(function(error){
 		console.log(error.message);
@@ -368,10 +341,11 @@ function getOauthTokens (tokenCode) {
 	return oauth2Client.getToken(tokenCode);
 }
 
-function setOauthCredentials () {
+async function setOauthCredentials () {
 	//console.log("set auth credentials");
-	//tkn = tokens.tokens;
 	oauth2Client.credentials = tkn;
+	tokens = await oauth2Client.refreshAccessToken();
+	console.log(oauth2Client);
 }
 
 function syncMessages(full, syncOptions, resolve, reject) {
@@ -401,41 +375,35 @@ function syncMessages(full, syncOptions, resolve, reject) {
 	});
 }
 
-function getHomePageCallback (request, response) {
+function getHomePageCallback() {
 	const fullSyncOptions = {query: 'from: ncnt.io'};
-    // getOauthTokens(request.query.code)
-    //     .then(function(tokens) {
-            setOauthCredentials(tokens);
-			gmail = google.gmail({version: 'v1', oauth2Client});
-			initEmailWatcher();
-			new Promise(function(resolve, reject) {
-				syncMessages(true, fullSyncOptions, resolve, reject);
-			})
-			.then(function(response) {
-				console.log(response);
-				startHistoryId = response.historyId;
-				console.log(startHistoryId);
-				subscription.on(`message`, messageHandler);
-			})
-			.catch(function (error) {
-				console.log(error);
-			})
-			response.send("Done with authentication.");
-		// }, function(reason){
-		// 	console.log("get auth tokens failed" + reason)
-		// });
-	}
+	setOauthCredentials().catch(console.error);
+	gmail = google.gmail({version: 'v1', oauth2Client});
+	initEmailWatcher();
+	new Promise(function(resolve, reject) {
+		syncMessages(true, fullSyncOptions, resolve, reject);
+	})
+	.then(function(response) {
+		//console.log(response);
+		startHistoryId = response.historyId;
+		console.log(startHistoryId);
+		subscription.on(`message`, messageHandler);
+	})
+	.catch(function (error) {
+		console.log(error);
+	})
+}
 
 function main() {
 	initJobCent();
 	// console.log(oauthUrl);
-	// opn(oauthUrl);
-   	app.get('/', getHomePageCallback);
+	//opn(oauthUrl);
+   	getHomePageCallback();
 	app.listen(gmailPort, (err) => {
-      		if (err) {
-      			console.log(`failed to listen to ${gmailPort}`, err);
-      		}
-    	});
+		if (err) {
+			console.log(`failed to listen to ${gmailPort}`, err);
+		}
+	});
 }
 ////////////////////////CODE\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 main();
