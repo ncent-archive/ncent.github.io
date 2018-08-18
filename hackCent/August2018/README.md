@@ -1,5 +1,5 @@
 # hackCent, August 2018
-##Teams:
+## Teams:
 1. 50centives
 2. ViralScript
 3. arya
