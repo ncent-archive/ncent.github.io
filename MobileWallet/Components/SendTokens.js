@@ -9,22 +9,6 @@ import {Spinner} from './Common';
 
 class SendTokens extends Component {
 
-  renderSendButton() {
-    if (this.props.loading) {
-      return ( <Spinner size="large" />)
-    }
-    else {
-      return (
-          <TouchableOpacity onPress= {() => this.sendTokens()}>
-                <View style = {{backgroundColor: '#6D6792', alignItems: 'center', 
-                                justifyContent: 'center', borderRadius: 30, height: 50, margin: 70, marginTop: 0}}
-                       >
-                       <Text style={{color:'white', fontSize: 20}}> Send </Text>
-                </View>
-          </TouchableOpacity>
-        )
-    }
-  }
 
   sendTokens() {
     const {address, amount} = this.props;
@@ -66,7 +50,7 @@ class SendTokens extends Component {
               <Text style={styles.navBarButton}>Cancel</Text>
             </View>
           </TouchableWithoutFeedback>
-          <Text style={styles.navBarHeader}>Send {this.props.tokenType.asset_code || this.props.tokenType.asset_type}</Text>
+          <Text style={styles.navBarHeader}>Send {this.props.tokenType}</Text>
           <Text style={styles.navBarButton}></Text>
         </View>
         <TextInput
@@ -87,7 +71,13 @@ class SendTokens extends Component {
         {this.renderError()}
 
         <View style={{flex: 1}}>
-          {this.renderSendButton()}
+          <TouchableOpacity onPress= {() => this.sendTokens()}>
+                <View style = {{backgroundColor: '#6D6792', alignItems: 'center', 
+                                justifyContent: 'center', borderRadius: 30, height: 50, margin: 70, marginTop: 0}}
+                       >
+                       <Text style={{color:'white', fontSize: 20}}> Send </Text>
+                </View>
+          </TouchableOpacity>
         </View>
       </View>
 

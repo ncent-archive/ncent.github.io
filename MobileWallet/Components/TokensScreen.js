@@ -1,26 +1,20 @@
 import React, {Component} from 'react';
-import {AppState} from 'react-native';
-import {Modal, Button, FlatList, TextInput, StyleSheet, Text, View, TouchableHighlight, TouchableOpacity, TouchableNativeFeedback, TouchableWithoutFeedback  } from 'react-native';
+import {Button, FlatList, TextInput, StyleSheet, Text, View, TouchableHighlight, TouchableOpacity, TouchableNativeFeedback, TouchableWithoutFeedback  } from 'react-native';
 import {Actions} from 'react-native-router-flux';
 import {connect} from 'react-redux';
-import {getTokens} from '../Actions';
+import {getTokens, signOut} from '../Actions';
 import {Spinner} from './Common';
-import {Icon} from 'react-native-elements';
 
-
- 
 class TokensScreen extends Component {
 
-  state = {
-    appState: AppState.currentState
+  logOut() {
+    this.props.signOut();
   }
 
-  componentDidMount() {
+
+  componentWillMount() {
     this.props.getTokens();
   }
-
-
-
 
   renderError() {
     if (this.props.error) {
@@ -39,73 +33,40 @@ class TokensScreen extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.navBar}>
-          <TouchableWithoutFeedback onPress={() => Actions.drawerOpen()}>
-            <View style={{justifyContent: 'center', paddingLeft: 10}}>
-              <Icon
-                size={30}
-                name='menu'
-                color='#4c3e99' />
+          <TouchableWithoutFeedback onPress={() => this.logOut()}>
+            <View>
+              <Text style={styles.navBarButton}> Log Out</Text>
             </View>
           </TouchableWithoutFeedback>
           <Text style={styles.navBarHeader}>Tokens</Text>
-          <View style={{justifyContent: 'center', paddingLeft: 10}}>
-              <Icon
-                size={30}
-                name='menu'
-                color='#0000' />
-            </View>
+          <Text style={styles.navBarButton}></Text>
         </View>
         <View style={{ flex: 1}}>
           <FlatList
               data={this.props.allTokens}
               renderItem={({item}) => 
               <View>
-                <TouchableHighlight onPress={() => Actions.TokenDetails({tokenType: item})} underlayColor="white">
+                <TouchableHighlight onPress={() => Actions.TokenDetails({tokenType: item.tokentype_uuid})} underlayColor="white">
                   <View style={{flexDirection: 'row', paddingTop: 30, height: 90}}>
-                    <Text style={{paddingLeft: 20, fontSize: 20}}>{item.asset_code || item.asset_type}</Text>
+                    <Text style={{paddingLeft: 20, fontSize: 20}}>{item.tokentype_uuid}</Text>
                   </View>
                 </TouchableHighlight>
                   <View style={{flexDirection: 'row', paddingTop: 1, height: 1, backgroundColor: "gray"}}>
                   </View>                
               </View>
             }
-            keyExtractor={(item) => item.asset_code || item.asset_type}
+            keyExtractor={(item) => item.tokentype_uuid}
           />
         </View>
         {this.renderError()}
-        <TouchableHighlight onPress={() => Actions.MaitreSignup()} underlayColor="white">
-          <View style={styles.bottomBar}>
-            <Text style={styles.bottomBarHeader}>Sign Up for Early Access</Text>
-          </View>
-        </TouchableHighlight>
-
       </View>
     );
   }
-} 
+}
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  },
-  bottomBar: {
-    flexDirection: 'row',
-    paddingTop: 10,
-    height: 80,
-    backgroundColor: '#5c4da0',
-    shadowColor: '#000',
-    shadowOffset: {width: 0, height: 1},
-    shadowOpacity: .2
-  },
-  bottomBarHeader: {
-    flex: 1,
-    color: 'white',
-    fontWeight: 'bold',
-    textAlign: 'center',
-    alignItems: 'flex-start',
-    justifyContent: 'flex-start',
-    fontSize: 20,
-    paddingTop: 15
   },
  navBar: {
     flexDirection: 'row',
@@ -155,6 +116,6 @@ const mapStateToProps = (state) => {
   return {error, loading, allTokens};
 }
 
-module.exports = connect(mapStateToProps, {getTokens})(TokensScreen);
+module.exports = connect(mapStateToProps, {getTokens, signOut})(TokensScreen);
 
 
