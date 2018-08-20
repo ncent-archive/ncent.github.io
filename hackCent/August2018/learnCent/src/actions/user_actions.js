@@ -1,11 +1,17 @@
 import axios from 'axios';
 
 export const RECEIVE_USER = "RECEIVE_USER";
+export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 export const RECEIVE_USERS = "RECEIVE_USERS";
 export const RECEIVE_AUTH_ERRORS = "RECEIVE_AUTH_ERRORS";
 
 const receiveUser = (user) => ({
   type: RECEIVE_USER,
+  user
+});
+
+const receiveCurrentUser = (user) => ({
+  type: RECEIVE_CURRENT_USER,
   user
 });
 
@@ -17,6 +23,13 @@ const receiveAuthErrors = (errors) => ({
 export const createUser = (user) => (dispatch) => {
   axios.post('/api/users', {
     user
-  }).then(({data})=>{dispatch(receiveUser(data.user));})
+  }).then(({data})=>{dispatch(receiveCurrentUser(data.user));})
+    .catch((err)=>dispatch(receiveAuthErrors(err)));
+};
+
+export const loginUser = (user) => (dispatch) => {
+  axios.post('/api/session', {
+    user
+  }).then(({data})=>{dispatch(receiveCurrentUser(data.user));})
     .catch((err)=>dispatch(receiveAuthErrors(err)));
 };
