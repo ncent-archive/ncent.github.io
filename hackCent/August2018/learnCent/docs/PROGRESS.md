@@ -3,6 +3,8 @@
 
 [07/20/2018](#07202018)
 
+[07/21/2018](#07212018)
+
 <a name="07192018"></a>
 ## (07/19/2018)
 
@@ -26,3 +28,12 @@
 
 <a name="07202018"></a>
 ## (07/20/2018)
+
+### Documentation
+- Thorough documentation of user auth
+- Started documentation of universities and requests MVPs
+### Backend
+- Creation of user model w/ email, password, public_key, private_key
+
+<a name="07202018"></a>
+## (07/21/2018)

@@ -36,9 +36,9 @@ class Form extends Component {
           <input
             className="auth-input"
             type="text"
-            placeholder="Username"
-            value={this.state.username}
-            onChange={this.updateInput('username')}>
+            placeholder="Email"
+            value={this.state.email}
+            onChange={this.updateInput('email')}>
           </input>
           <input
             className="auth-input"

@@ -1,9 +1,9 @@
 const db = require('../db');
 
 const seedUsers = () => db.Promise.map([
-  {username: 'BestTutor', password: 'tutor101'},
-  {username: 'BetterTutor', password: 'tutor102'},
-  {username: 'BestStudent', password: 'tutor102'},
+  {email: 'BestTutor', password: 'tutor101'},
+  {email: 'BetterTutor', password: 'tutor102'},
+  {email: 'BestStudent', password: 'tutor102'},
 ], user => db.model('users').create(user));
 
 const seedRequests = () => db.Promise.map([
