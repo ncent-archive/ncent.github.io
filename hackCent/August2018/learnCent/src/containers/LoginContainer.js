@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import Auth from '../components/Auth/Auth';
+import { loginUser } from '../actions/user_actions';
 
 function mapStateToProps(state, ownProps) {
   return {
@@ -20,7 +21,7 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    action: () => {}
+    action: (user) => dispatch(loginUser(user))
   };
 }
 

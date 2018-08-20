@@ -6,38 +6,44 @@
 - [ ] Improve `<ul>` design inside of Students Component
 - [ ] Improve `<ul>` design inside of Tutors Component
 - [ ] Auth Errors
-  - [ ] Map errors from LoginContainer + SignupContainer to Auth
-  - [ ] Pass these errors as props to the Auth Form
+  - [x] Map errors from LoginContainer + SignupContainer to Auth
+  - [x] Pass these errors as props to the Auth Form
   - [ ] Render any errors above the email/password inputs
-- [ ] Dispatch thunk action for user creation on form submission
+- [x] Dispatch thunk action for user creation on form submission
 
 ### Actions
-- [ ] User Creation
-  - [ ] RECEIVE_USER constant
-  - [ ] RECEIVE_USERS constant
-  - [ ] AUTH_ERRORS constant
-  - [ ] receiveAuthErrors (dispatches AUTH_ERRORS, errors)
-  - [ ] receiveUser (dispatches RECEIVE_USER, user)
-  - [ ] receiveUsers (dispatches RECEIVE_USERS, users)
-  - [ ] createUser ((axios POST `users/`).then(receiveUser))
-    - [ ] catch errors and dispatch AUTH_ERRORS
+- [x] User Creation
+  - [x] RECEIVE_USER constant
+  - [x] RECEIVE_CURRENT_USER constant
+  - [x] RECEIVE_USERS constant
+  - [x] AUTH_ERRORS constant
+  - [x] receiveAuthErrors (dispatches AUTH_ERRORS, errors)
+  - [x] receiveUser (dispatches RECEIVE_USER, user)
+  - [x] receiveCurrentUser (dispatches RECEIVE_CURRENT_USER, user)
+  - [x] receiveUsers (dispatches RECEIVE_USERS, users)
+  - [x] createUser ((axios POST `users/`).then(receiveUser))
+    - [x] catch errors and dispatch AUTH_ERRORS
+- [x] User Login
+  - [x] loginUser ((axios POST `session/`).then(receiveUser))
+    - [x] catch errors and dispatch AUTH_ERRORS
+- [ ] User Fetching
   - [ ] fetchUser ((axios GET `users/${id}`).then(receiveUser))
   - [ ] fetchUsers ((axios GET `users/`).then(receiveUsers))
 
 ### Reducers
-  - [ ] usersReducer
-    - [ ] Manage RECEIVE_USER
-    - [ ] Manage RECEIVE_USERS
-  - [ ] sessionReducer
-    - [ ] holds currentUser data
-  - [ ] errorsReducer
-    - [ ] Manage AUTH_ERRORS
-  - [ ] entitiesReducer
-    - [ ] users: usersReducer
-  - [ ] rootReducer
-    - [ ] entities: entitiesReducer
-    - [ ] errors: errorsReducer
-    - [ ] session: sessionReducer
+  - [x] usersReducer
+    - [x] Manage RECEIVE_USER
+    - [x] Manage RECEIVE_USERS
+  - [x] sessionReducer
+    - [x] holds currentUser data
+  - [x] errorsReducer
+    - [x] Manage AUTH_ERRORS
+  - [x] entitiesReducer
+    - [x] users: usersReducer
+  - [x] rootReducer
+    - [x] entities: entitiesReducer
+    - [x] errors: errorsReducer
+    - [x] session: sessionReducer
 
 ### Routes
   - [ ] AuthRoute
@@ -83,28 +89,23 @@
 ## Backend
 
 ### Models
-  - [ ] User
-    - [ ] email, `not null`
-    - [ ] password_digest, `not null`
-    - [ ] session_token, `not null`
-    - [ ] public_key, `not null` (will be created before user persist)
-    - [ ] private_key `not null` (will be created before user persist)
-### Controllers
-  - [ ] UsersController
-    - [ ] Handle user sign up
-  - [ ] SessionController
-    - [ ] Login
-      - [ ] Establish user's session_token as a safe base64 string
-        - [ ] Persist change to DB
-      - [ ] Store this sessionToken in the application's session
-    - [ ] Logout
-      - [ ] Reset user's sessionToken
-      - [ ] Clear session's sessionToken
-
-### Server API
-  - [ ] POST `users` (user creation, returns user)
-  - [ ] GET `users` (returns all users)
-  - [ ] GET `users/${id}` (returns user with `id`)
+  - [x] User
+    - [x] email, `not null`
+    - [x] password_digest, `not null`
+    - [x] public_key, `not null` (will be created before user persist)
+    - [x] private_key `not null` (will be created before user persist)
+### Routes
+  - [x] Users
+    - [x] `POST /users` (user creation, returns user)
+    - [x] `GET users` (returns all users)
+    - [x] `GET users/${id}` (returns user with `id`)
+  - [x] Session
+    - [x] Login
+      - [x] `POST /session` (user login, returns user)
+      - [x] Establish user's session_token as a safe base64 string
+      - [x] Store this sessionToken in the application's session
+    - [x] Logout
+      - [x] Clear session's sessionToken
 
 ### Sandbox API calls using SDK
 

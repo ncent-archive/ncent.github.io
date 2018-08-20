@@ -5,7 +5,9 @@ const router = require('express').Router();
 
 // Login
 router.post('/', (req, res) => {
-  const { reqEmail, reqPassword } = req.body.user;
+  const reqUser = req.body.user;
+  const reqEmail = reqUser.email;
+  const reqPassword = reqUser.password;
 
   User.findOne({ where: { email: reqEmail } }).then((user) => {
     if (!user) {
