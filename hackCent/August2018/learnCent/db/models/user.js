@@ -8,9 +8,13 @@ const User = db.define('users', {
   	type: Sequelize.STRING,
   	allowNull: false
   },
-  password: {
+  password_digest: {
   	type: Sequelize.STRING,
   	allowNull: false
+  },
+  session_token: {
+    type: Sequelize.INTEGER,
+    allowNull: false
   },
   public_key: {
   	type: Sequelize.INTEGER,

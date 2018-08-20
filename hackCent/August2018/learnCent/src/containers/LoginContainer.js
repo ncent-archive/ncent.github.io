@@ -10,7 +10,7 @@ function mapStateToProps(state, ownProps) {
       altLinkText: "Sign Up!"
     },
     user: {
-      username: '',
+      email: '',
       password: '',
     },
     history: ownProps.history

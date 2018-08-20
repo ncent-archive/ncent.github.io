@@ -1,25 +1,16 @@
-# Frontend
+# Tasks
 
-## Display Elements
+## User Auth
+[User Auth Specification](tasks/AUTH.md)
+The User Auth MVP will be completed when:
+ - Users can successfully signup and login
+  - This results in:
+   - a session with a globally accessible currentUser
+   - a persisted password_digest, session_token, public_key, private_key
+ - The frontend is integrated with this session
 
-### Components
-### CSS
+## Universities
+  [MVP Plan](tasks/UNIVERSITIES.md)
 
-## Backend Communication
-
-### Thunk Actions
-
-### API calls trigged by thunk actions
-
-### Redux
-
-#### Actions
-#### Reducers
-#### Containers
-
-# Backend
-
-## Database
-## Sandbox API Calls
-## Models
-## Controllers
+## Requests
+  [MVP Plan](tasks/REQUESTS.md)
