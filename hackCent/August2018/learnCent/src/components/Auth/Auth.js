@@ -5,11 +5,15 @@ import './style.css';
 
 class Auth extends Component {
   render() {
-    const { formInfo, user, history } = this.props;
+    const { formInfo, user, history, action } = this.props;
     return (
       <div className="Auth">
         <Header />
-        <Form user={user} formInfo={formInfo} history={history}/>
+        <Form
+          action={action}
+          user={user}
+          formInfo={formInfo}
+          history={history}/>
       </div>
     );
   }

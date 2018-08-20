@@ -24,7 +24,7 @@ app.use(session({
   key: 'session_token',
   secret: 'temporary-nonsecure-key',
   resave: false,
-  saveUnititalized: false,
+  saveUninitialized: false,
   cookie: {
     expires: 60000
   }

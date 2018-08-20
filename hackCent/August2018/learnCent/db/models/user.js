@@ -30,7 +30,7 @@ User.addHook('beforeValidate', (user) => {
 });
 
 User.prototype.validPassword = function(password) {
-  return bcrypt.compareSync(password, this.password);
+  return bcrypt.compareSync(password, this.password_digest);
 };
 
 module.exports = User;
