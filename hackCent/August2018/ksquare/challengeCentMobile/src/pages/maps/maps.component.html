@@ -1,0 +1,66 @@
+<style>
+
+  #floating-panel {
+    position: absolute;
+    top: 10px;
+    right: 5px;
+    z-index: 5;
+    background-color: #fff;
+    padding: 5px;
+    border: 1px solid #999;
+    text-align: center;
+    font-family: 'Roboto', 'sans-serif';
+    line-height: 30px;
+    padding-left: 10px;
+  }
+  #map {
+    height: 100%;
+  }
+
+
+</style>
+<ion-content>
+  <div id="floating-panel">
+    <script>
+      function myMap() {
+        var mapProp= {
+          center:new google.maps.LatLng(51.508742,-0.120850),
+          zoom:5,
+        };
+        var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+      }
+    </script>
+    <b>Start: </b>
+    <select [(ngModel)]="start" id="start" (change)="calculateAndDisplayRoute()">
+      <option value="chicago, il">Chicago</option>
+      <option value="st louis, mo">St Louis</option>
+      <option value="joplin, mo">Joplin, MO</option>
+      <option value="oklahoma city, ok">Oklahoma City</option>
+      <option value="amarillo, tx">Amarillo</option>
+      <option value="gallup, nm">Gallup, NM</option>
+      <option value="flagstaff, az">Flagstaff, AZ</option>
+      <option value="winona, az">Winona</option>
+      <option value="kingman, az">Kingman</option>
+      <option value="barstow, ca">Barstow</option>
+      <option value="san bernardino, ca">San Bernardino</option>
+      <option value="los angeles, ca">Los Angeles</option>
+    </select><br>
+    <b>End: </b>
+    <select [(ngModel)]="end" id="end" (change)="calculateAndDisplayRoute()">
+      <option value="chicago, il">Chicago</option>
+      <option value="st louis, mo">St Louis</option>
+      <option value="joplin, mo">Joplin, MO</option>
+      <option value="oklahoma city, ok">Oklahoma City</option>
+      <option value="amarillo, tx">Amarillo</option>
+      <option value="gallup, nm">Gallup, NM</option>
+      <option value="flagstaff, az">Flagstaff, AZ</option>
+      <option value="winona, az">Winona</option>
+      <option value="kingman, az">Kingman</option>
+      <option value="barstow, ca">Barstow</option>
+      <option value="san bernardino, ca">San Bernardino</option>
+      <option value="los angeles, ca">Los Angeles</option>
+    </select>
+  </div>
+  <div id="map" style="width:400px;height:400px"></div>
+
+</ion-content>

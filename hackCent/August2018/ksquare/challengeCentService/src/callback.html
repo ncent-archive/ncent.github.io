@@ -1,0 +1,14 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script src="https://cdn.auth0.com/js/auth0/8.6/auth0.min.js"></script>
+    <script src="assets/javascripts/auth0-variables.js"></script>
+    <script>
+    auth0js.parseHash(window.location.hash, function (err, response) {
+        parent.postMessage(err || response, 'http://localhost:3000');
+    });
+    </script>
+</head>
+<body></body>
+</html>
