@@ -35,6 +35,7 @@
 
 ### Frontend
 - Creation of auth reducers and actions
+- Create Protected/Auth Routes
 ### Backend
 - Creation of user model w/ email, password, public_key, private_key
 - Creation of effective session for storage of user

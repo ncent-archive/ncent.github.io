@@ -26,9 +26,6 @@
 - [x] User Login
   - [x] loginUser ((axios POST `session/`).then(receiveUser))
     - [x] catch errors and dispatch AUTH_ERRORS
-- [ ] User Fetching
-  - [ ] fetchUser ((axios GET `users/${id}`).then(receiveUser))
-  - [ ] fetchUsers ((axios GET `users/`).then(receiveUsers))
 
 ### Reducers
   - [x] usersReducer
@@ -46,45 +43,12 @@
     - [x] session: sessionReducer
 
 ### Routes
-  - [ ] AuthRoute
+  - [x] AuthRoute
     - Route that redirects an authenticated user
     - Ex: This will be used in the router as a route for `/login` to redirect an authenticated user to the `/tutors` or `/students` page
-  - [ ] ProtectedRoute
+  - [x] ProtectedRoute
     - Route that redirects an unauthenticated user
     - Ex: This will be used to prevent redirect unauthenticated users from any page besides `/tutors` or `/students`
-  - Similar code example (session slice of Redux state may be different):
-  ```javascript
-    import React from 'react';
-    import { connect } from 'react-redux';
-    import { Route, Redirect, withRouter } from 'react-router-dom';
-
-    const Auth = ({ component: Component, path, loggedIn, exact }) => (
-      <Route path={path} exact={exact} render={props=> (
-        loggedIn ? (
-          <Redirect to="/chats" />
-        ) : (
-          <Component {...props} />
-        )
-      )} />
-    );
-
-    const Protected = ({ component: Component, path, loggedIn, exact }) => (
-      <Route path={path} exact={exact} render={(props) => (
-         loggedIn ? (
-          <Component {...props} />
-        ) : (
-          <Redirect to="/" />
-        )
-      )} />
-    );
-
-    const mapStateToProps = state => (
-      {loggedIn: Boolean(state.session.id)}
-    );
-
-    export const AuthRoute = withRouter(connect(mapStateToProps)(Auth));
-    export const ProtectedRoute = withRouter(connect(mapStateToProps)(Protected));
-  ```
 
 ## Backend
 
@@ -134,7 +98,7 @@
   - Invoke SDK's getTokenBalance; Return user's balance;
 
 ### Seeds
-  - [ ] Create 5 user seeds like: {email: 'example@email.com', password: '123456'}
+  - [x] Create 5 user seeds like: {email: 'example@email.com', password: '123456'}
     - The user creation process must assign values to these columns:
       - password_digest
       - public_key
