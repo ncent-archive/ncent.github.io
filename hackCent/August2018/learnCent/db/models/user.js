@@ -2,6 +2,7 @@
 
 const Sequelize = require('sequelize');
 const db = require('../index.js');
+const bcrypt = require('bcrypt');
 
 const User = db.define('users', {
   email: {
@@ -12,10 +13,6 @@ const User = db.define('users', {
   	type: Sequelize.STRING,
   	allowNull: false
   },
-  session_token: {
-    type: Sequelize.INTEGER,
-    allowNull: false
-  },
   public_key: {
   	type: Sequelize.INTEGER,
   	allowNull: false
@@ -25,5 +22,15 @@ const User = db.define('users', {
   	allowNull: false
   },
 });
+
+User.addHook('beforeValidate', (user) => {
+  // TODO generate wallet for public_key and private_key
+  user.public_key = 1;
+  user.private_key = 1;
+});
+
+User.prototype.validPassword = function(password) {
+  return bcrypt.compareSync(password, this.password);
+};
 
 module.exports = User;
