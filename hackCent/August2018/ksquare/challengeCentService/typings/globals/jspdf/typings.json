@@ -1,0 +1,8 @@
+{
+  "resolution": "main",
+  "tree": {
+    "src": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/91d1d6d60f9fef826b6a08f35e244b650342a86f/jspdf/index.d.ts",
+    "raw": "registry:dt/jspdf#1.1.135+20160921164505",
+    "typings": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/91d1d6d60f9fef826b6a08f35e244b650342a86f/jspdf/index.d.ts"
+  }
+}

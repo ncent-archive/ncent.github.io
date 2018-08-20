@@ -1,0 +1,39 @@
+// _variables.scss
+@import 'variables';
+
+body {
+  font-family: 'Alegreya Sans', sans-serif;
+}
+
+h1 {
+  color: #369;
+  font-size: 250%;
+}
+html {
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    min-height: 100%;
+    font-family: 'Open Sans', sans-serif;
+}
+html body {
+    min-height: 100%
+}
+
+
+.no-interaction {
+  pointer-events: none;
+}
+
+.no-bg {
+  background-color:rgba(0, 0, 0, 0);
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+.no-padding {
+  padding: 0;
+}
