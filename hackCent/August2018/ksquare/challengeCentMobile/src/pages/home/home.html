@@ -1,0 +1,61 @@
+
+<style>
+  ul, ol{
+    /*margin: 0;padding: 0;*/
+    list-style: none;
+  }
+  li {
+    background: #37BC9B;
+    color: #fff;
+    counter-increment: myCounter;
+    margin: 0 0 30px 0;
+    padding: 13px;
+    position: relative;
+    top: 1em;
+    border-radius:  0em 2px 1em 1em;
+    padding-left: 2em;
+    font-size: 1.2em;
+    font-family: Constantia;
+  }
+  li:before{
+    content: counter(myCounter, decimal-leading-zero);
+    display: inline-block;
+    text-align: center;
+    font-size: 2em;
+    line-height: 1.3em;
+    background-color:  #48CFAD;
+    padding: 10px;
+    font-weight: bold;
+    position: absolute;
+    top: 0;
+    left: -40px;
+    border-radius: 50%;
+    font-family: exo;
+  }
+
+
+  li:nth-child(even){
+    background-color: #434A54;
+  }
+
+</style>
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+     Dashboard : Create a Challenge
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+
+<ion-content padding>
+
+  <ul>
+    <li (click)="pushPage()">Create a Challenge</li>
+    <li (click)="pushPage()">Find A Challenge</li>
+    <li (click)="pushPage()">Form a Group Challenge</li>
+
+  </ul>
+
+</ion-content>
