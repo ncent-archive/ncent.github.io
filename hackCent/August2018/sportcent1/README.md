@@ -1,6 +1,8 @@
 # sportcent1
 
-sportCent uses incentives to increase fan engagement and merchandise sales.
+Developed by 10KD, UX design by Tim Ryan.
+
+## sportCent uses incentives to increase fan engagement and merchandise sales.
 
 How it works: 
 - A vendor stamps sportCents for their product and gives them out to users.
@@ -12,7 +14,13 @@ How it works:
 ![splash page](sportCent_splash.png)
 ![profile view](sportCent_profile.png)
 ### View your discount and eligible products
+
+
+
 ![chain](sportCent_chain.png)
 ### View the incentive chain and the respective rewards for your referrers
+
+
+
 ![vendor view](sportCent_vendor_view.png)
 ### For vendors: keep track of sales from sportCent redemptions 
