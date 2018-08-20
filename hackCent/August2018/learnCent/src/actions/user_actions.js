@@ -24,12 +24,19 @@ export const createUser = (user) => (dispatch) => {
   axios.post('/api/users', {
     user
   }).then(({data})=>{dispatch(receiveCurrentUser(data.user));})
-    .catch((err)=>dispatch(receiveAuthErrors(err)));
+    .catch(({response})=>dispatch(receiveAuthErrors(response.data.errors)));
 };
 
 export const loginUser = (user) => (dispatch) => {
   axios.post('/api/session', {
     user
-  }).then(({data})=>{dispatch(receiveCurrentUser(data.user));})
-    .catch((err)=>dispatch(receiveAuthErrors(err)));
+  }).then(({data})=>dispatch(receiveCurrentUser(data.user)))
+    .catch(({response})=>dispatch(receiveAuthErrors(response.data.errors)));
+};
+
+export const fetchUser = userId => dispatch => {
+  axios.get('/api/users', {
+    userId
+  }).then(({data})=>dispatch(receiveCurrentUser(data.user)))
+    .catch(({response})=>dispatch(receiveAuthErrors(response.data.errors)));
 };
