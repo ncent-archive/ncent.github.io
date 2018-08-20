@@ -3,7 +3,7 @@
 const Sequelize = require('sequelize');
 const db = require('../index.js');
 
-const Request = db.define('users', {
+const Request = db.define('requests', {
   sender_id: {
   	type: Sequelize.INTEGER,
   	allowNull: false

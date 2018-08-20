@@ -19,7 +19,7 @@ class Form extends Component {
 
   submitForm(e) {
     e.preventDefault();
-    // invoke action from props (dispatch)
+    this.props.action(this.state);
     this.props.history.push('/students');
   }
 

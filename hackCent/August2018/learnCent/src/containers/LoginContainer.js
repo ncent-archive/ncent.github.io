@@ -13,14 +13,14 @@ function mapStateToProps(state, ownProps) {
       email: '',
       password: '',
     },
-    history: ownProps.history
-    // map login errors from redux state to display on form
+    history: ownProps.history,
+    errors: state.errors
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    // action: login thunk
+    action: () => {}
   };
 }
 

@@ -1,4 +1,4 @@
-import { generatePasswordDigest } from './utils/user_utils';
+const { generatePasswordDigest } = require('./utils/user_utils');
 
 const db = require('../db');
 const User = require('../db/models/user');
@@ -18,7 +18,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/:id', function(req, res, next) {
     User.findOne({
-            where:{id:req.params.id},
+            where:{id: req.params.id},
             include: [Request]
         })
         .then(result => {
@@ -29,13 +29,18 @@ router.get('/:id', function(req, res, next) {
 
 // Signup
 router.post('/', function(req, res) {
+  const reqUser = req.body.user;
+  const reqEmail = reqUser.email;
+  const reqPassword = reqUser.password;
   User.create({
-    email: req.body.email,
-    password_digest: generatePasswordDigest(req.body.password),
+    email: reqEmail,
+    password_digest: generatePasswordDigest(reqPassword),
   })
   .then(user => {
-    req.session.user = user.dataValues;
-    res.send(user);
+    const { id, email} = user.dataValues;
+    const storeUser = {id, email};
+    req.session.user = storeUser;
+    res.send({user: storeUser});
   })
   .catch(error => {
     res.status(422).send({ errors: [error]});

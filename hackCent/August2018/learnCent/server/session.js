@@ -5,24 +5,25 @@ const router = require('express').Router();
 
 // Login
 router.post('/', (req, res) => {
-  const email = req.body.email;
-  const password = req.body.password;
+  const { reqEmail, reqPassword } = req.body.user;
 
-  User.findOne({ where: { email: email } }).then((user) => {
+  User.findOne({ where: { email: reqEmail } }).then((user) => {
     if (!user) {
       res.status(400).send({ errors: ['Email not found']});
-    } else if (!user.validPassword(password)) {
+    } else if (!user.validPassword(reqPassword)) {
       res.status(400).send({ errors: ['Invalid password']});
     } else {
-      req.session.user = user.dataValues;
-      res.send(user);
+      const { id, email} = user.dataValues;
+      const storeUser = {id, email};
+      req.session.user = storeUser;
+      res.send({user: storeUser});
     }
   });
 });
 
 // Logout
 router.delete('/', (req, res) => {
-  const userId = req.body.id;
+  const userId = req.body.userId;
   if (req.session.user && req.cookies.session_token) {
     res.clearCookie('session_token');
     res.status(200).send('Logged out successfully');
@@ -30,3 +31,5 @@ router.delete('/', (req, res) => {
     res.status(404).send('No user logged in to log out!');
   }
 });
+
+module.exports = router;
