@@ -34,9 +34,16 @@ export const loginUser = (user) => (dispatch) => {
     .catch(({response})=>dispatch(receiveAuthErrors(response.data.errors)));
 };
 
-export const fetchUser = userId => dispatch => {
-  axios.get('/api/users', {
-    userId
-  }).then(({data})=>dispatch(receiveCurrentUser(data.user)))
-    .catch(({response})=>dispatch(receiveAuthErrors(response.data.errors)));
-};
+// export const fetchUser = userId => dispatch => {
+//   axios.get(`/api/users/${userId}`, {
+//     userId
+//   }).then(({data})=>dispatch(receiveCurrentUser(data.user)))
+//     .catch(({response})=>dispatch(receiveAuthErrors(response.data.errors)));
+// };
+//
+// export const fetchUsers = userId => dispatch => {
+//   axios.get('/api/users', {
+//     userId
+//   }).then(({data})=>dispatch(receiveCurrentUser(data.users)))
+//     .catch(({response})=>dispatch(receiveAuthErrors(response.data.errors)));
+// };

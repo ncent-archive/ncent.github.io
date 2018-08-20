@@ -6,26 +6,26 @@ const Request = require('../db/models/request');
 
 const router = require('express').Router();
 
-router.get('/', function(req, res, next) {
-    User.findAll({
-            include: [Request]
-        })
-        .then(result => {
-            res.status(200).send(result);
-        })
-        .catch(next);
-});
-
-router.get('/:id', function(req, res, next) {
-    User.findOne({
-            where:{id: req.params.id},
-            include: [Request]
-        })
-        .then(result => {
-            res.status(200).send(result);
-        })
-        .catch(next);
-});
+// router.get('/', function(req, res, next) {
+//     User.findAll({
+//             include: [Request]
+//         })
+//         .then(users => {
+//             res.status(200).send({ users });
+//         })
+//         .catch(next);
+// });
+//
+// router.get('/:id', function(req, res, next) {
+//     User.findOne({
+//             where:{id: req.params.id},
+//             include: [Request]
+//         })
+//         .then(user => {
+//             res.status(200).send({ user });
+//         })
+//         .catch(next);
+// });
 
 // Signup
 router.post('/', function(req, res) {
