@@ -5,7 +5,7 @@ import './style.css';
 
 class Auth extends Component {
   render() {
-    const { formInfo, user, history, action } = this.props;
+    const { formInfo, user, history, action, errors } = this.props;
     return (
       <div className="Auth">
         <Header />
@@ -13,7 +13,8 @@ class Auth extends Component {
           action={action}
           user={user}
           formInfo={formInfo}
-          history={history}/>
+          history={history}
+          errors={errors}/>
       </div>
     );
   }
