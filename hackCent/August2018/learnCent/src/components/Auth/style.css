@@ -17,7 +17,7 @@
   justify-content: center;
   color: #0C9191;
   font-size: 110px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 #header-title {
@@ -29,7 +29,6 @@
   font-size: 30px;
   font-weight: 200;
   text-align: center;
-  margin-bottom: 10px;
 }
 
 /* Form */
@@ -77,7 +76,6 @@
   outline-color: #0C9191;
 }
 
-
 .auth-link {
   font-size: 20px;
   font-weight: 200;
@@ -95,4 +93,14 @@
 
 #anchor-underline:hover {
   opacity: .5;
+}
+
+.auth-errors-div {
+  height: 10px;
+  margin-bottom: 25px;
+}
+
+.auth-p {
+  color: #910c0c;
+  font-size: 25px;
 }
