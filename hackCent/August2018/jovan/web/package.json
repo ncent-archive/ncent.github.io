@@ -1,0 +1,12 @@
+{
+  "name": "nomnomcent-web",
+  "version": "0.0.1",
+  "description": "NomNomCent website",
+  "main": "index.html",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Jovan Jester",
+  "license": "ISC",
+  "dependencies": {}
+}
