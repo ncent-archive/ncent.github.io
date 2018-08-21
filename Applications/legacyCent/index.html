@@ -6448,7 +6448,16 @@ body{
             console.log(data);
             let pledges= $("#pledges");
             pledges.empty();
-           
+            var i, j;
+            for (i = 0; i < data.length-1; i++){ //sort in order of points
+               for (j = 0; j < data.length-i-1; j++){
+                   if (data[j].points < data[j+1].points){
+                        let copy = data[j];
+                        data[j] = data[j+1];
+                        data[j+1] = copy;
+                   }
+               }
+            }
             for(var i =0; i < data.length; i++){
                 pledge = data[i];     
                 pledges.append(createPledge(pledge.username, pledge.points, pledge.uuid));
@@ -6458,27 +6467,6 @@ body{
             
         })
     });
-    // function noBugYetCard(name){
-    //     return $(`
-    //         <div class="col-md-12">
-    //                 <div class="blog">
-    //                     <div class="blog-img">
-    //                         <img class="img-responsive" src="./img/blog2.jpg" alt="">
-    //                     </div>
-    //                     <div class="blog-content">
-    //                         <ul class="blog-meta">
-    //                             <li><i class="fa fa-user"></i>${name}</li>
-                                
-                                
-    //                         </ul>
-    //                         <h3>You haven't reported any bugs yet!</h3>
-    //                         <p>Reporting bugs is really easy. Earn money and recieve recognition for helping improve products you use. <br><br><br></p>
-    //                         <a href="/dashboard/report">Report your first bug!</a>
-    //                     </div>
-    //                     </div>
-    //                     </div>`
-    //         )
-    // }
     function createPledge(username, points, uuid){
     
             return $(`
@@ -6496,7 +6484,6 @@ body{
     }
     function submitform(username){
         $(username).submit();
-        
     }
     </script>
 <body id="top">
