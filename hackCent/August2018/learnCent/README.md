@@ -18,7 +18,7 @@ Read more about recursive incentives in [nCent's litepaper](https://ncent.io/App
 ## Usage
 
 ### Starting the Sandbox
-Read the [Sandbox Docker Guide](../../../Sandbox/Sandbox%20API/README.md) to start the sandbox
+Read the [Sandbox Docker Guide](../../../Sandbox/Sandbox%20API/) to start the sandbox
 
 ### Setup
 Run once:

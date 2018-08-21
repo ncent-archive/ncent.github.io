@@ -14,7 +14,7 @@ const University = db.define('universities', {
   	allowNull: false
   },
   token_id: {
-  	type: Sequelize.INTEGER,
+  	type: Sequelize.STRING,
   	allowNull: false
   },
   public_key: {
@@ -31,7 +31,7 @@ University.addHook('beforeValidate', (university) => {
   const { publicKey, privateKey } = createKeypair();
   university.public_key = publicKey;
   university.private_key = privateKey;
-  // TODO Use stampUniversityToken to get tokenId for storage
+  return (stampUniversityToken(university));
 });
 
 module.exports = University;

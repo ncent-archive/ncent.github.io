@@ -9,26 +9,30 @@ const createKeypair = () => {
   return ({publicKey, privateKey});
 };
 
-const stampUniversityToken = (universityName, universityPublicKey) => {
+const stampUniversityToken = (university) => {
   const TOKEN_AMOUNT = 100000;
   const EXPIRATION_DATE = '2021';
-  const TOKEN_NAME = `${universityName}Cent`;
-
-  new Promise(function(resolve, reject) {
-      return sdk.stampToken(
-        universityPublicKey,
-        TOKEN_NAME,
-        TOKEN_AMOUNT,
-        EXPIRATION_DATE,
-        (res)=>console.log(res),
-        (rej)=>console.log(rej));
-  })
-  .then(function(response) {
-      const tokenId = response.data["token"]["uuid"];
-  })
-  .catch(function(error) {
-      console.log(error);
-  });
+  const TOKEN_NAME = `${university.dataValues.name}Cent`;
+  return (
+    new Promise(function(resolve, reject) {
+        return sdk.stampToken(
+          university.dataValues.public_key,
+          TOKEN_NAME,
+          TOKEN_AMOUNT,
+          EXPIRATION_DATE,
+          resolve,
+          reject
+        );
+    })
+    .then(function(response) {
+        console.log("Created a universityToken:", response.data);
+        const tokenId = response.data["uuid"];
+        university.token_id = tokenId;
+    })
+    .catch(function(error) {
+        console.log(error);
+    })
+  );
 };
 
 const createWalletFromPrivateString = (privateKeyString) => {
