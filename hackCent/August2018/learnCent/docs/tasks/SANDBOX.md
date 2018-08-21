@@ -6,15 +6,15 @@
  - You must be running the [Sandbox](../../../../Sandbox/Sandbox%20API/) for the SDK to interact with
 
 ## Functionality
- - [ ] createUserWallet()
+ - [x] createKeypair()
   - invokes SDK createWalletAddress
   - returns keypair for user creation
   - will be invoked prior to user validation
- - [ ] transferTokens(fromUserId, toUserId, amount)
+ - [x] transferTokens(fromUser, toUser, amount)
   - `const StellarSdk = require('stellar-sdk');`
-  - const fromPrivateKey = (get private key of fromUserId)
-  - const fromPublicKey = (get public key of fromUserId)
-  - const toPublicKey = (get public key of toUserId)
+  - const fromPrivateKey = (get private key of fromUser)
+  - const fromPublicKey = (get public key of fromUser)
+  - const toPublicKey = (get public key of toUser)
   - const fromKeyPair = (construct new [stellar Keypair](https://stellar.github.io/js-stellar-sdk/Keypair.html))
     - {publicKey: fromPublicKey, privateKey: fromPrivateKey}
   - const tokenId = (get user's token id from university association)
