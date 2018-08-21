@@ -1,0 +1,14 @@
+{
+  "name": "nomnomcent-backend",
+  "version": "0.0.1",
+  "description": "",
+  "main": "nomnomcent.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Jovan Jester",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.18.0"
+  }
+}
