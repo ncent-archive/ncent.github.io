@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import Auth from '../components/Auth/Auth';
+import { loginUser } from '../actions/user_actions';
 
 function mapStateToProps(state, ownProps) {
   return {
@@ -13,14 +14,14 @@ function mapStateToProps(state, ownProps) {
       email: '',
       password: '',
     },
-    history: ownProps.history
-    // map login errors from redux state to display on form
+    history: ownProps.history,
+    errors: state.errors
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    // action: login thunk
+    action: (user) => dispatch(loginUser(user))
   };
 }
 

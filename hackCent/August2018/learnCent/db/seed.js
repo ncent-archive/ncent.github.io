@@ -4,6 +4,8 @@ const seedUsers = () => db.Promise.map([
   {email: 'BestTutor', password: 'tutor101'},
   {email: 'BetterTutor', password: 'tutor102'},
   {email: 'BestStudent', password: 'tutor102'},
+  {email: 'harry@hogwarts.edu', password: 'ronismyfriend'},
+  {email: 'johnn@john.com', password: 'johnjohn'},
 ], user => db.model('users').create(user));
 
 const seedRequests = () => db.Promise.map([

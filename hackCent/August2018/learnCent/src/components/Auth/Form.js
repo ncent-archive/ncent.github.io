@@ -19,14 +19,18 @@ class Form extends Component {
 
   submitForm(e) {
     e.preventDefault();
-    // invoke action from props (dispatch)
+    this.props.action(this.state);
     this.props.history.push('/students');
   }
 
   render() {
     const { buttonName, altLink, altPText, altLinkText } = this.props.formInfo;
+    const errors = this.props.errors;
     return (
         <form className="auth-form" onSubmit={this.submitForm}>
+          <div className="auth-errors-div">
+            <p className="auth-p">{errors}</p>
+          </div>
           <p
             className="auth-link">
             {altPText} <Link
@@ -38,14 +42,16 @@ class Form extends Component {
             type="text"
             placeholder="Email"
             value={this.state.email}
-            onChange={this.updateInput('email')}>
+            onChange={this.updateInput('email')}
+            required>
           </input>
           <input
             className="auth-input"
             type="password"
             placeholder="Password"
             value={this.state.password}
-            onChange={this.updateInput('password')}>
+            onChange={this.updateInput('password')}
+            required>
           </input>
           <button className="auth-button">{buttonName}</button>
         </form>

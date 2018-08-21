@@ -10,22 +10,23 @@ import {
   Redirect,
   Switch
 } from 'react-router-dom';
+import { AuthRoute, ProtectedRoute } from './utils/route_utils';
 
 const Routes = () => {
   return (
     <Router>
       <div>
         <Switch>
-          <Route exact path="/" component={Login} />
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/signup" component={Signup} />
-          <Route path="/students" component={App} />
-          <Route path="/tutors" component={App} />
+          <AuthRoute exact path="/" component={Login} />
+          <AuthRoute exact path="/login" component={Login} />
+          <AuthRoute exact path="/signup" component={Signup} />
+          <ProtectedRoute path="/students" component={App} />
+          <ProtectedRoute path="/tutors" component={App} />
           <Redirect to="/" />
         </Switch>
         <Switch>
-          <Route exact path="/students" component={Students} />
-          <Route exact path="/tutors" component={Tutors} />
+          <ProtectedRoute exact path="/students" component={Students} />
+          <ProtectedRoute exact path="/tutors" component={Tutors} />
         </Switch>
       </div>
     </Router>
