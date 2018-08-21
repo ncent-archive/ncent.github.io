@@ -6446,123 +6446,58 @@ body{
         })
         .done(function(data){
             console.log(data);
-            let bugsList= $("#bug-list");
-            bugsList.empty();
-            if(data.bugs.length == 0){
-                bugsList.append(noBugYetCard(data.name));
-            }
-            for(var i =0; i < data.bugs.length; i++){
-                
-    
-                $.get('/api/bug/'+data.bugs[i].bug_uuid.toString(), function(bug){
+            let pledges= $("#pledges");
+            pledges.empty();
+           
+            for(var i =0; i < data.length; i++){
+                pledge = data[i];     
+                pledges.append(createPledge(pledge.username, pledge.points, pledge.uuid));
                     
-                    if(data.isCompany){
-                        if(bug.users[0].user_uuid == data.uuid){
-                            $.get('/api/user/'+ bug.users[1].user_uuid, function(author){
-                                bugsList.append(createBugCard(bug, author.name, true));
-                            });
-                            
-                        }
-                        else{
-                            $.get('/api/user/'+ bug.users[0].user_uuid, function(author){
-                                bugsList.append(createBugCard(bug, author.name, true));
-                            });
-                        }
-                    }
-                    else{
-                        bugsList.append(createBugCard(bug, data.name, false));
-                    }
-                    document.getElementById(bug.createdAt).style.display = "none";
-                });
-                
-                
             }
-            $('#welcome').text('Welcome to bugCent, ' + data.name.charAt(0).toUpperCase() + data.name.substring(1) + "!");
+            
             
         })
     });
-    function noBugYetCard(name){
-        return $(`
-            <div class="col-md-12">
-                    <div class="blog">
-                        <div class="blog-img">
-                            <img class="img-responsive" src="./img/blog2.jpg" alt="">
-                        </div>
-                        <div class="blog-content">
-                            <ul class="blog-meta">
-                                <li><i class="fa fa-user"></i>${name}</li>
+    // function noBugYetCard(name){
+    //     return $(`
+    //         <div class="col-md-12">
+    //                 <div class="blog">
+    //                     <div class="blog-img">
+    //                         <img class="img-responsive" src="./img/blog2.jpg" alt="">
+    //                     </div>
+    //                     <div class="blog-content">
+    //                         <ul class="blog-meta">
+    //                             <li><i class="fa fa-user"></i>${name}</li>
                                 
                                 
-                            </ul>
-                            <h3>You haven't reported any bugs yet!</h3>
-                            <p>Reporting bugs is really easy. Earn money and recieve recognition for helping improve products you use. <br><br><br></p>
-                            <a href="/dashboard/report">Report your first bug!</a>
-                        </div>
-                        </div>
-                        </div>`
-            )
-    }
-    function createBugCard(bug, name, isCompany){
-        var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-        let date = bug.createdAt;
-        let year = date.substring(0, 4);
-        let month = Number(date.substring(5, 7));
-        let day = date.substring(8, 10);
-        date = months[month-1] + ' ' + day + ', ' + year;
-        if(isCompany){
+    //                         </ul>
+    //                         <h3>You haven't reported any bugs yet!</h3>
+    //                         <p>Reporting bugs is really easy. Earn money and recieve recognition for helping improve products you use. <br><br><br></p>
+    //                         <a href="/dashboard/report">Report your first bug!</a>
+    //                     </div>
+    //                     </div>
+    //                     </div>`
+    //         )
+    // }
+    function createPledge(username, points, uuid){
+    
             return $(`
-                <div class="col-md-4">
-                        <div class="blog">
-                            <div class="blog-img">
-                                <img class="img-responsive" src="./img/blog2.jpg" alt="">
-                            </div>
-                            <div class="blog-content">
-                                <ul class="blog-meta">
-                                    <li><i class="fa fa-user"></i>${name}</li>
-                                    <li><i class="fa fa-clock-o"></i>${date}</li>
-                                    
-                                </ul>
-                                <h3>${bug.name}</h3>
-                                <p>${bug.description}<br><br><br></p>
-                                <form action="./updatebug.html" style="inline-block; float:left">
-                                    <input type="hidden" name="bug_uuid" value ="${bug.uuid}"/>
-                                    <input class = "report-btn" style="inline-block; float:right; opacity:1"type = "submit" value="Update Status Here"/>
-
-                                    </form>
-                                <a href="./public/dashboard/dashboard.html"><br><br>Status: ${bug.status}<br></a>
-                            </div>
-                        </div>
-                    </div>`
-            )
-        }
-       
-            return $(`
-                <div class="col-md-4">
-                        <div class="blog">
-                            <div class="blog-img">
-                                <img class="img-responsive" src="./img/blog2.jpg" alt="">
-                            </div>
-                            <div class="blog-content">
-                                <ul class="blog-meta">
-                                    <li><i class="fa fa-user"></i>${name}</li>
-                                    <li><i class="fa fa-clock-o"></i>${date}</li>
-                                    
-                                </ul>
-                                <h3>${bug.name}</h3>
-                                <p>${bug.description}<br><br><br></p>
-                                <form action="./updatebug.html" style="inline-block; float:left">
-                                    <input type="hidden" name="bug_uuid" value ="${bug.uuid}"/>
-                                    
-
-                                    </form>
-                                <a href="./public/dashboard/dashboard.html"><br><br>Status: ${bug.status}<br></a>
-                            </div>
-                        </div>
-                    </div>`
+                <form id="${username}" name="${username}" action = "/pledge/${uuid}" method = "get"><input type="hidden" name="user_uuid" value ="${uuid}"/></form>
+                <div class = "col-six">
+                    <a onclick="submitform(${username})"><h2 style="text-align:center;">${username}</h2></a>
+                </div>
+                <div class="col-six">
+                    <h2 style="text-align:center;">${points}</h2>
+                </div>
+    
+                `
                 )
         
     }
-
+    function submitform(username){
+        $(username).submit();
+        
+    }
     </script>
 <body id="top">
 
@@ -6737,15 +6672,23 @@ body{
     <!-- services
     ================================================== -->
     
- <section id='section-ajenda' class="s-services section-ajenda section-wrapper">
+ <section id='section-ajenda' class="s-services section-ajenda section-wrapper" style="padding-top:2rem;">
 
-        <h1 style="float:center;text-align:center;font-family: 'Montserrat-Medium', sans-serif;
+        <h1 style="float:center;text-align:center;font-family: 'Montserrat-Medium', sans-serif;margin-bottom:0;
                     
-                    ">Pledges<br><br></h1>
+                    ">Pledges</h1>
+                    <h4 style="margin-top:0;float:center;text-align:center;font-family: 'Montserrat-Medium', sans-serif;
+                    
+                    ">Click on any username to join their pledge chain.<br></h4>
         <div class="container">
 
-            <div class="row">
-            <h2>John Smith&emsp;&nbsp;&emsp;&nbsp;&emsp;&nbsp;3<h2>
+            <div class="row" id = "pledges">
+                <div class = "col-six">
+                    <h2>John Smith</h2>
+                </div>
+                <div class="col-six">
+                    <h2>1</h2>
+                </div>
     
             
             </div>
