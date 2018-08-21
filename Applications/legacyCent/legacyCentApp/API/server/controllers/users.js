@@ -17,16 +17,40 @@ module.exports = {
     }
     res.sendFile(path.resolve('__dirname' + '../../../../index.html'));
   },
-  
+  getPageWithReferral(req, res){
+    res.sendFile(__dirname+ '/public/signup/signupreferral.html');
+  },
   getPage(req, res){
-    sessionChecker = (req, res, next) => {
-      if (req.session.user && req.cookies.user_sid) {
-          res.redirect('/dashboard');
-      } else {
-          next();
-      }    
-    }
     res.sendFile(__dirname+ '/public/signup/signup.html');
+  },
+  createWithReferral(req, res) {
+    return User
+      .create({
+        username: req.body.username,
+        name: req.body.name,
+        email: req.body.email,
+        points: 1,
+      })
+      .then(user =>{
+        console.log("here");
+        return User
+        .findById(req.params.user_uuid, {
+        })
+        .then(referral=>{
+          return referral
+          .update({
+            points: referral.points+1
+          })
+          .then(res.sendFile(path.resolve(__dirname + '../../../../../index.html')))
+          .catch(res.status(400).send(error));
+        })
+        res.sendFile(path.resolve(__dirname + '../../../../../index.html'))
+      
+      })
+      .catch(error => {
+        res.sendFile(__dirname+ '/public/signup/signuperror.html');
+        
+      });
   },
   create(req, res) {
     return User
