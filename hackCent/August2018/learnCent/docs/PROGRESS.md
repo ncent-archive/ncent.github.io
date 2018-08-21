@@ -44,3 +44,7 @@
 Auth task completed
 <a name="07202018"></a>
 ## (07/21/2018)
+
+### Backend
+- Successfully use the SDK to generate user public/private keys and save in db
+- Begin work on University model

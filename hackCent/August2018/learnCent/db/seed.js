@@ -12,6 +12,10 @@ const seedRequests = () => db.Promise.map([
   {sender_id: 1, receiver_id: 3}
 ], request => db.model('requests').create(request));
 
+// const seedUniversities = () => db.Promise.map([
+//   {name: "Stanford University"}
+// ], university => db.model('universities').create.create(university));
+
  db.didSync
    .then(() => db.sync({force: true}))
    .then(seedUsers)

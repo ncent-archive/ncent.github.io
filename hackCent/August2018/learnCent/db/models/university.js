@@ -3,7 +3,12 @@
 const Sequelize = require('sequelize');
 const db = require('../index.js');
 
-const University = db.define('university', {
+const {
+  createKeypair,
+  stampUniversityToken
+} = require('../../server/utils/sdk_utils');
+
+const University = db.define('universities', {
   name: {
   	type: Sequelize.STRING,
   	allowNull: false
@@ -20,6 +25,13 @@ const University = db.define('university', {
   	type: Sequelize.STRING,
   	allowNull: false
   },
+});
+
+University.addHook('beforeValidate', (university) => {
+  const { publicKey, privateKey } = createKeypair();
+  university.public_key = publicKey;
+  university.private_key = privateKey;
+  // TODO Use stampUniversityToken to get tokenId for storage
 });
 
 module.exports = University;

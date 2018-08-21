@@ -4,7 +4,7 @@ const Sequelize = require('sequelize');
 const db = require('../index.js');
 const bcrypt = require('bcrypt');
 
-const { createUserKeypair } = require('../../server/utils/sdk_utils');
+const { createKeypair } = require('../../server/utils/sdk_utils');
 const { generatePasswordDigest } = require('../../server/utils/user_utils');
 
 const User = db.define('users', {
@@ -27,7 +27,7 @@ const User = db.define('users', {
 });
 
 User.addHook('beforeValidate', (user) => {
-  const { publicKey, privateKey } = createUserKeypair();
+  const { publicKey, privateKey } = createKeypair();
   user.public_key = publicKey;
   user.private_key = privateKey;
   user.password_digest = generatePasswordDigest(user.password_digest);
