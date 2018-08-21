@@ -346,6 +346,7 @@ html, body {
     padding-left: 15vw;
     padding-right: 15vw;
     padding-bottom: 20vw;
+    padding-top: 10vh;
     line-height: 4vh;
     text-align: justify;
     text-justify: distribute;
@@ -766,6 +767,40 @@ a:hover {
 .newsDate {
     color: #1d88d4;
 }
+
+.tokenMetricsContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.tokenMetricsImg {
+    max-width: 960px;
+    height: auto;
+}
+
+.targetsContainer {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: 2vh;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.tokenMetricsFooter {
+    margin-bottom: 15vh;
+    text-align: center;
+}
+
+.roadAheadHeader {
+    margin-bottom: 25vh;
+}
+
 @media only screen and (max-width: 1090px){
     
     .contactUs{
@@ -1153,6 +1188,23 @@ a:hover {
 
     .maitreDisclaimer {
         padding: 5vw;
+    }
+
+    .tokenMetricsImg {
+        width: 96vw;
+        height: 54vw;
+    }
+
+    .targetsContainer {
+        font-size: 1.25vh;
+    }
+
+    .targetItem {
+        height: 1.5vh;
+    }
+
+    .investorsHeader {
+        font-size: 4vh;
     }
 }
 
