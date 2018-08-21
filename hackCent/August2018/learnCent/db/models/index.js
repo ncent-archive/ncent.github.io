@@ -6,9 +6,8 @@ const University = require('./university');
 
 User.hasMany(Request);
 Request.belongsTo(User);
-// University.hasMany(User);
-// User.belongsTo(University);
-// TODO Add foreign key to user to store university_id
+University.hasMany(User);
+User.belongsTo(University);
 
 module.exports = {
   User,

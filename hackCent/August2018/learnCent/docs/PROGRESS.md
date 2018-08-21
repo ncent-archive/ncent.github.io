@@ -47,4 +47,6 @@ Auth task completed
 
 ### Backend
 - Successfully use the SDK to generate user public/private keys and save in db
-- Begin work on University model
+- Complete university model
+- Complete university token stamping
+- Associate users with universities

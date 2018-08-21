@@ -1,5 +1,10 @@
 const db = require('../db');
 
+
+const seedUniversities = () => db.Promise.map([
+  {name: "Stanford"}
+], university => db.model('universities').create(university));
+
 const seedUsers = () => db.Promise.map([
   {email: 'BestTutor', password_digest: 'tutor101'},
   {email: 'BetterTutor', password_digest: 'tutor102'},
@@ -12,17 +17,14 @@ const seedRequests = () => db.Promise.map([
   {sender_id: 1, receiver_id: 3}
 ], request => db.model('requests').create(request));
 
-const seedUniversities = () => db.Promise.map([
-  {name: "Stanford"}
-], university => db.model('universities').create(university));
 
  db.didSync
    .then(() => db.sync({force: true}))
+   .then(seedUniversities)
+   .then(universities => console.log(`Seeded ${universities.length} universities OK`))
    .then(seedUsers)
    .then(users => console.log(`Seeded ${users.length} users OK`))
    .then(seedRequests)
    .then(requests => console.log(`Seeded ${requests.length} requests OK`))
-   .then(seedUniversities)
-   .then(universities => console.log(`Seeded ${universities.length} universities OK`))
    .catch(error => console.error(error))
    .finally(() => db.close());

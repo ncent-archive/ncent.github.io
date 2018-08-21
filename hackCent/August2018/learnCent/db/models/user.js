@@ -24,6 +24,10 @@ const User = db.define('users', {
   	type: Sequelize.STRING,
   	allowNull: false
   },
+  university_id: {
+    type: Sequelize.INTEGER,
+    allowNull: false
+  }
 });
 
 User.addHook('beforeValidate', (user) => {
@@ -31,6 +35,7 @@ User.addHook('beforeValidate', (user) => {
   user.public_key = publicKey;
   user.private_key = privateKey;
   user.password_digest = generatePasswordDigest(user.password_digest);
+  user.university_id = 1;
 });
 
 User.prototype.validPassword = function(password) {
