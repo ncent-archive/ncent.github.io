@@ -2,28 +2,33 @@ const ncentSDK = require('../../../../../SDK/source/ncentSDK');
 const sdk = new ncentSDK();
 const StellarSdk = require('stellar-sdk');
 
-const createUserKeypair = () => {
+const createKeypair = () => {
   const wallet = sdk.createWalletAddress();
   const publicKey = wallet.publicKey();
   const privateKey = StellarSdk.StrKey.encodeEd25519SecretSeed(wallet._secretSeed);
   return ({publicKey, privateKey});
 };
 
-const stampUniversityToken = () => {
-  // Taken from test.js example in SDK docs
-  // new Promise(function(resolve, reject) {
-  //     return sdk.stampToken(keypair1.publicKey(), 'jobCent', 1000000, '2021', resolve, reject);
-  // })
-  // .then(function(response) {
-  //     console.log(response.data);
-  //     token_id = response.data["token"]["uuid"];
-  // })
-  // .then(function() {
-  //     return sdk.transferTokens(keypair1, keypair2.publicKey(), token_id, 10, defaultResolve, defaultReject);
-  // })
-  // .catch(function(error) {
-  //     console.log(error);
-  // })
+const stampUniversityToken = (universityName, universityPublicKey) => {
+  const TOKEN_AMOUNT = 100000;
+  const EXPIRATION_DATE = '2021';
+  const TOKEN_NAME = `${universityName}Cent`;
+
+  new Promise(function(resolve, reject) {
+      return sdk.stampToken(
+        universityPublicKey,
+        TOKEN_NAME,
+        TOKEN_AMOUNT,
+        EXPIRATION_DATE,
+        (res)=>console.log(res),
+        (rej)=>console.log(rej));
+  })
+  .then(function(response) {
+      const tokenId = response.data["token"]["uuid"];
+  })
+  .catch(function(error) {
+      console.log(error);
+  });
 };
 
 const createWalletFromPrivateString = (privateKeyString) => {
@@ -54,4 +59,8 @@ const getTokenBalance = (fromUser) => {
     (error)=>console.log(error.data));
 };
 
-module.exports = { createUserKeypair, transferTokens, getTokenBalance };
+module.exports = {
+  createKeypair,
+  transferTokens,
+  getTokenBalance,
+  stampUniversityToken };

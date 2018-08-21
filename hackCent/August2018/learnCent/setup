@@ -1,5 +1,8 @@
 dropdb learncent >/dev/null
 createdb learncent >/dev/null
 
+cd ../../../SDK/
+npm install
+cd ../hackCent/August2018/learnCent/
 npm install
 npm run seed
