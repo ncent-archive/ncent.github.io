@@ -18,11 +18,16 @@ Read more about recursive incentives in [nCent's litepaper](https://ncent.io/App
 ## Usage
 
 ### Starting the Sandbox
-Read the [Sandbox Docker Guide](../../../Sandbox/Sandbox%20API/README.md) to start the sandbox
+Read the [Sandbox Docker Guide](../../../Sandbox/Sandbox%20API/) to start the sandbox
 
-### Starting the app
+### Setup
+Run once:
 ```
-npm install
+chmod +x setup
+./setup
+```
+### Starting
+```
 npm start
 ```
 This will lead you to our homepage. You can navigate through the app from there.
