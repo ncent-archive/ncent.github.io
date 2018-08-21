@@ -40,5 +40,6 @@
 - Creation of user model w/ email, password, public_key, private_key
 - Creation of effective session for storage of user
 - Session successfully resolves user to frontend
+
 <a name="07202018"></a>
 ## (07/21/2018)
