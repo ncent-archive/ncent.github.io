@@ -4,11 +4,12 @@
  - These API calls will need to use the SDK located at [/SDK/source/ncentSDK.js](../../../../SDK/source/ncentSDK.js)
  - Usage: [/SDK/](../../../../SDK/)
  - You must be running the [Sandbox](../../../../Sandbox/Sandbox%20API/) for the SDK to interact with
- 
+
 ## Functionality
- - [ ] createUserWallet(userId)
+ - [ ] createUserWallet()
   - invokes SDK createWalletAddress
-  - saves public and private key to database under user model
+  - returns keypair for user creation
+  - will be invoked prior to user validation
  - [ ] transferTokens(fromUserId, toUserId, amount)
   - `const StellarSdk = require('stellar-sdk');`
   - const fromPrivateKey = (get private key of fromUserId)

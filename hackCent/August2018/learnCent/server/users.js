@@ -1,5 +1,3 @@
-const { generatePasswordDigest } = require('./utils/user_utils');
-
 const db = require('../db');
 const User = require('../db/models/user');
 const Request = require('../db/models/request');
@@ -32,12 +30,13 @@ router.post('/', function(req, res) {
   const reqUser = req.body.user;
   const reqEmail = reqUser.email;
   const reqPassword = reqUser.password;
+
   User.create({
     email: reqEmail,
-    password_digest: generatePasswordDigest(reqPassword),
+    password_digest: reqPassword,
   })
   .then(user => {
-    const { id, email} = user.dataValues;
+    const { id, email } = user.dataValues;
     const storeUser = {id, email};
     req.session.user = storeUser;
     res.send({user: storeUser});

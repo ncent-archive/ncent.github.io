@@ -1,0 +1,5 @@
+dropdb learncent >/dev/null
+createdb learncent >/dev/null
+
+npm install
+npm run seed

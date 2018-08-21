@@ -41,5 +41,6 @@
 - Creation of effective session for storage of user
 - Session successfully resolves user to frontend
 
+Auth task completed
 <a name="07202018"></a>
 ## (07/21/2018)
