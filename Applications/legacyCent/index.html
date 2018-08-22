@@ -6470,12 +6470,14 @@ body{
     function createPledge(username, points, uuid){
     
             return $(`
-                <form id="${username}" name="${username}" action = "/pledge/${uuid}" method = "get"><input type="hidden" name="user_uuid" value ="${uuid}"/></form>
-                <div class = "col-six">
-                    <a onclick="submitform(${username})"><h2 style="text-align:center;">${username}</h2></a>
+                <div class="row" style="height:50px;">
+                <form id="${username}" name="${username}" action = "/pledge/${uuid}" method = "get"><input type="hidden" name="user_uuid" value ="${uuid}"></input></form>
+                <div class = "col-six" style="padding:0;height:50px;">
+                    <h2 style="text-align:center;"><a onclick="submitform(${username})" style="cursor:pointer;">${username}</a></h2>
                 </div>
-                <div class="col-six">
-                    <h2 style="text-align:center;">${points}</h2>
+                <div class="col-six" style="padding:0;height:50px;">
+                    <h2 style="text-align:center;padding:0;">${points}</h2>
+                </div>
                 </div>
     
                 `
@@ -6556,7 +6558,7 @@ body{
 
             <div class="row home-content__main">
 
-                <h3 style="font-family: 'Montserrat-Medium', sans-serif;">legacyCent: Help Cure Cancer. Leave your legacy.</h3>
+                <h3 style="font-family: 'Montserrat-Medium', sans-serif;">legacyCent: Help Cure Cancer. Establish your legacy.</h3>
 
                 <h1 style="font-family: 'Montserrat-Medium', sans-serif;
                     font-size: 6.3rem;
@@ -6645,7 +6647,7 @@ body{
         <div class="row about-desc" data-aos="fade-up">
             <div class="col-full">
                 <p style="font-family:'Lora-Regular', serif;">
-                The fight to cure cancer has been long and arduous. The missing link in most of our efforts to find a cure lies in the data. Privacy concerns have thwarted researchers' access to cancer patients' data. The solution is simple, just ask the patients to share. Share your data with medical researchers so that we can learn and improve our approach to battling cancer. Leave your legacy in the fight against cancer. 
+                The fight to cure cancer has been long and arduous. The missing link in most of our efforts to find a cure lies in the data. Privacy concerns have thwarted researchers' access to cancer patients' data. The solution is simple, just ask the patients to share. Share your data with medical researchers so that we can learn and improve our approach to battling cancer. Establish your legacy in the fight against cancer. 
                 </p>
             </div>
         </div> <!-- end about-desc -->
@@ -6667,9 +6669,9 @@ body{
                     <h4 style="margin-top:0;float:center;text-align:center;font-family: 'Montserrat-Medium', sans-serif;
                     
                     ">Click on any username to join their pledge chain.<br></h4>
-        <div class="container">
+        <div id = "pledges" class="container">
 
-            <div class="row" id = "pledges">
+            <div class="row" >
                 <div class = "col-six">
                     <h2>John Smith</h2>
                 </div>

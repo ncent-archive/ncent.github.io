@@ -1,7 +1,7 @@
 
 const users = require('./users');
-//const bugUsers = require('./bugUsers');
+// const referredBy = require('./referredBy');
 module.exports = {
   users,
- // bugUsers
+  // referredBy
 };
