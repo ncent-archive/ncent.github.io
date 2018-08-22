@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       unique: true
     },
     points:{
-      type: DataTypes.INTEGER,
+      type: DataTypes.DECIMAL,
       allowNull: true,
       unique: false
     },
@@ -32,12 +32,16 @@ module.exports = (sequelize, DataTypes) => {
       validate:{
         len: [4,100]
       }
+    },
+    referredBy_uuid:{
+      type: DataTypes.UUID,
+      allowNull: true,
     }
   });
   // User.associate = function(models) {
   //   User.hasMany(models.referredBy, {
-  //     foreignKey: 'referredBy_uuid',
-    
+  //     foreignKey: 'user_uuid',
+  //     as: 'referral',
   //   }); 
   // };
   sequelize.sync();
