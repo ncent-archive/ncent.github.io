@@ -34,14 +34,7 @@ function helper(next, points){
 module.exports = {
   
   getRedirect(req, res){
-    const sessionChecker = (req, res, next) => {
-      if (req.session.user && req.cookies.user_sid) {
-          res.redirect('/dashboard');
-      } 
-      else {
-          next();
-      }    
-    }
+    
     res.sendFile(path.resolve('__dirname' + '../../../../index.html'));
   },
   getPageWithReferral(req, res){
