@@ -31,6 +31,3 @@ chmod +x setup
 npm start
 ```
 This will lead you to our homepage. You can navigate through the app from there.
-
-## Progress
-Check out our [progress](docs/PROGRESS.md)!

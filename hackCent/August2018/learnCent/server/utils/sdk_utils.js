@@ -41,7 +41,7 @@ const createWalletFromPrivateString = (privateKeyString) => {
 };
 
 const transferTokens = (fromUser, toUser, amount) => {
-  const tokenTypeId = null; // TODO Stamped university token
+  const tokenTypeId = 1; // fromUser.getUniversity().token_id; (getUniversity may be a promise, check docs)
   const fromWallet = createWalletFromPrivateString(fromUser.private_key);
   const toPublicKey = toUser.public_key;
   sdk.transferTokens(
@@ -54,7 +54,7 @@ const transferTokens = (fromUser, toUser, amount) => {
 };
 
 const getTokenBalance = (fromUser) => {
-  const tokenTypeId = null; // TODO Stamped university token
+  const tokenTypeId = fromUser.getUniversity().token_id;
   const publicKey = fromUser.publicKey;
   sdk.getTokenBalance(
     publicKey,
@@ -67,4 +67,5 @@ module.exports = {
   createKeypair,
   transferTokens,
   getTokenBalance,
-  stampUniversityToken };
+  stampUniversityToken
+};

@@ -14,7 +14,7 @@ const University = db.define('universities', {
   	allowNull: false
   },
   token_id: {
-  	type: Sequelize.STRING,
+  	type: Sequelize.UUID,
   	allowNull: false
   },
   public_key: {
