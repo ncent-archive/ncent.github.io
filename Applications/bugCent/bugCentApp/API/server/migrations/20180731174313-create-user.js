@@ -23,6 +23,21 @@ module.exports = {
           type: DataTypes.STRING,
           allowNull: false
         },
+        public_key:{
+          type: DataTypes.STRING,
+          allowNull: true,
+          unique: true
+        },
+        balance:{
+          type: DataTypes.INTEGER,
+          allowNull: true,
+          unique: false
+        },
+        private_key:{
+          type: DataTypes.STRING,
+          allowNull: true,
+          unique: true
+        },
         isCompany: {
           type: DataTypes.BOOLEAN,
           allowNull: false
