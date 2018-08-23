@@ -19,8 +19,12 @@ module.exports = {
           unique: true,
           allowNull:false
         },
+        referredBy_uuid:{
+          type: DataTypes.UUID,
+          allowNull: true,
+        },
         points:{
-          type: DataTypes.INTEGER,
+          type: DataTypes.DOUBLE,
           allowNull: true,
           unique: false
         },
