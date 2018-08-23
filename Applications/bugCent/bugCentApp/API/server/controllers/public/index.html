@@ -11,7 +11,7 @@
 
 	<!-- Google font -->
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CVarela+Round" rel="stylesheet"> 
-
+    <link rel="icon" type="image/png" href="https://image.ibb.co/bLg0Oz/logo.png"/>
 	<!-- Bootstrap -->
 	<link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
 
@@ -1313,7 +1313,7 @@ header {
             $('#welcome').text('Welcome to bugCent, ' + data.name.charAt(0).toUpperCase() + data.name.substring(1) + "!");
             let balanceSection = $('#balance');
             balanceSection.empty();
-            balanceSection.append($(`<h2 style="text-align:left;"><font color = "white"><br>Balance: ${data.balance}</font><a href = "./bugCentApp/API/server/controllers/public/login/login.html"></a><form action = "/transferPage" method = "get"><input class = "white-btn" type="submit" value="Send bugCent"/></form></h2>`)
+            balanceSection.append($(`<h2 style="text-align:left;"><font color = "white"><br>Balance: ${data.balance}</font><a href = "./bugCentApp/API/server/controllers/public/login/login.html"></a><form action = "/transferPage" method = "get"><input class = "white-btn" style="display:inline-block;float:right; font-size:20px;"type="submit" value="Send bugCent"/></form></h2>`)
                 )
             
         })
@@ -1535,7 +1535,7 @@ header {
 				<div class="section-header text-center">
                     <h2 class="title"><font color = "white">Your Profile</font></h2>
                     <div id = "balance">
-                    <h2  style="text-align:left;"><font color = "white"><br>Balance: </font><button class="white-btn"style="display:inline-block; float:right;font-family: 'Varela Round', sans-serif;font-size:15px;">Send bugCent<br></button></h2>
+                    
                     
                     </div>
                 </div>
