@@ -47,7 +47,6 @@ require('./server/routes')(app);
 app.listen(app.get('port'), () => console.log(`App started on port ${app.get('port')}`));
 // initialize express-session to allow us track the logged-in user across sessions.
 
-
 app.get('*', (req, res) => res.status(200).send({
   message: 'Welcome to the beginning of nothingness.',
 }));
