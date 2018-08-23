@@ -27,8 +27,7 @@ function bugCentInit(){
          ncentSdkInstance.stampToken(bugCent_publicKey, 'bugCent', 10000, '2021', resolve, reject);
       })
       .then(response =>{
-        console.log(response);
-        tokenid = response.data["uuid"];
+        tokenid = response.data["token"]["uuid"];
         initialized = true;
       })
       .catch(error=> console.log('Error initalizing bugcent' + error));
@@ -50,15 +49,16 @@ module.exports = {
       return;
     }
     return User
-    .findOne({ where: { username: username } })
+    .findOne({ where: { username: req.body.username } })
     .then(function (recipient) {
       return new Promise(function(resolve, reject) {
-        ncentSdkInstance.transferTokens(StellarSdk.Keypair.fromSecret(req.session.user.private_key), recipient.public_key, '36231548-394c-4468-9448-ac18d009ef85', amount, resolve, reject);
+        ncentSdkInstance.transferTokens(StellarSdk.Keypair.fromSecret(req.session.user.private_key), recipient.public_key, tokenid, req.body.amount, resolve, reject);
       })
       .then(function(){
+        let newbalance = recipient.balance + Number(req.body.amount);
         return recipient
         .update({
-          balance: recipient.balance + req.body.amount
+          balance: newbalance
         })
         .then(console.log('recipient updated'))
         .catch(console.log('recipient not updated'));
@@ -67,9 +67,10 @@ module.exports = {
         return User
         .findById(req.session.user.uuid, {})
         .then(sender =>{
+          let newbalance = sender.balance - Number(req.body.amount);
           return sender
           .update({
-            balance: recipient.balance - req.body.amount
+            balance: newbalance,
           })
           .then(console.log('sender updated'))
           .catch(console.log('sender not updated'));
@@ -183,26 +184,36 @@ module.exports = {
         isCompany: req.body.isCompany
       })
       .then(user => {
-        return new Promise(function(resolve, reject) {
-          ncentSdkInstance.transferTokens(bugCent_keypair, user.public_key, '36231548-394c-4468-9448-ac18d009ef85', 100, resolve, reject);
-        })
-        .then(function(){
-          return user
-          .update({
-            balance: 100,
+        if(user.isCompany){
+          return new Promise(function(resolve, reject) {
+            ncentSdkInstance.transferTokens(bugCent_keypair, user.public_key, tokenid, 100, resolve, reject);
           })
           .then(function(){
-            req.session.user = user.dataValues;
-            if (user.dataValues && req.cookies.user_sid) {
-              res.sendFile(__dirname + '/public/index.html');
-            } else {
-                res.redirect('/login');
-            }
+            return user
+            .update({
+              balance: 100,
+            })
+            .then(function(){
+              req.session.user = user.dataValues;
+              if (user.dataValues && req.cookies.user_sid) {
+                res.sendFile(__dirname + '/public/index.html');
+              } else {
+                  res.redirect('/login');
+              }
+            })
+            .catch(console.log('error updating balance'));
+              
           })
-          .catch(console.log('error updating balance'));
-            
-        })
-        .catch(error => console.log(error));
+          .catch(error => console.log(error));
+        }
+        else{
+          if (user.dataValues && req.cookies.user_sid) {
+            res.sendFile(__dirname + '/public/index.html');
+          } else {
+              res.redirect('/login');
+          }
+        }
+        
       })
       .catch(error => {
         console.log(error);

@@ -32,4 +32,5 @@ module.exports = (app) => {
   app.get('/updatebug.html?:bug_uuid', usersController.updateBugPage);
   app.get('/logout', usersController.logOut);
   app.post('/transfer', usersController.transfer);
+  app.get('/transferPage', usersController.transferPage);
 };
