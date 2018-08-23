@@ -12,7 +12,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 // initialize cookie-parser to allow us access the cookies stored in the browser. 
-app.use(cookieParser());
+
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
 // Require our routes into the application.
@@ -24,17 +24,6 @@ app.disable('etag');
 //   }
 //   next();
 // });
-app.use(session({
-  key: 'user_sid',
-  secret: 'hellohello',
-  resave: false,
-  saveUninitialized: false,
-  cookie: {
-      expires: 600000000
-  }
-}));
-app.use(passport.initialize());
-app.use(passport.session());
 
 
 // // route for handling 404 requests(unavailable routes)
