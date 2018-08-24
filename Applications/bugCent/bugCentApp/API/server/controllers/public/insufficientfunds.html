@@ -11,7 +11,7 @@
 
 	<!-- Google font -->
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CVarela+Round" rel="stylesheet"> 
-    <link rel="icon" type="image/png" href="https://image.ibb.co/bLg0Oz/logo.png"/>
+
 	<!-- Bootstrap -->
 	<link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
 
@@ -1265,140 +1265,7 @@ header {
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script>
     
-    $(document).ready(function(){
-     
-        $.get({
-            type: 'GET',
-            url: 'http://localhost:8000/dashboard/reports',
-            //data: {action:'bugCent'},
-            // callback: 'callback',
-            error: function(error){
-                console.log(error);
-            },
-            
-            dataType: "json"
-        })
-        .done(function(data){
-            let bugsList= $("#bug-list");
-            bugsList.empty();
-            if(data.bugs.length == 0){
-                bugsList.append(noBugYetCard(data.name));
-            }
-            for(var i =0; i < data.bugs.length; i++){
-                
     
-                $.get('/api/bug/'+data.bugs[i].bug_uuid.toString(), function(bug){
-                    
-                    if(data.isCompany){
-                        if(bug.users[0].user_uuid == data.uuid){
-                            $.get('/api/user/'+ bug.users[1].user_uuid, function(author){
-                                bugsList.append(createBugCard(bug, author.name, true));
-                            });
-                            
-                        }
-                        else{
-                            $.get('/api/user/'+ bug.users[0].user_uuid, function(author){
-                                bugsList.append(createBugCard(bug, author.name, true));
-                            });
-                        }
-                    }
-                    else{
-                        bugsList.append(createBugCard(bug, data.name, false));
-                    }
-                    document.getElementById(bug.createdAt).style.display = "none";
-                });
-                
-                
-            }
-            $('#welcome').text('Welcome to bugCent, ' + data.name.charAt(0).toUpperCase() + data.name.substring(1) + "!");
-            let balanceSection = $('#balance');
-            balanceSection.empty();
-            balanceSection.append($(`<h2 style="text-align:left;"><font color = "white"><br>Balance: ${data.balance}</font><a href = "./bugCentApp/API/server/controllers/public/login/login.html"></a><form action = "/transferPage" method = "get"><input class = "white-btn" style="display:inline-block;float:right; font-size:20px;"type="submit" value="Send bugCent"/></form></h2>`)
-                )
-            
-        })
-    });
-    function noBugYetCard(name){
-        return $(`
-            <div class="col-md-12">
-                    <div class="blog">
-                        <div class="blog-img">
-                            <img class="img-responsive" src="./img/blog2.jpg" alt="">
-                        </div>
-                        <div class="blog-content">
-                            <ul class="blog-meta">
-                                <li><i class="fa fa-user"></i>${name}</li>
-                                
-                                
-                            </ul>
-                            <h3>You haven't reported any bugs yet!</h3>
-                            <p>Reporting bugs is really easy. Earn money and recieve recognition for helping improve products you use. <br><br><br></p>
-                            <a href="/dashboard/report">Report your first bug!</a>
-                        </div>
-                        </div>
-                        </div>`
-            )
-    }
-    function createBugCard(bug, name, isCompany){
-        var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-        let date = bug.createdAt;
-        let year = date.substring(0, 4);
-        let month = Number(date.substring(5, 7));
-        let day = date.substring(8, 10);
-        date = months[month-1] + ' ' + day + ', ' + year;
-        if(isCompany){
-            return $(`
-                <div class="col-md-4">
-                        <div class="blog">
-                            <div class="blog-img">
-                                <img class="img-responsive" src="./img/blog2.jpg" alt="">
-                            </div>
-                            <div class="blog-content">
-                                <ul class="blog-meta">
-                                    <li><i class="fa fa-user"></i>${name}</li>
-                                    <li><i class="fa fa-clock-o"></i>${date}</li>
-                                    
-                                </ul>
-                                <h3>${bug.name}</h3>
-                                <p>${bug.description}<br><br><br></p>
-                                <form action="./updatebug.html" style="inline-block; float:left">
-                                    <input type="hidden" name="bug_uuid" value ="${bug.uuid}"/>
-                                    <input class = "report-btn" style="inline-block; float:right; opacity:1"type = "submit" value="Update Status Here"/>
-
-                                    </form>
-                                <a href="./public/dashboard/dashboard.html"><br><br>Status: ${bug.status}<br></a>
-                            </div>
-                        </div>
-                    </div>`
-            )
-        }
-       
-            return $(`
-                <div class="col-md-4">
-                        <div class="blog">
-                            <div class="blog-img">
-                                <img class="img-responsive" src="./img/blog2.jpg" alt="">
-                            </div>
-                            <div class="blog-content">
-                                <ul class="blog-meta">
-                                    <li><i class="fa fa-user"></i>${name}</li>
-                                    <li><i class="fa fa-clock-o"></i>${date}</li>
-                                    
-                                </ul>
-                                <h3>${bug.name}</h3>
-                                <p>${bug.description}<br><br><br></p>
-                                <form action="./updatebug.html" style="inline-block; float:left">
-                                    <input type="hidden" name="bug_uuid" value ="${bug.uuid}"/>
-                                    
-
-                                    </form>
-                                <a href="./public/dashboard/dashboard.html"><br><br>Status: ${bug.status}<br></a>
-                            </div>
-                        </div>
-                    </div>`
-                )
-        
-    }
 
     </script>
 <body>
@@ -1429,11 +1296,8 @@ header {
 
 				<!--  Main navigation  -->
 				<ul class="main-nav nav navbar-nav navbar-right" >
-					<li style="color:white"><a href="#home" style="color:white"><font color = "white">Home</font></a></li>
-					<li><a href="#about"><font color = "white">About</font></a></li>
+					<li style="color:white"><a href="./index.html" style="color:white"><font color = "white">Home</font></a></li>
 					<li><a href="./dashboard/report"><font color = "white">Report A Bug</font></a></li>
-					<li><a href="#reports"><font color = "white">See Your Bugs</font></a></li>
-					<li><a href="#programs"><font color = "white">Browse Bugs</font></a></li>
 					<li><a href="/logout"><font color = "white">Log Out</font></a></li>
 					<li><a href="#contact"><font color = "white">Contact</b></font></a></li>
 				</ul>
@@ -1451,11 +1315,11 @@ header {
 					<!-- home content -->
 					<div class="col-md-10 col-md-offset-1">
 						<div class="home-content">
-							<h1 id = "welcome"class="white-text">bugCent</h1>
-							<p class="white-text"><font size= "5px"><b>Maximize the power of your network<br> to track down bugs.</b></font>
+							<h1 id = "welcome"class="white-text">You had insufficient balance to complete the transaction.</h1>
+							<p class="white-text"><font size= "5px"><b>Please try again with a different amount.</b></font>
 							</p>
 							<a href = "./dashboard/report"></a><form action = "/dashboard/report" method = "get"><input class = "white-btn" type="submit" value="Report a Bug"/></form>
-							<a href = "#programs"><input class = "main-btn"type="submit" value="See Your Bugs"/></a>
+							<a href = "./index.html"><input class = "main-btn"type="submit" value="Back to Home"/></a>
 						</div>
 					</div>
 					<!-- /home content -->
@@ -1523,88 +1387,7 @@ header {
 	
 
 	<!-- Blog -->
-	<div id="programs" class="section md-padding bg-grey" style="background-color: #000">
-
-		
-		<div class="container" >
-
-		
-			<div class="row">
-
-				
-				<div class="section-header text-center">
-                    <h2 class="title"><font color = "white">Your Profile</font></h2>
-                    <div id = "balance">
-                    
-                    
-                    </div>
-                </div>
-                <div style="padding:5px">
-                    
-                </div>
-				<div id = "bug-list">
-				<div class="col-md-4">
-					<div class="blog">
-						<div class="blog-img">
-							<img class="img-responsive" src="./img/blog1.jpg" alt="">
-						</div>
-						<div class="blog-content">
-							<ul class="blog-meta">
-								<li><i class="fa fa-user"></i>nCent Labs</li>
-								<li><i class="fa fa-clock-o"></i>18 Oct</li>
-								
-							</ul>
-							<h3>API</h3>
-							<p>Help us find bugs and improve our API. It's still in its early stages, there is much to be done!<br><br></p>
-							<a href="https://docs.google.com/forms/d/e/1FAIpQLSeyh-hg6Bph8g7wVUC5VtMfgDWJAu-EUaVY_fnbG14KIUbyaQ/viewform?usp=sf_link">Submit a Report</a>
-						</div>
-					</div>
-				</div>
-				
-				<div class="col-md-4">
-					<div class="blog">
-						<div class="blog-img">
-							<img class="img-responsive" src="./img/blog2.jpg" alt="">
-						</div>
-						<div class="blog-content">
-							<ul class="blog-meta">
-								<li><i class="fa fa-user"></i>nCent Labs</li>
-								<li><i class="fa fa-clock-o"></i>18 Oct</li>
-								
-							</ul>
-							<h3>Front End Bugs</h3>
-							<p>Help us find ways to optimize our websites for speed and design.<br><br><br></p>
-							<a href="https://docs.google.com/forms/d/e/1FAIpQLSeyh-hg6Bph8g7wVUC5VtMfgDWJAu-EUaVY_fnbG14KIUbyaQ/viewform?usp=sf_link">Submit a Report</a>
-						</div>
-					</div>
-				</div>
-				
-				<div class="col-md-4">
-					<div class="blog">
-						<div class="blog-img">
-							<img class="img-responsive"  src="./img/blog3.jpg" alt="">
-						</div>
-						<div class="blog-content">
-							<ul class="blog-meta">
-								<li><i class="fa fa-user"></i>nCent Labs</li>
-								<li><i class="fa fa-clock-o"></i>18 Oct</li>
-								
-							</ul>
-							<h3>jobCent Email</h3>
-							<p>Help us find ways to make jobCent MVP (an email server) better. This will make our demos as good as possible.<br><br></p>
-							<a href="https://docs.google.com/forms/d/e/1FAIpQLSeyh-hg6Bph8g7wVUC5VtMfgDWJAu-EUaVY_fnbG14KIUbyaQ/viewform?usp=sf_link">Submit a Report</a>
-						</div>
-					</div>
-				</div>
-				
-            </div>
-			</div>
-			
-
-		</div>
-		
-
-	</div>
+	
 
 
 	<!-- Contact -->
