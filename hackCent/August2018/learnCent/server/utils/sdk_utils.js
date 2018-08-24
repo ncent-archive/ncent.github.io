@@ -53,7 +53,7 @@ const transferTokens = (fromUser, toUser, amount) => {
     (error)=>console.log(error.data));
 };
 
-const getTokenBalance = (fromUser) => {
+const getUserTokenBalance = (fromUser) => {
   const tokenTypeId = fromUser.getUniversity().token_id;
   const publicKey = fromUser.publicKey;
   sdk.getTokenBalance(
@@ -66,6 +66,6 @@ const getTokenBalance = (fromUser) => {
 module.exports = {
   createKeypair,
   transferTokens,
-  getTokenBalance,
+  getUserTokenBalance,
   stampUniversityToken
 };
