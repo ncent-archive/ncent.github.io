@@ -5,27 +5,87 @@ const bcrypt = require('bcrypt');
 const path = require('path');
 const ncentSDK = require('../../../../../../SDK/source/');
 const ncentSdkInstance = new ncentSDK();
-
+const StellarSdk = require('stellar-sdk');
+let bugCent_publicKey;
+let bugCent_privateKey;
+let bugCent_keypair;
+let initialized = false; //CHANGE TO FALSE LATER
+let tokenid;
+function success(param){
+  console.log(param);
+}
+function bugCentInit(){
+    return new Promise(function(resolve, reject) {
+      resolve(ncentSdkInstance.createWalletAddress());
+      reject('nothing done');
+    })
+    .then(function(keypair){
+      bugCent_keypair = keypair;
+      bugCent_publicKey = keypair.publicKey();
+      bugCent_privateKey = keypair.secret();
+      return new Promise(function(resolve, reject) {
+         ncentSdkInstance.stampToken(bugCent_publicKey, 'bugCent', 10000, '2021', resolve, reject);
+      })
+      .then(response =>{
+        tokenid = response.data["token"]["uuid"];
+        initialized = true;
+      })
+      .catch(error=> console.log('Error initalizing bugcent' + error));
+      
+    })
+    .catch(error=> console.log('Error creating bugCent wallet keypair' + error));
+}
 module.exports = {
-  getBalance(req, res){
+  transferPage(req, res){
+      if (req.session.user && req.cookies.user_sid) {
+        res.sendFile(__dirname+ '/public/transfer.html');
+      } else {
+        res.sendFile(__dirname+ '/public/login/login.html');
+      }    
+  },
+  transfer(req, res){
+    if(req.body.amount > req.session.user.balance){
+      res.sendFile(__dirname+ '/public/insufficientfunds.html');
+      return;
+    }
     return User
-      .findById(req.session.user.uuid, {
+    .findOne({ where: { username: req.body.username } })
+    .then(function (recipient) {
+      return new Promise(function(resolve, reject) {
+        ncentSdkInstance.transferTokens(StellarSdk.Keypair.fromSecret(req.session.user.private_key), recipient.public_key, tokenid, req.body.amount, resolve, reject);
       })
-      .then(user => {
-        console.log('here');
-        if (!user) {
-          return res.status(404).send({
-            message: 'User Not Found',
-          });
-        }
-        return new Promise(function(resolve, reject) {
-          return ncentSdkInstance.getTokenBalance(user.email,'9d91db6b-f33a-4392-a583-a6ea14bd368f',resolve);
+      .then(function(){
+        let newbalance = recipient.balance + Number(req.body.amount);
+        return recipient
+        .update({
+          balance: newbalance
         })
-        .then(data => res.status(200).send(data))
-        .catch(error=> console.log(error));
-
+        .then(console.log('recipient updated'))
+        .catch(console.log('recipient not updated'));
       })
-      .catch(error => res.status(400).send(error));
+      .then(function(){
+        return User
+        .findById(req.session.user.uuid, {})
+        .then(sender =>{
+          let newbalance = sender.balance - Number(req.body.amount);
+          return sender
+          .update({
+            balance: newbalance,
+          })
+          .then(console.log('sender updated'))
+          .catch(console.log('sender not updated'));
+        })
+      })
+      .then(function(){
+        if (req.session.user && req.cookies.user_sid) {
+          res.sendFile(__dirname + '/public/index.html');
+        } else {
+            res.redirect('/login');
+        }
+      })
+      .catch(error=> console.log('Something went wrong' + error));
+    })
+
   },
   updateBugPage(req, res){
     res.sendFile(path.resolve(__dirname + '/public/updatebug.html'));
@@ -70,6 +130,7 @@ module.exports = {
       });
   },
   getRedirect(req, res){
+    if(!initialized) bugCentInit();
     const sessionChecker = (req, res, next) => {
       if (req.session.user && req.cookies.user_sid) {
           res.redirect('/dashboard');
@@ -81,6 +142,7 @@ module.exports = {
     res.sendFile(path.resolve('__dirname' + '../../../../index.html'));
   },
   getLogIn(req, res){
+    if(!initialized) bugCentInit();
     sessionChecker = (req, res, next) => {
       if (req.session.user && req.cookies.user_sid) {
           res.redirect('/dashboard');
@@ -91,6 +153,7 @@ module.exports = {
     res.sendFile(__dirname + '/public/login/login.html');
   },
   getPage(req, res){
+    if(!initialized) bugCentInit();
     sessionChecker = (req, res, next) => {
       if (req.session.user && req.cookies.user_sid) {
           res.redirect('/dashboard');
@@ -101,35 +164,64 @@ module.exports = {
     res.sendFile(__dirname+ '/public/signup/signup.html');
   },
   create(req, res) {
-    return User
+    let publickey;
+    let privatekey;
+    return new Promise(function(resolve, reject) {
+      resolve(ncentSdkInstance.createWalletAddress());
+      reject('nothing done');
+    })
+    .then(function(response){
+      keypair = response;
+      return User
       .create({
         name: req.body.name,
         email: req.body.email,
         username: req.body.username,
         password: req.body.password,
+        balance: 0,
+        public_key: keypair.publicKey(),
+        private_key: keypair.secret(),
         isCompany: req.body.isCompany
-        
       })
-      .then(user =>{
-        return new Promise(function(resolve, reject) {
-          ncentSdkInstance.createWalletAddress(req.body.email, '9d91db6b-f33a-4392-a583-a6ea14bd368f', resolve);
-        })
-        .then(res.status.send(200))
-        .catch(error => console.log(error));
-       // ncentSdkInstance.createWalletAddress(req.body.email, TOKENTYPE_ID, resolve);
-        req.session.user = user.dataValues;
-        //req.login(user.uuid);
-        if (user.dataValues && req.cookies.user_sid) {
-          res.sendFile(__dirname + '/public/index.html');
-        } else {
-            res.redirect('/login');
+      .then(user => {
+        if(user.isCompany){
+          return new Promise(function(resolve, reject) {
+            ncentSdkInstance.transferTokens(bugCent_keypair, user.public_key, tokenid, 100, resolve, reject);
+          })
+          .then(function(){
+            return user
+            .update({
+              balance: 100,
+            })
+            .then(function(){
+              req.session.user = user.dataValues;
+              if (user.dataValues && req.cookies.user_sid) {
+                res.sendFile(__dirname + '/public/index.html');
+              } else {
+                  res.redirect('/login');
+              }
+            })
+            .catch(console.log('error updating balance'));
+              
+          })
+          .catch(error => console.log(error));
         }
-        //res.sendFile(__dirname + '/public/dashboard/dashboard.html');
+        else{
+          if (user.dataValues && req.cookies.user_sid) {
+            res.sendFile(__dirname + '/public/index.html');
+          } else {
+              res.redirect('/login');
+          }
+        }
+        
       })
       .catch(error => {
+        console.log(error);
         res.sendFile(__dirname+ '/public/signup/signuperror.html');
-        
       });
+    })
+    .catch(error => console.log(error));
+    
   },
   
   list(req, res) {
@@ -197,7 +289,6 @@ module.exports = {
           });
         }
         return user
-        .find
           .update({
             name: req.body.name || user.name,
           })

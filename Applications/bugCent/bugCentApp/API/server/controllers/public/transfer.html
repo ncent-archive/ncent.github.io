@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>bugCent - Sign Up</title>
+	<title>bugCent - Update Bug</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="https://image.ibb.co/bLg0Oz/logo.png"/>
+<!--============================================================-->	
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<link rel="icon" type="image/png" href="https://image.ibb.co/bLg0Oz/logo.png"/>
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <!--===============================================================================================-->
@@ -27,6 +28,95 @@
 	<link rel="stylesheet" type="text/css" href="./css/util.css">
 	<link rel="stylesheet" type="text/css" href="./css/main.css">
 </head>
+<script>
+
+(function ($) {
+    "use strict";
+
+
+    /*==================================================================
+    [ Focus input ]*/
+    $('.input100').each(function(){
+        $(this).on('blur', function(){
+            if($(this).val().trim() != "") {
+                $(this).addClass('has-val');
+            }
+            else {
+                $(this).removeClass('has-val');
+            }
+        })    
+    })
+  
+  
+    /*==================================================================
+    [ Validate ]*/
+    var input = $('.validate-input .input100');
+
+    $('.validate-form').on('submit',function(){
+        var check = true;
+
+        for(var i=0; i<input.length; i++) {
+            if(validate(input[i]) == false){
+                showValidate(input[i]);
+                check=false;
+            }
+        }
+
+        return check;
+    });
+
+
+    $('.validate-form .input100').each(function(){
+        $(this).focus(function(){
+           hideValidate(this);
+        });
+    });
+
+    function validate (input) {
+        if($(input).attr('type') == 'email' || $(input).attr('name') == 'email') {
+            if($(input).val().trim().match(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/) == null) {
+                return false;
+            }
+        }
+        else {
+            if($(input).val().trim() == ''){
+                return false;
+            }
+        }
+    }
+
+    function showValidate(input) {
+        var thisAlert = $(input).parent();
+
+        $(thisAlert).addClass('alert-validate');
+    }
+
+    function hideValidate(input) {
+        var thisAlert = $(input).parent();
+
+        $(thisAlert).removeClass('alert-validate');
+    }
+    
+    /*==================================================================
+    [ Show pass ]*/
+    var showPass = 0;
+    $('.btn-show-pass').on('click', function(){
+        if(showPass == 0) {
+            $(this).next('input').attr('type','text');
+            $(this).addClass('active');
+            showPass = 1;
+        }
+        else {
+            $(this).next('input').attr('type','password');
+            $(this).removeClass('active');
+            showPass = 0;
+        }
+        
+    });
+
+
+})(jQuery);
+</script>
 <style>
 
 
@@ -37,12 +127,12 @@
 
 @font-face {
   font-family: Ubuntu-Regular;
-  src: url('//fonts.googleapis.com/css?family=Ubuntu'); 
+  src: url('../fonts/ubuntu/Ubuntu-Regular.ttf'); 
 }
 
 @font-face {
   font-family: Ubuntu-Bold;
-  src: url('//fonts.googleapis.com/css?family=Ubuntu'); 
+  src: url('../fonts/ubuntu/Ubuntu-Bold.ttf'); 
 }
 
 
@@ -542,20 +632,6 @@ iframe {
 .p-t-29 {padding-top: 29px;}
 .p-t-30 {padding-top: 30px;}
 </style>
-<script>
-  function validateForm() {
-    var x = document.forms["signingup"]["username"].value;
-    if (x == "") {
-        alert("Username must be filled out");
-        return false;
-    }
-    var y = document.forms["signingup"]["email"].value;
-    if (y == "") {
-        alert("Email must be filled out");
-        return false;
-    }
-}
-</script>
 <style>
   /* Customize the label (the container) */
 .cont {
@@ -634,53 +710,65 @@ iframe {
   align-content: center;
 }
 </style>
+<script>
+  $(document).ready(function(){
+    HTMLFormElement.prototype._submit = HTMLFormElement.prototype.submit;
+    HTMLFormElement.prototype.submit = function (){ 
+      this._sumbit();
+        handleData();
+        alert('done');
+    };
+    
+ });
+  function getBugUuid(){
+    return location.search.substring(10);
+  }
+  function handleData(){
+    let status;
+    if($('#reported').is(':checked')) status = 'Reported';
+    else if($('#evaluation').is(':checked')) status = 'Evaluation in Progress';
+    else if($('#accepted').is(':checked')) status = 'Accepted';
+    else if($('#rejected').is(':checked')) status = 'Rejected';
+    else status = 'Compensated';
+    let description = $( "#description" ).val();
+    var dataObj = { 'status': status, 'description':description};
+    console.log("hello")
+    $.ajax({
+      url: '/api/bug/'+ getBugUuid(),
+      type: 'PUT',
+      contentType: 'application/json',
+      data: JSON.stringify(dataObj),
+    });
+    var data = $('#form').serializeArray().reduce(function(obj, item) {
+      obj[item.name] = item.value;
+      return obj;
+    }, {});
+    $(document).refresh();
+    return true;
+  }
+</script>
 <body>
 	
 	<div class="limiter">
-		<div class="container-login100" style="width:100%;background-image: url('https://ak3.picdn.net/shutterstock/videos/5679173/thumb/10.jpg');">
-			<div class="wrap-login100 p-t-30 p-b-50" style="width:70%">
+		<div class="container-login100" style="background-image: url('https://ak3.picdn.net/shutterstock/videos/5679173/thumb/10.jpg');">
+			<div class="wrap-login100 p-t-30 p-b-50">
 				<span class="login100-form-title p-b-41"style="font-family: Ubuntu">
-					Sign Up for an Account
+					Transfer
 				</span>
-        <form name= "signingup" class="login100-form validate-form p-b-33 p-t-5" action="/signup" method="post"
-            onsubmit = "return validateForm()">
-
-					<div class="wrap-input100 validate-input" data-validate = "Username required">
-						<input class="input100" type="text" name="username" placeholder="Username"style="font-family: Ubuntu">
-						
-					</div>
-          <div class="wrap-input100 validate-input" data-validate = "Name required">
-            <input class="input100" type="text" name="name" placeholder="Name"style="font-family: Ubuntu">
-            
+				<form class="login100-form validate-form p-b-33 p-t-5"  method="post" action="/transfer">
+          <div class="wrap-input100 validate-input" data-validate = "Username is required">
+            <textarea class="input100" id = "username"name="username" placeholder="Enter Username Here"style="font-family: Ubuntu"></textarea>
+            <span class="focus-input100"></span>
           </div>
-          <div class="wrap-input100 validate-input" data-validate = "Email required">
-            <input class="input100" type="email" name="email" placeholder="Email"style="font-family: Ubuntu">
-            
+          
+
+					<div class="wrap-input100 validate-input" data-validate = "Message is required">
+            <textarea class="input100" id = "amount"name="amount" placeholder="Enter Amount Here"style="font-family: Ubuntu"></textarea>
+            <span class="focus-input100"></span>
           </div>
-
-          <div class="wrap-input100 validate-input" data-validate = "Enter username">
-            <div class="form-check">
-              <input class="cont" id = "company"type="radio" name="isCompany" value="true" style="margin-left:80px">
-              <label class="cont" for="company"  style="font-family: Ubuntu;color:#7e7d7d">
-                Company
-              </label>
-            </div>
-            <div class="form-check">
-              <input class="cont" id= "user"type="radio" name="isCompany"  style="margin-left:80px"value="false">
-              <label class="cont" for="user" style="font-family: Ubuntu;color:#7e7d7d">
-                User
-              </label>
-            </div>
-            
-          </div>
-
-					<div class="wrap-input100 validate-input" data-validate="Password required">
-						<input class="input100" type="password" name="password" placeholder="Password"style="font-family: Ubuntu">
-						
-					</div>
-
+        
 					<div class="container-login100-form-btn m-t-32">
-						<input class="login100-form-btn" type="submit" value="Sign Up"style="font-family: Ubuntu"/>
+						<button class="login100-form-btn" type="Submit" placeholder="Send Update"style="font-family: Ubuntu">Send bugCent</button>
 					</div>
 
 				</form>
@@ -690,11 +778,12 @@ iframe {
 	
 
 	<div id="dropDownSelect1"></div>
-
-	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-
+	
+<!--===============================================================================================-->
+	
+<!--===============================================================================================-->
 	<script src="./vendor/animsition/js/animsition.min.js"></script>
-
+<!--===============================================================================================-->
 	<script src="./vendor/bootstrap/js/popper.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <!--===============================================================================================-->

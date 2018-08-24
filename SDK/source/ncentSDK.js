@@ -111,7 +111,7 @@ class ncentSDK {
         const message = JSON.stringify(message_obj);
         const msg = dec(message);
         const signed = nacl.sign.detached(msg, sender_private);
-        axios.post(sdk._net + '/tokentypes/' + tokentype_id + '/items', {
+        axios.post(this._net + '/tokentypes/' + tokentype_id + '/items', {
             amount: tokenAmount,
             fromAddress: sender_KeyPair.publicKey(),
             toAddress: receiver_public,

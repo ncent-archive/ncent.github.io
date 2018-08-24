@@ -22,7 +22,8 @@
     "path": "^0.12.7",
     "pg": "^7.4.3",
     "pg-hstore": "^2.3.2",
-    "sequelize": "^4.38.0"
+    "sequelize": "^4.38.0",
+    "stellar-sdk": "^0.10.3"
   },
   "devDependencies": {
     "nodemon": "^1.18.3",

@@ -18,6 +18,16 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true,
       unique: false
     },
+    public_key:{
+      type: DataTypes.STRING,
+      allowNull: true,
+      unique: true
+    },
+    private_key:{
+      type: DataTypes.STRING,
+      allowNull: true,
+      unique: true
+    },
     username: {
       type: DataTypes.STRING,
       unique: true,
