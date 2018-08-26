@@ -4,7 +4,7 @@ const StellarSdk = require('stellar-sdk');
 
 // Create class for ncentSDK and SDK functions for each action.
 
-const testNet = 'http://localhost:8010/api';
+const testNet = 'http://18.219.87.29:8010/api';
 
 class ncentSDK {
     constructor () {
