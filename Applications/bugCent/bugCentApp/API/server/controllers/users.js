@@ -11,8 +11,31 @@ let bugCent_privateKey;
 let bugCent_keypair;
 let initialized = false; //CHANGE TO FALSE LATER
 let tokenid;
-function success(param){
-  console.log(param);
+function sendToMultipleHelper(recipientArr, username, senderPrivateKey, amount, i, max){
+  console.log('in helper');
+  if(i >= max) return;
+    return User
+        .findOne({ where: { username: username } })
+        .then(function (recipient) {
+          return new Promise(function(resolve, reject) {
+            ncentSdkInstance.transferTokens(StellarSdk.Keypair.fromSecret(senderPrivateKey), recipient.public_key, tokenid, amount, resolve, reject);
+          })
+          .then(function(){
+            let newbalance = recipient.balance + Number(amount);
+            return recipient
+            .update({
+              balance: newbalance
+            })
+            .then(function(){
+                i++;
+                return sendToMultipleHelper(recipientArr, recipientArr[i], senderPrivateKey, amount, i, max);
+            })
+            .catch(error=> console.log('recipient '+i+' not updated ' + error));
+          })
+          .catch(error=> console.log('Something is not right with transfer' + error));
+        })
+        .catch(error=> console.log('Something is not right with finding user' + error));
+  
 }
 function bugCentInit(){
     return new Promise(function(resolve, reject) {
@@ -44,47 +67,59 @@ module.exports = {
       }    
   },
   transfer(req, res){
-    if(req.body.amount > req.session.user.balance){
+    let recipientArr = req.body.username.split(", ");
+    console.log(req.body.username);
+    console.log('recipient array: '+ recipientArr);
+    let i = 0;
+    if(req.body.amount > (req.session.user.balance* recipientArr.length)){
       res.sendFile(__dirname+ '/public/insufficientfunds.html');
       return;
     }
-    return User
-    .findOne({ where: { username: req.body.username } })
-    .then(function (recipient) {
-      return new Promise(function(resolve, reject) {
-        ncentSdkInstance.transferTokens(StellarSdk.Keypair.fromSecret(req.session.user.private_key), recipient.public_key, tokenid, req.body.amount, resolve, reject);
-      })
-      .then(function(){
-        let newbalance = recipient.balance + Number(req.body.amount);
-        return recipient
-        .update({
-          balance: newbalance
+      return User
+      .findOne({ where: { username: recipientArr[i] } })
+      .then(function (recipient) {
+        return new Promise(function(resolve, reject) {
+          ncentSdkInstance.transferTokens(StellarSdk.Keypair.fromSecret(req.session.user.private_key), recipient.public_key, tokenid, req.body.amount, resolve, reject);
         })
-        .then(console.log('recipient updated'))
-        .catch(console.log('recipient not updated'));
-      })
-      .then(function(){
-        return User
-        .findById(req.session.user.uuid, {})
-        .then(sender =>{
-          let newbalance = sender.balance - Number(req.body.amount);
-          return sender
+        .then(function(){
+          let newbalance = recipient.balance + Number(req.body.amount);
+          return recipient
           .update({
-            balance: newbalance,
+            balance: newbalance
           })
-          .then(console.log('sender updated'))
-          .catch(console.log('sender not updated'));
+          .then(function(){
+              i++;
+              console.log(i);
+              console.log(recipientArr[i]);
+              return sendToMultipleHelper(recipientArr, recipientArr[i], req.session.user.private_key, req.body.amount, i, recipientArr.length);
+            
+          })
+          .then(function(){
+            return User
+            .findById(req.session.user.uuid, {})
+            .then(sender =>{
+              let newbalance = sender.balance - Number(req.body.amount * recipientArr.length);
+              return sender
+              .update({
+                balance: newbalance,
+              })
+              .then(function(){
+                if (req.session.user && req.cookies.user_sid) {
+                  res.sendFile(__dirname + '/public/index.html');
+                } else {
+                    res.redirect('/login');
+                }
+              })
+              .catch(console.log('sender not updated'));
+            })
+          })
+          .catch(error=> console.log('recipient not updated '+ error));
         })
+        .catch(error=> console.log('Something is not right with transfer' + error));
       })
-      .then(function(){
-        if (req.session.user && req.cookies.user_sid) {
-          res.sendFile(__dirname + '/public/index.html');
-        } else {
-            res.redirect('/login');
-        }
-      })
-      .catch(error=> console.log('Something went wrong' + error));
-    })
+      .catch(error=> console.log('Something is not right with finding user' + error))
+    
+        
 
   },
   updateBugPage(req, res){
