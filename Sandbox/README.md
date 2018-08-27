@@ -1,10 +1,10 @@
-# nCent Sandbox API
+# nCent Sandbox
 
 - [Local Installation](#local-installation)
 - [Endpoint Documentation](#endpoints-documentation)
 
 ## Introduction
-The Sandbox API allows you to run a server that mimics the API to the Core but stores the information on the tokentypes, transactions and wallets on a (PostgreSQL) database. It can receive any request detailed in Sandbox API/server/route/index.js. The handling of the requests are detailed in the files under Sandbox API/server/controllers. The database schema and migrations are handled in Sandbox API/server/models and Sandbox API/server/migrations respectively. Sandbox API/server/config/config.json handles the location and details of the database. Check Sandbox API/package.json for the detailed dependencies.
+The nCent Sandbox allows you to run a server that mimics the nCent Core Protocol. In its current early stage, it stores the information on the tokentypes, transactions and wallets on a (PostgreSQL) database. The API's that are avaiable are detailed in Sandbox API/server/route/index.js. The request handling is implemented in the Sandbox API/server/controllers directory. The database schema and migrations are handled in the Sandbox API/server/models directory and Sandbox API/server/migrations directory, respectively. Finally, Sandbox API/server/config/config.json handles the location and details of the database. Check Sandbox API/package.json for the various dependencies used by the sandbox.
 
 ## Local Installation
 ### Running Locally:
