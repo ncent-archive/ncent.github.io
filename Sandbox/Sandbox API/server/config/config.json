@@ -2,7 +2,7 @@
   "development": {
     "username": "postgres",
     "password": "ncent",
-    "database": "ncnt_dev",
+    "database": "ncnt-dev",
     "host": "localhost",
     "port": 5432,
     "dialect": "postgres"
