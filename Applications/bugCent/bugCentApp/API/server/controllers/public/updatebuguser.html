@@ -724,14 +724,9 @@ iframe {
     return location.search.substring(10);
   }
   function handleData(){
-    let status;
-    if($('#reported').is(':checked')) status = 'Reported';
-    else if($('#evaluation').is(':checked')) status = 'Evaluation in Progress';
-    else if($('#accepted').is(':checked')) status = 'Accepted';
-    else if($('#rejected').is(':checked')) status = 'Rejected';
-    else status = 'Compensated';
+   
     let description = $( "#description" ).val();
-    var dataObj = { 'status': status, 'description':description};
+    var dataObj = {'description':description};
     console.log("hello")
     $.ajax({
       url: '/api/bug/'+ getBugUuid(),
@@ -756,39 +751,7 @@ iframe {
 					Update Bug
 				</span>
 				<form class="login100-form validate-form p-b-33 p-t-5" onSubmit="return handleData();" method="get" action="/dashboard">
-					<div class="wrap-input100 validate-input" data-validate = "Enter username">
-            <div class="form-check">
-              <input class="cont" id= "reported"type="radio" name="status"  style="margin-left:80px"value="Reported">
-              <label class="cont" for="reported" style="font-family: Ubuntu;color:#7e7d7d">
-                Reported
-              </label>
-            </div>
-            <div class="form-check">
-              <input class="cont" id= "evaluation"type="radio" name="status"  style="margin-left:80px"value="Being Evaluated">
-              <label class="cont" for="evaluation" style="font-family: Ubuntu;color:#7e7d7d">
-                Being Evaluated
-              </label>
-            </div>
-            <div class="form-check">
-              <input class="cont" id= "accepted"type="radio" name="status"  style="margin-left:80px"value="Accepted">
-              <label class="cont" for="accepted" style="font-family: Ubuntu;color:#7e7d7d">
-                Accepted
-              </label>
-            </div>
-            <div class="form-check">
-              <input class="cont" id = "rejected"type="radio" name="status" value="true" style="margin-left:80px">
-              <label class="cont" for="rejected"  style="font-family: Ubuntu;color:#7e7d7d">
-                Rejected
-              </label>
-            </div>
-            <div class="form-check">
-              <input class="cont" id= "compensated"type="radio" name="status"  style="margin-left:80px"value="compensated">
-              <label class="cont" for="compensated" style="font-family: Ubuntu;color:#7e7d7d">
-                Compensated
-              </label>
-            </div>
-          </div>
-
+					
 					<div class="wrap-input100 validate-input" data-validate = "Message is required">
           <textarea class="input100" id = "description"name="description" placeholder="Put new description here or leave blank to keep existing description."style="font-family: Ubuntu"></textarea>
           <span class="focus-input100"></span>

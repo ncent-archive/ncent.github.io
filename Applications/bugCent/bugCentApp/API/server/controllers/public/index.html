@@ -1372,9 +1372,8 @@ header {
                     </div>`
             )
         }
-       
-            return $(`
-                <div class="col-md-4">
+        else if(!isCompany && bug.status == 'Reported'){
+            return $(`<div class="col-md-4">
                         <div class="blog">
                             <div class="blog-img">
                                 <img class="img-responsive" src="./img/blog2.jpg" alt="">
@@ -1389,7 +1388,30 @@ header {
                                 <p>${bug.description}<br><br><br></p>
                                 <form action="./updatebug.html" style="inline-block; float:left">
                                     <input type="hidden" name="bug_uuid" value ="${bug.uuid}"/>
+                                    <input class = "report-btn" style="inline-block; float:right; opacity:1"type = "submit" value="Update Description Here"/>
+
+                                    </form>
+                                <a href="./public/dashboard/dashboard.html"><br><br>Status: ${bug.status}<br></a>
+                            </div>
+                        </div>
+                    </div>`);
+        }
+
+            return $(`
+                <div class="col-md-4">
+                        <div class="blog">
+                            <div class="blog-img">
+                                <img class="img-responsive" src="./img/blog2.jpg" alt="">
+                            </div>
+                            <div class="blog-content">
+                                <ul class="blog-meta">
+                                    <li><i class="fa fa-user"></i>${name}</li>
+                                    <li><i class="fa fa-clock-o"></i>${date}</li>
                                     
+                                </ul>
+                                <h3>${bug.name}</h3>
+                                <p>${bug.description}<br><br><br></p>
+                                
 
                                     </form>
                                 <a href="./public/dashboard/dashboard.html"><br><br>Status: ${bug.status}<br></a>
@@ -1397,6 +1419,8 @@ header {
                         </div>
                     </div>`
                 )
+        
+
         
     }
 

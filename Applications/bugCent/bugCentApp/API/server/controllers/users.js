@@ -123,7 +123,13 @@ module.exports = {
 
   },
   updateBugPage(req, res){
-    res.sendFile(path.resolve(__dirname + '/public/updatebug.html'));
+    if(req.session.user.isCompany){
+        res.sendFile(path.resolve(__dirname + '/public/updatebugcompany.html'));
+    }
+    else {
+        res.sendFile(path.resolve(__dirname + '/public/updatebuguser.html'));
+    }
+    
   },
   logOut(req, res){
     if (req.session.user && req.cookies.user_sid) {
