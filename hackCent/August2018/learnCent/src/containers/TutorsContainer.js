@@ -1,16 +1,16 @@
 import { connect } from 'react-redux';
-
+import { fetchTokenCount } from '../actions/token_actions';
 import Tutors from '../components/Tutors/Tutors';
 
 function mapStateToProps(state) {
   return {
-    // results: state.demo.results
+    tokenCount: state.tokens.tokenCount
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    // actions: bindActionCreators(Actions, dispatch)
+    fetchTokenCount: () => dispatch(fetchTokenCount())
   };
 }
 

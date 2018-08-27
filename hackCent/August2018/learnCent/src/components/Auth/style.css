@@ -104,3 +104,30 @@
   color: #910c0c;
   font-size: 25px;
 }
+
+#backgroundImagery {
+  background-image: url('studsInCampus.jpg');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  top: 0;
+  bottom: 0;
+  height: 100vh;
+  z-index: -10;
+}
+
+#overlay {
+  /* position: absolute; */
+  background-color: rgba(255,255,255,0.8);
+  height: 100%;
+  width: 80%;
+  background-position: center;
+  margin: auto;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  /* z-index: -5; */
+}
