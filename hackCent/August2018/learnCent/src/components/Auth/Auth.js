@@ -7,6 +7,11 @@ class Auth extends Component {
   render() {
     const { formInfo, user, history, action, errors } = this.props;
     return (
+      <div>
+      <div id="backgroundImagery">
+        <div id="overlay">
+        </div>
+      </div>
       <div className="Auth">
         <Header />
         <Form
@@ -15,6 +20,7 @@ class Auth extends Component {
           formInfo={formInfo}
           history={history}
           errors={errors}/>
+      </div>
       </div>
     );
   }
