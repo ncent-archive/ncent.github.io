@@ -47,9 +47,12 @@ function bugCentInit(){
       bugCent_publicKey = keypair.publicKey();
       bugCent_privateKey = keypair.secret();
       return new Promise(function(resolve, reject) {
+        console.log('in promise');
+        console.log(bugCent_publicKey);
          ncentSdkInstance.stampToken(bugCent_publicKey, 'bugCent', 10000, '2021', resolve, reject);
       })
       .then(response =>{
+        console.log(response);
         tokenid = response.data["token"]["uuid"];
         initialized = true;
       })
@@ -78,16 +81,19 @@ module.exports = {
       return User
       .findOne({ where: { username: recipientArr[i] } })
       .then(function (recipient) {
+        console.log("here "+recipient);
         return new Promise(function(resolve, reject) {
           ncentSdkInstance.transferTokens(StellarSdk.Keypair.fromSecret(req.session.user.private_key), recipient.public_key, tokenid, req.body.amount, resolve, reject);
         })
         .then(function(){
+          console.log("updating recipient balance");
           let newbalance = recipient.balance + Number(req.body.amount);
           return recipient
           .update({
             balance: newbalance
           })
           .then(function(){
+            console.log("sending to other recipients");
               i++;
               console.log(i);
               console.log(recipientArr[i]);
@@ -98,6 +104,7 @@ module.exports = {
             return User
             .findById(req.session.user.uuid, {})
             .then(sender =>{
+              console.log("updating sender balance");
               let newbalance = sender.balance - Number(req.body.amount * recipientArr.length);
               return sender
               .update({
@@ -110,14 +117,14 @@ module.exports = {
                     res.redirect('/login');
                 }
               })
-              .catch(console.log('sender not updated'));
+              .catch(error => console.log('sender not updated: ' + error));
             })
           })
-          .catch(error=> console.log('recipient not updated '+ error));
+          .catch(error=> console.log('recipient not updated: '+ error));
         })
-        .catch(error=> console.log('Something is not right with transfer' + error));
+        .catch(error=> console.log('Something is not right with transfer: ' + error));
       })
-      .catch(error=> console.log('Something is not right with finding user' + error))
+      .catch(error=> console.log('Something is not right with finding user: ' + error))
     
         
 
