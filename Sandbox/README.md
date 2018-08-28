@@ -14,84 +14,11 @@ The database schema and migrations are handled in the [models directory](https:/
 
 The [config.json file](https://github.com/ncent/ncent.github.io/blob/master/Sandbox/Sandbox%20API/server/config/config.json) handles the location and details of the database. 
 
-## Local Installation
-### Running Locally:
-If you want to set up a local instance of the Sandbox API and database to test and develop your app without publishing data to our centralized database, follow these instructions. We highly recommend developing locally as it will give you automony over your API calls and allow you to easilly manage your databases.
+## Installation
 
-#### 1. Set up PostgreSQL
-Use [this resource](https://www.enterprisedb.com/downloads/postgres-postgresql-downloads) to also gain access to the PSQL shell terminal. Set defaults as follows: *port=5432, password=”dickey”, user=”postgres”*
+Please follow [these instructions](https://github.com/ncent/ncent.github.io/blob/master/Sandbox/Sandbox%20API/README.md) to run an instance of the sandbox locally. 
 
-#### 2. Download Node.js
-Download Node [here](https://nodejs.org/en/download/) and run the following commands in a terminal window to make sure the downloads were successful
-``` shell
-npm -v
-node -v
-```
-#### 3. Clone the nCent public repository
-Run the following command in a terminal window to clone the local repository.
-``` shell
-git clone https://github.com/ncent/ncent.github.io.git
-```
-
-#### 4. Enter the new repository and install the node dependencies
-``` shell
-cd ncent.github.io
-cd Sandbox/Sandbox\ API
-npm install
-```
-
-
-#### 5. Set up Sandbox enviroment database
-Open a **PSQL shell** and log in with the permissions you set up in step 1. List all the databases with the following command
-``` shell
-\l
-```
-Create a new database for development
-``` shell
-CREATE DATABASE “ncnt-dev”
-```
-Now connect to your database
-``` shell
-\connect “ncnt-dev”
-```
-As a check, return to your Sandbox folder in the local repository and look at the file **Sandbox/Sandbox\ API/config/config.json** and make sure that your information in the “development” object matches your setup in PostgreSQL. If not, edit the development object.  
-  
-Now, we migrate the schema into the database. In your **terminal shell**, navigate to **server** under **Sandbox\ API** and run the following command
-``` shell
-node_modules/.bin/sequelize db:migrate
-```
-Once completed, go back to your PSQL shell and run the following command to make sure the tables migrated successfully
-```shell
-\dt
-```
-You should see 4 tables: *SequalizeMeta, TokenTypes, Transactions, and Wallets*. Now type in your PSQL shell **select * from “table_name”** to see that your table is empty. For example
-```shell
-SELECT * FROM "Wallets";
-```
-
-#### 6. Run The Sandbox and Test
-Now you should have the Sandbox and API set up locally. From your terminal, in **server** under **Sandbox\ API** run the following command
-```shell
-npm run start:dev
-```
-you should see a lot of text appear on the screen to indicate that the Sandbox API is up and running. If you get any errors, don't fear, type
-```shell
-rs
-```
-and they should go away. If you want to test that the API is running properly from the SDK, go to the SDK directory in your local git nCent repository, find the test file, and run 
-```shell
-node test.js
-```
-Checking the tables again in the database, you should see them populated. To clear the database, type the following command from **server** under **Sandbox\ API**
-```shell
-node_modules/.bin/sequelize db:migrate:undo:all
-```
-to revert your migration and
-```shell
-node_modules/.bin/sequelize db:migrate
-```
-to migrate again. Your tables should now be empty again. You can now use our SDK to interact with the API or interact with the API directly, though we highly recommend applications use our SDK as it has more or less all the same functionality as the API with much simpler usage and implementation. To see how to use the SDK to talk to our API endpoints, take a look at [our SDK documentation](https://github.com/ncent/ncent.github.io/tree/master/SDK).
-
+We also have our own instance of the sandbox hosted on AWS. To access its APIs, simply add the routes detailed in the endpoints section below to the IP Address and port of our hosted instance: http://18.219.87.29:8010/api
 
 ## Endpoints Documentation
 
