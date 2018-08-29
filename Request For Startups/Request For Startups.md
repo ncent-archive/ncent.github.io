@@ -1,21 +1,24 @@
 # nCent Labs, Inc
 ## Requests for Startups
-nCent Labs needs YOUR help to build applications on top of our upcoming blockchain platform! We are looking for talented developers who want to contribute to our public repository and show off their work to the world. While we are grateful for any open source contributions, we would also like to share a few ideas that we would really love to see the community help us develop. Following is a list of ideas where we really feel that proper incentive markets can flourish - with details to help you get started.
+nCent Labs needs your help to build applications for our upcoming blockchain protocol! We are looking for talented developers to contribute to our public repository and show off their work to the world. While we are grateful for any open source contributions, we would also like to share a few ideas for the community to help us bring to fruition. Following is a list of application ideas that we feel can disrupt their respective industries by allowing proper incentive markets to form! 
 
 Feeling inspired by the ideas below? Feel free to submit a *merge request* to us so that we can show off your work!
 
-If you have a keen passion for building applications like these for our blockchain platform, please check out https://ncent.io/Applications/yCent/index.html to apply for our startup incubator!
+If you have a keen passion for building applications like these for our blockchain platform, please check out and apply for [our startup incubator program](https://ncent.io/Applications/yCent/index.html)!
 
 ### 1. JobCent
 #### Problem
-The labor market is disjointed-- there are people looking for jobs and can’t find them. There are also companies who are unable to find the employees they need. If we remove the inefficiency of the current labor market, we can help employees and companies find each other through referral chains and even decrease unemployment.
+The labor market is disjointed-- job seekers have trouble finding the right openings, and organizations have difficulty with identifying the right candidates. The state of the labor market today is such that we rely on external resources (headhunters, recruiting firms, etc.) to insert themselves into networks of people to find matches between candidates and available positions. What if we could tap into these networks without the need for any sort of external facilitator?
 
 #### Why JobCent
-jobCent is the nCent Labs incentive protocol that incentivizes people to find a potential candidate to join the nCent Labs workspace. jobCent encourages people to refer the most qualified candidates by rewarding
-everyone involved in referral upon the hire of a candidate. It's a win-win situation: better candidates, faster hires, and bonuses for those who take part in finding our ideal employee.
+jobCent is the nCent Labs protocol for finding and placing candidates within our own organization via the incentivization of referral networks. jobCent is designed specifically to recursively incentivize people to refer the most qualified candidates in their network. Everyone in the referral chain gets credit for a new hire, solving the value attribution problem that prevents existing networks from contributing to faster and higher quality job placements. 
 
 #### Existing Institutions We Want to Disrupt
 Angellist, Linkedin, Headhunting Agencies
+
+### Contributions
+
+Our 
 
 For more information contact kk@ncnt.io and jobcent@ncnt.io
 
