@@ -30,7 +30,7 @@ As a consumer, you observe the bugs in the products you use every day. However, 
 bugCent is the nCent Labs protocol for reporting bugs in products or services to companies. bugCent is designed specifically to recursively incentivize people to refer the most relevant people in their network to report bugs for a company. Everyone in the referral chain gets credit for a reported bug, solving the value attribution problem that prevents existing networks from contributing to feedback pools in order for companies to improve their services.
 
 #### Existing Institutions We Want to Disrupt
-Internet Bug Bounty, Review Systems (Yelp)
+Bug Bounty Applications
 
 #### Examples
 
@@ -44,9 +44,6 @@ Solving medical problems requires research and information. There is a dearth of
 
 #### Why legacyCent
 legacyCent is the nCent Labs protocol for collecting cancer patients' data via the incentivization of referral networks. legacyCent is designed specifically to recursively incentivize people to refer other patients willing to share their data in their network. Everyone in the referral chain gets points for a new patient who pledges to share their data and makes their mark in the fight against cancer, solving the value attribution problem that prevents existing networks from contributing to greater collection of data. 
-
-#### Existing Institutions We Want to Disrupt
-Hospital Data Collection Procedures
 
 #### Examples
 
