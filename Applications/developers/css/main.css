@@ -2508,6 +2508,140 @@ body.mobile-nav-active #mobile-nav-toggle {
   color: #fff;
   font-weight: 500;
 }
+@media only screen and (max-width: 500px){
+    
+    .contactUs{
+        width:100px;
+        
+       
+    }
+    .headerLogo{
+        width:100px;
+        margin-left:50px;
+       
+    }
+    .followUsHeader{
+       
+        text-align: center;
+        float:center;
+        padding-right:0;
+        padding-bottom:1vw;
+       /* justify-content: center;
+        padding-right:0px;*/
+    }
+    .contactButtons{
+        align-content:center;
+        justify-content: center;
+        width:10px;
+        
+    }
+    .moreInfo{
+      margin-top:10px;
+      padding-right:5vw;
+      margin-left:15vw;
+      margin-right:15vw;
+      
+      text-align:center;
+      width:100%;
+    }
+    
+}
+@media only screen and (max-width: 375px){
+    
+    .contactUs{
+        max-width:70px;
+        margin-right:10px;
+        padding:0;
+  
+    }
+    .headerLogo{
+        width:150px;
+        margin-left:50px;
+       
+    }
+    .followUsHeader{
+       
+        text-align: center;
+        float:center;
+        margin-top:5px;
+        font-size: 15px;
+        padding-right:0;
+        padding-bottom:1vw;
+       /* justify-content: center;
+        padding-right:0px;*/
+    }
+    .contactButtons{
+        align-content:center;
+        justify-content: center;
+        width:10px;
+        
+    }
+    .moreInfo{
+      margin-top:10px;
+      padding-right:5vw;
+      margin-left:15vw;
+      margin-right:15vw;
+      
+      text-align:center;
+      width:100%;
+    }
+    
+}
+@media only screen and (max-width: 550px){
+    
+    .contactUs{
+        width:200px;
+        margin-left:50px;
+       
+    }
+    .followUsHeader{
+       
+        text-align: center;
+        float:center;
+        padding-right:0;
+        padding-bottom:1vw;
+       /* justify-content: center;
+        padding-right:0px;*/
+    }
+    .contactButtons{
+        align-content:center;
+        justify-content: center;
+        width:10px;
+        
+    }
+    /*.contactImg{
+        padding-bottom:3px;
+        padding-top:3px;
+    }*/
+}
+
+@media only screen and (max-width: 700px){
+    
+    .contactUs{
+        width:200px;
+        margin-left:50px;
+       
+    }
+    .followUsHeader{
+       
+        text-align: center;
+        float:center;
+        padding-right:0;
+        padding-bottom:1vw;
+       /* justify-content: center;
+        padding-right:0px;*/
+    }
+    .contactButtons{
+        align-content:center;
+        justify-content: center;
+        width:40px;
+        
+    }
+    /*.contactImg{
+        padding-bottom:3px;
+        padding-top:3px;
+    }*/
+}
 
 @media (max-width: 1366px) {
   /*.home-aboutus-area .about-right {
