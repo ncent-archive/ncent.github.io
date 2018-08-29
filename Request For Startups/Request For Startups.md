@@ -16,32 +16,56 @@ jobCent is the nCent Labs protocol for finding and placing candidates within our
 #### Existing Institutions We Want to Disrupt
 Angellist, Linkedin, Headhunting Agencies
 
-### Contributions
+#### Examples
 
-Our 
+[jobCent Example Code](https://github.com/ncent/ncent.github.io/tree/master/Applications/jobCentEmail)
 
-For more information contact kk@ncnt.io and jobcent@ncnt.io
+For more information contact: kk@ncnt.io and jobcent@ncnt.io
 
-### 2. DateCent
+### 2. LearnCent
 #### Problem
-When single, most people desire romantic partners. Finding partners and meeting new people can be a very difficult task for one person to perform alone. Many have therefore turned to applications which either employ algorithms simply ask the user to filter nearby matches. However, often people have most success when simply referred by friends who they trust to know them better than the best algorithms; the limitation being the difficulty of incentivizing friends to perform the referral. DateCent provides incentives for referral of romantic partners to allow the search for romantic partners to become as efficient and effective as possible.
+Education is an industry with so much value, yet it is constantly held back by inefficiencies in current institutions and systems. Students have such a variety of different learning styles, yet we do not have the resources or tools to match them effectively with teachers, mentors or tutors. Imagine the potential we could unlock in people if we simply were able to maximize their ability to learn.
 
-#### Why DateCent will Disrupt the Dating World
-Applications which use algorithms like Match.com or apply broad categorical or user-initiated filters such as Tinder to locate romantic partners. These methods of finding romantic partners are inefficient due to their separation from the user. Instead DateCent targets the underutilized referral system from those who the user trusts, providing incentives those who refer efficiently utilizing the power of a user’s vast network and outperforming less efficient filtering platforms.
+#### Why LearnCent?
+LearnCent is an innovative take on peer-to-peer tutoring using the nCent Sandbox and SDK! This contribution came from our first ever [hackCent competition](https://ncent.io/Applications/hackCent/hackCent.html). View the implementation below.
 
-For more information contact: kk@ncnt.io and datecent@ncnt.io
+#### Examples
+
+[hackCent Finalist Submission](https://github.com/ncent/ncent.github.io/tree/master/hackCent/August2018/learnCent)
+
+For more information contact kk@ncnt.io
 
 ### 3. SportCent
 #### Problem
-Sports teams are not only trying to win games - they are also businesses focused on sustaining profits each season. Professional sports teams are one of the unique business types that can really utilize strong brand loyalty among their fan bases, and as such, the room for better incentive markets to emerge is enormous.
+Contrary to popular belief, sports teams are not only trying to win games - they are also businesses focused on sustaining profits each season. Professional sports teams are one of the unique business types that can utilize strong brand loyalty among their fan bases. This potential for virality gives way to the emergence of incentive markets!
 
-#### Why SportCent
-SportCent gives professional sports teams and their fan bases an opportunity to share merchandise sales revenue. Other ideas we have for SportCent include attendance referrals. This will allow a sports team to become far more popular by incentivizing referral at a small cost to their sales revenue.
+#### Why SportCent?
+SportCent gives professional sports teams and their fan bases an opportunity to share merchandise sales revenue. Other ideas we have for SportCent include attendance and viewership referral systems. These will allow sports teams to become far more popular by incentivizing referrals at a small cost to their sales revenue.
 
 #### Existing Institutions We Want to Disrupt
 Ticketing, Merchandise Sales, etc.
 
+#### Examples
+
+[Open-Source Contribution](https://github.com/ncent/ncent.github.io/tree/master/hackCent/August2018/sportcent1)
+
 For more information contact: kk@ncnt.io and sportcent@ncnt.io
+
+### 3. DateCent
+#### Problem
+Finding partners and meeting new people can be a daunting endeavor for today's singles. Many have turned to applications that either leverage algorithms or simply ask the user to filter nearby matches. What if, instead of trying to rely on programmatic matchmakers, we had a tool to more easily leverage our own networks? Too often we hear success stories come from people being "set up" by their friends, indicating there may be an underutilization of networks in today's world. DateCent provides incentives for referral of romantic partners to allow the search for romantic partners to become as efficient and effective as possible.
+
+#### Why DateCent will Disrupt the Dating World
+Many modern applications use algorithms or require users to apply broad categorical filters to locate romantic partners. These methods of finding romantic partners are inefficient due to their inability to dive deeply enough into their own users to effectively match them. Instead, DateCent targets the user's network, providing incentives to those who refer matches efficiently and effectively.
+
+#### Existing Institutions We Want to Disrupt
+Applications that use algorithms like Match.com or apply broad categorical or user-initiated filters such as Tinder to locate romantic partners.
+
+#### Examples
+
+Contribute to our public repository and become our first example!
+
+For more information contact: kk@ncnt.io and datecent@ncnt.io
 
 ### 4. SongCent
 #### Problem
@@ -53,50 +77,28 @@ Free applications such as SoundCloud have demonstrated how hungry artists are ju
 #### Existing Institutions we want to Disrupt
 Record Labels, Streaming Services and other Music Delivery Institutions, Music Sharing Applications such as Spotify, Pandora, etc.
 
+#### Examples
+
+Contribute to our public repository and become our first example!
+
 For more information contact kk@ncnt.io
 
 ### 5. FanCent
 #### Problem
-Some brands/artists/products take a long time to find the right crowd for them. The system of connecting people to products/ art that they like is inefficient. We could use information that people already know about each other to expand the networks of brands/products.
+Building a fanbase is one of the more difficult aspects of any performance-based profession. Similar to sportCent, we see huge potential in the idea of tapping into the virality of loyal fans by incentivizing them to help build the fanbases for the artists they love!
 
 #### Why FanCent
-FanCent is the nCent Labs incentive protocol that incentivizes people to find and engage fans for your product. Your fans have large networks, connect with them and build a larger following.
+FanCent is the nCent Labs incentive application that incentivizes artists to find and engage existing and prospective fans. By utilizing fan networks artists could have a much easier time building their fanbases.
+
+#### Examples
+
+Contribute to our public repository and become our first example!
 
 For more information contact kk@ncnt.io
 
-### 6. BuildCent
+### 6. GameCent
 #### Problem
-When building a product, workers may be incentivized to take complete ownership of a task that could be more efficiently solved by other people handling certain subtasks.
-
-#### Why BuildCent
-BuildCent is an incentive protocol that incentivizes workers to collaborate on building a product. BuildCent aims to incentivize workers to delegate tasks to coworkers who are most suited for solving that specific problem
-
-#### Existing Institutions we want to Disrupt
-Building contractors
-
-For more information contact kk@ncnt.io
-
-### 7. LearnCent
-#### Problem
-Students across education levels are more motivated to teach themselves and do better than their peers than to help teach their peers.
-
-#### Why LearnCent
-LearnCent aims to incentivize students to help and teach each other. If student A teaches student B and student B’s test scores improve by a certain amount, A could get some fraction of B’s gains in extra credit.
-
-For more information contact kk@ncnt.io
-
-### 8. GiveCent
-#### Problem
-Charities need to reach out to more potential donors.
-
-#### Why GiveCent
-With GiveCent, people are incentivized to refer and spread information to friends who will be likely to donate to some charity. Incentives can be in the form of karma points.
-
-For more information contact kk@ncnt.io
-
-### 9. GameCent
-#### Problem
-Gaming is trending further toward multiplayer every year, especially with the rise of games like PUBG and Fortnite. Unfortunately, games like these can be discouraging for potential fans who have a harder time being able to “party up”.
+Gaming is trending further toward multiplayer every year, especially with the rise of games like Fortnite. Unfortunately, games like these can be discouraging for potential fans who have a harder time “partying up”.
 
 #### Why GameCent
 GameCent solves those problems by aiming to incentivize multiplayer gaming. Referring your friends for bonus points, loot, and "XP" is not a new concept, but GameCent is looking to take it to the next level. Hard to coordinate with new people you just met alone? GameCent can incentive teamwork by aligning team rewards.    
