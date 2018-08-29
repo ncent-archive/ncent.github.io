@@ -6,7 +6,7 @@ Feeling inspired by the ideas below? Feel free to submit a *merge request* to us
 
 If you have a keen passion for building applications like these for our blockchain platform, please check out and apply for [our startup incubator program](https://ncent.io/Applications/yCent/index.html)!
 
-### 1. JobCent
+### 1. jobCent
 #### Problem
 The labor market is disjointed-- job seekers have trouble finding the right openings, and organizations have difficulty with identifying the right candidates. The state of the labor market today is such that we rely on external resources (headhunters, recruiting firms, etc.) to insert themselves into networks of people to find matches between candidates and available positions. What if we could tap into these networks without the need for any sort of external facilitator?
 
@@ -22,7 +22,39 @@ Angellist, Linkedin, Headhunting Agencies
 
 For more information contact: kk@ncnt.io and jobcent@ncnt.io
 
-### 2. LearnCent
+### 2. bugCent
+#### Problem
+As a consumer, you observe the bugs in the products you use every day. However, there is a disconnect between consumers and companies. Often times, there is not enough incentive for consumers to report their suggestions or observed bugs to companies. What if we could connect consumers to companies in a mutually beneficial and incentivized manner to increase the feedback pool?
+
+#### Why bugCent
+bugCent is the nCent Labs protocol for reporting bugs in products or services to companies. bugCent is designed specifically to recursively incentivize people to refer the most relevant people in their network to report bugs for a company. Everyone in the referral chain gets credit for a reported bug, solving the value attribution problem that prevents existing networks from contributing to feedback pools in order for companies to improve their services.
+
+#### Existing Institutions We Want to Disrupt
+Internet Bug Bounty, Review Systems (Yelp)
+
+#### Examples
+
+[bugCent Example Code](https://github.com/ncent/ncent.github.io/tree/master/Applications/bugCent)
+
+For more information contact: kk@ncnt.io and af@ncnt.io
+
+### 3. legacyCent
+#### Problem
+Solving medical problems requires research and information. There is a dearth of data when it comes to cancer research. The missing link in most of our efforts to find a cure lies in the data. Privacy concerns have thwarted researchers' access to cancer patients' data. 
+
+#### Why legacyCent
+legacyCent is the nCent Labs protocol for collecting cancer patients' data via the incentivization of referral networks. legacyCent is designed specifically to recursively incentivize people to refer other patients willing to share their data in their network. Everyone in the referral chain gets points for a new patient who pledges to share their data and makes their mark in the fight against cancer, solving the value attribution problem that prevents existing networks from contributing to greater collection of data. 
+
+#### Existing Institutions We Want to Disrupt
+Hospital Data Collection Procedures
+
+#### Examples
+
+[legacyCent Example Code](https://github.com/ncent/ncent.github.io/tree/master/Applications/legacyCent)
+
+For more information contact: kk@ncnt.io 
+
+### 4. LearnCent
 #### Problem
 Education is an industry with so much value, yet it is constantly held back by inefficiencies in current institutions and systems. Students have such a variety of different learning styles, yet we do not have the resources or tools to match them effectively with teachers, mentors or tutors. Imagine the potential we could unlock in people if we simply were able to maximize their ability to learn.
 
@@ -35,7 +67,7 @@ LearnCent is an innovative take on peer-to-peer tutoring using the nCent Sandbox
 
 For more information contact kk@ncnt.io
 
-### 3. SportCent
+### 5. SportCent
 #### Problem
 Contrary to popular belief, sports teams are not only trying to win games - they are also businesses focused on sustaining profits each season. Professional sports teams are one of the unique business types that can utilize strong brand loyalty among their fan bases. This potential for virality gives way to the emergence of incentive markets!
 
@@ -51,7 +83,7 @@ Ticketing, Merchandise Sales, etc.
 
 For more information contact: kk@ncnt.io and sportcent@ncnt.io
 
-### 3. DateCent
+### 6. DateCent
 #### Problem
 Finding partners and meeting new people can be a daunting endeavor for today's singles. Many have turned to applications that either leverage algorithms or simply ask the user to filter nearby matches. What if, instead of trying to rely on programmatic matchmakers, we had a tool to more easily leverage our own networks? Too often we hear success stories come from people being "set up" by their friends, indicating there may be an underutilization of networks in today's world. DateCent provides incentives for referral of romantic partners to allow the search for romantic partners to become as efficient and effective as possible.
 
@@ -67,7 +99,7 @@ Contribute to our public repository and become our first example!
 
 For more information contact: kk@ncnt.io and datecent@ncnt.io
 
-### 4. SongCent
+### 7. SongCent
 #### Problem
 With the recent surge of music streaming and the newest trends in revenue sharing, musicians depend more than ever on popularity to be successful in their careers. Right now, popularity is determined in the music industry by certain long-standing means of exposure such as the radio, advertisements, and more. Social media has turned out to have a huge role in the sharing of music between fans, but there are still many potential "shares" to be had for aspiring artists looking for their work to go viral.
 
@@ -83,7 +115,7 @@ Contribute to our public repository and become our first example!
 
 For more information contact kk@ncnt.io
 
-### 5. FanCent
+### 8. FanCent
 #### Problem
 Building a fanbase is one of the more difficult aspects of any performance-based profession. Similar to sportCent, we see huge potential in the idea of tapping into the virality of loyal fans by incentivizing them to help build the fanbases for the artists they love!
 
@@ -96,7 +128,7 @@ Contribute to our public repository and become our first example!
 
 For more information contact kk@ncnt.io
 
-### 6. GameCent
+### 9. GameCent
 #### Problem
 Gaming is trending further toward multiplayer every year, especially with the rise of games like Fortnite. Unfortunately, games like these can be discouraging for potential fans who have a harder time “partying up”.
 
