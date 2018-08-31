@@ -52,7 +52,7 @@ function bugCentInit(){
     .then(function(keypair){
       bugCent_keypair = keypair;
       return new Promise(function(resolve, reject) {
-         ncentSdkInstance.stampToken(bugCent_publicKey, 'bugCent', 10000, '2021', resolve, reject);
+         ncentSdkInstance.stampToken(bugCent_keypair.publicKey(), 'bugCent', 10000, '2021', resolve, reject);
       })
       .then(response =>{
         console.log(response);
