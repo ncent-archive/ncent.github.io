@@ -1,8 +1,6 @@
-
 const User = require('../models').User;
-//const referredBy = require('../models').referredBy;
-
 const path = require('path');
+
 function helper(next, points){
   if(next != null){
     return User
@@ -19,10 +17,8 @@ function helper(next, points){
                       points: father.points+points,
                   })
                   .then(father => {
-                      console.log('ok');
                       next = father.referredBy_uuid;
                       points = points/2;
-                      //console.log('next:'+next);
                       helper(next, points);
                   })
                   .catch(error=>console.log('error updating: '+error));
@@ -32,17 +28,6 @@ function helper(next, points){
   }
 }
 module.exports = {
-  
-  getRedirect(req, res){
-    
-    res.sendFile(path.resolve('__dirname' + '../../../../index.html'));
-  },
-  getPageWithReferral(req, res){
-    res.sendFile(__dirname+ '/public/signup/signupreferral.html');
-  },
-  getPage(req, res){
-    res.sendFile(__dirname+ '/public/signup/signup.html');
-  },
   createWithReferral(req, res) {
     return User
     .create({
@@ -110,17 +95,14 @@ module.exports = {
         
       });
   },
-  
   list(req, res) {
     return User
       .findAll({
-        
         raw:true,
       })
       .then(user => res.status(200).send(user))
       .catch(error => res.status(400).send(error));
   },
-  
   retrieve(req, res) {
     return User
       .findById(req.params.user_uuid, {
@@ -136,28 +118,13 @@ module.exports = {
       })
       .catch(error => res.status(400).send(error));
   },
-  update(req, res) {
-    return User
-      .findById(req.params.user_uuid, {
-        include: [{
-          model: bugUser,
-          as: 'bugs',
-        }],
-      })
-      .then(user => {
-        if (!user) {
-          return res.status(404).send({
-            message: 'User Not Found',
-          });
-        }
-        return user
-        .find
-          .update({
-            name: req.body.name || user.name,
-          })
-          .then(() => res.status(200).send(user))  
-          .catch((error) => res.status(400).send(error));
-      })
-      .catch((error) => res.status(400).send(error));
+  getRedirect(req, res){
+    res.sendFile(path.resolve('__dirname' + '../../../../index.html'));
+  },
+  getPageWithReferral(req, res){
+    res.sendFile(__dirname+ '/public/signup/signupreferral.html');
+  },
+  getPage(req, res){
+    res.sendFile(__dirname+ '/public/signup/signup.html');
   }
 };
