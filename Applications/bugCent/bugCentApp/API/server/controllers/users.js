@@ -1,4 +1,3 @@
-const Bug = require('../models').Bug;
 const User = require('../models').User;
 const bugUser = require('../models').bugUser;
 const bcrypt = require('bcrypt');
@@ -6,16 +5,20 @@ const path = require('path');
 const ncentSDK = require('../../../../../../SDK/source/');
 const ncentSdkInstance = new ncentSDK();
 const StellarSdk = require('stellar-sdk');
-let bugCent_publicKey;
-let bugCent_privateKey;
 let bugCent_keypair;
 let initialized = false; //CHANGE TO FALSE LATER
 let tokenid;
-function sendToMultipleHelper(recipientArr, username, senderPrivateKey, amount, i, max){
-  console.log('in helper');
+/*Params: 
+    - recipientArr: the array of usernames that resulted in parsing the input from the transfer form. 
+    - max: max number of times to call the function (number of users to send tokens to)
+    - i: counter to ensure we don't call function when we have already sent tokens to all desired users
+  About: this function is a recursive helper used to transfer tokens to multiple people from a single 
+  transaction form.
+*/
+function sendToMultipleHelper(recipientArr, recipientUsername, senderPrivateKey, amount, i, max){
   if(i >= max) return;
     return User
-        .findOne({ where: { username: username } })
+        .findOne({ where: { username: recipientUsername } })
         .then(function (recipient) {
           return new Promise(function(resolve, reject) {
             ncentSdkInstance.transferTokens(StellarSdk.Keypair.fromSecret(senderPrivateKey), recipient.public_key, tokenid, amount, resolve, reject);
@@ -37,6 +40,10 @@ function sendToMultipleHelper(recipientArr, username, senderPrivateKey, amount, 
         .catch(error=> console.log('Something is not right with finding user' + error));
   
 }
+/*This function, called at the first API call, initializes the sponsor wallet address for bugCent, which
+  will hold all the bugCent in the beginning. Then, it stamps bugCent from NCNT with that wallet address and 
+  records the value of bugCent's token ID, which is used to process transactions.
+*/
 function bugCentInit(){
     return new Promise(function(resolve, reject) {
       resolve(ncentSdkInstance.createWalletAddress());
@@ -44,11 +51,7 @@ function bugCentInit(){
     })
     .then(function(keypair){
       bugCent_keypair = keypair;
-      bugCent_publicKey = keypair.publicKey();
-      bugCent_privateKey = keypair.secret();
       return new Promise(function(resolve, reject) {
-        console.log('in promise');
-        console.log(bugCent_publicKey);
          ncentSdkInstance.stampToken(bugCent_publicKey, 'bugCent', 10000, '2021', resolve, reject);
       })
       .then(response =>{
@@ -62,17 +65,12 @@ function bugCentInit(){
     .catch(error=> console.log('Error creating bugCent wallet keypair' + error));
 }
 module.exports = {
-  transferPage(req, res){
-      if (req.session.user && req.cookies.user_sid) {
-        res.sendFile(__dirname+ '/public/transfer.html');
-      } else {
-        res.sendFile(__dirname+ '/public/login/login.html');
-      }    
-  },
+  /*This function handles transactions. It splits the form input into an array of usernames to send tokens
+    to, then transfers bugCent from the sender to each user (with the help of sendToMultipleHelper), then it 
+    updates the sender's balance.
+  */
   transfer(req, res){
     let recipientArr = req.body.username.split(", ");
-    console.log(req.body.username);
-    console.log('recipient array: '+ recipientArr);
     let i = 0;
     if(req.body.amount > (req.session.user.balance* recipientArr.length)){
       res.sendFile(__dirname+ '/public/insufficientfunds.html');
@@ -81,22 +79,17 @@ module.exports = {
       return User
       .findOne({ where: { username: recipientArr[i] } })
       .then(function (recipient) {
-        console.log("here "+recipient);
         return new Promise(function(resolve, reject) {
           ncentSdkInstance.transferTokens(StellarSdk.Keypair.fromSecret(req.session.user.private_key), recipient.public_key, tokenid, req.body.amount, resolve, reject);
         })
         .then(function(){
-          console.log("updating recipient balance");
           let newbalance = recipient.balance + Number(req.body.amount);
           return recipient
           .update({
             balance: newbalance
           })
           .then(function(){
-            console.log("sending to other recipients");
               i++;
-              console.log(i);
-              console.log(recipientArr[i]);
               return sendToMultipleHelper(recipientArr, recipientArr[i], req.session.user.private_key, req.body.amount, i, recipientArr.length);
             
           })
@@ -104,7 +97,6 @@ module.exports = {
             return User
             .findById(req.session.user.uuid, {})
             .then(sender =>{
-              console.log("updating sender balance");
               let newbalance = sender.balance - Number(req.body.amount * recipientArr.length);
               return sender
               .update({
@@ -117,10 +109,10 @@ module.exports = {
                     res.redirect('/login');
                 }
               })
-              .catch(error => console.log('sender not updated: ' + error));
+              .catch(error => console.log('Sender not updated: ' + error));
             })
           })
-          .catch(error=> console.log('recipient not updated: '+ error));
+          .catch(error=> console.log('Recipient not updated: '+ error));
         })
         .catch(error=> console.log('Something is not right with transfer: ' + error));
       })
@@ -129,88 +121,10 @@ module.exports = {
         
 
   },
-  updateBugPage(req, res){
-    if(req.session.user.isCompany){
-        res.sendFile(path.resolve(__dirname + '/public/updatebugcompany.html'));
-    }
-    else {
-        res.sendFile(path.resolve(__dirname + '/public/updatebuguser.html'));
-    }
-    
-  },
-  logOut(req, res){
-    if (req.session.user && req.cookies.user_sid) {
-      res.clearCookie('user_sid');
-    } 
-    res.sendFile(path.resolve('__dirname' + '../../../../index.html'));
-  },
-  dashboard(req, res){
-      if (req.session.user && req.cookies.user_sid) {
-        res.sendFile(__dirname + '/public/index.html');
-      } else {
-          res.redirect('/login');
-      }
-  },
-  report(req, res){
-    if (req.session.user && req.cookies.user_sid) {
-      res.sendFile(__dirname + '/public/dashboard/dashboard.html');
-    } else {
-        res.redirect('/login');
-    }
-  },
-  getUser(req, res){
-    let username = req.body.username;
-    let password = req.body.password;
-
-      User.findOne({ where: { username: username } }).then(function (user) {
-          if (!user) {
-              // res.render(user, '/login');
-              res.sendFile(__dirname + '/public/login/loginerror.html');
-          } else if (!bcrypt.compareSync(password, user.password)) {
-              // res.render(user, '/login');
-              res.sendFile(__dirname + '/public/login/loginerror.html');
-          } else {
-             // res.render(user.dataValues, '/dashboard');
-              req.session.user = user;
-              res.sendFile(__dirname + '/public/index.html');
-             
-          }
-      });
-  },
-  getRedirect(req, res){
-    if(!initialized) bugCentInit();
-    const sessionChecker = (req, res, next) => {
-      if (req.session.user && req.cookies.user_sid) {
-          res.redirect('/dashboard');
-      } 
-      else {
-          next();
-      }    
-    }
-    res.sendFile(path.resolve('__dirname' + '../../../../index.html'));
-  },
-  getLogIn(req, res){
-    if(!initialized) bugCentInit();
-    sessionChecker = (req, res, next) => {
-      if (req.session.user && req.cookies.user_sid) {
-          res.redirect('/dashboard');
-      } else {
-          next();
-      }    
-    }
-    res.sendFile(__dirname + '/public/login/login.html');
-  },
-  getPage(req, res){
-    if(!initialized) bugCentInit();
-    sessionChecker = (req, res, next) => {
-      if (req.session.user && req.cookies.user_sid) {
-          res.redirect('/dashboard');
-      } else {
-          next();
-      }    
-    }
-    res.sendFile(__dirname+ '/public/signup/signup.html');
-  },
+  /*This function is called upon signing up. It created a user by first creating their wallet address
+    then setting all of the user's attributes to the form inputs, then seeding the user with 100 bugCent
+    if they are a company, and finally redirecting them to a login screen.
+  */
   create(req, res) {
     let publickey;
     let privatekey;
@@ -249,7 +163,7 @@ module.exports = {
                   res.redirect('/login');
               }
             })
-            .catch(console.log('error updating balance'));
+            .catch(error => console.log('Error updating balance: ' + error));
               
           })
           .catch(error => console.log(error));
@@ -322,6 +236,29 @@ module.exports = {
       })
       .catch(error => res.status(400).send(error));
   },
+  /*This function logs the user in, meaning it initializes the session for the user if they enter the correct
+    combination of username and password. Uses bcrypt function to check if the user entered correct password
+    since the password is encrypted in the database.
+  */
+  getUser(req, res){
+    let username = req.body.username;
+    let password = req.body.password;
+
+      User.findOne({ where: { username: username } }).then(function (user) {
+          if (!user) {
+              res.sendFile(__dirname + '/public/login/loginerror.html');
+          } else if (!bcrypt.compareSync(password, user.password)) {
+              res.sendFile(__dirname + '/public/login/loginerror.html');
+          } else {
+              req.session.user = user;
+              res.sendFile(__dirname + '/public/index.html');
+             
+          }
+      });
+  },
+  /*This update function is currently never used, but in the future could be integrated with the user's 
+    dashboard so that that can update their personal information. 
+  */
   update(req, res) {
     return User
       .findById(req.params.user_uuid, {
@@ -344,5 +281,76 @@ module.exports = {
           .catch((error) => res.status(400).send(error));
       })
       .catch((error) => res.status(400).send(error));
+  },
+  transferPage(req, res){
+      if (req.session.user && req.cookies.user_sid) {
+        res.sendFile(__dirname+ '/public/transfer.html');
+      } else {
+        res.sendFile(__dirname+ '/public/login/login.html');
+      }    
+  },
+  updateBugPage(req, res){
+    if(req.session.user.isCompany){
+        res.sendFile(path.resolve(__dirname + '/public/updatebugcompany.html'));
+    }
+    else {
+        res.sendFile(path.resolve(__dirname + '/public/updatebuguser.html'));
+    }
+    
+  },
+  logOut(req, res){
+    if (req.session.user && req.cookies.user_sid) {
+      res.clearCookie('user_sid');
+    } 
+    res.sendFile(path.resolve('__dirname' + '../../../../index.html'));
+  },
+  dashboard(req, res){
+      if (req.session.user && req.cookies.user_sid) {
+        res.sendFile(__dirname + '/public/index.html');
+      } else {
+          res.redirect('/login');
+      }
+  },
+  report(req, res){
+    if (req.session.user && req.cookies.user_sid) {
+      res.sendFile(__dirname + '/public/report/report.html');
+    } else {
+        res.redirect('/login');
+    }
+  },
+  getRedirect(req, res){
+    if(!initialized) bugCentInit();
+    const sessionChecker = (req, res, next) => {
+      if (req.session.user && req.cookies.user_sid) {
+          res.redirect('/dashboard');
+      } 
+      else {
+          next();
+      }    
+    }
+    res.sendFile(path.resolve('__dirname' + '../../../../index.html'));
+  },
+  getLogIn(req, res){
+    if(!initialized) bugCentInit();
+    sessionChecker = (req, res, next) => {
+      if (req.session.user && req.cookies.user_sid) {
+          res.redirect('/dashboard');
+      } else {
+          next();
+      }    
+    }
+    res.sendFile(__dirname + '/public/login/login.html');
+  },
+  getPage(req, res){
+    if(!initialized) bugCentInit();
+    sessionChecker = (req, res, next) => {
+      if (req.session.user && req.cookies.user_sid) {
+          res.redirect('/dashboard');
+      } else {
+          next();
+      }    
+    }
+    res.sendFile(__dirname+ '/public/signup/signup.html');
   }
+  
 };

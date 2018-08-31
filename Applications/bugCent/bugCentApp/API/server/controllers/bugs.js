@@ -1,7 +1,5 @@
 const Bug = require('../models').Bug;
-const User = require('../models').User;
 const bugUser = require('../models').bugUser;
-const bugUserController = require('./bugUsers.js');
 
 module.exports = {
   create(req, res) {
