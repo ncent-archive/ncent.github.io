@@ -1,1 +1,0 @@
-del /f /q C:\inetpub\wwwroot\var\www\html\* && npm install && gulp deployRelease && xcopy /s /y /e /q %cd%\dist C:\inetpub\wwwroot\var\www\html\dist\ && xcopy /s /y /e /q %cd%\node_modules C:\inetpub\wwwroot\var\www\html\dist\node_modules\ && call C:\inetpub\wwwroot\var\www\html\dist\start-mongod.bat && call C:\inetpub\wwwroot\var\www\html\dist\start-server.bat 
