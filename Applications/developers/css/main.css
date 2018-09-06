@@ -2210,6 +2210,10 @@ h1, h2, h3, h4, h5, h6 {
   color: #fff;
 }
 
+.bannerContainer {
+  max-width: 1500px;
+}
+
 #mobile-nav ul .menu-has-children i.fa-chevron-up {
   color: transparent;
 }
