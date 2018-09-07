@@ -1,6 +1,6 @@
-https://www.npmjs.com/package/ncent-sdk-public
+https://www.npmjs.com/package/ncent-sandbox-sdk
 
 Steps:
 Create new folder
 npm init
-npm i ncent-sdk
+npm i ncent-sandbox-sdk
