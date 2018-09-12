@@ -107,22 +107,11 @@
 
     var clMasonryFolio = function () {
         
-        var containerBricks = $('.masonry');
-        containerBricks.masonry('layout');
 
-        containerBricks.imagesLoaded(function () {
-            containerBricks.masonry({
-                itemSelector: '.masonry__brick',
-                percentPosition: true,
-                resize: true
-            });
-        });
-
-        containerBricks.imagesLoaded();
-        // // layout Masonry after each image loads
+        // layout Masonry after each image loads
         // containerBricks.imagesLoaded().progress( function() {
-        //     containerBricks.masonry('layout');
-        // });
+        //    containerBricks.masonry('layout');
+        //});
     };
 
     var clSlickSlider = function() {

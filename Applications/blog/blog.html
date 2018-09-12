@@ -1525,9 +1525,19 @@ To put our crypto where our mouth...
     <script src="js/main.js"></script>
     <script src="medium/med.js"></script>
     <script language="javascript" type="text/javascript">
-     window.load(function() {
-        $('#preloader').fadeOut();
-    });
+     $(window).load(function() {
+         var containerBricks = $('.masonry');
+         containerBricks.imagesLoaded(function () {
+             containerBricks.masonry({
+                 itemSelector: '.masonry__brick',
+                 percentPosition: true,
+                 resize: true
+             });
+             containerBricks.masonry('layout');
+
+         });
+
+     });
 </script>
 
 
