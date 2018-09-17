@@ -398,7 +398,7 @@ ul.disc li::before {
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: orange;
+    background: red;
     position: absolute;
     left: -17px;
     top: 11px;
@@ -407,7 +407,7 @@ ul.disc li::before {
 
 dt {
     margin: 0;
-    color:orange;
+    color:red;
 }
 
 dd {
@@ -533,7 +533,7 @@ form,
 }
 
 .pace .pace-progress {
-    background:orange;
+    background:red;
     position: fixed;
     z-index: 900;
     top: 0;
@@ -576,7 +576,7 @@ form,
 }
 
 .line-scale-pulse-out > div {
-    background-color:orange;
+    background-color:red;
     width: 4px;
     height: 35px;
     border-radius: 2px;
@@ -803,7 +803,7 @@ textarea:-webkit-autofill:hover textarea:-webkit-autofill:focus,
 select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
-    -webkit-text-fill-color:orange;
+    -webkit-text-fill-color:red;
     transition: background-color 5000s ease-in-out 0s;
 }
 
@@ -863,8 +863,8 @@ button.btn--primary,
 input[type="submit"].btn--primary,
 input[type="reset"].btn--primary,
 input[type="button"].btn--primary {
-    background:orange;
-    border-color:orange;
+    background:red;
+    border-color:red;
     color: #FFFFFF;
 }
 
@@ -903,8 +903,8 @@ input[type="button"].btn--primary:focus {
 
 .btn--stroke, button.btn--stroke {
     background: transparent !important;
-    border: 0.2rem solidorange;
-    color:orange;
+    border: 0.2rem solidred;
+    color:red;
 }
 
 .btn--stroke:hover, button.btn--stroke:hover {
@@ -1132,7 +1132,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 }
 
 .stats-tabs li a:hover {
-    color:orange;
+    color:red;
 }
 
 .stats-tabs li a em {
@@ -1277,7 +1277,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
     line-height: 1.333;
     text-transform: uppercase;
     letter-spacing: .25rem;
-    color:orange;
+    color:red;
     margin-top: 0;
     margin-bottom: 0;
 }
@@ -1451,7 +1451,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 
 .slick-slider .slick-dots li.slick-active button,
 .slick-slider .slick-dots li:hover button {
-    background:orange;
+    background:red;
 }
 
 
@@ -1544,7 +1544,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
     letter-spacing: .25rem;
     margin-bottom: 4.8rem;
     margin-top: .9rem;
-    color:orange;
+    color:red;
 }
 
 .header-nav p {
@@ -1682,7 +1682,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
     font-size: 1.3rem;
     text-transform: uppercase;
     letter-spacing: .3rem;
-    color:orange;
+    color:red;
     -webkit-transition: all 0.5s ease-in-out;
     transition: all 0.5s ease-in-out;
 }
@@ -1898,8 +1898,8 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 }
 
 .home-content__scroll a::before {
-    border-bottom: 2px solid orange;
-    border-right: 2px solid orange;
+    border-bottom: 2px solid red;
+    border-right: 2px solid red;
     content: '';
     display: block;
     height: 8px;
@@ -1923,7 +1923,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
     display: block;
     width: 2px;
     height: 10.2rem;
-    background-color:orange;
+    background-color:red;
     position: absolute;
     right: 7.2rem;
     bottom: 0;
@@ -1983,7 +1983,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 }
 
 .home-social span {
-    color:orange;
+    color:red;
     right: 4.5rem;
     font-size: 1.3rem;
     opacity: 0;
@@ -2240,7 +2240,7 @@ html.no-csstransitions .home-content__main {
 .s-about {
     padding-top: 16.2rem;
     padding-bottom: 9rem;
-    background-color:orange;
+    background-color:red;
     color: #ffffff;
     position: relative;
 }
@@ -2445,7 +2445,7 @@ html.no-csstransitions .home-content__main {
 
 .services-list .service-icon {
     float: left;
-    color:orange;
+    color:red;
     font-size: 4.8rem;
     margin-top: -.6rem;
 }
@@ -3014,7 +3014,7 @@ html.no-csstransitions .home-content__main {
     padding: 0 2rem;
     margin: 0;
     color: #FFFFFF;
-    background:orange;
+    background:red;
 }
 
 .s-contact .form-field label::after {
@@ -3025,14 +3025,14 @@ html.no-csstransitions .home-content__main {
     margin-top: -6px;
     border-top: 5px solid transparent;
     border-bottom: 5px solid transparent;
-    border-right: 5px solidorange;
+    border-right: 5px solid red;
 }
 
 .contact__line {
     display: block;
     width: 2px;
     height: 20.4rem;
-    background-color:orange;
+    background-color:red;
     position: absolute;
     left: 50%;
     top: -10.2rem;
@@ -3059,7 +3059,7 @@ html.no-csstransitions .home-content__main {
 
 .contact-content h5 {
     margin-top: 0;
-    color:orange;
+    color:red;
 }
 
 .contact-content input[type="email"],
@@ -3086,7 +3086,7 @@ html.no-csstransitions .home-content__main {
 .contact-content textarea:focus,
 .contact-content select:focus {
     color: #FFFFFF;
-    border-bottom: 1px solidorange;
+    border-bottom: 1px solidred;
 }
 
 .contact-content button,
@@ -3177,7 +3177,7 @@ html.no-csstransitions .home-content__main {
 
 .contact-social li a:hover, 
 .contact-social li a:focus {
-    color:orange;
+    color:red;
 }
 
 .contact-social li:last-child {
@@ -3200,7 +3200,7 @@ html.no-csstransitions .home-content__main {
 }
 
 .message-success {
-    color:orange;
+    color:red;
 }
 
 .message-warning i, .message-success i {
@@ -3392,7 +3392,7 @@ footer a {
 }
 
 footer a:hover, footer a:focus, footer a:active {
-    color:orange;
+    color:red;
 }
 
 footer .row {
@@ -3483,8 +3483,8 @@ footer .row {
     top: 0;
     right: 0;
     color: #FFFFFF;
-    background:orange;
-    border-color:orange;
+    background:red;
+    border-color:red;
     padding: 0 20px;
 }
 
@@ -3701,7 +3701,7 @@ footer .row {
     color: white;
 }
 .fa:hover {
-    color: orange;
+    color: red;
 }
 
 
