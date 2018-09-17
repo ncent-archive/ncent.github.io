@@ -2223,13 +2223,13 @@ html.no-csstransitions .home-content__main {
         min-height: 630px;
     }
     .home-content h1 {
-        font-size: 2.5rem;
+        font-size: 24px;
     }
     .home-content h2 {
-        font-size: 1.8rem;
+        font-size: 16px;
     }
     .home-content h3 {
-        font-size: 1.5rem;
+        font-size: 14px;
     }
     .home-content__main {
         padding-top: 13.2rem;
