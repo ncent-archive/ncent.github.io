@@ -111,7 +111,7 @@ body {
     font-style: normal;
     font-weight: normal;
     line-height: 1.765;
-    color: #757575;
+    color: #ffffff;
     margin: 0;
     padding: 0;
 }
@@ -121,13 +121,13 @@ body {
  * ## links
  * ------------------------------------------------------------------- */
 a {
-    color: #0087cc;
+    color: red;
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
 }
 
 a:hover, a:focus, a:active {
-    color: black;
+    text-decoration: underline;
 }
 
 a:hover, a:active {
@@ -2241,7 +2241,7 @@ html.no-csstransitions .home-content__main {
     padding-top: 16.2rem;
     padding-bottom: 9rem;
     background-color:orange;
-    color: #010507;
+    color: #ffffff;
     position: relative;
 }
 
@@ -3639,23 +3639,22 @@ footer .row {
 }
 
 .registerLink {
-    width: 60%;
     align-self: center;
+    margin-top: 10vh;
+    min-width: 40vw;
 }
 
 .registerNowButton {
-    font-size: 3vw;
+    font-size: 30px;
     border: 2px solid white;
     border-radius: 10px;
     color: white;
     text-align: center;
+    padding: 1vh;
 }
 .registerNowButton:hover {
-    font-size: 3vw;
-    border: 2px solid orange;
-    border-radius: 10px;
-    color: orange;
-    text-align: center;
+    border: 2px solid red;
+    color: red;
 }
 
 .pulse {
