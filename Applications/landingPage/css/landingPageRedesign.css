@@ -802,7 +802,7 @@ a:hover {
 }
 
 .teamHeader {
-    font-size: 2.5vh;
+    font-size: 2vh;
     width: 100%;
     text-align: center;
     padding-right: 20vh;
@@ -823,7 +823,7 @@ a:hover {
 
 .teamImage {
     height: auto;
-    width: 300px;
+    width: 200px;
     margin-right: 20vh;
     margin-bottom: 5vh;
     border-radius: 200px;
