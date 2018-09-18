@@ -819,6 +819,7 @@ a:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    min-width: 250px;
 }
 
 .teamImage {
@@ -848,8 +849,8 @@ a:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-left: 20vw;
-    padding-right: 20vw;
+    padding-left: 15vw;
+    padding-right: 15vw;
 }
 
 @media only screen and (max-width: 1090px){
