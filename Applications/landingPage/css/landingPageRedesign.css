@@ -801,6 +801,49 @@ a:hover {
     margin-bottom: 25vh;
 }
 
+.teamHeader {
+    font-size: 2.5vh;
+    width: 100%;
+    text-align: center;
+    padding-right: 20vh;
+    margin-bottom: 2vh;
+}
+
+.teamPanelHeader {
+    font-size: 3.5vh;
+    text-align: center;
+    margin-bottom: 5vh;
+}
+
+.teamTile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.teamImage {
+    height: auto;
+    width: 300px;
+    margin-right: 20vh;
+    margin-bottom: 5vh;
+    border-radius: 200px;
+}
+
+.teamContainer {
+    margin-top: 5vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 10vh;
+    padding-left: 20vh;
+}
+
+.teamSectionHeader {
+    font-size: 5vh;
+    margin-bottom: 10vh;
+    text-align: center;
+}
+
 @media only screen and (max-width: 1090px){
     
     .contactUs{
