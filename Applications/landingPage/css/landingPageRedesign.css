@@ -805,7 +805,6 @@ a:hover {
     font-size: 2vh;
     width: 100%;
     text-align: center;
-    padding-right: 20vh;
     margin-bottom: 2vh;
 }
 
@@ -824,24 +823,32 @@ a:hover {
 .teamImage {
     height: auto;
     width: 200px;
-    margin-right: 20vh;
     margin-bottom: 5vh;
-    border-radius: 200px;
+    border-radius: 150px;
 }
 
 .teamContainer {
     margin-top: 5vh;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
     margin-bottom: 10vh;
-    padding-left: 20vh;
+    width: 100%;
 }
 
 .teamSectionHeader {
     font-size: 5vh;
     margin-bottom: 10vh;
     text-align: center;
+}
+
+#teamSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-left: 20vw;
+    padding-right: 20vw;
 }
 
 @media only screen and (max-width: 1090px){
@@ -892,7 +899,7 @@ a:hover {
     .followUsHeader{
        
         text-align: center;
-        float:center;
+        float: center;
         padding-right:0;
         padding-bottom:1vw;
        /* justify-content: center;
@@ -982,6 +989,12 @@ a:hover {
         width: 100%;
         padding-top: 0;
         background-color: #4a29d7;
+    }
+
+    .teamContainer {
+        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: center;
     }
     
 
