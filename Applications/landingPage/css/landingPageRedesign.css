@@ -805,7 +805,7 @@ a:hover {
     font-size: 2vh;
     width: 100%;
     text-align: center;
-    margin-bottom: 2vh;
+    margin-top: 2vh;
 }
 
 .teamPanelHeader {
@@ -820,12 +820,12 @@ a:hover {
     justify-content: center;
     align-items: center;
     min-width: 250px;
+    margin-bottom: 5vh;
 }
 
 .teamImage {
     height: auto;
     width: 200px;
-    margin-bottom: 5vh;
     border-radius: 150px;
 }
 
