@@ -225,6 +225,14 @@ html, body {
     background-color: #4a29d7;
 }
 
+.fa {
+    display: unset !important;
+}
+
+.fa-lg {
+    line-height: 1.35em !important;
+}
+
 /*.mastheadBreak .earlyAccessInteractionContainer:hover .earlyAccessContainer .engagementButton {*/
     /*color: orange;*/
     /*text-decoration: none;*/
@@ -463,13 +471,13 @@ html, body {
 .arrowToAbout .breakLeft {
     width: 50%;
     height: 100%;
-    background-image: linear-gradient(to left top, #4a29d7 50%, rgba(0, 0, 0, 0) 50%);
+    background-image: linear-gradient(to left top, #4a29d7 50%, rgba(0, 0, 0, 0) 51%);
 }
 
 .arrowToAbout .breakRight {
     width: 50%;
     height: 100%;
-    background-image: linear-gradient(to right top, #4a29d7 50%, rgba(0, 0, 0, 0) 50%);
+    background-image: linear-gradient(to right top, #4a29d7 50%, rgba(0, 0, 0, 0) 51%);
 }
 
 .arrowToAbout.careersBreak .breakLeft {
@@ -524,7 +532,7 @@ a:hover {
     background-color: #1d88d4;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     padding-bottom: 5vh;
 }
 
@@ -542,8 +550,8 @@ a:hover {
     align-items: center;
     padding-right: 10vw;
     padding-left: 10vw;
-    vertical-align: center;
-    width: 50vw;
+    /* vertical-align: center; */
+    /* width: 50vw; */
 }
 
 .followUsHeader {
@@ -856,19 +864,19 @@ a:hover {
 @media only screen and (max-width: 1090px){
     
     .contactUs{
-        width:50vw;
+        /* width:50vw; */
     }
     .contactButtons{
         /*align-content:center;*/
-        width:50vw;
-        padding-left:10vw;
+        /* width:50vw; */
+        /* padding-left:10vw; */
     }
    
 }
 @media only screen and (max-width: 7.4em){
     
     .contactUs{
-        width:20vw;
+        /* width:20vw; */
         padding-left:0;
         padding-right:0;
     }
@@ -883,7 +891,7 @@ a:hover {
     .contactButtons{
         align-content:center;
         justify-content: center;
-        max-width:20vw;
+        /* max-width:20vw; */
         
     }
     .contactImg{
@@ -894,7 +902,7 @@ a:hover {
 @media only screen and (max-width: 810px){
     
     .contactUs{
-        width:15vw;
+        /* width:15vw; */
         padding-left:0;
         padding-right:0;
     }
@@ -910,8 +918,8 @@ a:hover {
     .contactButtons{
         align-content:center;
         justify-content: center;
-        max-width:15vw;
-        padding-left:10px;
+        /* max-width:15vw; */
+        /* padding-left:10px; */
     }
     .contactImg{
         padding-bottom:3px;
@@ -921,9 +929,9 @@ a:hover {
 @media only screen and (max-width: 950px){
     
     .contactUs{
-        width:25vw;
-        padding-left:0;
-        padding-right:0;
+        /* width:25vw; */
+        /* padding-left:10vw; */
+        /* padding-right:10vw; */
     }
 
     .followUsHeader{
@@ -938,7 +946,7 @@ a:hover {
     .contactButtons{
         align-content:center;
         justify-content: center;
-        width:20vw;
+        /* width:20vw; */
         padding-left:0;
     }
     .contactImg{
