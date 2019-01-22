@@ -53,15 +53,15 @@
 
 @-webkit-keyframes verticalSlide {
     0% {
-        bottom: 50%;
+        bottom: 5%;
         box-shadow: 0 0 0 0 rgba(255,255,255, 0.6);
     }
     50% {
-        bottom: 60%;
+        bottom: 15%;
         box-shadow: 0 0 0 4vh rgba(255,255,255, 0);
     }
     100% {
-        bottom: 50%;
+        bottom: 5%;
         box-shadow: 0 0 0 0 rgba(255,255,255, 0);
     }
 }
@@ -111,6 +111,10 @@ html, body {
     width: 100%;
 }
 
+a {
+    /* font-size: unset; */
+}
+
 .panel {
     width: 100%;
     height: 100vh;
@@ -127,7 +131,8 @@ html, body {
     align-items: center;
     justify-content: space-between;
     padding-top: 8vh;
-    font-size: 2.25vh;
+    /* font-size: 2.25vh; */
+    position: relative;
 }
 
 .mastHead .header {
@@ -149,6 +154,11 @@ html, body {
 .mastHead .header .headerLinkContainer .headerLink {
     padding-left: 1vw;
     padding-right: 1vw;
+    word-wrap: normal;
+}
+
+.headerLink {
+    white-space: pre;
 }
 
 .mastHead .header .headerLinkContainer .headerLink:hover {
@@ -225,6 +235,14 @@ html, body {
     background-color: #4a29d7;
 }
 
+.fa {
+    display: unset !important;
+}
+
+.fa-lg {
+    line-height: 1.35em !important;
+}
+
 /*.mastheadBreak .earlyAccessInteractionContainer:hover .earlyAccessContainer .engagementButton {*/
     /*color: orange;*/
     /*text-decoration: none;*/
@@ -256,6 +274,7 @@ html, body {
 .aboutSection {
     display: flex;
     flex-direction: column;
+    text-align: center;
 }
 
 .aboutSection .aboutStripe {
@@ -272,8 +291,9 @@ html, body {
     height: auto;
     position: absolute;
     right: 47.5%;
-    bottom: 50%;
+    bottom: 15%;
     border-radius: 60px;
+    z-index: 5;
 }
 
 .arrowToAbout {
@@ -342,13 +362,13 @@ html, body {
 }
 
 .aboutSection {
-    background: linear-gradient(#4a29d7, #1d88d4);
+    background: linear-gradient(#4a29d7, #a7b9ff);
     padding-left: 15vw;
     padding-right: 15vw;
-    padding-bottom: 20vw;
+    padding-bottom: 10vw;
     padding-top: 10vh;
-    line-height: 4vh;
-    text-align: justify;
+    line-height: 22px;
+    text-align: center;
     text-justify: distribute;
     letter-spacing: 0.1vw;
     font-size: 2vh;
@@ -364,6 +384,7 @@ html, body {
     font-size: 3vh;
     margin-bottom: 4vh;
     text-align: left;
+    line-height: 25px;
 }
 
 .conceptContent {
@@ -430,10 +451,10 @@ html, body {
 }
 
 .investorsSection {
-    background: linear-gradient(#4a29d7, #1d88d4);
-    padding-right: 5vh;
-    padding-left: 5vh;
-    padding-bottom: 15vh;
+    background: linear-gradient(#a7b9ff, #dbf0ff);
+    /* padding-right: 1vh; */
+    /* padding-left: 1vh; */
+    padding-bottom: 3vh;
 }
 
 .investorsHeader {
@@ -441,6 +462,7 @@ html, body {
     text-align: center;
     margin-bottom: 5vh;
     z-index: 1;
+    color: #001d75;
 }
 
 .investorsContainer {
@@ -448,28 +470,30 @@ html, body {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    padding-bottom: 5vh;
-    padding-right: 5vh;
-    padding-left: 10vh;
+    padding-bottom: 2vh;
+    /* padding-right: 5vh; */
+    /* padding-left: 10vh; */
 }
 
 .investorImage {
     height: auto;
-    width: 350px;
-    padding-right: 5vh;
-    margin-bottom: 5vh;
+    width: 155px;
+}
+
+.investorTile {
+    /* background-color: white; */
 }
 
 .arrowToAbout .breakLeft {
     width: 50%;
     height: 100%;
-    background-image: linear-gradient(to left top, #4a29d7 50%, rgba(0, 0, 0, 0) 50%);
+    background-image: linear-gradient(to left top, #4a29d7 50%, rgba(0, 0, 0, 0) 51%);
 }
 
 .arrowToAbout .breakRight {
     width: 50%;
     height: 100%;
-    background-image: linear-gradient(to right top, #4a29d7 50%, rgba(0, 0, 0, 0) 50%);
+    background-image: linear-gradient(to right top, #4a29d7 50%, rgba(0, 0, 0, 0) 51%);
 }
 
 .arrowToAbout.careersBreak .breakLeft {
@@ -482,6 +506,30 @@ html, body {
     width: 50%;
     height: 100%;
     background-image: linear-gradient(to right top, #4a29d7 50%, #1d88d4 50%);
+}
+
+.breakLeftWhite {
+    width: 50%;
+    height: 100%;
+    background-image: linear-gradient(to left top, #ffffff 50%, rgba(0, 0, 0, 0) 51%);
+}
+
+.breakRightWhite {
+    width: 50%;
+    height: 100%;
+    background-image: linear-gradient(to right top, #ffffff 50%, rgba(0, 0, 0, 0) 51%);
+}
+
+.breakLeftBottom {
+    width: 50%;
+    height: 100%;
+    background-image: linear-gradient(to left top, #a7b9ff 50%, rgb(0, 0, 0, 0) 51%);
+}
+
+.breakRightBottom {
+    width: 50%;
+    height: 100%;
+    background-image: linear-gradient(to right top, #a7b9ff 50%, rgb(0, 0, 0, 0) 51%);
 }
 
 #careersSection {
@@ -520,12 +568,13 @@ a:hover {
 
 .footer {
     width: 100%;
-    height: 20vh;
+    /* height: 20vh; */
     background-color: #1d88d4;
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding-bottom: 5vh;
+    justify-content: space-around;
+    padding-bottom: 1vh;
+    min-height: 110px;
 }
 
 #earlyAccessContainer {
@@ -542,13 +591,13 @@ a:hover {
     align-items: center;
     padding-right: 10vw;
     padding-left: 10vw;
-    vertical-align: center;
-    width: 50vw;
+    /* vertical-align: center; */
+    /* width: 50vw; */
 }
 
 .followUsHeader {
     font-size: 2.5vh;
-    padding-bottom: 5vh;
+    padding-bottom: 3vh;
 }
 
 .contactImg {
@@ -566,6 +615,7 @@ a:hover {
 .moreInfo {
     display: flex;
     flex-direction: column;
+    text-align: center;
     justify-content: center;
     width: 25vw;
     font-size: 2vh;
@@ -573,6 +623,7 @@ a:hover {
 
 .phone {
     padding-bottom: 2vh;
+    padding-top: 5px;
 }
 
 .copyright {
@@ -761,7 +812,7 @@ a:hover {
 
 .boldIntro {
     font-weight: bolder;
-    font-size: 2.5vh;
+    /* font-size: 2.5vh; */
 }
 
 .newsDate {
@@ -856,19 +907,19 @@ a:hover {
 @media only screen and (max-width: 1090px){
     
     .contactUs{
-        width:50vw;
+        /* width:50vw; */
     }
     .contactButtons{
         /*align-content:center;*/
-        width:50vw;
-        padding-left:10vw;
+        /* width:50vw; */
+        /* padding-left:10vw; */
     }
    
 }
 @media only screen and (max-width: 7.4em){
     
     .contactUs{
-        width:20vw;
+        /* width:20vw; */
         padding-left:0;
         padding-right:0;
     }
@@ -883,7 +934,7 @@ a:hover {
     .contactButtons{
         align-content:center;
         justify-content: center;
-        max-width:20vw;
+        /* max-width:20vw; */
         
     }
     .contactImg{
@@ -894,7 +945,7 @@ a:hover {
 @media only screen and (max-width: 810px){
     
     .contactUs{
-        width:15vw;
+        /* width:15vw; */
         padding-left:0;
         padding-right:0;
     }
@@ -910,8 +961,8 @@ a:hover {
     .contactButtons{
         align-content:center;
         justify-content: center;
-        max-width:15vw;
-        padding-left:10px;
+        /* max-width:15vw; */
+        /* padding-left:10px; */
     }
     .contactImg{
         padding-bottom:3px;
@@ -921,24 +972,24 @@ a:hover {
 @media only screen and (max-width: 950px){
     
     .contactUs{
-        width:25vw;
-        padding-left:0;
-        padding-right:0;
+        /* width:25vw; */
+        /* padding-left:10vw; */
+        /* padding-right:10vw; */
     }
 
     .followUsHeader{
         width:100px;
         text-align: center;
         float:center;
-        padding-right:3vw;
-        padding-bottom:1vw;
+        /* padding-right:3vw; */
+        padding-bottom:3vw;
        /* justify-content: center;
         padding-right:0px;*/
     }
     .contactButtons{
         align-content:center;
         justify-content: center;
-        width:20vw;
+        /* width:20vw; */
         padding-left:0;
     }
     .contactImg{
@@ -952,15 +1003,15 @@ a:hover {
 
     @-webkit-keyframes verticalSlide {
         0% {
-            bottom: 65%;
+            bottom: 15%;
             box-shadow: 0 0 0 0 rgba(255,255,255, 0.6);
         }
         50% {
-            bottom: 55%;
+            bottom: 5%;
             box-shadow: 0 0 0 4vh rgba(255,255,255, 0);
         }
         100% {
-            bottom: 65%;
+            bottom: 15%;
             box-shadow: 0 0 0 0 rgba(255,255,255, 0);
         }
     }
@@ -1002,15 +1053,15 @@ a:hover {
 
     @-webkit-keyframes verticalSlide {
         0% {
-            bottom: 60%;
+            bottom: 15%;
             box-shadow: 0 0 0 0 rgba(255,255,255, 0.6);
         }
         50% {
-            bottom: 55%;
+            bottom: 5%;
             box-shadow: 0 0 0 4vh rgba(255,255,255, 0);
         }
         100% {
-            bottom: 60%;
+            bottom: 15%;
             box-shadow: 0 0 0 0 rgba(255,255,255, 0);
         }
     }
@@ -1118,13 +1169,13 @@ a:hover {
 
     .footer {
         height: auto;
-        padding-top: 5vh;
+        padding: 2vh;
         flex-direction: column;
     }
 
     .contactButtons {
         display: flex;
-        margin-bottom: 5vh;
+        margin-bottom: 2vh;
     }
 
     .stripeHeader {
@@ -1145,7 +1196,7 @@ a:hover {
         width: 8vw;
         height: auto;
         right: 46%;
-        margin-bottom: 8vh;
+        margin-bottom: 0vh;
     }
 
     .mastheadBreak .engagementButton {
@@ -1241,7 +1292,7 @@ a:hover {
     .aboutSection {
         padding-right: 5vw;
         padding-left: 5vw;
-        padding-bottom: 40vh;
+        padding-bottom: 12vh;
     }
 
     .maitreDisclaimer {
@@ -1266,4 +1317,45 @@ a:hover {
     }
 }
 
+@media (min-height: 600px) {
+    .footer {
+        font-size: 18px !important;
+    }
+}
 
+@media (max-height: 550px) {
+
+    .conceptContent,
+    .stripeContent,
+    .headerLink,
+    .followUsHeader,
+    .moreInfo {
+        font-size: 14px !important;
+    }
+
+}
+
+@media (min-height: 820px) {
+    .conceptContent,
+    .stripeContent,
+    .followUsHeader,
+    .moreInfo {
+        font-size: 14px !important;
+    }
+
+    .headerLink {
+        font-size: 22px !important;
+    }
+}
+
+@media (max-height: 700px) {
+    .aboutSection {
+        font-size: 16px !important;
+    }
+}
+
+@media (max-height: 600px) {
+    .investorsHeader {
+        font-size: 30px !important;
+    }
+}
