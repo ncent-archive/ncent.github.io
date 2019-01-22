@@ -438,10 +438,10 @@ html, body {
 }
 
 .investorsSection {
-    background: linear-gradient(#4a29d7, #1d88d4);
-    padding-right: 5vh;
-    padding-left: 5vh;
-    padding-bottom: 15vh;
+    background: linear-gradient(#a7b9ff, #dbf0ff);
+    /* padding-right: 1vh; */
+    /* padding-left: 1vh; */
+    padding-bottom: 3vh;
 }
 
 .investorsHeader {
@@ -449,6 +449,7 @@ html, body {
     text-align: center;
     margin-bottom: 5vh;
     z-index: 1;
+    color: #001d75;
 }
 
 .investorsContainer {
@@ -456,16 +457,18 @@ html, body {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    padding-bottom: 5vh;
-    padding-right: 5vh;
-    padding-left: 10vh;
+    padding-bottom: 2vh;
+    /* padding-right: 5vh; */
+    /* padding-left: 10vh; */
 }
 
 .investorImage {
     height: auto;
-    width: 350px;
-    padding-right: 5vh;
-    margin-bottom: 5vh;
+    width: 155px;
+}
+
+.investorTile {
+    /* background-color: white; */
 }
 
 .arrowToAbout .breakLeft {
@@ -490,6 +493,30 @@ html, body {
     width: 50%;
     height: 100%;
     background-image: linear-gradient(to right top, #4a29d7 50%, #1d88d4 50%);
+}
+
+.breakLeftWhite {
+    width: 50%;
+    height: 100%;
+    background-image: linear-gradient(to left top, #ffffff 50%, rgba(0, 0, 0, 0) 51%);
+}
+
+.breakRightWhite {
+    width: 50%;
+    height: 100%;
+    background-image: linear-gradient(to right top, #ffffff 50%, rgba(0, 0, 0, 0) 51%);
+}
+
+.breakLeftBottom {
+    width: 50%;
+    height: 100%;
+    background-image: linear-gradient(to left top, #a7b9ff 50%, rgb(0, 0, 0, 0) 51%);
+}
+
+.breakRightBottom {
+    width: 50%;
+    height: 100%;
+    background-image: linear-gradient(to right top, #a7b9ff 50%, rgb(0, 0, 0, 0) 51%);
 }
 
 #careersSection {
@@ -528,12 +555,13 @@ a:hover {
 
 .footer {
     width: 100%;
-    height: 20vh;
+    /* height: 20vh; */
     background-color: #1d88d4;
     display: flex;
     align-items: center;
     justify-content: space-around;
-    padding-bottom: 5vh;
+    padding-bottom: 1vh;
+    min-height: 110px;
 }
 
 #earlyAccessContainer {
@@ -556,7 +584,7 @@ a:hover {
 
 .followUsHeader {
     font-size: 2.5vh;
-    padding-bottom: 5vh;
+    padding-bottom: 3vh;
 }
 
 .contactImg {
@@ -574,6 +602,7 @@ a:hover {
 .moreInfo {
     display: flex;
     flex-direction: column;
+    text-align: center;
     justify-content: center;
     width: 25vw;
     font-size: 2vh;
@@ -938,8 +967,8 @@ a:hover {
         width:100px;
         text-align: center;
         float:center;
-        padding-right:3vw;
-        padding-bottom:1vw;
+        /* padding-right:3vw; */
+        padding-bottom:3vw;
        /* justify-content: center;
         padding-right:0px;*/
     }
@@ -1126,7 +1155,7 @@ a:hover {
 
     .footer {
         height: auto;
-        padding-top: 5vh;
+        padding: 2vh;
         flex-direction: column;
     }
 
@@ -1274,4 +1303,18 @@ a:hover {
     }
 }
 
+@media (min-height: 600px) {
+    .footer {
+        font-size: 18px !important;
+    }
+}
 
+@media (max-height: 550px) {
+    .moreInfo {
+        font-size: 14px !important;
+    }
+
+    .followUsHeader {
+        font-size: 14px !important;
+    }
+}
