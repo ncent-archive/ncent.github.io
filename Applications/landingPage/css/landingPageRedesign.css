@@ -53,15 +53,15 @@
 
 @-webkit-keyframes verticalSlide {
     0% {
-        bottom: 50%;
+        bottom: 5%;
         box-shadow: 0 0 0 0 rgba(255,255,255, 0.6);
     }
     50% {
-        bottom: 60%;
+        bottom: 15%;
         box-shadow: 0 0 0 4vh rgba(255,255,255, 0);
     }
     100% {
-        bottom: 50%;
+        bottom: 5%;
         box-shadow: 0 0 0 0 rgba(255,255,255, 0);
     }
 }
@@ -128,6 +128,7 @@ html, body {
     justify-content: space-between;
     padding-top: 8vh;
     font-size: 2.25vh;
+    position: relative;
 }
 
 .mastHead .header {
@@ -149,6 +150,11 @@ html, body {
 .mastHead .header .headerLinkContainer .headerLink {
     padding-left: 1vw;
     padding-right: 1vw;
+    word-wrap: normal;
+}
+
+.headerLink {
+    white-space: pre;
 }
 
 .mastHead .header .headerLinkContainer .headerLink:hover {
@@ -280,8 +286,9 @@ html, body {
     height: auto;
     position: absolute;
     right: 47.5%;
-    bottom: 50%;
+    bottom: 15%;
     border-radius: 60px;
+    z-index: 5;
 }
 
 .arrowToAbout {
@@ -355,7 +362,7 @@ html, body {
     padding-right: 15vw;
     padding-bottom: 20vw;
     padding-top: 10vh;
-    line-height: 4vh;
+    line-height: 18px;
     text-align: justify;
     text-justify: distribute;
     letter-spacing: 0.1vw;
@@ -372,6 +379,7 @@ html, body {
     font-size: 3vh;
     margin-bottom: 4vh;
     text-align: left;
+    line-height: 25px;
 }
 
 .conceptContent {
@@ -798,7 +806,7 @@ a:hover {
 
 .boldIntro {
     font-weight: bolder;
-    font-size: 2.5vh;
+    /* font-size: 2.5vh; */
 }
 
 .newsDate {
@@ -989,15 +997,15 @@ a:hover {
 
     @-webkit-keyframes verticalSlide {
         0% {
-            bottom: 65%;
+            bottom: 15%;
             box-shadow: 0 0 0 0 rgba(255,255,255, 0.6);
         }
         50% {
-            bottom: 55%;
+            bottom: 5%;
             box-shadow: 0 0 0 4vh rgba(255,255,255, 0);
         }
         100% {
-            bottom: 65%;
+            bottom: 15%;
             box-shadow: 0 0 0 0 rgba(255,255,255, 0);
         }
     }
@@ -1039,15 +1047,15 @@ a:hover {
 
     @-webkit-keyframes verticalSlide {
         0% {
-            bottom: 60%;
+            bottom: 15%;
             box-shadow: 0 0 0 0 rgba(255,255,255, 0.6);
         }
         50% {
-            bottom: 55%;
+            bottom: 5%;
             box-shadow: 0 0 0 4vh rgba(255,255,255, 0);
         }
         100% {
-            bottom: 60%;
+            bottom: 15%;
             box-shadow: 0 0 0 0 rgba(255,255,255, 0);
         }
     }
@@ -1182,7 +1190,7 @@ a:hover {
         width: 8vw;
         height: auto;
         right: 46%;
-        margin-bottom: 8vh;
+        margin-bottom: 0vh;
     }
 
     .mastheadBreak .engagementButton {
@@ -1310,11 +1318,23 @@ a:hover {
 }
 
 @media (max-height: 550px) {
+
+    .conceptContent,
+    .stripeContent,
+    .headerLink,
+    .followUsHeader,
     .moreInfo {
         font-size: 14px !important;
     }
 
-    .followUsHeader {
+}
+
+@media (min-height: 820px) {
+    .conceptContent,
+    .stripeContent,
+    .headerLink,
+    .followUsHeader,
+    .moreInfo {
         font-size: 14px !important;
     }
 }
