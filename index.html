@@ -32,23 +32,25 @@
               });
         </script>
 
-        <script type="text/javascript">
-            $(document).ready(function() {
-                document.getElementById("maitreCustomForm").addEventListener("submit", function (e) {
-                    e.preventDefault();
-                    const email = document.getElementById("email").value;
-                    let data;
-                    if (email) {
-                        data = {
-                            email: email
-                        };
-                        console.log(data);
-                        console.log(email);
-                        Maitre.form.submit(data);
-                    }
+        <!--
+            <script type="text/javascript">
+                $(document).ready(function() {
+                    document.getElementById("maitreCustomForm").addEventListener("submit", function (e) {
+                        e.preventDefault();
+                        const email = document.getElementById("email").value;
+                        let data;
+                        if (email) {
+                            data = {
+                                email: email
+                            };
+                            console.log(data);
+                            console.log(email);
+                            Maitre.form.submit(data);
+                        }
+                    });
                 });
-            });
-        </script>
+            </script>
+        -->
     </head>
 
     <body>
@@ -60,13 +62,15 @@
                 </div>
                 <div class="headerLinkContainer">
                     <div class="dropdown">
-                        <span class="headerLink dropButton">About</span>
-                        <div class="dropdown-content">
-                            <div class="dropdownSpacer"></div>
-                            <div class="nonSpacer">
-                                <span class="headerLink"><a href="https://github.com/ncent/ncent.github.io/tree/master/Media%20Kit%20V.0.3.1">Media Kit</a></span>
+                        <span class="headerLink dropButton"><a href="#about">About</a></span>
+                        <!--
+                            <div class="dropdown-content">
+                                <div class="dropdownSpacer"></div>
+                                <div class="nonSpacer">
+                                    <span class="headerLink"><a href="https://github.com/ncent/ncent.github.io/tree/master/Media%20Kit%20V.0.3.1">Media Kit</a></span>
+                                </div>
                             </div>
-                        </div>
+                        -->
                     </div>
                     <span class="headerLink"><a href="./Applications/developers/index.html">Careers</a></span>
                     <span class="headerLink"><a href="./Applications/blog/blog.html">Blog</a></span>
@@ -74,17 +78,23 @@
                 </div>
                 
             <div class="engagementContainer">
-                <img class="earlyAccessArrow verticalSlide" src="./Applications/landingPage/img/arrowDown.png" />
+                <a href="#about">
+                    <img class="earlyAccessArrow verticalSlide" src="./Applications/landingPage/img/arrowDown.png" />
+                </a>
                 <div class="engagementLogo">
                     <img src="./Applications/landingPage/img/ncent_NOsubline_500px_white.png" />
                 </div>
                 <h2 class="engagementSlogan">Own the Value of Your Networks</h2>
                 <div class="engagementButtonContainer">
-                    <a class="engagementButtonMobile" href="./Applications/landingPage/LitePaper.pdf">LitePaper</a>
-                    <span class="engagementButtonMobile"><a href="./Applications/founders/founders.html">Campus</a></span>
-                    <span class="engagementButtonMobile"><a href="./Applications/nSpire/nSpire.html">Conference</a></span>
-                    <span class="engagementButtonMobile"><a href="./Applications/yCent/index.html">yCent</a></span>
-                    <span class="engagementButtonMobile"><a href="./Applications/blog/blog.html">Blog</a></span>
+                    <span class="engagementButtonMobile">
+                        <a href="#about">About</a>
+                    </span>
+                    <span class="engagementButtonMobile">
+                        <a href="./Applications/developers/index.html">Careers</a>
+                    </span>
+                    <span class="engagementButtonMobile">
+                        <a href="./Applications/blog/blog.html">Blog</a>
+                    </span>
                 </div>
             </div>
         </section>
@@ -94,10 +104,27 @@
             <div class="breakRight"></div>
         </div>
 
-        <div class="arrowToAbout sectionBreak">
-            <div class="breakLeftBottom"></div>
-            <div class="breakRightBottom"></div>
-        </div>
+        <!--
+            <div class="arrowToAbout sectionBreak">
+                <div class="breakLeftBottom"></div>
+                <div class="breakRightBottom"></div>
+            </div>
+         -->
+
+
+        <section class="aboutSection">
+            <a id="about"></a>
+            The internet was created to democratize access to information and opportunity. It grew to be a platform where central actors
+            now monetize the value of our connections, data and networks. We are building a new protocol to provide the correct incentives
+            online so that you can own the value of your networks. 
+            <br>
+            <br>
+            Read more about our work here. 
+            <br>
+            <br>
+            If you are interested in working with
+            us please apply here.
+        </section>
 
         <section class="investorsSection" id="investors">
             <h1 class="investorsHeader">Selected Investors</h1>
@@ -113,8 +140,9 @@
                 <div class="investorTile"><a href="http://www.zhenfund.com/"><img class="investorImage" src="./Applications/landingPage/img/transparent/zhen.png" /></a></div>
                 <div class="investorTile"><a href="https://qcp.capital/"><img class="investorImage" src="./Applications/landingPage/img/transparent/qcp.png" /></a></div>
                 <div class="investorTile"><a href="http://signiaventurepartners.com/"><img class="investorImage" src="./Applications/landingPage/img/transparent/signianew.png" /></a></div>
-              </div>
+            </div>
         </section>
+    
 
         <section class="footer">
             <div class="headerLogo">

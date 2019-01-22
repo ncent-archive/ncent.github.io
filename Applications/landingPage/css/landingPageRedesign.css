@@ -111,6 +111,10 @@ html, body {
     width: 100%;
 }
 
+a {
+    /* font-size: unset; */
+}
+
 .panel {
     width: 100%;
     height: 100vh;
@@ -127,7 +131,7 @@ html, body {
     align-items: center;
     justify-content: space-between;
     padding-top: 8vh;
-    font-size: 2.25vh;
+    /* font-size: 2.25vh; */
     position: relative;
 }
 
@@ -270,6 +274,7 @@ html, body {
 .aboutSection {
     display: flex;
     flex-direction: column;
+    text-align: center;
 }
 
 .aboutSection .aboutStripe {
@@ -357,13 +362,13 @@ html, body {
 }
 
 .aboutSection {
-    background: linear-gradient(#4a29d7, #1d88d4);
+    background: linear-gradient(#4a29d7, #a7b9ff);
     padding-left: 15vw;
     padding-right: 15vw;
-    padding-bottom: 20vw;
+    padding-bottom: 10vw;
     padding-top: 10vh;
-    line-height: 18px;
-    text-align: justify;
+    line-height: 22px;
+    text-align: center;
     text-justify: distribute;
     letter-spacing: 0.1vw;
     font-size: 2vh;
@@ -618,6 +623,7 @@ a:hover {
 
 .phone {
     padding-bottom: 2vh;
+    padding-top: 5px;
 }
 
 .copyright {
@@ -1169,7 +1175,7 @@ a:hover {
 
     .contactButtons {
         display: flex;
-        margin-bottom: 5vh;
+        margin-bottom: 2vh;
     }
 
     .stripeHeader {
@@ -1286,7 +1292,7 @@ a:hover {
     .aboutSection {
         padding-right: 5vw;
         padding-left: 5vw;
-        padding-bottom: 40vh;
+        padding-bottom: 12vh;
     }
 
     .maitreDisclaimer {
@@ -1332,9 +1338,24 @@ a:hover {
 @media (min-height: 820px) {
     .conceptContent,
     .stripeContent,
-    .headerLink,
     .followUsHeader,
     .moreInfo {
         font-size: 14px !important;
+    }
+
+    .headerLink {
+        font-size: 22px !important;
+    }
+}
+
+@media (max-height: 700px) {
+    .aboutSection {
+        font-size: 16px !important;
+    }
+}
+
+@media (max-height: 600px) {
+    .investorsHeader {
+        font-size: 30px !important;
     }
 }
