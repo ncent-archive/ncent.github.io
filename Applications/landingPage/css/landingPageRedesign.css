@@ -208,6 +208,10 @@ a {
     cursor: pointer;
 }
 
+.emailLink {
+    color: lightsalmon;
+}
+
 .engagementLogo, .engagementLogo img {
     width: 20vw;
     height: auto;
